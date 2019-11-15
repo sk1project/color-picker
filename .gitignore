@@ -1,0 +1,11 @@
+*.com
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+*.pyd
+*.mo
+/.idea
+.vagrant
+/utils
