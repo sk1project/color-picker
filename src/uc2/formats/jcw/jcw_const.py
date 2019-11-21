@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-#  Copyright (C) 2011-2018 by Igor E. Novikov
+#  Copyright (C) 2015 by Igor E. Novikov
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU Affero General Public License
@@ -15,30 +15,30 @@
 #  You should have received a copy of the GNU Affero General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import os
-import sys
+JCW_ID = 'JCW'
+JCW_VER = '\x01'
+JCW_NAMESIZE = 21
 
-from uc2.utils import translator
+JCW_PMS = 0
+JCW_CMYK_PANTONE = 1
+JCW_RGB_PANTONE = 3
+JCW_HSV_PANTONE = 5
+JCW_CMYK = 8
+JCW_SPOT_CMYK = 9
+JCW_RGB = 10
+JCW_SPOT_RGB = 11
+JCW_HSV = 12
+JCW_SPOT_HSV = 13
 
-config = None
-appdata = None
-
-_ = translator.MsgTranslator()
-
-
-def uc2_init():
-    """UniConvertor initializing routine."""
-
-    _pkgdir = __path__[0].decode(sys.getfilesystemencoding()).encode('utf-8')
-
-    from application import UCApplication
-
-    app = UCApplication(_pkgdir)
-    return app
-
-
-def uc2_run(cwd=None):
-    """UniConvertor launch routine."""
-
-    app = uc2_init()
-    app.run(cwd or os.getcwd())
+JCW_COLOR_NAMES = {
+    0: 'PMS',
+    1: 'CMYK PANTONE',
+    3: 'RGB PANTONE',
+    5: 'HSV PANTONE',
+    8: 'CMYK',
+    9: 'SPOT CMYK',
+    10: 'RGB',
+    11: 'SPOT RGB',
+    12: 'HSV',
+    13: 'SPOT HSV',
+}

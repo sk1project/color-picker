@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-#  Copyright (C) 2011-2018 by Igor E. Novikov
+#  Copyright (C) 2016 by Igor E. Novikov
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU Affero General Public License
@@ -15,30 +15,19 @@
 #  You should have received a copy of the GNU Affero General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import os
-import sys
 
-from uc2.utils import translator
-
-config = None
-appdata = None
-
-_ = translator.MsgTranslator()
+from uc2.formats.generic_filters import AbstractBinaryLoader, AbstractSaver
 
 
-def uc2_init():
-    """UniConvertor initializing routine."""
+class ASE_Loader(AbstractBinaryLoader):
+    name = 'ASE_Loader'
 
-    _pkgdir = __path__[0].decode(sys.getfilesystemencoding()).encode('utf-8')
-
-    from application import UCApplication
-
-    app = UCApplication(_pkgdir)
-    return app
+    def do_load(self):
+        self.model.parse(self)
 
 
-def uc2_run(cwd=None):
-    """UniConvertor launch routine."""
+class ASE_Saver(AbstractSaver):
+    name = 'ASE_Saver'
 
-    app = uc2_init()
-    app.run(cwd or os.getcwd())
+    def do_save(self):
+        self.model.save(self)

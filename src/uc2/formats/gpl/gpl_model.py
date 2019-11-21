@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-#  Copyright (C) 2011-2018 by Igor E. Novikov
+#  Copyright (C) 2015 by Igor E. Novikov
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU Affero General Public License
@@ -15,30 +15,30 @@
 #  You should have received a copy of the GNU Affero General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import os
-import sys
 
-from uc2.utils import translator
-
-config = None
-appdata = None
-
-_ = translator.MsgTranslator()
+from uc2.formats.generic import TextModelObject
 
 
-def uc2_init():
-    """UniConvertor initializing routine."""
+class GPL_Palette(TextModelObject):
+    """
+    Represents GPL palette object.
+    This is a single and root DOM instance of GPL file format.
+    All palette colors are members of colors field list.
+    Color sample: [100,23,40,'Color name']
+    """
 
-    _pkgdir = __path__[0].decode(sys.getfilesystemencoding()).encode('utf-8')
+    name = ''
+    comments = ''
+    columns = 1
+    colors = []
 
-    from application import UCApplication
+    def __init__(self, name='', colors=None):
+        self.name = name
+        if not colors:
+            self.colors = []
 
-    app = UCApplication(_pkgdir)
-    return app
-
-
-def uc2_run(cwd=None):
-    """UniConvertor launch routine."""
-
-    app = uc2_init()
-    app.run(cwd or os.getcwd())
+    def resolve(self, name=''):
+        is_leaf = False
+        info = '%d' % (len(self.colors))
+        name = 'GPL Palette'
+        return is_leaf, name, info

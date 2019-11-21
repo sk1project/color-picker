@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-#  Copyright (C) 2011-2018 by Igor E. Novikov
+#  Copyright (C) 2012 by Igor E. Novikov
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU Affero General Public License
@@ -15,30 +15,10 @@
 #  You should have received a copy of the GNU Affero General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import os
-import sys
+GPL_HEADER = 'GIMP Palette'
+GIMP_SOURCE = 'GIMP (https://www.gimp.org)'
+INK_SOURCE = 'Inkscape (https://inkscape.org)'
+KDE_SOURCE = 'KDE Software Compilation (https://kde.org)'
 
-from uc2.utils import translator
-
-config = None
-appdata = None
-
-_ = translator.MsgTranslator()
-
-
-def uc2_init():
-    """UniConvertor initializing routine."""
-
-    _pkgdir = __path__[0].decode(sys.getfilesystemencoding()).encode('utf-8')
-
-    from application import UCApplication
-
-    app = UCApplication(_pkgdir)
-    return app
-
-
-def uc2_run(cwd=None):
-    """UniConvertor launch routine."""
-
-    app = uc2_init()
-    app.run(cwd or os.getcwd())
+COL_STR = 'Columns:'
+NAME_STR = 'Name:'

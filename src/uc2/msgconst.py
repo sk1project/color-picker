@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-#  Copyright (C) 2011-2018 by Igor E. Novikov
+#  Copyright (C) 2012 by Igor E. Novikov
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU Affero General Public License
@@ -15,30 +15,21 @@
 #  You should have received a copy of the GNU Affero General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import os
-import sys
 
-from uc2.utils import translator
+JOB = 0
+OK = 1
+INFO = 2
+WARNING = 3
+ERROR = 4
+STOP = 5
 
-config = None
-appdata = None
+MESSAGES = {
+    JOB: 'JOB',
+    OK: 'OK',
+    INFO: 'INFO',
+    WARNING: 'WARNING',
+    ERROR: 'ERROR',
+    STOP: 'STOP',
+}
 
-_ = translator.MsgTranslator()
-
-
-def uc2_init():
-    """UniConvertor initializing routine."""
-
-    _pkgdir = __path__[0].decode(sys.getfilesystemencoding()).encode('utf-8')
-
-    from application import UCApplication
-
-    app = UCApplication(_pkgdir)
-    return app
-
-
-def uc2_run(cwd=None):
-    """UniConvertor launch routine."""
-
-    app = uc2_init()
-    app.run(cwd or os.getcwd())
+MAX_LEN = max(*[len(val) for val in MESSAGES.values()])

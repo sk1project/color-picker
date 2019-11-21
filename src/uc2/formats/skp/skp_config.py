@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-#  Copyright (C) 2011-2018 by Igor E. Novikov
+#  Copyright (C) 2015 by Igor E. Novikov
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU Affero General Public License
@@ -15,30 +15,15 @@
 #  You should have received a copy of the GNU Affero General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import os
-import sys
-
-from uc2.utils import translator
-
-config = None
-appdata = None
-
-_ = translator.MsgTranslator()
+from uc2.utils.config import XmlConfigParser
 
 
-def uc2_init():
-    """UniConvertor initializing routine."""
+class SKP_Config(XmlConfigParser):
+    system_encoding = 'utf-8'
+    filename = 'skp_config.xml'
 
-    _pkgdir = __path__[0].decode(sys.getfilesystemencoding()).encode('utf-8')
+    small_cell = 16
+    large_cell = 32
 
-    from application import UCApplication
-
-    app = UCApplication(_pkgdir)
-    return app
-
-
-def uc2_run(cwd=None):
-    """UniConvertor launch routine."""
-
-    app = uc2_init()
-    app.run(cwd or os.getcwd())
+    short_palette_size = 50
+    palette_width = 160
