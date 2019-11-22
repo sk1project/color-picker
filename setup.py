@@ -101,7 +101,7 @@ sys.path.insert(1, os.path.abspath('./src'))
 
 CURRENT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-from sk1 import appconst
+from cp2 import appconst
 
 ############################################################
 # Flags

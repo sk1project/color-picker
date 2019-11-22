@@ -17,6 +17,8 @@
 
 from .app import ColorPickerApp
 
+config = {}
+
 
 def run():
     ColorPickerApp()

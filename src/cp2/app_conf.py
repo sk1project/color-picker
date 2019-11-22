@@ -17,7 +17,7 @@
 
 import os
 
-from sk1 import events, appconst
+from cp2 import events, appconst
 from uc2 import uc2const
 from uc2.uc2conf import UCConfig, UCData
 from uc2.utils import system, fsutils

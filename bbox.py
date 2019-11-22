@@ -27,7 +27,7 @@ Usage:
 --------------------------------------------------------------------------
 BuildBox is designed to be used alongside Docker. To prepare environment
 on Linux OS you need installing Docker. After that initialize
-environment from sk1-wx project folder:
+environment from cp2 project folder:
 
 >sudo -s
 >python bbox.py pull

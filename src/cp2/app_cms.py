@@ -22,7 +22,7 @@ from uc2.uc2const import COLOR_DISPLAY
 from uc2.utils import fsutils
 
 from uc2.cms import ColorManager, CS, libcms, val_255
-from sk1 import config, events
+from cp2 import config, events
 
 
 class AppColorManager(ColorManager):
