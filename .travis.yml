@@ -1,0 +1,20 @@
+language: python
+python:
+  - "3.6"
+
+matrix:
+  include:
+    - os: linux
+      sudo: required
+      dist: xenial
+      compiler: gcc
+      services:
+        - docker
+
+script:
+  - git remote add upstream https://github.com/sk1project/color-picker
+  - git fetch upstream
+  - git pull upstream master
+  - sudo apt-get install -y sshpass gettext
+  - python bbox.py pull
+  - python bbox.py build

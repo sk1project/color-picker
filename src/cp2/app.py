@@ -24,10 +24,11 @@ class ColorPickerApp(wal.Application):
     def __init__(self):
         super().__init__()
 
-        self.mw = wal.MainWindow(self)
+        self.mw = wal.PaletteWindow(self)
         self.mw.set_title('Color Picker')
         self.mw.set_min_size(620, 460)
         self.mw.center()
+
         self.run()
 
     def exit(self, *_args):

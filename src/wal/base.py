@@ -16,10 +16,10 @@
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import colorsys
-
 import cairo
 import gi
 import math
+import os
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib, Gio
@@ -42,7 +42,7 @@ class Application(Gtk.Application):
         Gtk.main_quit()
 
 
-class MainWindow(Gtk.ApplicationWindow):
+class PaletteWindow(Gtk.Window):
     app = None
     canvas = None
     hdr = None
@@ -58,6 +58,11 @@ class MainWindow(Gtk.ApplicationWindow):
         self.hdr.props.title = '---'
         self.hdr.props.subtitle = 'Basic palette'
         self.set_titlebar(self.hdr)
+
+        icon = os.path.join(
+            os.path.split(__file__)[0], "..", "cp2", "share",
+            "icons", "color-picker.png")
+        self.set_default_icon(Gtk.Image.new_from_file(icon).get_pixbuf())
 
         self.pickbtn = Gtk.Button()
         self.pickbtn.set_tooltip_text('Pick color')
