@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 #
 #   Setup script for Color Picker 1.x
 #
@@ -50,7 +50,7 @@ from utils import fsutils
 from utils import po
 
 from utils import dependencies
-from utils.native_mods import make_modules
+from utils import native_mods
 
 sys.path.insert(1, os.path.abspath('./src'))
 
@@ -212,8 +212,8 @@ if len(sys.argv) > 1:
 # Preparing start script
 src_script = 'src/_script/color-picker.tmpl'
 dst_script = 'src/_script/color-picker'
-fileptr = open(src_script, 'rb')
-fileptr2 = open(dst_script, 'wb')
+fileptr = open(src_script, 'r')
+fileptr2 = open(dst_script, 'w')
 while True:
     line = fileptr.readline()
     if line == '':
@@ -244,7 +244,7 @@ if not os.path.exists(LOCALES_PATH):
 # Native extensions
 ############################################################
 
-modules += make_modules(src_path, include_path)
+modules += native_mods.make_cp2_modules(src_path, include_path)
 
 ############################################################
 # Setup routine
