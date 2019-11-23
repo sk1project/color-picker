@@ -18,7 +18,7 @@
 import copy
 from copy import deepcopy
 
-import libcms
+from . import libcms
 
 from uc2 import uc2const
 from uc2.uc2const import COLOR_RGB, COLOR_CMYK, COLOR_LAB, COLOR_GRAY, \
