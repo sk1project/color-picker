@@ -170,3 +170,5 @@ def make_cp2_modules(src_path, include_path, lib_path=None):
         libraries=pycms_libraries,
         extra_compile_args=extra_compile_args)
     modules.append(pycms_module)
+
+    return modules
