@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #
-#   Setup script for sK1 2.x
+#   Setup script for Color Picker 1.x
 #
-# 	Copyright (C) 2013-2018 by Igor E. Novikov
+# 	Copyright (C) 2019 by Igor E. Novikov
 #
 # 	This program is free software: you can redistribute it and/or modify
 # 	it under the terms of the GNU General Public License as published by
@@ -38,53 +38,8 @@ Usage:
 from distutils.core import setup
 import datetime
 import os
-import shutil
 import sys
 
-############################################################
-# Subprojects resolving
-
-CLEAR_UTILS = False
-
-if not os.path.exists('./utils'):
-    if os.path.exists('../build-utils/src/utils'):
-        os.system('ln -s ../build-utils/src/utils utils')
-    else:
-        if not os.path.exists('./subproj/build-utils/src/utils'):
-            if not os.path.exists('./subproj'):
-                os.makedirs('./subproj')
-            os.system('git clone https://github.com/sk1project/build-utils '
-                      'subproj/build-utils')
-        os.system('ln -s ./subproj/build-utils/src/utils utils')
-    CLEAR_UTILS = True
-
-CLEAR_UC2 = False
-
-if not os.path.exists('./src/uc2'):
-    if os.path.exists('../uniconvertor/src/uc2'):
-        os.system('ln -s ../../uniconvertor/src/uc2 src/uc2')
-    else:
-        if not os.path.exists('./subproj/uniconvertor/src/uc2'):
-            if not os.path.exists('./subproj'):
-                os.makedirs('./subproj')
-            os.system('git clone https://github.com/sk1project/uniconvertor '
-                      'subproj/uniconvertor')
-        os.system('ln -s ../subproj/uniconvertor/src/uc2 src/uc2')
-    CLEAR_UC2 = True
-
-CLEAR_WAL = False
-
-if not os.path.exists('./src/wal'):
-    if os.path.exists('../wal/src/wal'):
-        os.system('ln -s ../../wal/src/wal src/wal')
-    else:
-        if not os.path.exists('./subproj/wal/src/wal'):
-            if not os.path.exists('./subproj'):
-                os.makedirs('./subproj')
-            os.system('git clone https://github.com/sk1project/wal '
-                      'subproj/wal')
-        os.system('ln -s ../subproj/wal/src/wal src/wal')
-    CLEAR_WAL = True
 
 ############################################################
 
@@ -116,7 +71,7 @@ CLEAR_BUILD = False
 ############################################################
 NAME = appconst.APPNAME
 VERSION = appconst.VERSION + appconst.REVISION
-DESCRIPTION = 'Vector graphics editor for prepress'
+DESCRIPTION = 'Palette editor'
 AUTHOR = 'Igor E. Novikov'
 AUTHOR_EMAIL = 'sk1.project.org@gmail.com'
 MAINTAINER = AUTHOR
@@ -128,7 +83,6 @@ CLASSIFIERS = [
     'Development Status :: 5 - Stable',
     'Environment :: Desktop',
     'Intended Audience :: End Users/Desktop',
-    'License :: OSI Approved :: LGPL v2',
     'License :: OSI Approved :: GPL v3',
     'Operating System :: POSIX',
     'Operating System :: MacOS :: MacOS X',
@@ -138,22 +92,18 @@ CLASSIFIERS = [
     "Topic :: Multimedia :: Graphics :: Editors :: Vector-Based",
 ]
 LONG_DESCRIPTION = '''
-sK1 is an open source vector graphics editor similar to CorelDRAW, 
-Adobe Illustrator, or Freehand. First of all sK1 is oriented for prepress 
-industry, therefore works with CMYK color space and produces CMYK-based PDF 
-and postscript output.
+Advanced cross-platform Color Picker application powered by magnify glass 
+and palette editing functionality.
 sK1 Project (https://sk1project.net),
-Copyright (C) 2004-%s sK1 Project Team
+Copyright (C) 2018-%s sK1 Project Team
 ''' % str(datetime.date.today().year)
 
 LONG_DEB_DESCRIPTION = ''' .
- sK1 is an open source vector graphics editor similar to CorelDRAW, 
- Adobe Illustrator, or Freehand. First of all sK1 is oriented for prepress 
- industry, therefore works with CMYK color space and produces CMYK-based PDF 
- and postscript output.
+ Advanced cross-platform Color Picker application powered by magnify glass 
+ and palette editing functionality.
  . 
  sK1 Project (https://sk1project.net),
- Copyright (C) 2004-%s sK1 Project Team
+ Copyright (C) 2018-%s sK1 Project Team
  .
 ''' % str(datetime.date.today().year)
 
@@ -165,16 +115,16 @@ os.environ["APP_INSTALL_PATH"] = "%s" % (install_path,)
 src_path = 'src'
 include_path = '/usr/include'
 modules = []
-scripts = ['src/script/sk1', ]
+scripts = ['src/_script/color-picker', ]
 deb_scripts = []
 data_files = [
-    ('/usr/share/applications', ['src/sk1.desktop', ]),
-    ('/usr/share/pixmaps', ['src/sk1.png', 'src/sk1.xpm', ]),
-    ('/usr/share/icons/hicolor/scalable/apps', ['src/sk1.svg', ]),
+    ('/usr/share/applications', ['src/color-picker.desktop', ]),
+    ('/usr/share/pixmaps', ['src/color-picker.png', 'src/color-picker.xpm', ]),
+    ('/usr/share/icons/hicolor/scalable/apps', ['src/color-picker.svg', ]),
     (install_path, ['LICENSE', ]),
 ]
 
-LOCALES_PATH = 'src/sk1/share/locales'
+LOCALES_PATH = 'src/cp2/share/locales'
 
 EXCLUDES = ['sword', ]
 
@@ -183,20 +133,20 @@ deb_depends = ''
 rpm_depends = ''
 ############################################################
 
-dirs = fsutils.get_dirs_tree('src/sk1/share')
+dirs = fsutils.get_dirs_tree('src/cp2/share')
 share_dirs = []
 for item in dirs:
     share_dirs.append(os.path.join(item[8:], '*.*'))
 
 package_data = {
-    'sk1': share_dirs,
+    'cp2': share_dirs,
 }
 
 
 def build_locales():
-    src_path = 'po-sk1'
+    src_path = 'po-cp2'
     dest_path = LOCALES_PATH
-    po.build_locales(src_path, dest_path, 'sk1')
+    po.build_locales(src_path, dest_path, 'cp2')
 
 
 ############################################################
@@ -214,17 +164,17 @@ if len(sys.argv) > 1:
         CLEAR_BUILD = True
         RPM_PACKAGE = True
         sys.argv[1] = 'sdist'
-        rpm_depends = dependencies.get_sk1_rpm_depend()
+        rpm_depends = dependencies.get_cp2_rpm_depend()
 
     elif sys.argv[1] == 'bdist_deb':
         DEB_PACKAGE = True
         CLEAR_BUILD = True
         sys.argv[1] = 'build'
-        deb_depends = dependencies.get_sk1_deb_depend()
+        deb_depends = dependencies.get_cp2_deb_depend()
 
     elif sys.argv[1] == 'uninstall':
         if os.path.isdir(install_path):
-            # removing sk1 folder
+            # removing cp2 folder
             print('REMOVE: ' + install_path)
             os.system('rm -rf ' + install_path)
             # removing scripts
@@ -247,12 +197,12 @@ if len(sys.argv) > 1:
             os.system('update-desktop-database')
             print('DONE!')
         else:
-            print('sK1 installation is not found!')
+            print('Color Picker installation is not found!')
         sys.exit(0)
 
     elif sys.argv[1] == 'update_pot':
-        paths = ['src/sk1', 'src/uc2']
-        po.build_pot(paths, 'po-sk1/sk1.pot', False)
+        paths = ['src/cp2', 'src/uc2']
+        po.build_pot(paths, 'po-cp2/cp2.pot', False)
         sys.exit(0)
 
     elif sys.argv[1] == 'build_locales':
@@ -260,8 +210,8 @@ if len(sys.argv) > 1:
         sys.exit(0)
 
 # Preparing start script
-src_script = 'src/script/sk1.tmpl'
-dst_script = 'src/script/sk1'
+src_script = 'src/_script/color-picker.tmpl'
+dst_script = 'src/_script/color-picker'
 fileptr = open(src_script, 'rb')
 fileptr2 = open(dst_script, 'wb')
 while True:
@@ -367,7 +317,7 @@ if RPM_PACKAGE:
         maintainer='%s <%s>' % (AUTHOR, AUTHOR_EMAIL),
         summary=DESCRIPTION,
         description=LONG_DESCRIPTION,
-        license=LICENSE,
+        license_=LICENSE,
         url=URL,
         depends=rpm_depends.split(' '),
         build_script='setup.py',
@@ -380,10 +330,7 @@ os.chdir(CURRENT_PATH)
 if CLEAR_BUILD:
     build.clear_build()
 
-FOR_CLEAR = ['MANIFEST', 'src/script/sk1', 'setup.cfg']
-FOR_CLEAR += ['utils'] if CLEAR_UTILS else []
-FOR_CLEAR += ['src/uc2'] if CLEAR_UC2 else []
-FOR_CLEAR += ['src/wal'] if CLEAR_WAL else []
+FOR_CLEAR = ['MANIFEST', 'src/_script/color-picker', 'setup.cfg']
 for item in FOR_CLEAR:
     if os.path.lexists(item):
         os.remove(item)

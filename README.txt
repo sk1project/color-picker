@@ -1,4 +1,4 @@
 Color Picker
 --------------------------------------------------------------------------
 Advanced cross-platform Color Picker application powered by magnify glass and
-palette management functionality
+palette editing functionality
