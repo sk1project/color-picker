@@ -54,7 +54,7 @@ class SerializedConfig(object):
                 line = path_system('self.%s' % line)
                 try:
                     code = compile(line, '<string>', 'exec')
-                    exec code
+                    exec(code)
                 except Exception as e:
                     LOG.error('ERROR>>> %s\n%s', line, e)
             fileobj.close()

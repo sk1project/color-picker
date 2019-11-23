@@ -94,10 +94,10 @@ class XmlConfigParser(object):
             LOG.error('Cannot write preferences into %s %s', filename, e)
             return
 
-        writer = XMLGenerator(out=fileobj, encoding=self.system_encoding)
+        writer = XMLGenerator(out=fileobj, encoding='utf-8')
         writer.startDocument()
         defaults = XmlConfigParser.__dict__
-        items = self.__dict__.items()
+        items = list(self.__dict__.items())
         items.sort()
         writer.startElement('preferences', {})
         writer.characters('\n')
@@ -136,10 +136,11 @@ class XMLPrefReader(handler.ContentHandler):
 
     def endElement(self, name):
         if name != 'preferences':
+            line = ''
             try:
                 line = path_system('self.value=' + self.value)
                 code = compile(line, '<string>', 'exec')
-                exec code
+                exec(code)
                 self.pref.__dict__[self.key] = self.value
             except Exception as e:
                 LOG.error('Error in "%s" %s', line, e)

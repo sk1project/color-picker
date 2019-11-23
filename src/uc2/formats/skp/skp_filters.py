@@ -41,7 +41,7 @@ class SKP_Loader(AbstractLoader):
             if self.line:
                 try:
                     code = compile('self.' + self.line, '<string>', 'exec')
-                    exec code
+                    exec(code)
 
                 except Exception as e:
                     LOG.error('Parsing error in "%s"', self.line)
@@ -65,7 +65,7 @@ class SKP_Loader(AbstractLoader):
         self.model.columns = val
 
     def color(self, color):
-        if len(color)>3 and isinstance(color[3], unicode):
+        if len(color) > 3 and isinstance(color[3], unicode):
             color[3] = color[3].encode('utf-8')
         self.model.colors.append(color)
 

@@ -8,3 +8,6 @@
 *.mo
 /.idea
 .vagrant
+src/_script/color-picker
+MANIFEST
+setup.cfg
