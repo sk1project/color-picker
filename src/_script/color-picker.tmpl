@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+#
+# Wrapper script to start Color Picker application
+#
+# Copyright (C) 2019 Igor E. Novikov
+#
+# This library is covered by GNU General Public License.
+# For more info see LICENSE file in sK1 root directory.
+
+import os
+import sys
+
+sys.path.insert(1, '$APP_INSTALL_PATH')
+
+try:
+    os.getcwd()
+except:
+    os.chdir(os.path.expanduser('~'))
+
+import cp2
+
+cp2.run()
