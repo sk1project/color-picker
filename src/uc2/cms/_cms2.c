@@ -541,7 +541,7 @@ static int pycms_clear(PyObject *m) {
 
 static struct PyModuleDef moduledef = {
     PyModuleDef_HEAD_INIT,
-    "_lcms2",
+    "_cms",
     NULL,
     sizeof(struct module_state),
     pycms_methods,
@@ -554,6 +554,6 @@ static struct PyModuleDef moduledef = {
 #define INITERROR return NULL
 
 PyMODINIT_FUNC
-PyInit__lcms2(void) {
+PyInit__cms(void) {
     return PyModule_Create(&moduledef);
 }
