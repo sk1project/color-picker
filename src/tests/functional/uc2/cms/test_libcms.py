@@ -1,5 +1,7 @@
 import os
 
+import PIL
+
 from uc2 import uc2const
 from uc2.cms import libcms
 
@@ -355,3 +357,101 @@ def test_do_transform_with_incorrect_output_buffer():
     except libcms.CmsError:
         return
     assert False
+
+
+# ---Bitmap related tests
+
+def test_do_bitmap_transform():
+    in_image = PIL.Image.open(get_filepath('black100x100.png'))
+    pixel = in_image.getpixel((1, 1))
+    assert 3 == len(pixel)
+    out_image = libcms.cms_do_bitmap_transform(
+        TRANSFORM2, in_image, uc2const.TYPE_RGB_8, uc2const.TYPE_CMYK_8)
+    pixel = out_image.getpixel((1, 1))
+    assert 4 == len(pixel)
+
+    in_image = PIL.Image.open(get_filepath('white100x100.png'))
+    pixel = in_image.getpixel((1, 1))
+    assert 3 == len(pixel)
+    out_image = libcms.cms_do_bitmap_transform(
+        TRANSFORM2, in_image, uc2const.TYPE_RGB_8, uc2const.TYPE_CMYK_8)
+    pixel = out_image.getpixel((1, 1))
+    assert 4 == len(pixel)
+
+    in_image = PIL.Image.open(get_filepath('color100x100.png'))
+    pixel = in_image.getpixel((1, 1))
+    assert 3 == len(pixel)
+    out_image = libcms.cms_do_bitmap_transform(
+        TRANSFORM2, in_image, uc2const.TYPE_RGB_8, uc2const.TYPE_CMYK_8)
+    pixel = out_image.getpixel((1, 1))
+    assert 4 == len(pixel)
+
+
+def test_do_bitmap_transform_with_unsupported_image():
+    in_image = PIL.Image.open(get_filepath('black100x100.png'))
+    in_image.load()
+    in_image = in_image.convert("YCbCr")
+    try:
+        libcms.cms_do_bitmap_transform(
+            TRANSFORM2, in_image, uc2const.TYPE_RGB_8, uc2const.TYPE_CMYK_8)
+    except libcms.CmsError:
+        return
+    assert False
+
+
+def test_do_bitmap_transform_with_unsupported_in_mode():
+    in_image = PIL.Image.open(get_filepath('black100x100.png'))
+    try:
+        libcms.cms_do_bitmap_transform(
+            TRANSFORM2, in_image, "YCbCr", uc2const.TYPE_CMYK_8)
+    except libcms.CmsError:
+        return
+    assert False
+
+
+def test_do_bitmap_transform_with_unsupported_out_mode():
+    in_image = PIL.Image.open(get_filepath('black100x100.png'))
+    try:
+        libcms.cms_do_bitmap_transform(
+            TRANSFORM2, in_image, uc2const.TYPE_RGB_8, "YCbCr")
+    except libcms.CmsError:
+        return
+    assert False
+
+
+# ---Profile info related tests
+
+def test_get_profile_name():
+    name = libcms.cms_get_profile_name(OUT_PROFILE)
+    assert name == 'Fogra27L CMYK Coated Press'
+
+
+def test_get_profile_info():
+    name = libcms.cms_get_profile_info(OUT_PROFILE)
+    assert name[:15] == 'Offset printing'
+
+
+def test_get_profile_copyright():
+    name = libcms.cms_get_profile_copyright(OUT_PROFILE)
+    if os.name == 'nt':
+        assert name == ''
+    else:
+        assert name == 'Public Domain'
+
+
+# ---Embedded profile related tests
+def test_get_embedded_profile():
+    img = PIL.Image.open(get_filepath('CustomRGB.jpg'))
+    profile = img.info.get('icc_profile')
+    try:
+        custom_profile = libcms.cms_open_profile_from_string(profile)
+        transform = libcms.cms_create_transform(custom_profile,
+                                                uc2const.TYPE_RGB_8,
+                                                IN_PROFILE,
+                                                uc2const.TYPE_RGB_8,
+                                                uc2const.INTENT_PERCEPTUAL,
+                                                uc2const.cmsFLAGS_NOTPRECALC)
+        libcms.cms_do_bitmap_transform(
+            transform, img, uc2const.TYPE_RGB_8, uc2const.TYPE_RGB_8)
+    except libcms.CmsError:
+        assert False
