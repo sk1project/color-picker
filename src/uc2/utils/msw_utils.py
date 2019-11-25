@@ -38,5 +38,5 @@ def unicode_sys_argv():
     argv = CommandLineToArgvW(cmd_line, ctypes.byref(argc))
 
     if argc.value:
-        rng = xrange(argc.value - len(sys.argv), argc.value)
+        rng = range(argc.value - len(sys.argv), argc.value)
         sys.argv = [argv[i] for i in rng]

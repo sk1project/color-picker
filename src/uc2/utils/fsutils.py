@@ -90,7 +90,7 @@ def normalize_sys_argv():
     """Converts sys.argv to unicode and translate relative paths as
     absolute ones.
     """
-    for item in range(1,len(sys.argv)):
+    for item in range(1, len(sys.argv)):
         if not sys.argv[item] or sys.argv[item].startswith('-'):
             continue
         if sys.argv[item].startswith('~'):

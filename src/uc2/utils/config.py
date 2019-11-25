@@ -22,7 +22,6 @@ from xml.sax import handler
 from xml.sax.saxutils import XMLGenerator
 from xml.sax.xmlreader import InputSource
 
-from uc2.utils.fs import path_system, path_unicode
 from uc2.utils import fsutils
 from uc2.utils.fsutils import get_fileptr
 
@@ -109,7 +108,7 @@ class XmlConfigParser(object):
             writer.characters('\t')
             writer.startElement('%s' % key, {})
 
-            str_value = path_unicode(value.__str__())
+            str_value = value.__str__()
             if isinstance(value, str):
                 str_value = "'%s'" % (escape_quote(str_value))
 
@@ -138,7 +137,7 @@ class XMLPrefReader(handler.ContentHandler):
         if name != 'preferences':
             line = ''
             try:
-                line = path_system('self.value=' + self.value)
+                line = 'self.value=' + self.value
                 code = compile(line, '<string>', 'exec')
                 exec(code)
                 self.pref.__dict__[self.key] = self.value
