@@ -268,7 +268,8 @@ setup(
     package_data=package_data,
     data_files=data_files,
     scripts=scripts,
-    ext_modules=modules)
+    ext_modules=modules,
+    requires=['Pillow'])
 
 ############################################################
 # .py source compiling
