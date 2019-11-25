@@ -449,7 +449,7 @@ def cms_get_profile_name(profile):
     :param profile: valid lcms profile handle
     :return: profile name string
     """
-    return _cms.getProfileName(profile).strip().decode('cp1252').encode('utf-8')
+    return _cms.getProfileName(profile).decode('cp1252').strip()
 
 
 def cms_get_profile_info(profile):
@@ -458,7 +458,7 @@ def cms_get_profile_info(profile):
     :param profile: valid lcms profile handle
     :return: profile description info string
     """
-    return _cms.getProfileInfo(profile).strip().decode('cp1252').encode('utf-8')
+    return _cms.getProfileInfo(profile).decode('cp1252').strip()
 
 
 def cms_get_profile_copyright(profile):
@@ -467,5 +467,4 @@ def cms_get_profile_copyright(profile):
     :param profile: valid lcms profile handle
     :return: profile copyright info string
     """
-    return _cms.getProfileInfoCopyright(profile).strip().decode(
-        'cp1252').encode('utf-8')
+    return _cms.getProfileInfoCopyright(profile).decode('cp1252').strip()
