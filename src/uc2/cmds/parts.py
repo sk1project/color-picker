@@ -44,28 +44,6 @@ def show_parts(appdata):
         from uc2 import cms
         _show_part(part, cms.libcms.get_version())
 
-        part = 'Cairo'
-        from uc2 import libcairo
-        _show_part(part, libcairo.get_version()[0])
-
-        part = 'pycairo'
-        _show_part(part, libcairo.get_version()[1])
-
-        part = 'Pillow'
-        from uc2 import libimg
-        _show_part(part, libimg.get_version())
-
-        part = 'ImageMagick'
-        _show_part(part, libimg.get_magickwand_version()[0])
-
-        part = 'Pango'
-        from uc2 import libpango
-        _show_part(part, libpango.get_version())
-
-        part = 'Reportlab'
-        import reportlab
-        _show_part(part, reportlab.Version)
-
     except Exception as e:
         _show_part(part, 'FAIL')
         echo('Reason: %s' % str(e))

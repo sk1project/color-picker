@@ -29,7 +29,7 @@ class StreamLogger:
         self.logger = LOG.critical
 
     def write(self, msg):
-        msg = fsutils.get_utf8_path(msg)
+        msg = msg.encode()
         if not msg.endswith('\n') and not msg.startswith(' '):
             if self.counter < 2:
                 self.msg += msg

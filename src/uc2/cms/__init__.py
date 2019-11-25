@@ -409,7 +409,6 @@ def get_profile_name(filepath):
     returns None.
     """
     try:
-        filepath = fsutils.get_sys_path(filepath)
         profile = libcms.cms_open_profile_from_file(filepath)
         ret = libcms.cms_get_profile_name(profile)
     except Exception:
@@ -423,7 +422,6 @@ def get_profile_info(filepath):
     returns None.
     """
     try:
-        filepath = fsutils.get_sys_path(filepath)
         profile = libcms.cms_open_profile_from_file(filepath)
         ret = libcms.cms_get_profile_info(profile)
     except Exception:
@@ -437,7 +435,6 @@ def get_profile_descr(filepath):
     returns None.
     """
     try:
-        filepath = fsutils.get_sys_path(filepath)
         profile = libcms.cms_open_profile_from_file(filepath)
         ret = (libcms.cms_get_profile_name(profile),)
         ret += (libcms.cms_get_profile_copyright(profile),)

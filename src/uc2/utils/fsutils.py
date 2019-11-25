@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-#  Copyright (C) 2003-2017 by Igor E. Novikov
+#  Copyright (C) 2003-2019 by Igor E. Novikov
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU Affero General Public License
@@ -30,7 +30,7 @@ LOG = logging.getLogger(__name__)
 IS_MSW = system.get_os_family() == system.WINDOWS
 IS_MAC = system.get_os_family() == system.MACOSX
 
-HOME = os.path.expanduser(u'~')
+HOME = os.path.expanduser('~')
 
 
 def expanduser(path=''):
@@ -43,30 +43,21 @@ def normalize_path(path):
     return os.path.abspath(expanduser(path))
 
 
-def get_sys_path(path):
-    return path if isinstance(path, unicode) else path.decode('utf-8')
-
-
-def get_utf8_path(path):
-    return path.encode('utf-8') if isinstance(path, unicode) else path
-
-
 def isfile(path):
-    return os.path.isfile(get_sys_path(path))
+    return os.path.isfile(path)
 
 
 def isdir(path):
-    return os.path.isdir(get_sys_path(path))
+    return os.path.isdir(path)
 
 
-def get_fileptr(path, writable=False):
+def get_fileptr(path, writable=False, binary=True):
     if not path:
         msg = _('There is no file path')
         raise IOError(errno.ENODATA, msg, '')
-    path = get_sys_path(path)
     if writable:
         try:
-            fileptr = open(path, 'wb')
+            fileptr = open(path, 'wb' if binary else 'w')
         except Exception:
             msg = _('Cannot open %s file for writing') % path
             events.emit(events.MESSAGES, msgconst.ERROR, msg)
@@ -74,7 +65,7 @@ def get_fileptr(path, writable=False):
             raise
     else:
         try:
-            fileptr = open(path, 'rb')
+            fileptr = open(path, 'rb' if binary else 'r')
         except Exception:
             msg = _('Cannot open %s file for reading') % path
             events.emit(events.MESSAGES, msgconst.ERROR, msg)
@@ -84,15 +75,15 @@ def get_fileptr(path, writable=False):
 
 
 def makedirs(path):
-    os.makedirs(get_sys_path(path))
+    os.makedirs(path)
 
 
 def lexists(path):
-    return os.path.lexists(get_sys_path(path))
+    return os.path.lexists(path)
 
 
 def exists(path):
-    return os.path.lexists(get_sys_path(path))
+    return os.path.lexists(path)
 
 
 def normalize_sys_argv():

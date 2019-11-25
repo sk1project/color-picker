@@ -33,7 +33,7 @@ LOG_MAP = {
     msgconst.JOB: LOG.info,
     msgconst.INFO: LOG.info,
     msgconst.OK: LOG.info,
-    msgconst.WARNING: LOG.warn,
+    msgconst.WARNING: LOG.warning,
     msgconst.ERROR: LOG.error,
     msgconst.STOP: lambda *args: args,
 }
@@ -50,7 +50,7 @@ class UCApplication(object):
 
     def __init__(self, path='', cfgdir='~', check=True):
         self.path = path
-        cfgdir = fsutils.expanduser(fsutils.get_utf8_path(cfgdir))
+        cfgdir = fsutils.expanduser(cfgdir)
         self.config = UCConfig()
         self.config.app = self
         self.appdata = UCData(self, cfgdir, check=check)
@@ -82,7 +82,6 @@ class UCApplication(object):
             sys.exit(0)
         elif cmds.check_args(cmds.LOG_CMDS):
             log_filepath = os.path.join(self.appdata.app_config_dir, 'uc2.log')
-            log_filepath = log_filepath.decode('utf-8')
             with open(log_filepath, 'rb') as fileptr:
                 echo(fileptr.read())
             sys.exit(0)

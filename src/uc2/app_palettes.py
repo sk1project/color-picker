@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-#  Copyright (C) 2011-2018 by Igor E. Novikov
+#  Copyright (C) 2015 by Igor E. Novikov
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU Affero General Public License
@@ -13,31 +13,14 @@
 #  GNU General Public License for more details.
 #
 #  You should have received a copy of the GNU Affero General Public License
-#  along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-import os
-
-from uc2.utils import translator
-
-config = None
-appdata = None
-
-_ = translator.MsgTranslator()
+#  along with this program.  If not, see <https://www.gnu.org/licenses/>..
 
 
-def uc2_init():
-    """UniConvertor initializing routine."""
+class PaletteManager(object):
+    palettes = {}
 
-    _pkgdir = __path__[0]
+    def __init__(self, app):
+        self.app = app
+        self.scan_palettes()
 
-    from .application import UCApplication
-
-    app = UCApplication(_pkgdir)
-    return app
-
-
-def uc2_run(cwd=None):
-    """UniConvertor launch routine."""
-
-    app = uc2_init()
-    app.run(cwd or os.getcwd())
+    def scan_palettes(self): pass

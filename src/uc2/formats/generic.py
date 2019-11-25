@@ -202,20 +202,18 @@ class ModelPresenter(object):
         if self.model is not None:
             self.model.destroy()
         self.model = None
-        filename = filename.encode('utf-8') \
-            if isinstance(filename, unicode) else filename
         model_name = uc2const.FORMAT_NAMES[self.cid]
         self.send_ok(_('<%s> document model is destroyed for %s') %
                      (model_name, filename))
 
         if self.doc_dir and fsutils.exists(self.doc_dir):
             try:
-                fs.xremove_dir(fsutils.get_sys_path(self.doc_dir))
+                fs.xremove_dir(self.doc_dir)
                 self.send_ok(_('Cache is cleared for') + ' %s' % filename)
             except Exception as e:
                 msg = _('Cache clearing is unsuccessful')
                 self.send_error(msg)
-                LOG.warn(msg + ' %s', e)
+                LOG.warning(msg + ' %s', e)
                 LOG.exception(e)
 
     def update_msg(self, val):

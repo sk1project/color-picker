@@ -21,8 +21,8 @@ from uc2 import _
 The package provides generic application constants
 """
 # Version
-VERSION = '2.0'
-REVISION = 'rc5'
+VERSION = '1.0'
+REVISION = 'rc'
 BUILD = ''
 
 # Placement constants

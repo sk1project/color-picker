@@ -23,7 +23,7 @@ from xml.sax import handler
 from xml.sax.xmlreader import InputSource
 
 from uc2 import _, events, msgconst, utils
-from uc2.utils.fsutils import get_fileptr, get_sys_path
+from uc2.utils.fsutils import get_fileptr
 
 LOG = logging.getLogger(__name__)
 
@@ -49,7 +49,7 @@ class AbstractLoader(object):
         self.config = self.presenter.config
         if path:
             self.filepath = path
-            self.file_size = os.path.getsize(get_sys_path(path))
+            self.file_size = os.path.getsize(path)
             self.fileptr = get_fileptr(path)
         elif fileptr:
             self.fileptr = fileptr
@@ -151,22 +151,12 @@ class AbstractXMLLoader(AbstractLoader, handler.ContentHandler):
         self.xml_reader.parse(self.input_source)
 
     def startElement(self, name, attrs):
-        if isinstance(name, unicode):
-            name = name.encode('utf-8')
-            ret = {}
-            for key,value in attrs._attrs.items():
-                ret[key.encode('utf-8')] = attrs[key].encode('utf-8')
-            attrs._attrs = ret
         self.start_element(name, attrs)
 
     def endElement(self, name):
-        if isinstance(name, unicode):
-            name = name.encode('utf-8')
         self.end_element(name)
 
     def characters(self, data):
-        if isinstance(data, unicode):
-            data = data.encode('utf-8')
         self.element_data(data)
 
     def start_element(self, name, attrs): pass
