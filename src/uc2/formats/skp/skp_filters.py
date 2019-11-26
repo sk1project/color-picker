@@ -85,7 +85,7 @@ class SKP_Saver(AbstractSaver):
     name = 'SKP_Saver'
 
     def do_save(self):
-        self.write(SKP_ID + b'\n')
+        self.writeln(SKP_ID)
         self.writeln('palette()')
         self.writeln('set_name(%s)' % self.field_to_str(self.model.name))
         self.writeln('set_source(%s)' % self.field_to_str(self.model.source))

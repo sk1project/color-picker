@@ -15,4 +15,4 @@
 #  You should have received a copy of the GNU Affero General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-SKP_ID = b'##sK1 palette'
+SKP_ID = '##sK1 palette'
