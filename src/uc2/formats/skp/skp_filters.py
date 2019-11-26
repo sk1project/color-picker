@@ -33,7 +33,7 @@ class SKP_Loader(AbstractLoader):
     def do_load(self):
         self.fileptr.readline()
         while True:
-            self.line = self.fileptr.readline()
+            self.line = self.fileptr.readline().decode()
             if not self.line:
                 break
             self.line = self.line.rstrip('\r\n')
@@ -65,20 +65,16 @@ class SKP_Loader(AbstractLoader):
         self.model.columns = val
 
     def color(self, color):
-        if len(color) > 3 and isinstance(color[3], unicode):
-            color[3] = color[3].encode('utf-8')
         self.model.colors.append(color)
 
     def hexcolor(self, hexcolor, name=''):
         rgb = cms.hexcolor_to_rgb(hexcolor)
         name = name or hexcolor
-        name = name.encode('utf-8') if isinstance(name, unicode) else name
         self.model.colors.append([uc2const.COLOR_RGB, rgb, 1.0, name])
 
     def rgbcolor(self, r, g, b, name=''):
         rgb = cms.val_255_to_dec([r, g, b])
         name = name or cms.rgb_to_hexcolor(rgb)
-        name = name.encode('utf-8') if isinstance(name, unicode) else name
         self.model.colors.append([uc2const.COLOR_RGB, rgb, 1.0, name])
 
     def palette_end(self):
@@ -89,7 +85,7 @@ class SKP_Saver(AbstractSaver):
     name = 'SKP_Saver'
 
     def do_save(self):
-        self.writeln(SKP_ID)
+        self.write(SKP_ID + b'\n')
         self.writeln('palette()')
         self.writeln('set_name(%s)' % self.field_to_str(self.model.name))
         self.writeln('set_source(%s)' % self.field_to_str(self.model.source))
