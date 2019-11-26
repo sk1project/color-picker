@@ -31,9 +31,9 @@ class SKP_Loader(AbstractLoader):
     line = None
 
     def do_load(self):
-        self.fileptr.readline()
+        self.readln()
         while True:
-            self.line = self.fileptr.readline().decode()
+            self.line = self.readln()
             if not self.line:
                 break
             self.line = self.line.rstrip('\r\n')

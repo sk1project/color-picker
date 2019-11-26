@@ -77,7 +77,7 @@ class AbstractLoader(object):
         pass
 
     def readln(self, strip=True):
-        line = self.fileptr.readline()
+        line = self.fileptr.readline().decode()
         if strip:
             line = line.strip()
         return line
