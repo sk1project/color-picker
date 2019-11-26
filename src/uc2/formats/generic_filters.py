@@ -209,7 +209,7 @@ class AbstractSaver(object):
         pass
 
     def writeln(self, line=''):
-        self.fileptr.write(line + '\n')
+        self.fileptr.write(line.encode() + b'\n')
 
     def write(self, data):
         self.fileptr.write(data)
