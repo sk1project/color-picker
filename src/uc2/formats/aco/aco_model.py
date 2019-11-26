@@ -28,7 +28,7 @@ class ACO_Palette(BinaryModelObject):
     The chunk value is artificial to avoid SWord application error.
     """
 
-    chunk = '\x00'
+    chunk = b'\x00'
     version = aco_const.ACO1_VER
     ncolors = 0
 

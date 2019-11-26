@@ -20,8 +20,8 @@ import struct
 
 from uc2 import uc2const, cms
 
-ACO1_VER = '\x00\x01'
-ACO2_VER = '\x00\x02'
+ACO1_VER = b'\x00\x01'
+ACO2_VER = b'\x00\x02'
 
 ACO_RGB = 0
 ACO_HSB = 1
@@ -64,9 +64,9 @@ def aco_chunk2color(chunk):
         return None
     if len(chunk) > 10:
         name = chunk[12:-2]
-        if chunk[12:13] < '\x00\x1f':
+        if chunk[12:13] < b'\x00\x1f':
             name = name[2:]
-        color[3] = name.decode('utf_16_be').encode('utf-8').strip()
+        color[3] = name.decode('utf_16_be').strip()
     else:
         color[3] = cms.verbose_color(color)
     return color
@@ -90,7 +90,7 @@ def color2aco_chunk(color, version=ACO1_VER):
     elif model == uc2const.COLOR_GRAY:
         chunk += struct.pack('>H', ACO_GRAY)
         val = int(round(vals[0] * 10000))
-        chunk += struct.pack('>H', val) + 3 * '\x00\x00'
+        chunk += struct.pack('>H', val) + 3 * b'\x00\x00'
     elif model == uc2const.COLOR_SPOT:
         if vals[0]:
             vals = vals[0]
@@ -98,7 +98,7 @@ def color2aco_chunk(color, version=ACO1_VER):
             vals = [int(round(x * 65535)) for x in vals]
             for item in vals:
                 chunk += struct.pack('>H', item)
-            chunk += '\x00\x00'
+            chunk += b'\x00\x00'
         else:
             vals = vals[1]
             chunk += struct.pack('>H', ACO_WIDE_CMYK)
@@ -107,10 +107,10 @@ def color2aco_chunk(color, version=ACO1_VER):
                 chunk += struct.pack('>H', item)
 
     if version == ACO2_VER:
-        chunk += '\x00\x00'
-        name = color[3].decode('utf-8')
+        chunk += b'\x00\x00'
+        name = color[3]
         if not name:
-            name = cms.verbose_color(color).decode('utf-8')
+            name = cms.verbose_color(color)
         chunk += struct.pack('>H', len(name) + 1)
-        chunk += name.encode('utf_16_be') + '\x00\x00'
+        chunk += name.encode('utf_16_be') + b'\x00\x00'
     return chunk
