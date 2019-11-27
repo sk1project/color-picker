@@ -15,10 +15,53 @@
 # 	You should have received a copy of the GNU General Public License
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from .app import ColorPickerApp
+import os
 
-config = {}
+import uc2
+
+_ = uc2._
+config = None
+
+
+def read_locale(cfg_file):
+    lang = 'system'
+    if os.path.isfile(cfg_file):
+        try:
+            with open(cfg_file, 'r') as fp:
+                while True:
+                    line = fp.readline()
+                    if not line:
+                        break
+                    if line.startswith('language'):
+                        lang = line.split('=')[1].strip().replace('\'', '')
+                        break
+        except Exception:
+            lang = 'system'
+    return lang
+
+
+def init_config(cfgdir='~'):
+    """sK1 config initialization"""
+
+    cfg_dir = os.path.join(cfgdir, '.config', 'color-picker')
+    cfg_file = os.path.join(cfg_dir, 'preferences.cfg')
+    resource_dir = os.path.join(__path__[0], 'share')
+
+    # Setting locale before app initialization
+    lang = read_locale(cfg_file)
+    lang_path = os.path.join(resource_dir, 'locales')
+    _.set_locale('color-picker', lang_path, lang)
+
+    global config
+    from .app_conf import get_app_config
+    config = get_app_config()
+    config.load(cfg_file)
+    config.resource_dir = resource_dir
 
 
 def run():
-    ColorPickerApp()
+    cfgdir = os.path.expanduser('~')
+    _pkgdir = __path__[0]
+    init_config(cfgdir)
+    from .app import ColorPickerApp
+    ColorPickerApp(_pkgdir, cfgdir)

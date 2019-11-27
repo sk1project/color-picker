@@ -15,14 +15,35 @@
 # 	You should have received a copy of the GNU General Public License
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import logging
+import os
+import sys
 
 import wal
+from cp2 import config
+from cp2.app_conf import AppData
+from cp2.app_stdout import StreamLogger
+from uc2.application import UCApplication
+from uc2.utils.mixutils import config_logging
+
+LOG = logging.getLogger(__name__)
 
 
-class ColorPickerApp(wal.Application):
+class ColorPickerApp(wal.Application, UCApplication):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, path, cfgdir):
+        self.path = path
+
+        wal.Application.__init__(self)
+        UCApplication.__init__(self, path, cfgdir, False)
+
+        self.appdata = AppData(self, cfgdir)
+        log_level = config.log_level
+        self.log_filepath = os.path.join(self.appdata.app_config_dir,
+                                         '%s.log' % self.appdata.app_proc)
+        config_logging(self.log_filepath, log_level)
+        sys.stderr = StreamLogger()
+        LOG.info('Logging started')
 
         self.mw = wal.PaletteWindow(self)
         self.mw.set_title('Color Picker')

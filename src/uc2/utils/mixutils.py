@@ -44,7 +44,6 @@ def config_logging(filepath, level='INFO'):
         level=level,
         filename=filepath,
         filemode='w',
-        stream=sys.stderr,
     )
 
 
