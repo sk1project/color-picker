@@ -45,7 +45,7 @@ class SKP_Loader(AbstractLoader):
 
                 except Exception as e:
                     LOG.error('Parsing error in "%s"', self.line)
-                    LOG.error('Error traceback: %s', e)
+                    LOG.exception('Error traceback: %s', e)
                 if self.stop_flag:
                     break
 

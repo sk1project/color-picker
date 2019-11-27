@@ -42,9 +42,8 @@ class SKP_Presenter(TextModelPresenter):
         self.cms = self.appdata.app.default_cms
         self.loader = SKP_Loader()
         self.saver = SKP_Saver()
-        if filepath is None:
-            self.new()
-        else:
+        self.new()
+        if filepath:
             self.load(filepath)
 
     def new(self):
