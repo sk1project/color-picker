@@ -16,15 +16,47 @@
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import wal
-from cp2 import config
+from cp2 import _, config
+from cp2.rend import CairoRenderer
 
 
 class PaletteWindow(wal.PaletteWindow):
+    doc = None
+    canvas = None
+
     def __init__(self, app, doc):
         wal.PaletteWindow.__init__(self, app)
-        self.doc = doc
-
         self.set_title(self.app.appdata.app_name)
         self.set_min_size(*config.mw_min_size)
         self.center()
         self.show()
+        self.set_doc(doc)
+
+    def set_doc(self, doc):
+        self.doc = doc
+        if not self.doc.model.name:
+            self.doc.model.name = _('Untitled palette')
+        self.set_subtitle(self.doc.model.name)
+        self.canvas = Canvas(self)
+        self.dc.refresh()
+
+
+class Canvas:
+    app = None
+    mw = None
+    dc = None
+    rend = None
+    cms = None
+    dy = 0
+    max_dy = 0
+
+    def __init__(self, mw):
+        self.mw = mw
+        self.app = mw.app
+        self.dc = mw.dc
+        self.cms = self.app.default_cms
+        self.rend = CairoRenderer(self)
+        self.dc.set_paint_callback(self.rend.paint)
+
+
+

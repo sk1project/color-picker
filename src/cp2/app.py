@@ -21,12 +21,13 @@ import sys
 
 import wal
 from cp2 import config
+from cp2.app_cms import AppColorManager
 from cp2.app_conf import AppData
 from cp2.app_stdout import StreamLogger
 from cp2.mw import PaletteWindow
 from uc2.application import UCApplication
 from uc2.utils.mixutils import config_logging
-from uc2.formats.skp.skp_model import SK1Palette
+from uc2.formats.skp.skp_presenter import SKP_Presenter
 
 LOG = logging.getLogger(__name__)
 
@@ -48,6 +49,8 @@ class ColorPickerApp(wal.Application, UCApplication):
         sys.stderr = StreamLogger()
         LOG.info('Logging started')
 
+        self.default_cms = AppColorManager(self)
+
         self.wins = []
         self.new()
 
@@ -57,7 +60,7 @@ class ColorPickerApp(wal.Application, UCApplication):
         wal.Application.exit(self)
 
     def new(self):
-        self.wins.append(PaletteWindow(self, SK1Palette()))
+        self.wins.append(PaletteWindow(self, SKP_Presenter(self.appdata)))
 
     def drop_win(self, win):
         self.wins.remove(win)

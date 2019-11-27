@@ -26,9 +26,6 @@ from uc2.formats.scribus_pal.scribus_pal_model import ScribusPalette, SPColor
 from uc2.uc2const import COLOR_RGB, COLOR_CMYK, COLOR_SPOT, COLOR_REG
 
 
-def create_new_palette(config): pass
-
-
 class ScribusPalettePresenter(TaggedModelPresenter):
     cid = uc2const.SCRIBUS_PAL
 

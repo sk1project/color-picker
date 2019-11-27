@@ -25,7 +25,7 @@ from uc2.uc2const import COLOR_RGB, COLOR_CMYK, COLOR_LAB, COLOR_GRAY, \
     COLOR_SPOT, COLOR_DISPLAY, COLOR_REG
 from uc2.uc2const import IMAGE_MONO, IMAGE_GRAY, IMAGE_RGB, IMAGE_CMYK, \
     IMAGE_LAB, IMAGE_TO_COLOR
-from uc2.utils import fsutils
+
 
 CS = [COLOR_RGB, COLOR_CMYK, COLOR_LAB, COLOR_GRAY]
 
@@ -655,7 +655,8 @@ class ColorManager(object):
                        COLOR_GRAY: self.get_grayscale_color}
         return methods_map[cs](color)
 
-    def mix_colors(self, color0, color1, coef=.5):
+    @staticmethod
+    def mix_colors(color0, color1, coef=.5):
         supported = [COLOR_RGB, COLOR_CMYK, COLOR_GRAY]
         if not color0[0] in supported:
             return None
@@ -769,3 +770,9 @@ class ColorManager(object):
                 return self.do_proof_bitmap_transform(img)
         else:
             return self.convert_image(img, outmode, cs_out)
+
+    @staticmethod
+    def get_color_name(color):
+        if len(color) > 3:
+            return color[3]
+        return ''
