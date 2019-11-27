@@ -106,18 +106,6 @@ class PaletteWindow(Gtk.Window):
         self.show_all()
 
 
-CELL_SIZE = 150
-CELL_W = 100
-CELL_H = 100
-CELL_MAX = 5
-BORDER = 20
-CAIRO_BLACK = (0.0, 0.0, 0.0)
-CAIRO_GRAY = (0.75, 0.75, 0.75)
-CAIRO_LIGHT_GRAY = (0.9, 0.9, 0.9)
-CAIRO_WHITE = [1.0, 1.0, 1.0]
-SEL_BG = [0.9375, 0.46484375, 0.2734375]  # #F07746
-
-
 class CanvasDC(Gtk.DrawingArea):
     surface = None
     ctx = None

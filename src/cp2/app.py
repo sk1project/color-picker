@@ -60,7 +60,8 @@ class ColorPickerApp(wal.Application, UCApplication):
         wal.Application.exit(self)
 
     def new(self):
-        self.wins.append(PaletteWindow(self, SKP_Presenter(self.appdata)))
+        self.wins.append(PaletteWindow(self, SKP_Presenter(
+            self.appdata, filepath='/home/igor/tango.skp')))
 
     def drop_win(self, win):
         self.wins.remove(win)
