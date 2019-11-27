@@ -31,11 +31,14 @@ class Application(Gtk.Application):
     def __init__(self):
         super().__init__()
 
-    def set_app_name(self, name):
+    @staticmethod
+    def set_app_name(name):
         GLib.set_application_name(name)
 
+    def drop_win(self, win):
+        pass
+
     def run(self):
-        self.mw.show_all()
         Gtk.main()
 
     def exit(self, *_args):
@@ -52,7 +55,7 @@ class PaletteWindow(Gtk.Window):
         super().__init__()
         self.canvas = CanvasDC()
         self.add(self.canvas)
-        self.connect('destroy', self.app.exit)
+        self.connect('destroy', self.close_action)
         self.hdr = Gtk.HeaderBar()
         self.hdr.set_show_close_button(True)
         self.hdr.props.title = '---'
@@ -82,6 +85,10 @@ class PaletteWindow(Gtk.Window):
         self.menubtn.add(Gtk.Image.new_from_gicon(icon, Gtk.IconSize.BUTTON))
         self.hdr.pack_end(self.menubtn)
 
+    def close_action(self, *_args):
+        self.destroy()
+        self.app.drop_win(self)
+
     def set_size(self, w, h):
         self.resize(w, h)
 
@@ -96,6 +103,9 @@ class PaletteWindow(Gtk.Window):
 
     def center(self):
         self.set_position(Gtk.WindowPosition.CENTER)
+
+    def show(self):
+        self.show_all()
 
 
 CELL_SIZE = 150

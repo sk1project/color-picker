@@ -23,13 +23,16 @@ import wal
 from cp2 import config
 from cp2.app_conf import AppData
 from cp2.app_stdout import StreamLogger
+from cp2.mw import PaletteWindow
 from uc2.application import UCApplication
 from uc2.utils.mixutils import config_logging
+from uc2.formats.skp.skp_model import SK1Palette
 
 LOG = logging.getLogger(__name__)
 
 
 class ColorPickerApp(wal.Application, UCApplication):
+    wins = None
 
     def __init__(self, path, cfgdir):
         self.path = path
@@ -45,12 +48,19 @@ class ColorPickerApp(wal.Application, UCApplication):
         sys.stderr = StreamLogger()
         LOG.info('Logging started')
 
-        self.mw = wal.PaletteWindow(self)
-        self.mw.set_title('Color Picker')
-        self.mw.set_min_size(620, 460)
-        self.mw.center()
+        self.wins = []
+        self.new()
 
         self.run()
 
     def exit(self, *_args):
         wal.Application.exit(self)
+
+    def new(self):
+        self.wins.append(PaletteWindow(self, SK1Palette()))
+
+    def drop_win(self, win):
+        self.wins.remove(win)
+        if not self.wins:
+            self.exit()
+
