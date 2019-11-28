@@ -52,19 +52,29 @@ class ColorPickerApp(wal.Application, UCApplication):
         self.default_cms = AppColorManager(self)
 
         self.wins = []
-        self.new()
-
+        self.new(filepath='/home/igor/tango.skp')
         self.run()
 
     def exit(self, *_args):
         wal.Application.exit(self)
 
-    def new(self):
-        self.wins.append(PaletteWindow(self, SKP_Presenter(
-            self.appdata, filepath='/home/igor/tango.skp')))
-
     def drop_win(self, win):
         self.wins.remove(win)
         if not self.wins:
             self.exit()
+
+    def new(self, filepath=None):
+        win = PaletteWindow(
+            self, SKP_Presenter(self.appdata, filepath=filepath))
+        self.wins.append(win)
+
+    def clear(self, win):
+        win.set_doc(SKP_Presenter(self.appdata))
+
+    def open_doc(self, filepath, win=None):
+        pass
+
+    def save_as_doc(self, doc):
+        pass
+
 

@@ -26,6 +26,22 @@ class PaletteWindow(wal.PaletteWindow):
 
     def __init__(self, app, doc):
         wal.PaletteWindow.__init__(self, app)
+
+        menu = [
+            [(_('New palette'), 'new', self.on_new), ],
+            [
+                (_('Open palette...'), 'open', self.on_open),
+                (_('Save as...'), 'save-as', self.on_save_as),
+                (_('Clear'), 'clear', self.on_clear),
+            ],
+            [
+                (_('Online help'), 'online-help', self.stub),
+                (_('About Color Picker'), 'about', self.stub),
+            ],
+            [(_('Exit'), 'exit', self.app.exit), ],
+        ]
+        self.make_menu(menu)
+
         self.set_title(self.app.appdata.app_name)
         self.set_min_size(*config.mw_min_size)
         self.center()
@@ -39,6 +55,25 @@ class PaletteWindow(wal.PaletteWindow):
         self.set_subtitle(self.doc.model.name)
         self.canvas = Canvas(self)
         self.dc.refresh()
+
+    def close_action(self, *_args):
+        self.destroy()
+        self.app.drop_win(self)
+
+    def stub(self, *_args):
+        print('stub')
+
+    def on_new(self, *_args):
+        self.app.new()
+
+    def on_open(self, *_args):
+        print('open item')
+
+    def on_save_as(self, *_args):
+        print('save_as item')
+
+    def on_clear(self, *_args):
+        self.app.clear(self)
 
 
 class Canvas:
@@ -57,6 +92,3 @@ class Canvas:
         self.cms = self.app.default_cms
         self.rend = CairoRenderer(self)
         self.dc.set_paint_callback(self.rend.paint)
-
-
-

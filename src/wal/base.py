@@ -24,10 +24,9 @@ from gi.repository import Gtk, GLib, Gio
 
 
 class Application(Gtk.Application):
-    mw = None
 
     def __init__(self):
-        super().__init__()
+        Gtk.Application.__init__(self)
 
     @staticmethod
     def set_app_name(name):
@@ -43,14 +42,14 @@ class Application(Gtk.Application):
         Gtk.main_quit()
 
 
-class PaletteWindow(Gtk.Window):
+class PaletteWindow(Gtk.ApplicationWindow):
     app = None
     dc = None
     hdr = None
 
     def __init__(self, app):
         self.app = app
-        super().__init__()
+        Gtk.ApplicationWindow.__init__(self)
         self.dc = CanvasDC()
         self.add(self.dc)
         self.connect('destroy', self.close_action)
@@ -77,15 +76,26 @@ class PaletteWindow(Gtk.Window):
         self.zoombtn.add(Gtk.Image.new_from_gicon(icon, Gtk.IconSize.BUTTON))
         self.hdr.pack_start(self.zoombtn)
 
-        self.menubtn = Gtk.Button()
+        self.menubtn = Gtk.MenuButton()
         self.menubtn.set_tooltip_text('Open menu')
         icon = Gio.ThemedIcon(name="open-menu-symbolic")
         self.menubtn.add(Gtk.Image.new_from_gicon(icon, Gtk.IconSize.BUTTON))
         self.hdr.pack_end(self.menubtn)
 
+    def make_menu(self, sections):
+        menu = Gio.Menu()
+        for section in sections:
+            section_menu = Gio.Menu()
+            for label, name, callback in section:
+                action = Gio.SimpleAction.new(name, None)
+                action.connect("activate", callback)
+                self.add_action(action)
+                section_menu.append(label, 'win.' + name)
+            menu.append_section(None, section_menu)
+        self.menubtn.set_menu_model(menu)
+
     def close_action(self, *_args):
         self.destroy()
-        self.app.drop_win(self)
 
     def set_size(self, w, h):
         self.resize(w, h)
