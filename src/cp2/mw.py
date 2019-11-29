@@ -56,6 +56,10 @@ class PaletteWindow(wal.PaletteWindow):
         self.canvas = Canvas(self)
         self.dc.refresh()
 
+    def can_be_reloaded(self):
+        # TODO should be history check
+        return bool(self.doc.model.colors) and True
+
     def close_action(self, *_args):
         self.destroy()
         self.app.drop_win(self)
@@ -67,7 +71,8 @@ class PaletteWindow(wal.PaletteWindow):
         self.app.new()
 
     def on_open(self, *_args):
-        print('open item')
+        print('on open')
+        self.app.open_doc(win=self)
 
     def on_save_as(self, *_args):
         print('save_as item')

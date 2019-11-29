@@ -39,7 +39,7 @@ class SerializedConfig(object):
         self.filename = filename
         if fsutils.exists(filename):
             try:
-                fileobj = fsutils.get_fileptr(filename)
+                fileobj = fsutils.get_fileptr(filename, binary=False)
             except Exception:
                 return
 
@@ -64,7 +64,7 @@ class SerializedConfig(object):
             return
 
         try:
-            fileobj = fsutils.get_fileptr(filename, True)
+            fileobj = fsutils.get_fileptr(filename, True, binary=False)
         except Exception:
             return
 

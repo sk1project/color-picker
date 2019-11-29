@@ -15,5 +15,26 @@
 # 	You should have received a copy of the GNU General Public License
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from .base import Application, PaletteWindow
-from .dialogs import get_open_file_name, error_dialog
+import os
+
+import wal
+from wal import error_dialog
+from cp2 import _
+from uc2 import uc2const
+
+
+def get_open_file_name(parent, default_dir=None, title=None, file_types=None):
+    title = title or _('Select file to open')
+    default_dir = default_dir or os.path.expanduser('~')
+
+    descr = uc2const.FORMAT_DESCRIPTION
+    ext = uc2const.FORMAT_EXTENSION
+    all = [('*', '*.* - All files'), ]
+    ft = []
+    if file_types:
+        for item in file_types:
+            ft.append(('*.' + ext[item][0], descr[item]))
+
+    file_types = ft + all if ft else all
+
+    return wal.get_open_file_name(parent, default_dir, title, file_types)

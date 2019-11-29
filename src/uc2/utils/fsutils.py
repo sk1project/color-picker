@@ -79,11 +79,11 @@ def makedirs(path):
 
 
 def lexists(path):
-    return os.path.lexists(path)
+    return os.path.exists(path)
 
 
 def exists(path):
-    return os.path.lexists(path)
+    return os.path.exists(path)
 
 
 def normalize_sys_argv():
