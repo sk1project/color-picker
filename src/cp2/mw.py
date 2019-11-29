@@ -31,8 +31,12 @@ class PaletteWindow(wal.PaletteWindow):
             [(_('New palette'), 'new', self.on_new), ],
             [
                 (_('Open palette...'), 'open', self.on_open),
+                (_('Paste from file...'), 'paste-from', self.on_paste_from),
                 (_('Save as...'), 'save-as', self.on_save_as),
                 (_('Clear'), 'clear', self.on_clear),
+            ],
+            [
+                (_('Palette Collection'), 'palettes', self.on_palettes),
             ],
             [
                 (_('Online help'), 'online-help', self.stub),
@@ -58,7 +62,7 @@ class PaletteWindow(wal.PaletteWindow):
 
     def can_be_reloaded(self):
         # TODO should be history check
-        return bool(self.doc.model.colors) and True
+        return not bool(self.doc.model.colors)
 
     def close_action(self, *_args):
         self.destroy()
@@ -71,14 +75,19 @@ class PaletteWindow(wal.PaletteWindow):
         self.app.new()
 
     def on_open(self, *_args):
-        print('on open')
         self.app.open_doc(win=self)
+
+    def on_paste_from(self, *_args):
+        self.app.paste_from(win=self)
 
     def on_save_as(self, *_args):
         print('save_as item')
 
     def on_clear(self, *_args):
         self.app.clear(self)
+
+    def on_palettes(self, *_args):
+        self.app.open_url('https://sk1project.net/palettes/')
 
 
 class Canvas:

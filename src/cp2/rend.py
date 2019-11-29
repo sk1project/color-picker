@@ -17,8 +17,11 @@
 
 import colorsys
 import math
+import os
 
 import cairo
+
+from cp2 import config
 
 CELL_SIZE = 150
 CELL_W = 100
@@ -85,6 +88,9 @@ class CairoRenderer:
         self.canvas = canvas
         self.dc = canvas.dc
         self.cms = canvas.cms
+        logo_file = os.path.join(
+            config.resource_dir, 'icons', 'color-picker.png')
+        self.logo = cairo.ImageSurface.create_from_png(logo_file)
 
     @staticmethod
     def draw_rounded_rect(ctx, rect, radius):
@@ -177,6 +183,22 @@ class CairoRenderer:
             self.ctx.set_source_rgb(*SEL_BG)
             self.ctx.rectangle(w - rect_w, 0, w, rect_h)
             self.ctx.fill()
+
+        # Logo
+        if not colors:
+            logo_w, logo_h = self.logo.get_width(), self.logo.get_height()
+            dx, dy = w - logo_w - BORDER, h - logo_h - BORDER
+            self.ctx.set_matrix(cairo.Matrix(1.0, 0.0, 0.0, 1.0, dx, dy))
+            self.ctx.set_source_surface(self.logo)
+            self.ctx.paint()
+            self.ctx.set_matrix(cairo.Matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0))
+
+            self.ctx.set_font_size(12)
+            self.ctx.set_source_rgb(*CAIRO_BLACK)
+            txt = 'https://' + self.canvas.app.appdata.app_domain
+            ext = self.ctx.text_extents(txt)
+            self.ctx.move_to(dx + logo_w / 2 - ext.width / 2, dy + logo_h + 10)
+            self.ctx.show_text(txt)
 
         widget_ctx.set_source_surface(self.surface)
         widget_ctx.paint()

@@ -18,6 +18,7 @@
 import logging
 import os
 import sys
+import webbrowser
 
 import wal
 from cp2 import _, config, dialogs
@@ -30,7 +31,6 @@ from uc2.application import UCApplication
 from uc2.formats import get_loader
 from uc2.formats.skp.skp_presenter import SKP_Presenter
 from uc2.utils.mixutils import config_logging
-
 
 LOG = logging.getLogger(__name__)
 
@@ -75,12 +75,16 @@ class ColorPickerApp(wal.Application, UCApplication):
     def clear(self, win):
         win.set_doc(SKP_Presenter(self.appdata))
 
-    def open_doc(self, filepath=None, win=None):
-        if win:
+    def _get_doc_form_file(self, filepath=None, win=None):
+        doc = None
+        wnd = win or self.wins[0]
+
+        if wnd and not filepath:
             filepath = dialogs.get_open_file_name(
-                win, config.open_dir, file_types=uc2const.PALETTE_LOADERS)
+                wnd, config.open_dir, file_types=uc2const.PALETTE_LOADERS)
         if not filepath:
             return
+
         if os.path.isfile(filepath):
             try:
                 loader = get_loader(filepath)
@@ -91,14 +95,33 @@ class ColorPickerApp(wal.Application, UCApplication):
                 msg = _('Cannot parse file:')
                 msg = "%s\n'%s'" % (msg, filepath) + '\n'
                 msg2 = _('The file may be corrupted or not supported format')
-                wnd = win or self.wins[0]
                 dialogs.error_dialog(wnd, self.appdata.app_name, msg, msg2)
                 LOG.error('Cannot parse file <%s> %s', filepath, e)
-                return
+        return doc
+
+    def open_doc(self, filepath=None, win=None):
+        doc = self._get_doc_form_file(filepath, win)
+        if not doc:
+            return
+        if win.can_be_reloaded():
+            win.set_doc(doc)
+        else:
             self.wins.append(PaletteWindow(self, doc))
-            config.open_dir = str(os.path.dirname(filepath))
+        config.open_dir = str(os.path.dirname(filepath))
+
+    def paste_from(self, filepath=None, win=None):
+        doc = self._get_doc_form_file(filepath, win)
+        if not doc:
+            return
+
+        # TODO here should be API call
+        colors = doc.model.colors
+        win.doc.model.colors += colors
+
+        config.open_dir = str(os.path.dirname(filepath))
 
     def save_as_doc(self, doc):
         pass
 
-
+    def open_url(self, url):
+        webbrowser.open(url, new=1, autoraise=True)

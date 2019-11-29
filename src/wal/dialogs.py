@@ -37,6 +37,7 @@ def get_open_file_name(parent, default_dir, title, file_types='*'):
                                    (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
                                     Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
     dialog.set_current_folder(default_dir)
+    dialog.set_default_response(Gtk.ResponseType.OK)
     _add_filters(dialog, file_types)
 
     response = dialog.run()
@@ -52,7 +53,17 @@ def get_save_file_name():
 
 def error_dialog(parent, title, msg, secondary_msg=None):
     dialog = Gtk.MessageDialog(
-        parent, 0, Gtk.MessageType.ERROR, Gtk.ButtonsType.CANCEL, msg)
+        parent, 0, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, msg)
+
+    if secondary_msg:
+        dialog.format_secondary_text(secondary_msg)
+    dialog.run()
+    dialog.destroy()
+
+
+def msg_dialog(parent, title, msg, secondary_msg=None):
+    dialog = Gtk.MessageDialog(
+        parent, 0, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, msg)
 
     if secondary_msg:
         dialog.format_secondary_text(secondary_msg)
