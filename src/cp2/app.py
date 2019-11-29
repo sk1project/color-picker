@@ -55,7 +55,7 @@ class ColorPickerApp(wal.Application, UCApplication):
         self.default_cms = AppColorManager(self)
 
         self.wins = []
-        self.new(filepath='/home/igor/tango.skp')
+        self.new()
         self.run()
 
     def exit(self, *_args):
@@ -84,17 +84,14 @@ class ColorPickerApp(wal.Application, UCApplication):
         if os.path.isfile(filepath):
             try:
                 loader = get_loader(filepath)
-                print(loader)
-                # if not loader:
-                #     raise Exception('Cannot find loader for %s' % filepath)
+                if not loader:
+                    raise LookupError('Cannot find loader for %s' % filepath)
                 doc = loader(self.appdata, filepath, convert=True)
-                print(doc)
             except Exception as e:
                 msg = _('Cannot parse file:')
                 msg = "%s\n'%s'" % (msg, filepath) + '\n'
                 msg2 = _('The file may be corrupted or not supported format')
                 wnd = win or self.wins[0]
-                print(msg)
                 dialogs.error_dialog(wnd, self.appdata.app_name, msg, msg2)
                 LOG.error('Cannot parse file <%s> %s', filepath, e)
                 return
