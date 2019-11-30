@@ -81,7 +81,7 @@ class PaletteWindow(wal.PaletteWindow):
         self.app.paste_from(win=self)
 
     def on_save_as(self, *_args):
-        print('save_as item')
+        self.app.save_as_doc(self.doc, self)
 
     def on_clear(self, *_args):
         self.app.clear(self)

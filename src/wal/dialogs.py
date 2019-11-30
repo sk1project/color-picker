@@ -47,8 +47,23 @@ def get_open_file_name(parent, default_dir, title, file_types='*'):
     return ret or None
 
 
-def get_save_file_name():
-    pass
+def get_save_file_name(parent, path, title, file_types='*'):
+    dialog = Gtk.FileChooserDialog(title, parent,
+                                   Gtk.FileChooserAction.SAVE,
+                                   (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+                                    Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
+    dialog.set_current_folder(os.path.dirname(path))
+    dialog.set_filename(path)
+    dialog.set_default_response(Gtk.ResponseType.OK)
+    _add_filters(dialog, file_types)
+
+    response = dialog.run()
+    ret = dialog.get_filename().strip() \
+        if response == Gtk.ResponseType.OK else None
+    if ret:
+        ret = (ret, dialog.get_filter().get_name())
+    dialog.destroy()
+    return ret
 
 
 def error_dialog(parent, title, msg, secondary_msg=None):

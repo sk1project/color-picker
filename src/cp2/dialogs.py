@@ -38,3 +38,25 @@ def get_open_file_name(parent, default_dir=None, title=None, file_types=None):
     file_types = ft + all if ft else all
 
     return wal.get_open_file_name(parent, default_dir, title, file_types)
+
+
+def get_save_file_name(
+        parent, path, title=None, file_types=None, path_only=False):
+    title = title or _('Save file as...')
+    path = path or os.path.expanduser('~')
+
+    descr = uc2const.FORMAT_DESCRIPTION
+    ext = uc2const.FORMAT_EXTENSION
+    ft = []
+    if file_types:
+        for item in file_types:
+            ft.append(('*.' + ext[item][0], descr[item]))
+
+    ret = wal.get_save_file_name(parent, path, title, ft)
+    if not path_only:
+        for wildcard, descr in ft:
+            if ret[1] == descr:
+                index = ft.index((wildcard, descr))
+                return ret[0], file_types[index]
+    return ret[0]
+

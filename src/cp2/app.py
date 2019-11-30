@@ -28,7 +28,7 @@ from cp2.app_stdout import StreamLogger
 from cp2.mw import PaletteWindow
 from uc2 import uc2const
 from uc2.application import UCApplication
-from uc2.formats import get_loader
+from uc2.formats import get_loader, get_saver_by_id
 from uc2.formats.skp.skp_presenter import SKP_Presenter
 from uc2.utils.mixutils import config_logging
 
@@ -96,7 +96,7 @@ class ColorPickerApp(wal.Application, UCApplication):
                 msg = "%s\n'%s'" % (msg, filepath) + '\n'
                 msg2 = _('The file may be corrupted or not supported format')
                 dialogs.error_dialog(wnd, self.appdata.app_name, msg, msg2)
-                LOG.error('Cannot parse file <%s> %s', filepath, e)
+                LOG.exception('Cannot parse file <%s>' % filepath, e)
         return doc
 
     def open_doc(self, filepath=None, win=None):
@@ -107,7 +107,7 @@ class ColorPickerApp(wal.Application, UCApplication):
             win.set_doc(doc)
         else:
             self.wins.append(PaletteWindow(self, doc))
-        config.open_dir = str(os.path.dirname(filepath))
+        config.open_dir = str(os.path.dirname(doc.doc_file))
 
     def paste_from(self, filepath=None, win=None):
         doc = self._get_doc_form_file(filepath, win)
@@ -120,8 +120,31 @@ class ColorPickerApp(wal.Application, UCApplication):
 
         config.open_dir = str(os.path.dirname(filepath))
 
-    def save_as_doc(self, doc):
-        pass
+    def save_as_doc(self, doc, win=None):
+        wnd = win or self.wins[0]
+        doc_file = doc.doc_file
+        doc_file = doc_file or doc.model.name
+        if os.path.splitext(doc_file)[1] != "." + \
+                uc2const.FORMAT_EXTENSION[uc2const.SKP][0]:
+            doc_file = os.path.splitext(doc_file)[0] + "." + \
+                       uc2const.FORMAT_EXTENSION[uc2const.SKP][0]
+        if not os.path.exists(os.path.dirname(doc_file)):
+            doc_file = os.path.join(config.save_dir,
+                                    os.path.basename(doc_file))
+        print(doc_file)
+        ret = dialogs.get_save_file_name(
+            wnd, doc_file, file_types=uc2const.PALETTE_SAVERS)
+        if ret and len(ret) == 2:
+            try:
+                doc_file, saver_id = ret
+                saver = get_saver_by_id(saver_id)
+                saver(doc, doc_file, translate=False, convert=True)
+            except Exception as e:
+                msg = _('Cannot save file:')
+                msg = "%s\n'%s'" % (msg, doc_file) + '\n'
+                msg2 = _('Details see in logs')
+                dialogs.error_dialog(wnd, self.appdata.app_name, msg, msg2)
+                LOG.exception('Cannot save file <%s>' % doc_file, e)
 
     def open_url(self, url):
         webbrowser.open(url, new=1, autoraise=True)
