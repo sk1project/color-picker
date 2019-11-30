@@ -46,6 +46,13 @@ class PaletteWindow(wal.PaletteWindow):
         ]
         self.make_menu(menu)
 
+        acc_keys = [
+            [('Ctrl','N'), self.on_new],
+            [('Ctrl','O'), self.on_open],
+            [('Ctrl','S'), self.on_save_as],
+        ]
+        self.make_shortcuts(acc_keys)
+
         self.set_title(self.app.appdata.app_name)
         self.set_min_size(*config.mw_min_size)
         self.center()

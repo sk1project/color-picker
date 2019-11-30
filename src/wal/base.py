@@ -20,7 +20,7 @@ import os
 import gi
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, GLib, Gio
+from gi.repository import Gtk, Gdk, GLib, Gio
 
 
 class Application(Gtk.Application):
@@ -93,6 +93,19 @@ class PaletteWindow(Gtk.ApplicationWindow):
                 section_menu.append(label, 'win.' + name)
             menu.append_section(None, section_menu)
         self.menubtn.set_menu_model(menu)
+
+    def make_shortcuts(self, shortcuts):
+        accel = Gtk.AccelGroup()
+        for shortcut, callback in shortcuts:
+            modifier = {
+                'Ctrl':Gdk.ModifierType.CONTROL_MASK,
+                'Alt':Gdk.ModifierType.META_MASK,
+                'Shift':Gdk.ModifierType.SHIFT_MASK,
+                'Ctrl-Shift':Gdk.ModifierType.CONTROL_MASK |
+                             Gdk.ModifierType.SHIFT_MASK}.get(shortcut[0])
+            accel.connect(Gdk.keyval_from_name(shortcut[1]), modifier,
+                          0, callback)
+        self.add_accel_group(accel)
 
     def close_action(self, *_args):
         self.destroy()

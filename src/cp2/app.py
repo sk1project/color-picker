@@ -131,7 +131,6 @@ class ColorPickerApp(wal.Application, UCApplication):
         if not os.path.exists(os.path.dirname(doc_file)):
             doc_file = os.path.join(config.save_dir,
                                     os.path.basename(doc_file))
-        print(doc_file)
         ret = dialogs.get_save_file_name(
             wnd, doc_file, file_types=uc2const.PALETTE_SAVERS)
         if ret and len(ret) == 2:
