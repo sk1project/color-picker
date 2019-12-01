@@ -47,9 +47,9 @@ class PaletteWindow(wal.PaletteWindow):
         self.make_menu(menu)
 
         acc_keys = [
-            [('Ctrl','N'), self.on_new],
-            [('Ctrl','O'), self.on_open],
-            [('Ctrl','S'), self.on_save_as],
+            [('Ctrl', 'N'), self.on_new],
+            [('Ctrl', 'O'), self.on_open],
+            [('Ctrl', 'S'), self.on_save_as],
         ]
         self.make_shortcuts(acc_keys)
 
