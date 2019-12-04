@@ -63,3 +63,12 @@ def echo(msg='', newline=True, flush=True, code=''):
     sys.stdout.write(msg)
     if flush:
         sys.stdout.flush()
+
+
+class Decomposable:
+    def destroy(self):
+        for key in self.__dict__.keys():
+            obj = self.__dict__[key]
+            self.__dict__[key] = None
+            if isinstance(obj, Decomposable):
+                obj.destroy()

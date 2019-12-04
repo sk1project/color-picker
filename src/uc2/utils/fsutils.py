@@ -28,7 +28,7 @@ LOG = logging.getLogger(__name__)
 
 # Platform
 IS_MSW = system.get_os_family() == system.WINDOWS
-IS_MAC = system.get_os_family() == system.MACOSX
+IS_MAC = system.get_os_family() == system.MACOS
 
 HOME = os.path.expanduser('~')
 

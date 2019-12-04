@@ -19,8 +19,10 @@ import os
 
 import uc2
 
+from . import app_conf
+
 _ = uc2._
-config = None
+config = app_conf.AppConfig()
 
 
 def read_locale(cfg_file):
@@ -53,8 +55,7 @@ def init_config(cfgdir='~'):
     _.set_locale('color-picker', lang_path, lang)
 
     global config
-    from .app_conf import get_app_config
-    config = get_app_config()
+    config = app_conf.get_app_config()
     config.load(cfg_file)
     config.resource_dir = resource_dir
 

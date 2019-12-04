@@ -17,7 +17,7 @@
 
 import wal
 from cp2 import _, config
-from cp2.rend import CairoRenderer
+from cp2.canvas import Canvas
 
 
 class PaletteWindow(wal.PaletteWindow):
@@ -33,7 +33,7 @@ class PaletteWindow(wal.PaletteWindow):
                 (_('Open palette...'), 'open', self.on_open),
                 (_('Paste from file...'), 'paste-from', self.on_paste_from),
                 (_('Save as...'), 'save-as', self.on_save_as),
-                (_('Clear'), 'clear', self.on_clear),
+                (_('Clear palette'), 'clear', self.on_clear),
             ],
             [
                 (_('Palette Collection'), 'palettes', self.on_palettes),
@@ -60,10 +60,13 @@ class PaletteWindow(wal.PaletteWindow):
         self.set_doc(doc)
 
     def set_doc(self, doc):
-        self.doc = doc
+        self.doc, old_doc = doc, self.doc
         if not self.doc.model.name:
             self.doc.model.name = _('Untitled palette')
         self.set_subtitle(self.doc.model.name)
+        if self.canvas:
+            self.canvas.destroy()
+            old_doc.close()
         self.canvas = Canvas(self)
         self.dc.refresh()
 
@@ -72,7 +75,7 @@ class PaletteWindow(wal.PaletteWindow):
         return not bool(self.doc.model.colors)
 
     def close_action(self, *_args):
-        self.destroy()
+        wal.PaletteWindow.destroy(self)
         self.app.drop_win(self)
 
     def stub(self, *_args):
@@ -95,21 +98,3 @@ class PaletteWindow(wal.PaletteWindow):
 
     def on_palettes(self, *_args):
         self.app.open_url('https://sk1project.net/palettes/')
-
-
-class Canvas:
-    app = None
-    mw = None
-    dc = None
-    rend = None
-    cms = None
-    dy = 0
-    max_dy = 0
-
-    def __init__(self, mw):
-        self.mw = mw
-        self.app = mw.app
-        self.dc = mw.dc
-        self.cms = self.app.default_cms
-        self.rend = CairoRenderer(self)
-        self.dc.set_paint_callback(self.rend.paint)

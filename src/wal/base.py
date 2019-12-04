@@ -44,13 +44,14 @@ class Application(Gtk.Application):
 
 class PaletteWindow(Gtk.ApplicationWindow):
     app = None
-    dc = None
     hdr = None
+    dc = None
+    canvas = None
 
     def __init__(self, app):
         self.app = app
         Gtk.ApplicationWindow.__init__(self)
-        self.dc = CanvasDC()
+        self.dc = CanvasDC(self)
         self.add(self.dc)
         self.connect('destroy', self.close_action)
         self.hdr = Gtk.HeaderBar()
@@ -98,16 +99,17 @@ class PaletteWindow(Gtk.ApplicationWindow):
         accel = Gtk.AccelGroup()
         for shortcut, callback in shortcuts:
             modifier = {
-                'Ctrl':Gdk.ModifierType.CONTROL_MASK,
-                'Alt':Gdk.ModifierType.META_MASK,
-                'Shift':Gdk.ModifierType.SHIFT_MASK,
-                'Ctrl-Shift':Gdk.ModifierType.CONTROL_MASK |
-                             Gdk.ModifierType.SHIFT_MASK}.get(shortcut[0])
+                'Ctrl': Gdk.ModifierType.CONTROL_MASK,
+                'Alt': Gdk.ModifierType.META_MASK,
+                'Shift': Gdk.ModifierType.SHIFT_MASK,
+                'Ctrl-Shift': Gdk.ModifierType.CONTROL_MASK |
+                              Gdk.ModifierType.SHIFT_MASK}.get(shortcut[0])
             accel.connect(Gdk.keyval_from_name(shortcut[1]), modifier,
                           0, callback)
         self.add_accel_group(accel)
 
     def close_action(self, *_args):
+        self.dc.mw = None
         self.destroy()
 
     def set_size(self, w, h):
@@ -129,16 +131,49 @@ class PaletteWindow(Gtk.ApplicationWindow):
         self.show_all()
 
 
-class CanvasDC(Gtk.DrawingArea):
-    surface = None
-    ctx = None
-    width = 0
-    height = 0
-    paint_callback = None
+class CanvasEvent:
+    event = None
 
-    def __init__(self):
+    def __init__(self, event):
+        self.event = event
+
+    def get_scroll(self):
+        return self.event.get_scroll_deltas()[2]
+
+    def is_ctrl(self):
+        return bool(self.event.state & Gdk.ModifierType.CONTROL_MASK)
+
+    def is_alt(self):
+        return bool(self.event.state & Gdk.ModifierType.MOD1_MASK)
+
+    def is_shift(self):
+        return bool(self.event.state & Gdk.ModifierType.SHIFT_MASK)
+
+    def get_point(self):
+        return int(self.event.x), int(self.event.y)
+
+
+CURSORS = {
+    'watch': Gdk.Cursor(Gdk.CursorType.WATCH),
+    'arrow': Gdk.Cursor(Gdk.CursorType.ARROW),
+    'hand': Gdk.Cursor(Gdk.CursorType.HAND1)
+}
+
+
+class CanvasDC(Gtk.DrawingArea):
+    mw = None
+    cursor = 'arrow'
+
+    def __init__(self, mw):
+        self.mw = mw
         super().__init__()
         self.connect('draw', self.paint)
+        self.add_events(Gdk.EventMask.SMOOTH_SCROLL_MASK)
+        self.connect('scroll-event', self.on_scroll)
+        self.add_events(Gdk.EventMask.POINTER_MOTION_MASK)
+        self.connect('motion-notify-event', self.on_move)
+        self.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)
+        self.connect('leave-notify-event', self.on_leave)
 
     def refresh(self):
         self.queue_draw()
@@ -147,9 +182,23 @@ class CanvasDC(Gtk.DrawingArea):
         rect = self.get_allocation()
         return rect.width, rect.height
 
-    def set_paint_callback(self, callback):
-        self.paint_callback = callback
+    def set_cursor(self, cursor_name):
+        if not cursor_name == self.cursor and cursor_name in CURSORS:
+            self.cursor = cursor_name
+            self.get_root_window().set_cursor(CURSORS[cursor_name])
 
     def paint(self, _widget, widget_ctx):
-        if self.paint_callback:
-            self.paint_callback(widget_ctx)
+        if self.mw and self.mw.canvas:
+            self.mw.canvas.paint(widget_ctx)
+
+    def on_scroll(self, _widget, event):
+        if self.mw and self.mw.canvas:
+            self.mw.canvas.on_scroll(CanvasEvent(event))
+
+    def on_move(self, _widget, event):
+        if self.mw and self.mw.canvas:
+            self.mw.canvas.on_move(CanvasEvent(event))
+
+    def on_leave(self, _widget, event):
+        if self.mw and self.mw.canvas:
+            self.mw.canvas.on_leave(CanvasEvent(event))

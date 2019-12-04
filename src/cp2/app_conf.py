@@ -18,7 +18,6 @@
 import os
 
 from cp2 import events, appconst
-from uc2 import uc2const
 from uc2.uc2conf import UCConfig, UCData
 from uc2.utils import system, fsutils
 
@@ -41,7 +40,8 @@ class AppData(UCData):
 
     def __init__(self, app, cfgdir='~'):
         # --- Init paths
-        path = fsutils.expanduser(os.path.join(cfgdir, '.config', 'color-picker'))
+        path = fsutils.expanduser(
+            os.path.join(cfgdir, '.config', 'color-picker'))
         self.app_config_dir = path
 
         UCData.__init__(self, app, check=False)
@@ -109,12 +109,24 @@ class AppConfig(UCConfig):
     print_dir = '~'
     log_dir = '~'
 
-    # ============== MOUSE OPTIONS ================
-    mouse_scroll_sensitivity = 3.0
+    # ============== SCROLL OPTIONS ================
+    mouse_scroll_sensitivity = 20
+    scroll_normal = 5
+    scroll_hover = 10
 
     # ============== PALETTE OPTIONS ================
+    cell_width = 100
+    cell_height = 100
 
     # ============== CANVAS OPTIONS ================
+    canvas_border = 20
+
+    # colors
+    canvas_fg = (0.0, 0.0, 0.0)
+    canvas_bg = (1.0, 1.0, 1.0)
+    addbutton_fg = (0.9, 0.9, 0.9)
+    scroll_fg = (0.9375, 0.46484375, 0.2734375) # #F07746
+    cell_border_color = (0.9, 0.9, 0.9)
 
     # ============== SNAPPING OPTIONS ================
 
@@ -125,7 +137,7 @@ class LinuxConfig(AppConfig):
 
 
 class MacosxConfig(AppConfig):
-    os = system.MACOSX
+    os = system.MACOS
     os_name = system.get_os_name()
 
 
@@ -135,5 +147,5 @@ class WinConfig(AppConfig):
 
 
 def get_app_config():
-    os_mapping = {system.MACOSX: MacosxConfig, system.WINDOWS: WinConfig}
+    os_mapping = {system.MACOS: MacosxConfig, system.WINDOWS: WinConfig}
     return os_mapping.get(system.get_os_family(), LinuxConfig)()

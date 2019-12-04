@@ -19,7 +19,7 @@ import platform
 
 WINDOWS = 'Windows'
 LINUX = 'Linux'
-MACOSX = 'Darwin'
+MACOS = 'Darwin'
 GENERIC = 'generic'
 
 
@@ -33,15 +33,15 @@ def get_os_family():
         return LINUX
     elif name == WINDOWS:
         return WINDOWS
-    elif name == MACOSX:
-        return MACOSX
+    elif name == MACOS:
+        return MACOS
     else:
         return GENERIC
 
 
 IS_WINDOWS = get_os_family() == WINDOWS
 IS_LINUX = get_os_family() == LINUX
-IS_MACOSX = get_os_family() == MACOSX
+IS_MACOS = get_os_family() == MACOS
 
 
 P32BIT = '32bit'
@@ -113,7 +113,7 @@ def get_os_name():
         else:
             return LINUXOTHER
 
-    elif get_os_family() == MACOSX:
+    elif get_os_family() == MACOS:
         if not ((platform.mac_ver())[0]).find(LEOPARD) == -1:
             return LEOPARD
         elif not ((platform.mac_ver())[0]).find(SNOWLEOPARD) == -1:

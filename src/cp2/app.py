@@ -91,6 +91,7 @@ class ColorPickerApp(wal.Application, UCApplication):
                 if not loader:
                     raise LookupError('Cannot find loader for %s' % filepath)
                 doc = loader(self.appdata, filepath, convert=True)
+                config.open_dir = str(os.path.dirname(filepath))
             except Exception as e:
                 msg = _('Cannot parse file:')
                 msg = "%s\n'%s'" % (msg, filepath) + '\n'
@@ -107,7 +108,6 @@ class ColorPickerApp(wal.Application, UCApplication):
             win.set_doc(doc)
         else:
             self.wins.append(PaletteWindow(self, doc))
-        config.open_dir = str(os.path.dirname(doc.doc_file))
 
     def paste_from(self, filepath=None, win=None):
         doc = self._get_doc_form_file(filepath, win)
@@ -117,8 +117,6 @@ class ColorPickerApp(wal.Application, UCApplication):
         # TODO here should be API call
         colors = doc.model.colors
         win.doc.model.colors += colors
-
-        config.open_dir = str(os.path.dirname(filepath))
 
     def save_as_doc(self, doc, win=None):
         wnd = win or self.wins[0]
