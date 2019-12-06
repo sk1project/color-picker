@@ -104,11 +104,12 @@ class PaletteWindow(Gtk.ApplicationWindow):
         accel = Gtk.AccelGroup()
         for shortcut, callback in shortcuts:
             modifier = {
+                'None': 0,
                 'Ctrl': Gdk.ModifierType.CONTROL_MASK,
                 'Alt': Gdk.ModifierType.META_MASK,
                 'Shift': Gdk.ModifierType.SHIFT_MASK,
                 'Ctrl-Shift': Gdk.ModifierType.CONTROL_MASK |
-                              Gdk.ModifierType.SHIFT_MASK}.get(shortcut[0])
+                Gdk.ModifierType.SHIFT_MASK}.get(shortcut[0])
             accel.connect(Gdk.keyval_from_name(shortcut[1]), modifier,
                           0, callback)
         self.add_accel_group(accel)
@@ -157,6 +158,9 @@ class CanvasEvent:
     def get_point(self):
         return int(self.event.x), int(self.event.y)
 
+    def get_button(self):
+        return self.event.button if hasattr(self.event, 'button') else None
+
 
 GTK_CURSOR_NAMES = [
     'none', 'default', 'help', 'pointer', 'context-menu', 'progress', 'wait',
@@ -191,6 +195,7 @@ def _get_cursor(name):
 class CanvasDC(Gtk.DrawingArea):
     mw = None
     cursor = 'arrow'
+    pressed = False
 
     def __init__(self, mw):
         self.mw = mw
@@ -202,6 +207,10 @@ class CanvasDC(Gtk.DrawingArea):
         self.connect('motion-notify-event', self.on_move)
         self.add_events(Gdk.EventMask.LEAVE_NOTIFY_MASK)
         self.connect('leave-notify-event', self.on_leave)
+        self.add_events(Gdk.EventMask.BUTTON_PRESS_MASK)
+        self.connect('button-press-event', self.on_btn_press)
+        self.add_events(Gdk.EventMask.BUTTON_RELEASE_MASK)
+        self.connect('button-release-event', self.on_btn_release)
 
     def refresh(self):
         self.queue_draw()
@@ -225,8 +234,24 @@ class CanvasDC(Gtk.DrawingArea):
 
     def on_move(self, _widget, event):
         if self.mw and self.mw.canvas:
+            if self.pressed:
+                print('move')
             self.mw.canvas.on_move(CanvasEvent(event))
 
     def on_leave(self, _widget, event):
         if self.mw and self.mw.canvas:
             self.mw.canvas.on_leave(CanvasEvent(event))
+
+    def on_btn_press(self, _widget, event):
+        if self.mw and self.mw.canvas:
+            if event.button == 1:
+                self.mw.canvas.on_left_pressed(CanvasEvent(event))
+            elif event.button == 3:
+                self.mw.canvas.on_right_pressed(CanvasEvent(event))
+
+    def on_btn_release(self, _widget, event):
+        if self.mw and self.mw.canvas:
+            if event.button == 1:
+                self.mw.canvas.on_left_released(CanvasEvent(event))
+            elif event.button == 3:
+                self.mw.canvas.on_right_released(CanvasEvent(event))

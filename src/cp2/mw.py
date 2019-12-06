@@ -50,6 +50,18 @@ class PaletteWindow(wal.PaletteWindow):
             [('Ctrl', 'N'), self.on_new],
             [('Ctrl', 'O'), self.on_open],
             [('Ctrl', 'S'), self.on_save_as],
+            [('None', 'Home'), self.go_home],
+            [('None', 'End'), self.go_end],
+            [('None', 'KP_Home'), self.go_home],
+            [('None', 'KP_End'), self.go_end],
+            [('None', 'Page_Up'), self.page_up],
+            [('None', 'Page_Down'), self.page_down],
+            [('None', 'KP_Page_Up'), self.page_up],
+            [('None', 'KP_Page_Down'), self.page_down],
+            [('Ctrl', 'Up'), self.canvas_up],
+            [('Ctrl', 'Down'), self.canvas_down],
+            [('Ctrl', 'KP_Up'), self.canvas_up],
+            [('Ctrl', 'KP_Down'), self.canvas_down],
         ]
         self.make_shortcuts(acc_keys)
 
@@ -98,3 +110,21 @@ class PaletteWindow(wal.PaletteWindow):
 
     def on_palettes(self, *_args):
         self.app.open_url('https://sk1project.net/palettes/')
+
+    def go_home(self, *_args):
+        self.canvas.go_home()
+
+    def go_end(self, *_args):
+        self.canvas.go_end()
+
+    def page_up(self, *_args):
+        self.canvas.page_up()
+
+    def page_down(self, *_args):
+        self.canvas.page_down()
+
+    def canvas_up(self, *_args):
+        self.canvas.scroll_up()
+
+    def canvas_down(self, *_args):
+        self.canvas.scroll_down()

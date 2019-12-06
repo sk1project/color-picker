@@ -28,6 +28,7 @@ from uc2.utils.mixutils import Decomposable
 CAIRO_WHITE = (1.0, 1.0, 1.0)
 CAIRO_BLACK = (0.0, 0.0, 0.0)
 NO_TRAFO = cairo.Matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)
+NO_BBOX = (0, 0, 0, 0)
 
 
 def in_bbox(bbox, point):
@@ -84,7 +85,7 @@ def draw_rounded_rect(ctx, rect, radius):
 
 class CanvasObj(Decomposable):
     canvas = None
-    bbox = (0, 0, 0, 0)
+    bbox = NO_BBOX
     cursor = 'arrow'
     active = True
     hover = False
@@ -112,6 +113,18 @@ class CanvasObj(Decomposable):
                     self.canvas.dc.refresh()
         return False
 
+    def on_left_pressed(self, event):
+        return self.is_over(event.get_point())
+
+    def on_left_released(self, _event):
+        pass
+
+    def on_right_pressed(self, _event):
+        return False
+
+    def on_right_released(self, _event):
+        pass
+
 
 class LogoObj(CanvasObj):
     logo = None
@@ -122,6 +135,10 @@ class LogoObj(CanvasObj):
         logo_file = os.path.join(
             config.resource_dir, 'icons', 'color-picker.png')
         self.logo = cairo.ImageSurface.create_from_png(logo_file)
+
+    def on_left_released(self, _event):
+        app = self.canvas.app
+        app.open_url(f'https://{app.appdata.app_domain}')
 
     def paint(self, ctx):
         colors = self.canvas.mw.doc.model.colors
@@ -138,7 +155,7 @@ class LogoObj(CanvasObj):
 
             ctx.set_font_size(12)
             ctx.set_source_rgb(*config.canvas_fg)
-            txt = 'https://' + self.canvas.app.appdata.app_domain
+            txt = f'https://{self.canvas.app.appdata.app_domain}'
             ext = ctx.text_extents(txt)
             ctx.move_to(dx + logo_w / 2 - ext.width / 2, dy + logo_h + 10)
             ctx.show_text(txt)
@@ -152,18 +169,45 @@ class LogoObj(CanvasObj):
 
 
 class ScrollObj(CanvasObj):
+    tbbox = NO_BBOX
+    start = None
+    move = False
+    coef = 1.0
+
+    def on_left_pressed(self, event):
+        self.start = event.get_point()
+        if not self.is_over(self.start):
+            return False
+        if in_bbox(self.tbbox, self.start):
+            self.move = True
+            return
+        elif self.start[1] > self.tbbox[3]:
+            dy = (self.start[1] - self.tbbox[3] + self.tbbox[1]) / self.coef
+        else:
+            dy = self.start[1] / self.coef
+        self.canvas.dy = dy
+        self.canvas.dc.refresh()
+        return True
+
+    def on_left_released(self, _event):
+        self.move = False
+
     def paint(self, ctx):
         w, h = self.canvas.width, self.canvas.height
         sw = config.scroll_hover if self.hover else config.scroll_normal
         self.bbox = (w - sw, 0, w, h)
         virtual_h = self.canvas.virtual_h
+        self.tbbox = NO_BBOX
+        self.coef = 1.0
 
         if virtual_h > h:
-            rect_h = h * h / virtual_h
+            self.coef = h / virtual_h
+            rect_h = h * self.coef
             rect_w = sw
-            y = self.canvas.dy + self.canvas.dy * h / virtual_h
+            y = self.canvas.dy + self.canvas.dy * self.coef
             ctx.set_source_rgba(*config.scroll_fg)
             ctx.rectangle(w - rect_w, y, w, rect_h)
+            self.tbbox = (w - rect_w, y, w, y + rect_h)
             ctx.fill()
 
         self.active = virtual_h > h
@@ -276,6 +320,9 @@ class Canvas(Decomposable):
     cell_max = 5
     z_order = None
 
+    left_pressed = None
+    right_pressed = None
+
     def __init__(self, mw):
         self.mw = mw
         self.app = mw.app
@@ -297,6 +344,33 @@ class Canvas(Decomposable):
     def set_cursor(self, cursor_name):
         self.dc.set_cursor(cursor_name)
 
+    def go_home(self, *_args):
+        self.dy = 0
+        self.dc.refresh()
+
+    def go_end(self, *_args):
+        self.dy = self.max_dy
+        self.dc.refresh()
+
+    def page_up(self, *_args):
+        self.dy = max(0, self.dy - self.height)
+        self.dc.refresh()
+
+    def page_down(self, *_args):
+        self.dy = min(self.max_dy, self.height + self.dy)
+        self.dc.refresh()
+
+    def scroll_up(self, *_args):
+        self.dy = max(0, self.dy - config.cell_height // 2)
+        self.dc.refresh()
+
+    def scroll_down(self, *_args):
+        self.dy = min(self.max_dy, config.cell_height // 2 + self.dy)
+        self.dc.refresh()
+
+    def _is_locked(self):
+        return bool(self.left_pressed) or bool(self.right_pressed)
+
     def on_scroll(self, event):
         self.dy += event.get_scroll() * config.mouse_scroll_sensitivity
         if self.dy < 0 or self.virtual_h <= self.height:
@@ -315,6 +389,25 @@ class Canvas(Decomposable):
         if self.scroll.hover:
             self.scroll.hover = False
             self.dc.refresh()
+
+    def on_left_pressed(self, event):
+        for obj in self.z_order:
+            if obj.on_left_pressed(event):
+                self.left_pressed = obj
+                break
+
+    def on_left_released(self, event):
+        if self.left_pressed:
+            self.left_pressed.on_left_released(event)
+
+    def on_right_pressed(self, event):
+        pass
+
+    def on_right_released(self, event):
+        pass
+
+    def on_btn1_move(self, event):
+        pass
 
     def paint(self, widget_ctx):
         w, h = self.dc.get_size()
