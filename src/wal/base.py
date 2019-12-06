@@ -83,6 +83,11 @@ class PaletteWindow(Gtk.ApplicationWindow):
         self.menubtn.add(Gtk.Image.new_from_gicon(icon, Gtk.IconSize.BUTTON))
         self.hdr.pack_end(self.menubtn)
 
+    def get_scroll_fg(self):
+        context = self.get_style_context()
+        bg_color = context.get_background_color(Gtk.StateFlags.SELECTED)
+        return tuple(bg_color)
+
     def make_menu(self, sections):
         menu = Gio.Menu()
         for section in sections:
@@ -153,11 +158,34 @@ class CanvasEvent:
         return int(self.event.x), int(self.event.y)
 
 
+GTK_CURSOR_NAMES = [
+    'none', 'default', 'help', 'pointer', 'context-menu', 'progress', 'wait',
+    'cell', 'crosshair', 'text', 'vertical-text', 'alias', 'copy', 'no-drop',
+    'move', 'not-allowed', 'grab', 'grabbing', 'all-scroll', 'col-resize',
+    'row-resize', 'n-resize', 'e-resize', 's-resize', 'w-resize', 'ne-resize',
+    'nw-resize', 'sw-resize', 'se-resize', 'ew-resize', 'ns-resize',
+    'nesw-resize', 'nwse-resize', 'zoom-in', 'zoom-out', ]
+
+
+def _cursor_from_name(name):
+    # https://lazka.github.io/pgi-docs/Gdk-3.0/classes/Cursor.html#Gdk.Cursor.new_from_name
+    # https://developer.gnome.org/gdk3/stable/gdk3-Cursors.html
+    return Gdk.Cursor.new_from_name(Gdk.Display.get_default(), name)
+
+
 CURSORS = {
-    'watch': Gdk.Cursor(Gdk.CursorType.WATCH),
-    'arrow': Gdk.Cursor(Gdk.CursorType.ARROW),
-    'hand': Gdk.Cursor(Gdk.CursorType.HAND1)
+    'default': _cursor_from_name('default'),
+    'arrow': _cursor_from_name('arrow'),
+    'pointer': _cursor_from_name('pointer'),
 }
+
+
+def _get_cursor(name):
+    if name in GTK_CURSOR_NAMES and name not in CURSORS:
+        CURSORS[name] = _cursor_from_name(name)
+    elif name not in CURSORS:
+        name = 'default'
+    return CURSORS[name]
 
 
 class CanvasDC(Gtk.DrawingArea):
@@ -183,9 +211,9 @@ class CanvasDC(Gtk.DrawingArea):
         return rect.width, rect.height
 
     def set_cursor(self, cursor_name):
-        if not cursor_name == self.cursor and cursor_name in CURSORS:
+        if not cursor_name == self.cursor:
             self.cursor = cursor_name
-            self.get_root_window().set_cursor(CURSORS[cursor_name])
+            self.get_root_window().set_cursor(_get_cursor(cursor_name))
 
     def paint(self, _widget, widget_ctx):
         if self.mw and self.mw.canvas:

@@ -56,6 +56,9 @@ class ColorPickerApp(wal.Application, UCApplication):
 
         self.wins = []
         self.new()
+
+        # Setting scroll fg color
+        config.scroll_fg = self.wins[0].get_scroll_fg()
         self.run()
 
     def exit(self, *_args):

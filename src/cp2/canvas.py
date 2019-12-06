@@ -34,6 +34,11 @@ def in_bbox(bbox, point):
     return bbox[0] < point[0] < bbox[2] and bbox[1] < point[1] < bbox[3]
 
 
+def rect2bbox(rect):
+    x, y, w, h = rect
+    return x, y, x + w, y + h
+
+
 # Color processing functions
 def color_to_hex(color):
     hexcolor = '#'
@@ -110,7 +115,7 @@ class CanvasObj(Decomposable):
 
 class LogoObj(CanvasObj):
     logo = None
-    cursor = 'hand'
+    cursor = 'pointer'
 
     def __init__(self, canvas):
         CanvasObj.__init__(self, canvas)
@@ -157,7 +162,7 @@ class ScrollObj(CanvasObj):
             rect_h = h * h / virtual_h
             rect_w = sw
             y = self.canvas.dy + self.canvas.dy * h / virtual_h
-            ctx.set_source_rgb(*config.scroll_fg)
+            ctx.set_source_rgba(*config.scroll_fg)
             ctx.rectangle(w - rect_w, y, w, rect_h)
             ctx.fill()
 
@@ -165,7 +170,7 @@ class ScrollObj(CanvasObj):
 
 
 class AddButtonObj(CanvasObj):
-    cursor = 'hand'
+    cursor = 'pointer'
 
     def paint(self, ctx):
         cell_h = config.cell_height
@@ -331,7 +336,8 @@ class Canvas(Decomposable):
         self.ctx.set_matrix(cairo.Matrix(1.0, 0.0, 0.0, 1.0, 0.0, -self.dy))
 
         for obj in reversed(self.z_order):
-            obj.paint(self.ctx)
+            if obj.active:
+                obj.paint(self.ctx)
 
         widget_ctx.set_source_surface(self.surface)
         widget_ctx.paint()
