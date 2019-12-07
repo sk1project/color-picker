@@ -99,7 +99,8 @@ class CanvasObj(Decomposable):
     def is_over(self, point):
         return in_bbox(self.bbox, point)
 
-    def on_move(self, point):
+    def on_move(self, event):
+        point = event.get_point()
         if self.active:
             if self.is_over(point):
                 self.canvas.set_cursor(self.cursor)
@@ -171,7 +172,6 @@ class LogoObj(CanvasObj):
 class ScrollObj(CanvasObj):
     tbbox = NO_BBOX
     start = None
-    move = False
     coef = 1.0
 
     def on_left_pressed(self, event):
@@ -179,8 +179,7 @@ class ScrollObj(CanvasObj):
         if not self.is_over(self.start):
             return False
         if in_bbox(self.tbbox, self.start):
-            self.move = True
-            return
+            return True
         elif self.start[1] > self.tbbox[3]:
             dy = (self.start[1] - self.tbbox[3] + self.tbbox[1]) / self.coef
         else:
@@ -189,8 +188,18 @@ class ScrollObj(CanvasObj):
         self.canvas.dc.refresh()
         return True
 
-    def on_left_released(self, _event):
-        self.move = False
+    def on_move(self, event):
+        if not self.canvas.left_pressed == self:
+            return CanvasObj.on_move(self, event)
+        else:
+            point = event.get_point()
+            dy = self.canvas.dy + (point[1] - self.start[1]) // self.coef
+            dy = dy if dy > 0 else 0
+            dy = dy if dy < self.canvas.max_dy else self.canvas.max_dy
+            self.start = point
+            self.canvas.dy = dy
+            self.canvas.dc.refresh()
+            return True
 
     def paint(self, ctx):
         w, h = self.canvas.width, self.canvas.height
@@ -381,8 +390,11 @@ class Canvas(Decomposable):
         self.dc.refresh()
 
     def on_move(self, event):
+        if self.left_pressed:
+            self.left_pressed.on_move(event)
+            return
         for obj in self.z_order:
-            if obj.on_move(event.get_point()):
+            if obj.on_move(event):
                 break
 
     def on_leave(self, _event):
@@ -392,6 +404,7 @@ class Canvas(Decomposable):
 
     def on_left_pressed(self, event):
         for obj in self.z_order:
+            self.left_pressed = None
             if obj.on_left_pressed(event):
                 self.left_pressed = obj
                 break
@@ -399,6 +412,7 @@ class Canvas(Decomposable):
     def on_left_released(self, event):
         if self.left_pressed:
             self.left_pressed.on_left_released(event)
+            self.left_pressed = None
 
     def on_right_pressed(self, event):
         pass
