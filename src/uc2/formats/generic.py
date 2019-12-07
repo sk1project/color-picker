@@ -19,12 +19,12 @@ import logging
 
 from uc2 import _, uc2const
 from uc2 import events, msgconst
-from uc2.utils import fs, fsutils
+from uc2.utils import fs, fsutils, mixutils
 
 LOG = logging.getLogger(__name__)
 
 
-class ModelObject(object):
+class ModelObject(mixutils.DecomposableTreeObject):
     """
     Abstract parent class for all model
     objects. Provides common object properties.
@@ -32,13 +32,6 @@ class ModelObject(object):
     cid = 0
     parent = None
     config = None
-    childs = []
-
-    def destroy(self):
-        for child in self.childs:
-            child.destroy()
-        for item in self.__dict__.keys():
-            self.__dict__[item] = None
 
     def update(self):
         pass

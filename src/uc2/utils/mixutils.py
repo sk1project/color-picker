@@ -72,3 +72,13 @@ class Decomposable:
             self.__dict__[key] = None
             if isinstance(obj, Decomposable):
                 obj.destroy()
+
+
+class DecomposableTreeObject:
+    childs = []
+
+    def destroy(self):
+        for child in self.childs:
+            child.destroy()
+        for item in self.__dict__.keys():
+            self.__dict__[item] = None
