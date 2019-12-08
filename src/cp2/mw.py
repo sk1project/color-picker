@@ -21,7 +21,6 @@ from cp2.canvas import Canvas
 
 
 class PaletteWindow(wal.PaletteWindow):
-    doc = None
     canvas = None
 
     def __init__(self, app, doc):
@@ -72,19 +71,14 @@ class PaletteWindow(wal.PaletteWindow):
         self.set_doc(doc)
 
     def set_doc(self, doc):
-        self.doc, old_doc = doc, self.doc
-        if not self.doc.model.name:
-            self.doc.model.name = _('Untitled palette')
-        self.set_subtitle(self.doc.model.name)
         if self.canvas:
             self.canvas.destroy()
-            old_doc.close()
-        self.canvas = Canvas(self)
+        self.canvas = Canvas(self, doc)
         self.dc.refresh()
 
     def can_be_reloaded(self):
         # TODO should be history check
-        return not bool(self.doc.model.colors)
+        return not bool(self.canvas.doc.model.colors)
 
     def close_action(self, *_args):
         wal.PaletteWindow.destroy(self)
@@ -103,7 +97,7 @@ class PaletteWindow(wal.PaletteWindow):
         self.app.paste_from(win=self)
 
     def on_save_as(self, *_args):
-        self.app.save_as_doc(self.doc, self)
+        self.app.save_as_doc(self.canvas.doc, self)
 
     def on_clear(self, *_args):
         self.app.clear(self)

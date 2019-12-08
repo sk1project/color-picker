@@ -119,7 +119,7 @@ class ColorPickerApp(wal.Application, UCApplication):
 
         # TODO here should be API call
         colors = doc.model.colors
-        win.doc.model.colors += colors
+        win.canvas.doc.model.colors += colors
 
     def save_as_doc(self, doc, win=None):
         wnd = win or self.wins[0]

@@ -21,9 +21,19 @@ import os
 
 import cairo
 
-from cp2 import config
+from cp2 import _, config
 from cp2.rend import CairoRenderer
 from uc2.utils.mixutils import Decomposable
+
+
+class UndoHistory(Decomposable):
+    canvas = None
+    doc = None
+
+    def __init__(self, canvas):
+        self.canvas = canvas
+        self.doc = canvas.doc
+
 
 CAIRO_WHITE = (1.0, 1.0, 1.0)
 CAIRO_BLACK = (0.0, 0.0, 0.0)
@@ -142,7 +152,7 @@ class LogoObj(CanvasObj):
         app.open_url(f'https://{app.appdata.app_domain}')
 
     def paint(self, ctx):
-        colors = self.canvas.mw.doc.model.colors
+        colors = self.canvas.doc.model.colors
         border = config.canvas_border
 
         if not colors:
@@ -204,7 +214,7 @@ class ScrollObj(CanvasObj):
     def paint(self, ctx):
         w, h = self.canvas.width, self.canvas.height
         sw = config.scroll_hover if self.hover else config.scroll_normal
-        self.bbox = (w - sw, 0, w, h)
+        self.bbox = (w - config.scroll_hover, 0, w, h)
         virtual_h = self.canvas.virtual_h
         self.tbbox = NO_BBOX
         self.coef = 1.0
@@ -229,7 +239,7 @@ class AddButtonObj(CanvasObj):
         cell_h = config.cell_height
         cell_w = config.cell_width
         border = config.canvas_border
-        cell_num = len(self.canvas.mw.doc.model.colors)
+        cell_num = len(self.canvas.doc.model.colors)
         cell_max = self.canvas.cell_max
         y_count = cell_num // cell_max if cell_max else 0
         x_count = cell_num - cell_max * y_count
@@ -266,7 +276,7 @@ class ColorGrid(CanvasObj):
         cell_max = self.canvas.cell_max
         x_count = y_count = 0
 
-        colors = self.canvas.mw.doc.model.colors
+        colors = self.canvas.doc.model.colors
         for item in colors:
             color = cms.get_display_color(item)
             color_name = cms.get_color_name(item)
@@ -316,6 +326,7 @@ class Canvas(Decomposable):
     app = None
     mw = None
     dc = None
+    doc = None
     rend = None
     cms = None
     surface = None
@@ -332,8 +343,9 @@ class Canvas(Decomposable):
     left_pressed = None
     right_pressed = None
 
-    def __init__(self, mw):
+    def __init__(self, mw, doc):
         self.mw = mw
+        self.doc = doc
         self.app = mw.app
         self.dc = mw.dc
         self.cms = self.app.default_cms
@@ -349,6 +361,18 @@ class Canvas(Decomposable):
             self.colors,
             BackgroundObj(self),
         ]
+        self.set_subtitle()
+
+    def destroy(self):
+        if self.doc:
+            self.doc.close()
+        Decomposable.destroy(self)
+
+    def set_subtitle(self):
+        subtitle = self.doc.model.name or _('Untitled palette')
+        colornum = len(self.doc.model.colors)
+        txt = _('colors')
+        self.mw.set_subtitle(f'{subtitle} ({colornum} {txt})')
 
     def set_cursor(self, cursor_name):
         self.dc.set_cursor(cursor_name)
@@ -398,7 +422,7 @@ class Canvas(Decomposable):
                 break
 
     def on_leave(self, _event):
-        if self.scroll.hover:
+        if self.scroll.hover and not self.scroll == self.left_pressed:
             self.scroll.hover = False
             self.dc.refresh()
 
@@ -427,7 +451,7 @@ class Canvas(Decomposable):
         w, h = self.dc.get_size()
         border = config.canvas_border
         cell_h = config.cell_height
-        cell_num = len(self.mw.doc.model.colors)
+        cell_num = len(self.doc.model.colors)
         self.cell_max = (w - 2 * config.canvas_border) // config.cell_width
         self.virtual_h = \
             2 * border + math.ceil(cell_num / self.cell_max) * cell_h
