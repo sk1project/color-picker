@@ -16,4 +16,6 @@
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from .base import Application, PaletteWindow
-from .dialogs import get_open_file_name, get_save_file_name, error_dialog
+from .dialogs import color_dialog
+from .dialogs import error_dialog
+from .dialogs import get_open_file_name, get_save_file_name

@@ -20,7 +20,7 @@ import os
 import gi
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, GLib, Gio
+from gi.repository import Gtk, Gdk
 
 
 def _add_filters(dialog, file_types):
@@ -84,3 +84,17 @@ def msg_dialog(parent, title, msg, secondary_msg=None):
         dialog.format_secondary_text(secondary_msg)
     dialog.run()
     dialog.destroy()
+
+
+def color_dialog(parent, title=None, color=None):
+    ret_color = None
+    colordialog = Gtk.ColorChooserDialog(title or 'Select color', parent)
+    colordialog.set_use_alpha(False)
+    if color:
+        colordialog.set_rgba(Gdk.RGBA(*color))
+
+    if colordialog.run() == Gtk.ResponseType.OK:
+        ret_color = list(colordialog.get_rgba())[:3]
+
+    colordialog.destroy()
+    return ret_color
