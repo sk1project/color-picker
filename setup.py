@@ -17,8 +17,6 @@
 # 	You should have received a copy of the GNU General Public License
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from __future__ import print_function
-
 """
 Usage: 
 --------------------------------------------------------------------------
@@ -39,7 +37,7 @@ from distutils.core import setup
 import datetime
 import os
 import sys
-
+import string
 
 ############################################################
 
@@ -212,27 +210,23 @@ if len(sys.argv) > 1:
 # Preparing start script
 src_script = 'src/_script/color-picker.tmpl'
 dst_script = 'src/_script/color-picker'
-fileptr = open(src_script, 'r')
-fileptr2 = open(dst_script, 'w')
-while True:
-    line = fileptr.readline()
-    if line == '':
-        break
-    if '$APP_INSTALL_PATH' in line:
-        line = line.replace('$APP_INSTALL_PATH', install_path)
-    fileptr2.write(line)
-fileptr.close()
-fileptr2.close()
+
+with open(src_script, 'r') as fileptr:
+    tmpl = string.Template(fileptr.read())
+    console_scripts = tmpl.safe_substitute(APP_INSTALL_PATH=install_path)
+
+with open(dst_script, 'w') as fileptr:
+    fileptr.write(console_scripts)
 
 # Preparing setup.cfg
 ############################################################
 
-with open('setup.cfg.in', 'rb') as fileptr:
+with open('setup.cfg.in', 'r') as fileptr:
     content = fileptr.read()
     if rpm_depends:
         content += '\nrequires = ' + rpm_depends
 
-with open('setup.cfg', 'wb') as fileptr:
+with open('setup.cfg', 'w') as fileptr:
     fileptr.write(content)
 
 # Preparing locales
