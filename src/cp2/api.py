@@ -16,73 +16,49 @@
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-class UndoAPI:
-    mw = None
-    model = None
-    app = None
-    undo = []
-    redo = []
-    undo_marked = False
-    selection = None
-    callback = None
+def _set_colors(canvas, colors):
+    canvas.doc.model.colors = colors
 
-    def __init__(self, mw, callback):
-        self.mw = mw
-        self.app = mw.app
-        self.callback = callback
-        self.undo = []
-        self.redo = []
 
-    def do_undo(self):
-        transaction_list = self.undo[-1][0]
-        for transaction in transaction_list:
-            self._do_action(transaction)
-        tr = self.undo[-1]
-        self.undo.remove(tr)
-        self.redo.append(tr)
-        # self.eventloop.emit(self.eventloop.DOC_MODIFIED)
-        if self.undo and self.undo[-1][2]:
-            self.callback()
-        if not self.undo and not self.undo_marked:
-            self.callback()
+def _set_selection(canvas, selection):
+    canvas.selection = selection
 
-    def do_redo(self):
-        action_list = self.redo[-1][1]
-        for action in action_list:
-            self._do_action(action)
-        tr = self.redo[-1]
-        self.redo.remove(tr)
-        self.undo.append(tr)
-        # self.eventloop.emit(self.eventloop.DOC_MODIFIED)
-        if not self.undo or self.undo[-1][2]:
-            self.callback()
 
-    def _do_action(self, action):
-        if not action:
-            return
-        if len(action) == 1:
-            action[0]()
-        else:
-            action[0](*action[1:])
+def color_transaction(func):
+    def func_wrapper(canvas, *args, **kwargs):
+        colors_before = [] + canvas.doc.model.colors
+        selection_before = [] + canvas.selection
 
-    def _clear_history_stack(self, stack):
-        for obj in stack:
-            if isinstance(obj, list):
-                self._clear_history_stack(obj)
-        return []
+        func(canvas, *args, **kwargs)
 
-    def add_undo(self, transaction):
-        self.redo = self._clear_history_stack(self.redo)
-        self.undo.append(transaction)
-        # self.eventloop.emit(self.eventloop.DOC_MODIFIED)
-        self.callback()
+        colors_after = [] + canvas.doc.model.colors
+        selection_after = [] + canvas.selection
+        canvas.history.add_transaction(
+            [[
+                (_set_colors, canvas, colors_before),
+                (_set_selection, canvas, selection_before)
+            ], [
+                (_set_colors, canvas, colors_after),
+                (_set_selection, canvas, selection_after)
+            ]]
+        )
 
-    def save_mark(self):
-        for item in self.undo:
-            item[2] = False
-        for item in self.redo:
-            item[2] = False
+    return func_wrapper
 
-        if self.undo:
-            self.undo[-1][2] = True
-            self.undo_marked = True
+
+@color_transaction
+def add_color(canvas, color):
+    canvas.doc.model.colors = canvas.doc.model.colors + [color]
+    canvas.selection = [(color, len(canvas.doc.model.colors) - 1)]
+
+
+@color_transaction
+def add_colors(canvas, colors):
+    model_colors = [] + canvas.doc.model.colors
+    index = len(model_colors)
+    model_colors += colors
+    canvas.doc.model.colors = model_colors
+    selection = []
+    for color in colors:
+        selection.append((color, index))
+        index += 1

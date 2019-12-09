@@ -61,10 +61,11 @@ class PaletteWindow(wal.PaletteWindow):
             [('Ctrl', 'Down'), self.canvas_down],
             [('Ctrl', 'KP_Up'), self.canvas_up],
             [('Ctrl', 'KP_Down'), self.canvas_down],
+            [('Ctrl', 'Z'), self.canvas_undo],
+            [('Ctrl-Shift', 'Z'), self.canvas_redo],
         ]
         self.make_shortcuts(acc_keys)
 
-        self.set_title(self.app.appdata.app_name)
         self.set_min_size(*config.mw_min_size)
         self.center()
         self.show()
@@ -77,7 +78,6 @@ class PaletteWindow(wal.PaletteWindow):
         self.dc.refresh()
 
     def can_be_reloaded(self):
-        # TODO should be history check
         return not bool(self.canvas.doc.model.colors)
 
     def close_action(self, *_args):
@@ -122,3 +122,9 @@ class PaletteWindow(wal.PaletteWindow):
 
     def canvas_down(self, *_args):
         self.canvas.scroll_down()
+
+    def canvas_undo(self, *_args):
+        self.canvas.history.undo()
+
+    def canvas_redo(self, *_args):
+        self.canvas.history.redo()

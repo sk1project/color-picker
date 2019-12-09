@@ -21,18 +21,67 @@ import os
 
 import cairo
 
-from cp2 import _, config
-from cp2.rend import CairoRenderer
+import wal
+from cp2 import _, config, api
+from uc2 import uc2const
 from uc2.utils.mixutils import Decomposable
+
+
+# undo/redo actions a list of callable and args:
+# [(callable, arg0, arg1...), (callable, arg0, arg1...), ...]
+
+# Transaction - list of [undo_actions, redo_actions]
+
+# Undo stack format:
+# [transaction, transaction, ... ,transaction]
+
+# index - last transaction (0 if Undo stack is empty)
+# saved index - transaction saved in file (-1 if not saved)
 
 
 class UndoHistory(Decomposable):
     canvas = None
-    doc = None
+    undo_stack = None
+    index = 0
+    saved_index = 0
 
     def __init__(self, canvas):
         self.canvas = canvas
-        self.doc = canvas.doc
+        self.undo_stack = [[None, None]]
+
+    def add_transaction(self, transaction):
+        if self.index < len(self.undo_stack) - 1:
+            self.undo_stack = self.undo_stack[:self.index + 1]
+        self.undo_stack[-1][1] = transaction[1]
+        self.undo_stack.append([transaction[0], None])
+        self.index += 1
+        self.canvas.reflect_transaction()
+
+    def is_undo(self):
+        return self.index > 0
+
+    def is_redo(self):
+        return bool(self.undo_stack[self.index][1])
+
+    def is_saved(self):
+        return self.index == self.saved_index
+
+    def set_saved(self):
+        self.saved_index = self.index
+
+    def undo(self):
+        if self.is_undo():
+            for item in self.undo_stack[self.index][0]:
+                item[0](*item[1:])
+            self.index -= 1
+            self.canvas.reflect_transaction()
+
+    def redo(self):
+        if self.is_redo():
+            for item in self.undo_stack[self.index][1]:
+                item[0](*item[1:])
+            self.index += 1
+            self.canvas.reflect_transaction()
 
 
 CAIRO_WHITE = (1.0, 1.0, 1.0)
@@ -235,6 +284,12 @@ class ScrollObj(CanvasObj):
 class AddButtonObj(CanvasObj):
     cursor = 'pointer'
 
+    def on_left_released(self, _event):
+        clr = wal.color_dialog(self.canvas.mw, _('Select color'))
+        if clr:
+            color = [uc2const.COLOR_RGB, clr, 1.0, '', '']
+            api.add_color(self.canvas, color)
+
     def paint(self, ctx):
         cell_h = config.cell_height
         cell_w = config.cell_width
@@ -327,10 +382,11 @@ class Canvas(Decomposable):
     mw = None
     dc = None
     doc = None
-    rend = None
+    history = None
     cms = None
     surface = None
     ctx = None
+    selection = None
 
     dy = 0
     max_dy = 0
@@ -349,7 +405,8 @@ class Canvas(Decomposable):
         self.app = mw.app
         self.dc = mw.dc
         self.cms = self.app.default_cms
-        self.rend = CairoRenderer(self)
+        self.history = UndoHistory(self)
+        self.selection = []
 
         self.colors = ColorGrid(self)
         self.scroll = ScrollObj(self)
@@ -361,18 +418,22 @@ class Canvas(Decomposable):
             self.colors,
             BackgroundObj(self),
         ]
-        self.set_subtitle()
+        self.reflect_transaction()
 
     def destroy(self):
         if self.doc:
             self.doc.close()
         Decomposable.destroy(self)
 
-    def set_subtitle(self):
+    def reflect_transaction(self):
+        mark = '' if self.history.is_saved() else ' [*]'
+        self.mw.set_title(self.app.appdata.app_name + mark)
+
         subtitle = self.doc.model.name or _('Untitled palette')
         colornum = len(self.doc.model.colors)
         txt = _('colors')
         self.mw.set_subtitle(f'{subtitle} ({colornum} {txt})')
+        self.dc.refresh()
 
     def set_cursor(self, cursor_name):
         self.dc.set_cursor(cursor_name)
@@ -467,8 +528,7 @@ class Canvas(Decomposable):
         self.ctx.set_matrix(cairo.Matrix(1.0, 0.0, 0.0, 1.0, 0.0, -self.dy))
 
         for obj in reversed(self.z_order):
-            if obj.active:
-                obj.paint(self.ctx)
+            obj.paint(self.ctx)
 
         widget_ctx.set_source_surface(self.surface)
         widget_ctx.paint()

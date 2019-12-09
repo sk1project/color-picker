@@ -21,7 +21,7 @@ import sys
 import webbrowser
 
 import wal
-from cp2 import _, config, dialogs
+from cp2 import _, config, dialogs, api
 from cp2.app_cms import AppColorManager
 from cp2.app_conf import AppData
 from cp2.app_stdout import StreamLogger
@@ -117,9 +117,8 @@ class ColorPickerApp(wal.Application, UCApplication):
         if not doc:
             return
 
-        # TODO here should be API call
         colors = doc.model.colors
-        win.canvas.doc.model.colors += colors
+        api.add_colors(win.canvas, colors)
 
     def save_as_doc(self, doc, win=None):
         wnd = win or self.wins[0]
