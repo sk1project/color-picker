@@ -30,9 +30,9 @@ class PaletteWindow(wal.PaletteWindow):
             [(_('New palette'), 'new', self.on_new), ],
             [
                 (_('Open palette...'), 'open', self.on_open),
-                (_('Paste from file...'), 'paste-from', self.on_paste_from),
+                # (_('Paste from file...'), 'paste-from', self.on_paste_from),
                 (_('Save as...'), 'save-as', self.on_save_as),
-                (_('Clear palette'), 'clear', self.on_clear),
+                # (_('Clear palette'), 'clear', self.on_clear),
             ],
             [
                 (_('Palette Collection'), 'palettes', self.on_palettes),

@@ -120,11 +120,12 @@ class AppConfig(UCConfig):
 
     # ============== CANVAS OPTIONS ================
     canvas_border = 20
-
-    # colors
     canvas_fg = (0.0, 0.0, 0.0)
     canvas_bg = (1.0, 1.0, 1.0)
+
+    # colors
     addbutton_fg = (0.9, 0.9, 0.9)
+    cell_border = 2
     cell_border_color = (0.9, 0.9, 0.9)
 
     # Scroll fg will be overridden in runtime by gtk3 theme selection bg value

@@ -57,6 +57,13 @@ def get_save_file_name(
         for wildcard, descr in ft:
             if ret[1] == descr:
                 index = ft.index((wildcard, descr))
-                return ret[0], file_types[index]
+
+                doc_file = ret[0]
+                if os.path.splitext(doc_file)[1] != "." + \
+                        uc2const.FORMAT_EXTENSION[file_types[index]][0]:
+                    doc_file = os.path.splitext(doc_file)[0] + "." + \
+                               uc2const.FORMAT_EXTENSION[file_types[index]][0]
+
+                return doc_file, file_types[index]
     return ret[0]
 

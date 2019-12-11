@@ -174,7 +174,7 @@ class CanvasObj(Decomposable):
         return False
 
     def on_left_pressed(self, event):
-        return self.is_over(event.get_point())
+        return self.is_over(event.get_point()) and self.active
 
     def on_left_released(self, _event):
         pass
@@ -201,10 +201,10 @@ class LogoObj(CanvasObj):
         app.open_url(f'https://{app.appdata.app_domain}')
 
     def paint(self, ctx):
-        colors = self.canvas.doc.model.colors
+        cells = self.canvas.grid.cells
         border = config.canvas_border
 
-        if not colors:
+        if not cells:
             logo_w, logo_h = self.logo.get_width(), self.logo.get_height()
             dx = self.canvas.width - logo_w - border
             dy = self.canvas.height - logo_h - border
@@ -225,7 +225,7 @@ class LogoObj(CanvasObj):
                          dx + logo_w / 2 + ext.width / 2,
                          dy + logo_h + 10 + ext.height)
 
-        self.active = not colors
+        self.active = not cells
 
 
 class ScrollObj(CanvasObj):
@@ -294,7 +294,7 @@ class AddButtonObj(CanvasObj):
         cell_h = config.cell_height
         cell_w = config.cell_width
         border = config.canvas_border
-        cell_num = len(self.canvas.doc.model.colors)
+        cell_num = len(self.canvas.grid.cells)
         cell_max = self.canvas.cell_max
         y_count = cell_num // cell_max if cell_max else 0
         x_count = cell_num - cell_max * y_count
@@ -322,47 +322,84 @@ class AddButtonObj(CanvasObj):
         ctx.stroke()
 
 
-class ColorGrid(CanvasObj):
-    def paint(self, ctx):
+class ColorCell:
+    color = None
+
+    def __init__(self, canvas, color):
+        self.canvas = canvas
+        self.color = color
+
+    def paint(self, ctx, x_count, y_count):
         cms = self.canvas.cms
         border = config.canvas_border
         cell_h = config.cell_height
         cell_w = config.cell_width
-        cell_max = self.canvas.cell_max
-        x_count = y_count = 0
 
-        colors = self.canvas.doc.model.colors
-        for item in colors:
-            color = cms.get_display_color(item)
-            color_name = cms.get_color_name(item)
-            x = border + x_count * cell_w
-            y = border + y_count * cell_h
-            ctx.set_source_rgb(*color)
-            rect = (x + 2, y + 2, cell_w - 4, cell_h - 4)
+        color = cms.get_display_color(self.color)
+        color_name = cms.get_color_name(self.color)
+
+        # Colored rect
+        x = border + x_count * cell_w
+        y = border + y_count * cell_h
+        ctx.set_source_rgb(*color)
+        cb = config.cell_border
+        rect = (x + cb, y + cb, cell_w - 2 * cb, cell_h - 2 * cb)
+        draw_rounded_rect(ctx, rect, 20)
+        ctx.fill()
+
+        # Border for light color
+        if check_brightness(color):
+            ctx.set_source_rgb(*config.cell_border_color)
+            rect = (x + cb + 1, y + cb + 1,
+                    cell_w - 2 * cb - 2,
+                    cell_h - 2 * cb - 2)
             draw_rounded_rect(ctx, rect, 20)
-            ctx.fill()
+            ctx.set_line_width(1.0)
+            ctx.set_dash([])
+            ctx.stroke()
 
-            if check_brightness(color):
-                ctx.set_source_rgb(*config.cell_border_color)
-                rect = (x + 3, y + 3, cell_w - 6, cell_h - 6)
-                draw_rounded_rect(ctx, rect, 20)
-                ctx.set_line_width(1.0)
-                ctx.set_dash([])
-                ctx.stroke()
+        # Color value label
+        ctx.set_font_size(15)
+        label = color_to_hex(color)
+        ext = ctx.text_extents(label)
+        ctx.move_to(x + cell_w / 2 - ext.width / 2,
+                    y + cell_h / 2 + ext.height / 2)
+        ctx.set_source_rgb(*text_color(color))
+        ctx.show_text(label)
 
-            ctx.set_font_size(15)
-            label = color_to_hex(color)
-            ext = ctx.text_extents(label)
-            ctx.move_to(x + cell_w / 2 - ext.width / 2,
-                        y + cell_h / 2 + ext.height / 2)
-            ctx.set_source_rgb(*text_color(color))
-            ctx.show_text(label)
-
+        # Color name label
+        if color_name != label and color_name != label.lower():
             ctx.set_font_size(10)
             ext = ctx.text_extents(color_name)
             ctx.move_to(x + cell_w / 2 - ext.width / 2,
                         y + cell_h / 1.5 + ext.height / 2)
             ctx.show_text(color_name)
+
+
+class ColorGrid(CanvasObj):
+    cells = None
+
+    def __init__(self, canvas):
+        super().__init__(canvas)
+        self.sync_from()
+
+    def sync_from(self):
+        self.cells = [ColorCell(self.canvas, color)
+                      for color in self.canvas.doc.model.colors]
+
+    def sync_to(self):
+        self.canvas.doc.model.colors = [cell.color for cell in self.cells]
+
+    def add_color(self, color):
+        self.cells = self.cells + [ColorCell(self.canvas, color)]
+        return self.cells[-1]
+
+    def paint(self, ctx):
+        cell_max = self.canvas.cell_max
+        x_count = y_count = 0
+
+        for cell in self.cells:
+            cell.paint(ctx, x_count, y_count)
 
             x_count += 1
             if x_count == cell_max:
@@ -408,14 +445,14 @@ class Canvas(Decomposable):
         self.history = UndoHistory(self)
         self.selection = []
 
-        self.colors = ColorGrid(self)
+        self.grid = ColorGrid(self)
         self.scroll = ScrollObj(self)
 
         self.z_order = [
             LogoObj(self),
             self.scroll,
             AddButtonObj(self),
-            self.colors,
+            self.grid,
             BackgroundObj(self),
         ]
         self.reflect_transaction()
@@ -430,7 +467,9 @@ class Canvas(Decomposable):
         self.mw.set_title(self.app.appdata.app_name + mark)
 
         subtitle = self.doc.model.name or _('Untitled palette')
-        colornum = len(self.doc.model.colors)
+        if not self.doc.model.name:
+            self.doc.model.name = subtitle
+        colornum = len(self.grid.cells)
         txt = _('colors')
         self.mw.set_subtitle(f'{subtitle} ({colornum} {txt})')
         self.dc.refresh()

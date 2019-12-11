@@ -20,6 +20,10 @@ def _set_colors(canvas, colors):
     canvas.doc.model.colors = colors
 
 
+def _set_cells(canvas, cells):
+    canvas.grid.cells = cells
+
+
 def _set_selection(canvas, selection):
     canvas.selection = selection
 
@@ -27,18 +31,22 @@ def _set_selection(canvas, selection):
 def color_transaction(func):
     def func_wrapper(canvas, *args, **kwargs):
         colors_before = [] + canvas.doc.model.colors
+        cells_before = [] + canvas.grid.cells
         selection_before = [] + canvas.selection
 
         func(canvas, *args, **kwargs)
 
         colors_after = [] + canvas.doc.model.colors
+        cells_after = [] + canvas.grid.cells
         selection_after = [] + canvas.selection
         canvas.history.add_transaction(
             [[
                 (_set_colors, canvas, colors_before),
+                (_set_cells, canvas, cells_before),
                 (_set_selection, canvas, selection_before)
             ], [
                 (_set_colors, canvas, colors_after),
+                (_set_cells, canvas, cells_after),
                 (_set_selection, canvas, selection_after)
             ]]
         )
@@ -49,16 +57,11 @@ def color_transaction(func):
 @color_transaction
 def add_color(canvas, color):
     canvas.doc.model.colors = canvas.doc.model.colors + [color]
-    canvas.selection = [(color, len(canvas.doc.model.colors) - 1)]
+    color_cell = canvas.grid.add_color(color)
+    canvas.selection = [color_cell]
 
 
 @color_transaction
 def add_colors(canvas, colors):
-    model_colors = [] + canvas.doc.model.colors
-    index = len(model_colors)
-    model_colors += colors
-    canvas.doc.model.colors = model_colors
-    selection = []
-    for color in colors:
-        selection.append((color, index))
-        index += 1
+    canvas.doc.model.colors = canvas.doc.model.colors + colors
+    canvas.selection = [canvas.grid.add_color(color) for color in colors]

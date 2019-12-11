@@ -52,8 +52,9 @@ def get_save_file_name(parent, path, title, file_types='*'):
                                    Gtk.FileChooserAction.SAVE,
                                    (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
                                     Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
+    path = os.path.expanduser(path)
     dialog.set_current_folder(os.path.dirname(path))
-    dialog.set_filename(path)
+    dialog.set_current_name(os.path.basename(path))
     dialog.set_default_response(Gtk.ResponseType.OK)
     _add_filters(dialog, file_types)
 
