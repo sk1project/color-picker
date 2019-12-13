@@ -109,7 +109,7 @@ class PaletteWindow(Gtk.ApplicationWindow):
                 'Alt': Gdk.ModifierType.META_MASK,
                 'Shift': Gdk.ModifierType.SHIFT_MASK,
                 'Ctrl-Shift': Gdk.ModifierType.CONTROL_MASK |
-                Gdk.ModifierType.SHIFT_MASK}.get(shortcut[0])
+                              Gdk.ModifierType.SHIFT_MASK}.get(shortcut[0])
             accel.connect(Gdk.keyval_from_name(shortcut[1]), modifier,
                           0, callback)
         self.add_accel_group(accel)
@@ -255,3 +255,26 @@ class CanvasDC(Gtk.DrawingArea):
                 self.mw.canvas.on_left_released(CanvasEvent(event))
             elif event.button == 3:
                 self.mw.canvas.on_right_released(CanvasEvent(event))
+
+
+CLIPBOARD = {
+    'system': None,
+    'app': None
+}
+
+
+def init_clipboard():
+    CLIPBOARD['system'] = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+
+
+def get_from_clipboard(system=True):
+    if system:
+        return CLIPBOARD['system'].wait_for_text()
+    return CLIPBOARD['app']
+
+
+def set_to_clipboard(content, system=True):
+    if system:
+        CLIPBOARD['system'].set_text(content, -1)
+    else:
+        CLIPBOARD['app'] = content

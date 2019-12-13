@@ -127,9 +127,17 @@ class AppConfig(UCConfig):
     addbutton_fg = (0.9, 0.9, 0.9)
     cell_border = 2
     cell_border_color = (0.9, 0.9, 0.9)
+    cell_corner_radius = 18
+    cell_mark_center = (84, 16)
+    cell_mark_border = 1.0
+    cell_mark_border_color = (0.0, 0.0, 0.0)
+    cell_mark_bg = (1.0, 1.0, 1.0)
+    cell_mark_fg = (0.0, 0.6, 0.0)
+    cell_mark_radius = 9
+    cell_mark_internal_radius = 5
 
     # Scroll fg will be overridden in runtime by gtk3 theme selection bg value
-    scroll_fg = (0.9375, 0.46484375, 0.2734375) # #F07746
+    scroll_fg = (0.9375, 0.46484375, 0.2734375)  # #F07746
 
     # ============== SNAPPING OPTIONS ================
 

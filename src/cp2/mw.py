@@ -15,9 +15,12 @@
 # 	You should have received a copy of the GNU General Public License
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import copy
 import wal
 from cp2 import _, config
 from cp2.canvas import Canvas
+import uc2.cms
+from . import api
 
 
 class PaletteWindow(wal.PaletteWindow):
@@ -63,6 +66,11 @@ class PaletteWindow(wal.PaletteWindow):
             [('Ctrl', 'KP_Down'), self.canvas_down],
             [('Ctrl', 'Z'), self.canvas_undo],
             [('Ctrl-Shift', 'Z'), self.canvas_redo],
+
+            [('Ctrl', 'A'), self.select_all],
+            [('None', 'Delete'), self.delete_selected],
+            [('None', 'KP_Delete'), self.delete_selected],
+            [('Ctrl', 'C'), self.copy_selected],
         ]
         self.make_shortcuts(acc_keys)
 
@@ -128,3 +136,32 @@ class PaletteWindow(wal.PaletteWindow):
 
     def canvas_redo(self, *_args):
         self.canvas.history.redo()
+
+    def select_all(self, *_args):
+        if self.canvas.grid.cells:
+            self.canvas.selection = [] + self.canvas.grid.cells
+            self.canvas.reflect_transaction()
+
+    def delete_selected(self, *_args):
+        if self.canvas.selection:
+            api.delete_selected(self.canvas)
+
+    def copy_selected(self, *_args):
+        selection = self.canvas.selection
+        if selection:
+            selected = [copy.deepcopy(cell.color) for cell in selection]
+            txt = ' '.join([uc2.cms.rgb_to_hexcolor(color[1])
+                            for color in selected])
+            wal.set_to_clipboard(txt)
+            wal.set_to_clipboard(selected, False)
+
+    def cut_selected(self, *_args):
+        self.copy_selected()
+        self.delete_selected()
+
+    def paste(self, *_args):
+        colors = wal.get_from_clipboard(False)
+        txt = wal.get_from_clipboard()
+
+        if not colors and not txt:
+            return

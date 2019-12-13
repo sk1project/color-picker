@@ -25,6 +25,7 @@ import wal
 from cp2 import _, config, api
 from uc2 import uc2const
 from uc2.utils.mixutils import Decomposable
+import uc2.cms
 
 
 # undo/redo actions a list of callable and args:
@@ -100,16 +101,6 @@ def rect2bbox(rect):
 
 
 # Color processing functions
-def color_to_hex(color):
-    hexcolor = '#'
-    for value in color:
-        hexval = hex(round(value * 255))[2:]
-        if len(hexval) < 2:
-            hexval = '0' + hexval
-        hexcolor += hexval
-    return hexcolor.upper()
-
-
 def rgb_to_hsv(color):
     h, s, v = colorsys.rgb_to_hsv(*color)
     return h * 360, s * 100, v * 100
@@ -322,12 +313,47 @@ class AddButtonObj(CanvasObj):
         ctx.stroke()
 
 
+APPROXIMATES = [(20, 2), (15, 3), (12, 4), (10, 5), (7, 7),
+                (5, 10), (4, 12), (3, 15), (2, 20)]
+
+
 class ColorCell:
     color = None
+    bboxes = None
 
     def __init__(self, canvas, color):
         self.canvas = canvas
         self.color = color
+        self.bboxes = []
+
+    def win2grid(self, point):
+        border = config.canvas_border
+        return point[0] - border, point[1] - border + self.canvas.dy
+
+    def grid2win(self, point):
+        border = config.canvas_border
+        return point[0] + border, point[1] + border - self.canvas.dy
+
+    def win2cell(self, point):
+        cell_max = self.canvas.cell_max
+        index = self.canvas.grid.cells.index(self)
+        row = index // cell_max
+        column = index - row * cell_max
+        origin = (column * config.cell_width, row * config.cell_height)
+        grid_point = self.win2grid(point)
+        return tuple(i0 - i1 for i0, i1 in zip(grid_point, origin))
+
+    def cell2win(self, point):
+        cell_max = self.canvas.cell_max
+        index = self.canvas.grid.cells.index(self)
+        row = index // cell_max
+        column = index - row * cell_max
+        origin = (column * config.cell_width, row * config.cell_height)
+        return tuple(i0 + i1 for i0, i1 in zip(point, self.grid2win(origin)))
+
+    def is_over(self, point):
+        cpoint = self.win2cell(point)
+        return any([in_bbox(bbox, cpoint) for bbox in self.bboxes])
 
     def paint(self, ctx, x_count, y_count):
         cms = self.canvas.cms
@@ -344,7 +370,7 @@ class ColorCell:
         ctx.set_source_rgb(*color)
         cb = config.cell_border
         rect = (x + cb, y + cb, cell_w - 2 * cb, cell_h - 2 * cb)
-        draw_rounded_rect(ctx, rect, 20)
+        draw_rounded_rect(ctx, rect, config.cell_corner_radius)
         ctx.fill()
 
         # Border for light color
@@ -353,14 +379,14 @@ class ColorCell:
             rect = (x + cb + 1, y + cb + 1,
                     cell_w - 2 * cb - 2,
                     cell_h - 2 * cb - 2)
-            draw_rounded_rect(ctx, rect, 20)
+            draw_rounded_rect(ctx, rect, config.cell_corner_radius)
             ctx.set_line_width(1.0)
             ctx.set_dash([])
             ctx.stroke()
 
         # Color value label
         ctx.set_font_size(15)
-        label = color_to_hex(color)
+        label = uc2.cms.rgb_to_hexcolor(color)
         ext = ctx.text_extents(label)
         ctx.move_to(x + cell_w / 2 - ext.width / 2,
                     y + cell_h / 2 + ext.height / 2)
@@ -375,9 +401,30 @@ class ColorCell:
                         y + cell_h / 1.5 + ext.height / 2)
             ctx.show_text(color_name)
 
+        # Selection mark
+        if self in self.canvas.selection:
+            cx, cy = self.cell2win(config.cell_mark_center)
+            cy += self.canvas.dy
+            r = config.cell_mark_radius
+            ctx.arc(cx, cy, r, 0, 2 * math.pi)
+            ctx.set_source_rgb(*config.cell_mark_bg)
+            ctx.fill()
+
+            ctx.arc(cx, cy, r, 0, 2 * math.pi)
+            ctx.set_source_rgb(*config.cell_mark_border_color)
+            ctx.set_line_width(1.0)
+            ctx.set_dash([])
+            ctx.stroke()
+
+            r = config.cell_mark_internal_radius
+            ctx.arc(cx, cy, r, 0, 2 * math.pi)
+            ctx.set_source_rgb(*config.cell_mark_fg)
+            ctx.fill()
+
 
 class ColorGrid(CanvasObj):
     cells = None
+    tail_bbox = NO_BBOX
 
     def __init__(self, canvas):
         super().__init__(canvas)
@@ -390,24 +437,93 @@ class ColorGrid(CanvasObj):
     def sync_to(self):
         self.canvas.doc.model.colors = [cell.color for cell in self.cells]
 
+    def win2grid(self, point):
+        border = config.canvas_border
+        return point[0] - border, point[1] - border + self.canvas.dy
+
+    def index_by_point(self, point):
+        index = None
+        if in_bbox(self.bbox, point):
+            x, y = self.win2grid(point)
+            column = x // config.cell_width
+            row = y // config.cell_height
+            index = row * self.canvas.cell_max + column
+            index = int(index) if index < len(self.canvas.grid.cells) else None
+        return index
+
+    def is_over(self, point):
+        if in_bbox(self.bbox, point) and not in_bbox(self.tail_bbox, point):
+            index = self.index_by_point(point)
+            if index is not None:
+                return self.cells[index].is_over(point)
+        return False
+
     def add_color(self, color):
         self.cells = self.cells + [ColorCell(self.canvas, color)]
         return self.cells[-1]
+
+    def get_approximates(self):
+        coef = config.cell_corner_radius / 18
+        border = config.cell_border
+        w = config.cell_width
+        h = config.cell_height
+        apoints = [(x * coef + border, y * coef + border)
+                   for x, y in APPROXIMATES]
+        return [(x, y, w - x, h - y) for x, y in apoints]
+
+    def on_left_released(self, event):
+        point = event.get_point()
+        index = self.index_by_point(point)
+        if index is not None:
+            if event.is_shift():
+                self.canvas.selection.append(self.cells[index])
+            else:
+                self.canvas.selection = [self.cells[index]]
+            self.canvas.reflect_transaction()
 
     def paint(self, ctx):
         cell_max = self.canvas.cell_max
         x_count = y_count = 0
 
+        bboxes = self.get_approximates()
+
         for cell in self.cells:
             cell.paint(ctx, x_count, y_count)
+            cell.bboxes = bboxes
 
             x_count += 1
             if x_count == cell_max:
                 x_count = 0
                 y_count += 1
 
+        self.bbox = self.tail_bbox = NO_BBOX
+        if self.cells:
+            border = config.canvas_border
+            cell_h = config.cell_height
+            cell_w = config.cell_width
+            cell_num = len(self.cells)
+
+            if len(self.cells) > cell_max:
+                w = cell_max * cell_w
+                h = math.ceil(cell_num / cell_max) * cell_h
+            else:
+                h = cell_h
+                w = cell_num * cell_w
+            self.bbox = (border, border - self.canvas.dy,
+                         border + w, border + h - self.canvas.dy)
+
+            if cell_num / cell_max > cell_num // cell_max:
+                last_row = cell_num - round((cell_num // cell_max) * cell_max)
+                self.tail_bbox = (border + last_row * cell_w,
+                                  border + h - cell_h - self.canvas.dy,
+                                  border + w, border + h - self.canvas.dy)
+
 
 class BackgroundObj(CanvasObj):
+    def on_left_released(self, _event):
+        self.canvas.selection = []
+        self.canvas.reflect_transaction()
+
     def paint(self, ctx):
         self.bbox = (0, 0, self.canvas.width, self.canvas.height)
         ctx.set_source_rgb(*config.canvas_bg)

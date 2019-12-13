@@ -57,11 +57,19 @@ def color_transaction(func):
 @color_transaction
 def add_color(canvas, color):
     canvas.doc.model.colors = canvas.doc.model.colors + [color]
-    color_cell = canvas.grid.add_color(color)
-    canvas.selection = [color_cell]
+    canvas.selection = [canvas.grid.add_color(color)]
 
 
 @color_transaction
 def add_colors(canvas, colors):
     canvas.doc.model.colors = canvas.doc.model.colors + colors
     canvas.selection = [canvas.grid.add_color(color) for color in colors]
+
+
+@color_transaction
+def delete_selected(canvas):
+    for cell in canvas.selection:
+        canvas.grid.cells.remove(cell)
+    canvas.grid.sync_to()
+    canvas.selection = []
+
