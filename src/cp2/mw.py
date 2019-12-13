@@ -20,6 +20,7 @@ import wal
 from cp2 import _, config
 from cp2.canvas import Canvas
 import uc2.cms
+from uc2 import uc2const
 from . import api
 
 
@@ -67,10 +68,12 @@ class PaletteWindow(wal.PaletteWindow):
             [('Ctrl', 'Z'), self.canvas_undo],
             [('Ctrl-Shift', 'Z'), self.canvas_redo],
 
+            [('Ctrl-Shift', 'A'), self.deselect],
             [('Ctrl', 'A'), self.select_all],
             [('None', 'Delete'), self.delete_selected],
             [('None', 'KP_Delete'), self.delete_selected],
             [('Ctrl', 'C'), self.copy_selected],
+            [('Ctrl', 'X'), self.cut_selected],
         ]
         self.make_shortcuts(acc_keys)
 
@@ -142,6 +145,11 @@ class PaletteWindow(wal.PaletteWindow):
             self.canvas.selection = [] + self.canvas.grid.cells
             self.canvas.reflect_transaction()
 
+    def deselect(self, *_args):
+        if self.canvas.selection:
+            self.canvas.selection = []
+            self.canvas.reflect_transaction()
+
     def delete_selected(self, *_args):
         if self.canvas.selection:
             api.delete_selected(self.canvas)
@@ -150,8 +158,7 @@ class PaletteWindow(wal.PaletteWindow):
         selection = self.canvas.selection
         if selection:
             selected = [copy.deepcopy(cell.color) for cell in selection]
-            txt = ' '.join([uc2.cms.rgb_to_hexcolor(color[1])
-                            for color in selected])
+            txt = self._colors2txt(selected)
             wal.set_to_clipboard(txt)
             wal.set_to_clipboard(selected, False)
 
@@ -159,9 +166,37 @@ class PaletteWindow(wal.PaletteWindow):
         self.copy_selected()
         self.delete_selected()
 
+    def _colors2txt(self, colors):
+        return ' '.join([uc2.cms.rgb_to_hexcolor(color[1]) for color in colors])
+
+    def _txt2colors(self, txt):
+        colors = []
+        for item in txt.split():
+            if item.startswith('#') and len(item) in (4,7):
+                try:
+                    colors.append(uc2.cms.hexcolor_to_rgb(item))
+                except Exception:
+                    pass
+        return [[uc2const.COLOR_RGB, clr, 1.0, ''] for clr in colors]
+
     def paste(self, *_args):
         colors = wal.get_from_clipboard(False)
         txt = wal.get_from_clipboard()
 
         if not colors and not txt:
             return
+        elif not colors and txt:
+            colors = self._txt2colors(txt)
+        elif colors and txt:
+            if self._colors2txt(colors) != txt:
+                clrs = self._txt2colors(txt)
+                colors = clrs or colors
+
+        if not colors:
+            return
+
+        selection = self.canvas.selection
+        if len(selection)==1:
+            pass
+        else:
+            api.add_colors(self.canvas, colors)

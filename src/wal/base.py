@@ -269,7 +269,7 @@ def init_clipboard():
 
 def get_from_clipboard(system=True):
     if system:
-        return CLIPBOARD['system'].wait_for_text()
+        return CLIPBOARD['system'].wait_for_text().strip()
     return CLIPBOARD['app']
 
 

@@ -476,7 +476,10 @@ class ColorGrid(CanvasObj):
         index = self.index_by_point(point)
         if index is not None:
             if event.is_shift():
-                self.canvas.selection.append(self.cells[index])
+                if self.cells[index] in self.canvas.selection:
+                    self.canvas.selection.remove(self.cells[index])
+                else:
+                    self.canvas.selection.append(self.cells[index])
             else:
                 self.canvas.selection = [self.cells[index]]
             self.canvas.reflect_transaction()
