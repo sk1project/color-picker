@@ -170,8 +170,8 @@ class CanvasObj(Decomposable):
     def on_left_released(self, _event):
         pass
 
-    def on_right_pressed(self, _event):
-        return False
+    def on_right_pressed(self, event):
+        return self.is_over(event.get_point()) and self.active
 
     def on_right_released(self, _event):
         pass
@@ -294,8 +294,10 @@ class AddButtonObj(CanvasObj):
         y = border + y_count * cell_h
         ctx.set_source_rgb(*config.addbutton_fg)
         rect = (x + 10, y + 10, cell_w - 20, cell_h - 20)
-        self.bbox = (rect[0], rect[1] - self.canvas.dy,
-                     rect[0] + rect[2], rect[1] + rect[3] - self.canvas.dy)
+        self.bbox = (border + x_count * cell_w,
+                     border + y_count * cell_h - self.canvas.dy,
+                     border + (x_count + 1) * cell_w,
+                     border + (y_count + 1) * cell_h - self.canvas.dy)
         draw_rounded_rect(ctx, rect, 20)
         ctx.set_line_width(4.0)
         ctx.set_dash([15, 8])
@@ -394,7 +396,7 @@ class ColorCell:
         ctx.show_text(label)
 
         # Color name label
-        if color_name != label and color_name != label.lower():
+        if color_name != label and color_name.lower() != label.lower():
             ctx.set_font_size(10)
             ext = ctx.text_extents(color_name)
             ctx.move_to(x + cell_w / 2 - ext.width / 2,
@@ -451,16 +453,28 @@ class ColorGrid(CanvasObj):
             index = int(index) if index < len(self.canvas.grid.cells) else None
         return index
 
-    def is_over(self, point):
+    def is_over(self, point, check_cell=True):
         if in_bbox(self.bbox, point) and not in_bbox(self.tail_bbox, point):
+            if not check_cell:
+                return True
             index = self.index_by_point(point)
             if index is not None:
                 return self.cells[index].is_over(point)
         return False
 
+    def make_cell(self, color):
+        return ColorCell(self.canvas, color)
+
     def add_color(self, color):
-        self.cells = self.cells + [ColorCell(self.canvas, color)]
+        self.cells = self.cells + [self.make_cell(color)]
         return self.cells[-1]
+
+    def insert_color(self, color, index):
+        cells = [] + self.cells
+        cell = self.make_cell(color)
+        cells.insert(index, cell)
+        self.cells = cells
+        return cell
 
     def get_approximates(self):
         coef = config.cell_corner_radius / 18
@@ -475,7 +489,7 @@ class ColorGrid(CanvasObj):
         point = event.get_point()
         index = self.index_by_point(point)
         if index is not None:
-            if event.is_shift():
+            if event.is_shift() or event.is_ctrl():
                 if self.cells[index] in self.canvas.selection:
                     self.canvas.selection.remove(self.cells[index])
                 else:
@@ -483,6 +497,9 @@ class ColorGrid(CanvasObj):
             else:
                 self.canvas.selection = [self.cells[index]]
             self.canvas.reflect_transaction()
+
+    def on_right_pressed(self, event):
+        return self.is_over(event.get_point(), False) and self.active
 
     def paint(self, ctx):
         cell_max = self.canvas.cell_max
@@ -526,6 +543,9 @@ class BackgroundObj(CanvasObj):
     def on_left_released(self, _event):
         self.canvas.selection = []
         self.canvas.reflect_transaction()
+
+    def on_right_released(self, _event):
+        self.canvas.dc.show_ctx_menu(_event.get_point())
 
     def paint(self, ctx):
         self.bbox = (0, 0, self.canvas.width, self.canvas.height)
@@ -658,10 +678,16 @@ class Canvas(Decomposable):
             self.left_pressed = None
 
     def on_right_pressed(self, event):
-        pass
+        for obj in self.z_order:
+            self.right_pressed = None
+            if obj.on_right_pressed(event):
+                self.right_pressed = obj
+                break
 
     def on_right_released(self, event):
-        pass
+        if self.right_pressed:
+            self.right_pressed.on_right_released(event)
+            self.right_pressed = None
 
     def on_btn1_move(self, event):
         pass

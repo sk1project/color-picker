@@ -73,3 +73,27 @@ def delete_selected(canvas):
     canvas.grid.sync_to()
     canvas.selection = []
 
+
+@color_transaction
+def insert_colors(canvas, cell, colors):
+    canvas.selection = []
+    index = canvas.grid.cells.index(cell)
+    clrs = [] + canvas.doc.model.colors
+    canvas.doc.model.colors = clrs[:index] + colors + clrs[index:]
+    new_cells = [canvas.grid.make_cell(color) for color in colors]
+    cells = canvas.grid.cells
+    canvas.grid.cells = cells[:index] + new_cells + cells[index:]
+    canvas.selection = new_cells
+
+
+@color_transaction
+def duplicate_selected(canvas):
+    cells = canvas.selection
+    selection = [] + cells
+    for cell in cells:
+        index = canvas.grid.cells.index(cell)
+        new_cell = canvas.grid.make_cell(cell.color)
+        canvas.grid.cells.insert(index, new_cell)
+        selection.append(new_cell)
+    canvas.grid.sync_to()
+    canvas.selection = selection

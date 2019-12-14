@@ -16,10 +16,11 @@
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import copy
+
+import uc2.cms
 import wal
 from cp2 import _, config
 from cp2.canvas import Canvas
-import uc2.cms
 from uc2 import uc2const
 from . import api
 
@@ -31,21 +32,22 @@ class PaletteWindow(wal.PaletteWindow):
         wal.PaletteWindow.__init__(self, app)
 
         menu = [
-            [(_('New palette'), 'new', self.on_new), ],
             [
-                (_('Open palette...'), 'open', self.on_open),
-                # (_('Paste from file...'), 'paste-from', self.on_paste_from),
-                (_('Save as...'), 'save-as', self.on_save_as),
-                # (_('Clear palette'), 'clear', self.on_clear),
+                (_('New palette'), 'new', self.on_new, None),
+                (_('Open palette...'), 'open', self.on_open, None),
+                (_('Save as...'), 'save-as', self.on_save_as, None),
             ],
             [
-                (_('Palette Collection'), 'palettes', self.on_palettes),
+                (_('Properties...'), 'properties', self.stub, None),
             ],
             [
-                (_('Online help'), 'online-help', self.stub),
-                (_('About Color Picker'), 'about', self.stub),
+                (_('Palette Collection'), 'palettes', self.on_palettes, None),
             ],
-            [(_('Exit'), 'exit', self.app.exit), ],
+            [
+                (_('Online help'), 'online-help', self.stub, None),
+                (_('About Color Picker'), 'about', self.stub, None),
+            ],
+            [(_('Quit'), 'exit', self.app.exit, None), ],
         ]
         self.make_menu(menu)
 
@@ -74,6 +76,8 @@ class PaletteWindow(wal.PaletteWindow):
             [('None', 'KP_Delete'), self.delete_selected],
             [('Ctrl', 'C'), self.copy_selected],
             [('Ctrl', 'X'), self.cut_selected],
+            [('Ctrl', 'V'), self.paste],
+            [('Ctrl', 'D'), self.duplicate],
         ]
         self.make_shortcuts(acc_keys)
 
@@ -97,6 +101,9 @@ class PaletteWindow(wal.PaletteWindow):
 
     def stub(self, *_args):
         print('stub')
+
+    def checker_stub(self, *_args):
+        return False
 
     def on_new(self, *_args):
         self.app.new()
@@ -172,7 +179,7 @@ class PaletteWindow(wal.PaletteWindow):
     def _txt2colors(self, txt):
         colors = []
         for item in txt.split():
-            if item.startswith('#') and len(item) in (4,7):
+            if item.startswith('#') and len(item) in (4, 7):
                 try:
                     colors.append(uc2.cms.hexcolor_to_rgb(item))
                 except Exception:
@@ -196,7 +203,11 @@ class PaletteWindow(wal.PaletteWindow):
             return
 
         selection = self.canvas.selection
-        if len(selection)==1:
-            pass
+        if len(selection) == 1:
+            api.insert_colors(self.canvas, selection[0], colors)
         else:
             api.add_colors(self.canvas, colors)
+
+    def duplicate(self, *_args):
+        if self.canvas.selection:
+            api.duplicate_selected(self.canvas)

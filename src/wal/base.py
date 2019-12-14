@@ -22,6 +22,37 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, GLib, Gio
 
+ICONS = {
+    'new': 'document-new-symbolic',
+    'open': 'document-open-symbolic',
+    'save-as': 'document-save-as-symbolic',
+}
+
+
+def generate_menu_xml(menu_name, sections):
+    menu_str = f'<?xml version="1.0"?><interface><menu id="{menu_name}">'
+    index = 0
+    for section in sections:
+        if not section:
+            continue
+        menu_str += '<section>'
+        for label, name, callback, _checker in section:
+            if not index:
+                menu_str += '<attribute name="display-hint">' \
+                            'horizontal-buttons</attribute>'
+            menu_str += \
+                '<item>' + \
+                f'<attribute name="label">{label}</attribute>' + \
+                f'<attribute name="action">win.{name}</attribute>'
+            if not index:
+                menu_str += \
+                    f'<attribute name="verb-icon">{ICONS[name]}</attribute>'
+            menu_str += '</item>'
+        menu_str += '</section>'
+        index += 1
+    menu_str += '</menu></interface>'
+    return menu_str
+
 
 class Application(Gtk.Application):
 
@@ -50,6 +81,7 @@ class PaletteWindow(Gtk.ApplicationWindow):
 
     def __init__(self, app):
         self.app = app
+        self.actions = {}
         Gtk.ApplicationWindow.__init__(self)
         self.dc = CanvasDC(self)
         self.add(self.dc)
@@ -88,17 +120,24 @@ class PaletteWindow(Gtk.ApplicationWindow):
         bg_color = context.get_background_color(Gtk.StateFlags.SELECTED)
         return tuple(bg_color)
 
-    def make_menu(self, sections):
-        menu = Gio.Menu()
+    def _set_actions(self, sections):
         for section in sections:
-            section_menu = Gio.Menu()
-            for label, name, callback in section:
-                action = Gio.SimpleAction.new(name, None)
-                action.connect("activate", callback)
-                self.add_action(action)
-                section_menu.append(label, 'win.' + name)
-            menu.append_section(None, section_menu)
-        self.menubtn.set_menu_model(menu)
+            for label, name, callback, checker in section:
+                if name not in self.actions:
+                    action = Gio.SimpleAction.new(name, None)
+                    action.connect("activate", callback)
+                    self.add_action(action)
+                    self.actions[name] = action
+                if checker:
+                    self.actions[name].set_enabled(checker())
+
+    def make_menu(self, sections):
+        builder = Gtk.Builder()
+        builder.add_from_string(generate_menu_xml('appmenu', sections))
+        self._set_actions(sections)
+        builder.connect_signals(self)
+        appmenu = builder.get_object('appmenu')
+        self.menubtn.set_menu_model(appmenu)
 
     def make_shortcuts(self, shortcuts):
         accel = Gtk.AccelGroup()
@@ -255,6 +294,24 @@ class CanvasDC(Gtk.DrawingArea):
                 self.mw.canvas.on_left_released(CanvasEvent(event))
             elif event.button == 3:
                 self.mw.canvas.on_right_released(CanvasEvent(event))
+
+    def show_ctx_menu(self, point):
+        popover = Gtk.Popover()
+        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        vbox.pack_start(Gtk.ModelButton("Item 1"), False, True, 10)
+        vbox.pack_start(Gtk.Label("Item 2"), False, True, 10)
+        popover.add(vbox)
+        popover.set_position(Gtk.PositionType.BOTTOM)
+        popover.set_relative_to(self)
+        x, y = point
+        rectangle = Gdk.Rectangle()
+        rectangle.x = x
+        rectangle.y = y
+        rectangle.width = 1
+        rectangle.height = 1
+        popover.set_pointing_to(rectangle)
+        popover.show_all()
+        popover.popup()
 
 
 CLIPBOARD = {
