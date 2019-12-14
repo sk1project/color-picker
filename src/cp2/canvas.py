@@ -15,11 +15,12 @@
 # 	You should have received a copy of the GNU General Public License
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import cairo
 import colorsys
 import math
 import os
+import time
 
-import cairo
 
 import wal
 from cp2 import _, config, api
@@ -168,6 +169,9 @@ class CanvasObj(Decomposable):
         return self.is_over(event.get_point()) and self.active
 
     def on_left_released(self, _event):
+        pass
+
+    def on_left_double_click(self, event):
         pass
 
     def on_right_pressed(self, event):
@@ -357,6 +361,9 @@ class ColorCell:
         cpoint = self.win2cell(point)
         return any([in_bbox(bbox, cpoint) for bbox in self.bboxes])
 
+    def is_top(self, point):
+        return self.win2cell(point)[1] < config.cell_height / 1.9
+
     def paint(self, ctx, x_count, y_count):
         cms = self.canvas.cms
         border = config.canvas_border
@@ -498,6 +505,17 @@ class ColorGrid(CanvasObj):
                 self.canvas.selection = [self.cells[index]]
             self.canvas.reflect_transaction()
 
+    def on_left_double_click(self, event):
+        index = self.index_by_point(event.get_point())
+        self.canvas.selection = [self.cells[index]]
+        self.canvas.reflect_transaction()
+        if self.cells[index].is_top(event.get_point()):
+            clr0 = [] + self.cells[index].color[1]
+            clr = wal.color_dialog(self.canvas.mw, _('Change color'), clr0)
+            if clr:
+                color = [uc2const.COLOR_RGB, clr, 1.0, '', '']
+                api.change_color(self.canvas, self.cells[index], color)
+
     def on_right_pressed(self, event):
         return self.is_over(event.get_point(), False) and self.active
 
@@ -574,6 +592,8 @@ class Canvas(Decomposable):
 
     left_pressed = None
     right_pressed = None
+    press_timestamp = 0
+    release_timestamp = 0
 
     def __init__(self, mw, doc):
         self.mw = mw
@@ -670,11 +690,17 @@ class Canvas(Decomposable):
             self.left_pressed = None
             if obj.on_left_pressed(event):
                 self.left_pressed = obj
+                self.press_timestamp = time.time()
                 break
 
     def on_left_released(self, event):
         if self.left_pressed:
             self.left_pressed.on_left_released(event)
+            timestamp = time.time()
+            if timestamp - self.release_timestamp < 0.25 or \
+                    timestamp - self.press_timestamp > 1.0:
+                self.left_pressed.on_left_double_click(event)
+            self.release_timestamp = timestamp
             self.left_pressed = None
 
     def on_right_pressed(self, event):

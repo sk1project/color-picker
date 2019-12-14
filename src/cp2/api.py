@@ -97,3 +97,13 @@ def duplicate_selected(canvas):
         selection.append(new_cell)
     canvas.grid.sync_to()
     canvas.selection = selection
+
+
+@color_transaction
+def change_color(canvas, cell, color):
+    index = canvas.grid.cells.index(cell)
+    new_cell = canvas.grid.make_cell(color)
+    canvas.grid.cells.insert(index, new_cell)
+    canvas.grid.cells.remove(cell)
+    canvas.grid.sync_to()
+    canvas.selection = [new_cell]
