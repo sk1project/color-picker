@@ -40,11 +40,11 @@ class ColorPickerApp(wal.Application, UCApplication):
 
     def __init__(self, path, cfgdir):
         self.path = path
+        wal.Application.__init__(self, application_id=AppData.app_id)
 
-        wal.Application.__init__(self)
         UCApplication.__init__(self, path, cfgdir, False)
-
         self.appdata = AppData(self, cfgdir)
+
         log_level = config.log_level
         self.log_filepath = os.path.join(self.appdata.app_config_dir,
                                          '%s.log' % self.appdata.app_proc)
@@ -55,12 +55,47 @@ class ColorPickerApp(wal.Application, UCApplication):
         self.default_cms = AppColorManager(self)
 
         self.wins = []
+
+    def do_startup(self):
+        wal.Application.do_startup(self)
+        wal.init_clipboard()
+        self.set_app_name(self.appdata.app_name)
+
+        menu = [[],
+                [
+                    (_('New palette'), 'new', self.on_new, None),
+                    (_('Open palette...'), 'open', self.on_open, None),
+                ],
+                [
+                    (_('Palette Collection'), 'palettes', self.on_palettes,
+                     None),
+                ],
+                [
+                    (_('Online help'), 'online-help', self.stub, None),
+                    (_('About Color Picker'), 'about', self.stub, None),
+                ],
+                [(_('Quit'), 'exit', self.exit, None), ],
+                ]
+        self.make_menu(menu)
+
+    def do_activate(self):
+        if not self.wins:
+            self.new()
+            # Setting scroll fg color
+            config.scroll_fg = self.wins[0].get_scroll_fg()
+
+    def on_new(self, *_args):
         self.new()
 
-        # Setting scroll fg color
-        config.scroll_fg = self.wins[0].get_scroll_fg()
-        wal.init_clipboard()
-        self.run()
+    def on_open(self, *_args):
+        self.new()
+        self.open_doc(win=self.wins[-1])
+
+    def on_palettes(self, *_args):
+        self.open_url('https://sk1project.net/palettes/')
+
+    def stub(self, *_args):
+        pass
 
     def exit(self, *_args):
         config.save(self.appdata.app_config)
@@ -72,9 +107,12 @@ class ColorPickerApp(wal.Application, UCApplication):
             self.exit()
 
     def new(self, filepath=None):
-        win = PaletteWindow(
-            self, SKP_Presenter(self.appdata, filepath=filepath))
+        # win = wal.base.Gtk.ApplicationWindow(application=self, title="Main Window")
+        doc = SKP_Presenter(self.appdata, filepath=filepath)
+        win = PaletteWindow(self, doc)
+        win.present()
         self.wins.append(win)
+        print('new')
 
     def clear(self, win):
         win.set_doc(SKP_Presenter(self.appdata))

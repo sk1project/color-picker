@@ -29,8 +29,9 @@ ICONS = {
 }
 
 
-def generate_menu_xml(menu_name, sections):
-    menu_str = f'<?xml version="1.0"?><interface><menu id="{menu_name}">'
+def generate_menu_xml(menu_name, sections, prefix='win'):
+    menu_str = f'<?xml version="1.0" encoding="UTF-8"?>' \
+               f'<interface><menu id="{menu_name}">'
     index = 0
     for section in sections:
         if not section:
@@ -43,7 +44,7 @@ def generate_menu_xml(menu_name, sections):
             menu_str += \
                 '<item>' + \
                 f'<attribute name="label">{label}</attribute>' + \
-                f'<attribute name="action">win.{name}</attribute>'
+                f'<attribute name="action">{prefix}.{name}</attribute>'
             if not index:
                 menu_str += \
                     f'<attribute name="verb-icon">{ICONS[name]}</attribute>'
@@ -56,8 +57,9 @@ def generate_menu_xml(menu_name, sections):
 
 class Application(Gtk.Application):
 
-    def __init__(self):
-        Gtk.Application.__init__(self)
+    def __init__(self, *args, **kwargs):
+        super().__init__(**kwargs)
+        self.actions = {}
 
     @staticmethod
     def set_app_name(name):
@@ -66,11 +68,25 @@ class Application(Gtk.Application):
     def drop_win(self, win):
         pass
 
-    def run(self):
-        Gtk.main()
-
     def exit(self, *_args):
-        Gtk.main_quit()
+        self.quit()
+
+    def _set_actions(self, sections):
+        for section in sections:
+            for label, name, callback, _checker in section:
+                if name not in self.actions:
+                    action = Gio.SimpleAction.new(name, None)
+                    action.connect("activate", callback)
+                    self.add_action(action)
+                    self.actions[name] = action
+
+    def make_menu(self, sections):
+        builder = Gtk.Builder()
+        builder.add_from_string(generate_menu_xml('app-menu', sections, 'app'))
+        self._set_actions(sections)
+        builder.connect_signals(self)
+        appmenu = builder.get_object('app-menu')
+        self.set_app_menu(appmenu)
 
 
 class PaletteWindow(Gtk.ApplicationWindow):
@@ -79,10 +95,10 @@ class PaletteWindow(Gtk.ApplicationWindow):
     dc = None
     canvas = None
 
-    def __init__(self, app):
+    def __init__(self, app, title):
         self.app = app
         self.actions = {}
-        Gtk.ApplicationWindow.__init__(self)
+        Gtk.ApplicationWindow.__init__(self, application=app, title=title)
         self.dc = CanvasDC(self)
         self.add(self.dc)
         self.connect('destroy', self.close_action)
@@ -133,10 +149,10 @@ class PaletteWindow(Gtk.ApplicationWindow):
 
     def make_menu(self, sections):
         builder = Gtk.Builder()
-        builder.add_from_string(generate_menu_xml('appmenu', sections))
+        builder.add_from_string(generate_menu_xml('win-menu', sections))
         self._set_actions(sections)
         builder.connect_signals(self)
-        appmenu = builder.get_object('appmenu')
+        appmenu = builder.get_object('win-menu')
         self.menubtn.set_menu_model(appmenu)
 
     def make_shortcuts(self, shortcuts):
@@ -148,7 +164,7 @@ class PaletteWindow(Gtk.ApplicationWindow):
                 'Alt': Gdk.ModifierType.META_MASK,
                 'Shift': Gdk.ModifierType.SHIFT_MASK,
                 'Ctrl-Shift': Gdk.ModifierType.CONTROL_MASK |
-                              Gdk.ModifierType.SHIFT_MASK}.get(shortcut[0])
+                Gdk.ModifierType.SHIFT_MASK}.get(shortcut[0])
             accel.connect(Gdk.keyval_from_name(shortcut[1]), modifier,
                           0, callback)
         self.add_accel_group(accel)

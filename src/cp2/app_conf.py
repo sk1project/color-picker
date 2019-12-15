@@ -27,6 +27,7 @@ class AppData(UCData):
     app_proc = 'color-picker'
     app_org = 'sK1 Project'
     app_domain = 'sk1project.net'
+    app_id = 'org.sk1project.color-picker'
     app_icon = None
     doc_icon = None
     version = appconst.VERSION

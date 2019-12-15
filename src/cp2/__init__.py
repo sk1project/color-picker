@@ -65,4 +65,5 @@ def run():
     _pkgdir = __path__[0]
     init_config(cfgdir)
     from .app import ColorPickerApp
-    ColorPickerApp(_pkgdir, cfgdir)
+    app = ColorPickerApp(_pkgdir, cfgdir)
+    app.run()

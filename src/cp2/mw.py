@@ -29,7 +29,7 @@ class PaletteWindow(wal.PaletteWindow):
     canvas = None
 
     def __init__(self, app, doc):
-        wal.PaletteWindow.__init__(self, app)
+        wal.PaletteWindow.__init__(self, app, app.appdata.app_name)
 
         menu = [
             [
