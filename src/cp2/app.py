@@ -53,6 +53,7 @@ class ColorPickerApp(wal.Application, UCApplication):
         LOG.info('Logging started')
 
         self.default_cms = AppColorManager(self)
+        LOG.info('Color Manager started')
 
         self.wins = []
 
@@ -77,12 +78,14 @@ class ColorPickerApp(wal.Application, UCApplication):
                 [(_('Quit'), 'exit', self.exit, None), ],
                 ]
         self.make_menu(menu)
+        LOG.info('Application startup successful')
 
     def do_activate(self):
         if not self.wins:
             self.new()
             # Setting scroll fg color
             config.scroll_fg = self.wins[0].get_scroll_fg()
+            LOG.info('Application activated')
 
     def on_new(self, *_args):
         self.new()
@@ -107,15 +110,15 @@ class ColorPickerApp(wal.Application, UCApplication):
             self.exit()
 
     def new(self, filepath=None):
-        # win = wal.base.Gtk.ApplicationWindow(application=self, title="Main Window")
         doc = SKP_Presenter(self.appdata, filepath=filepath)
         win = PaletteWindow(self, doc)
         win.present()
         self.wins.append(win)
-        print('new')
+        LOG.info('New palette created')
 
     def clear(self, win):
         win.set_doc(SKP_Presenter(self.appdata))
+        LOG.info('Palette reloaded from scratch')
 
     def _get_doc_form_file(self, filepath=None, win=None):
         doc = None
@@ -148,8 +151,10 @@ class ColorPickerApp(wal.Application, UCApplication):
             return
         if win.can_be_reloaded():
             win.set_doc(doc)
+            LOG.info('Palette reloaded from %s', doc.doc_file)
         else:
             self.wins.append(PaletteWindow(self, doc))
+            LOG.info('Palette opened from %s', doc.doc_file)
 
     def paste_from(self, filepath=None, win=None):
         doc = self._get_doc_form_file(filepath, win)
@@ -158,6 +163,7 @@ class ColorPickerApp(wal.Application, UCApplication):
 
         colors = doc.model.colors
         api.add_colors(win.canvas, colors)
+        LOG.info('Palette updated from %s', doc.doc_file)
 
     def save_as_doc(self, doc, win=None):
         wnd = win or self.wins[0]
@@ -177,6 +183,7 @@ class ColorPickerApp(wal.Application, UCApplication):
                 doc_file, saver_id = ret
                 saver = get_saver_by_id(saver_id)
                 saver(doc, doc_file, translate=False, convert=True)
+                LOG.info('Palette saved to %s', doc_file)
             except Exception as e:
                 msg = _('Cannot save file:')
                 msg = "%s\n'%s'" % (msg, doc_file) + '\n'
@@ -186,3 +193,4 @@ class ColorPickerApp(wal.Application, UCApplication):
 
     def open_url(self, url):
         webbrowser.open(url, new=1, autoraise=True)
+        LOG.info('URL %s opened in default browser', url)
