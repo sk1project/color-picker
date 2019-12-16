@@ -17,5 +17,5 @@
 
 from .base import Application, PaletteWindow
 from .base import init_clipboard, get_from_clipboard, set_to_clipboard
-from .dialogs import color_dialog, error_dialog, about_dialog
+from .dialogs import color_dialog, error_dialog, about_dialog, yesno_dialog
 from .dialogs import get_open_file_name, get_save_file_name

@@ -121,6 +121,9 @@ class ColorPickerApp(wal.Application, UCApplication):
         wal.about_dialog(**keys)
 
     def exit(self, *_args):
+        for item in self.wins:
+            if item.close_action():
+                return
         config.save(self.appdata.app_config)
         wal.Application.exit(self)
 
@@ -204,12 +207,14 @@ class ColorPickerApp(wal.Application, UCApplication):
                 saver = get_saver_by_id(saver_id)
                 saver(doc, doc_file, translate=False, convert=True)
                 LOG.info('Palette saved to %s', doc_file)
+                return True
             except Exception as e:
                 msg = _('Cannot save file:')
                 msg = "%s\n'%s'" % (msg, doc_file) + '\n'
                 msg2 = _('Details see in logs')
                 dialogs.error_dialog(wnd, self.appdata.app_name, msg, msg2)
                 LOG.exception('Cannot save file <%s>' % doc_file, e)
+        return False
 
     @staticmethod
     def open_url(url):

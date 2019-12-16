@@ -53,7 +53,7 @@ def get_save_file_name(
             ft.append(('*.' + ext[item][0], descr[item]))
 
     ret = wal.get_save_file_name(parent, path, title, ft)
-    if not path_only:
+    if not path_only and isinstance(ret, tuple):
         for wildcard, descr in ft:
             if ret[1] == descr:
                 index = ft.index((wildcard, descr))
@@ -65,5 +65,5 @@ def get_save_file_name(
                                uc2const.FORMAT_EXTENSION[file_types[index]][0]
 
                 return doc_file, file_types[index]
-    return ret[0]
+    return ret
 

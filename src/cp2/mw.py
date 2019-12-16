@@ -96,8 +96,17 @@ class PaletteWindow(wal.PaletteWindow):
         return not bool(self.canvas.doc.model.colors)
 
     def close_action(self, *_args):
+        if not self.canvas.history.is_saved():
+            palette_name = self.canvas.doc.model.name or _('Untitled palette')
+            ret = wal.yesno_dialog(
+                self, self.app.appdata.app_name,
+                'Palette "%s" is modified' % palette_name,
+                'Do you wish to save changes?')
+            if ret:
+                return not self.app.save_as_doc(self.canvas.doc, self)
         wal.PaletteWindow.destroy(self)
         self.app.drop_win(self)
+        return False
 
     def stub(self, *_args):
         print('stub')

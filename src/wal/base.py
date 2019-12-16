@@ -108,7 +108,7 @@ class PaletteWindow(Gtk.ApplicationWindow):
         Gtk.ApplicationWindow.__init__(self, application=app, title=title)
         self.dc = CanvasDC(self)
         self.add(self.dc)
-        self.connect('destroy', self.close_action)
+        self.connect('delete-event', self.close_action)
         self.hdr = Gtk.HeaderBar()
         self.hdr.set_show_close_button(True)
         self.hdr.props.title = '---'

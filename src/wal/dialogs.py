@@ -69,7 +69,8 @@ def get_save_file_name(parent, path, title, file_types='*'):
 
 def error_dialog(parent, title, msg, secondary_msg=None):
     dialog = Gtk.MessageDialog(
-        parent, 0, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, msg)
+        parent, Gtk.DialogFlags.DESTROY_WITH_PARENT,
+        Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, msg)
 
     if secondary_msg:
         dialog.format_secondary_text(secondary_msg)
@@ -79,12 +80,27 @@ def error_dialog(parent, title, msg, secondary_msg=None):
 
 def msg_dialog(parent, title, msg, secondary_msg=None):
     dialog = Gtk.MessageDialog(
-        parent, 0, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, msg)
+        parent, Gtk.DialogFlags.DESTROY_WITH_PARENT,
+        Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, msg)
 
     if secondary_msg:
         dialog.format_secondary_text(secondary_msg)
     dialog.run()
     dialog.destroy()
+
+
+def yesno_dialog(parent, title, msg, secondary_msg=None):
+    dialog = Gtk.MessageDialog(
+        parent, Gtk.DialogFlags.DESTROY_WITH_PARENT,
+        Gtk.MessageType.WARNING,
+        Gtk.ButtonsType.YES_NO, msg)
+
+    if secondary_msg:
+        dialog.format_secondary_text(secondary_msg)
+    response = dialog.run()
+    ret = response == Gtk.ResponseType.YES
+    dialog.destroy()
+    return ret
 
 
 def color_dialog(parent, title=None, color=None):
