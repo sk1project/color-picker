@@ -92,7 +92,7 @@ def msg_dialog(parent, title, msg, secondary_msg=None):
 def yesno_dialog(parent, title, msg, secondary_msg=None):
     dialog = Gtk.MessageDialog(
         parent, Gtk.DialogFlags.DESTROY_WITH_PARENT,
-        Gtk.MessageType.WARNING,
+        Gtk.MessageType.QUESTION,
         Gtk.ButtonsType.YES_NO, msg)
 
     if secondary_msg:

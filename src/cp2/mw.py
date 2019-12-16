@@ -54,6 +54,7 @@ class PaletteWindow(wal.PaletteWindow):
         acc_keys = [
             [('Ctrl', 'N'), self.on_new],
             [('Ctrl', 'O'), self.on_open],
+            [('Ctrl-Shift', 'O'), self.on_paste_from],
             [('Ctrl', 'S'), self.on_save_as],
             [('None', 'Home'), self.go_home],
             [('None', 'End'), self.go_end],

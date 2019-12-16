@@ -143,13 +143,13 @@ class ColorPickerApp(wal.Application, UCApplication):
         win.set_doc(SKP_Presenter(self.appdata))
         LOG.info('Palette reloaded from scratch')
 
-    def _get_doc_form_file(self, filepath=None, win=None):
+    def _get_doc_form_file(self, filepath=None, win=None, title=None):
         doc = None
         wnd = win or self.wins[0]
 
         if wnd and not filepath:
             filepath = dialogs.get_open_file_name(
-                wnd, config.open_dir, file_types=uc2const.PALETTE_LOADERS)
+                wnd, config.open_dir, title, uc2const.PALETTE_LOADERS)
         if not filepath:
             return
 
@@ -180,12 +180,16 @@ class ColorPickerApp(wal.Application, UCApplication):
             LOG.info('Palette opened from %s', doc.doc_file)
 
     def paste_from(self, filepath=None, win=None):
-        doc = self._get_doc_form_file(filepath, win)
+        doc = self._get_doc_form_file(filepath, win,
+                                      title=_('Select file to paste from'))
         if not doc:
             return
 
         colors = doc.model.colors
-        api.add_colors(win.canvas, colors)
+        if len(win.canvas.selection) == 1:
+            api.insert_colors(win.canvas, win.canvas.selection[0], colors)
+        else:
+            api.add_colors(win.canvas, colors)
         LOG.info('Palette updated from %s', doc.doc_file)
 
     def save_as_doc(self, doc, win=None):
