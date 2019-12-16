@@ -19,7 +19,6 @@ import os
 
 from uc2 import uc2const
 from uc2.uc2const import COLOR_DISPLAY
-from uc2.utils import fsutils
 
 from uc2.cms import ColorManager, CS, libcms, val_255
 from cp2 import config, events

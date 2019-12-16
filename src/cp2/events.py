@@ -25,51 +25,15 @@ for internal events processing.
 
 Signal arguments:
 CONFIG_MODIFIED   attr, value - modified config field
-APP_STATUS		  msg - statusbar message
-MOUSE_STATUS	  msg - mouse status msg
-CMS_CHANGED		  no args 
-HISTORY_CHANGED	  no args 
-NO_DOCS		      no args
-DOC_MODIFIED	  doc - presenter instance
-DOC_CHANGED	      doc - actual presenter instance
-DOC_SAVED		  doc - saved presenter instance
-DOC_CLOSED		  no args
-MODE_CHANGED	  mode - canvas MODE value
-SELECTION_CHANGED doc - presenter instance
-CLIPBOARD		  no args 
-PAGE_CHANGED      doc - presenter instance
-SNAP_CHANGED	  no args
-UPDATE_CHANNEL    id - recipient id 
+CMS_CHANGED		  no args
 """
 
 # Signal channels
 
 CONFIG_MODIFIED = ['CONFIG_MODIFIED']
-
-APP_STATUS = ['APP_STATUS']
-MOUSE_STATUS = ['MOUSE_STATUS']
 CMS_CHANGED = ['CMS_CHANGED']
-HISTORY_CHANGED = ['HISTORY_CHANGED']
 
-NO_DOCS = ['NO_DOCS']
-DOC_MODIFIED = ['DOC_MODIFIED']
-DOC_CHANGED = ['DOC_CHANGED']
-DOC_SAVED = ['DOC_SAVED']
-DOC_CLOSED = ['DOC_CLOSED']
-
-MODE_CHANGED = ['MODE_CHANGED']
-SELECTION_CHANGED = ['SELECTION_CHANGED']
-CLIPBOARD = ['CLIPBOARD']
-PAGE_CHANGED = ['PAGE_CHANGED']
-SNAP_CHANGED = ['SNAP_CHANGED']
-UPDATE_CHANNEL = ['UPDATE_CHANNEL']
-
-ALL_CHANNELS = [CONFIG_MODIFIED, APP_STATUS, MOUSE_STATUS, CMS_CHANGED,
-                HISTORY_CHANGED, NO_DOCS, DOC_MODIFIED, DOC_CHANGED, DOC_SAVED,
-                DOC_CLOSED, MODE_CHANGED, SELECTION_CHANGED, CLIPBOARD,
-                PAGE_CHANGED, SNAP_CHANGED]
-
-ET_ID = 'EDIT_TEXT_MODE'
+ALL_CHANNELS = [CONFIG_MODIFIED, CMS_CHANGED, ]
 
 
 def connect(channel, receiver):

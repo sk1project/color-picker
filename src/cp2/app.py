@@ -185,12 +185,13 @@ class ColorPickerApp(wal.Application, UCApplication):
         if not doc:
             return
 
-        colors = doc.model.colors
+        colors = [] + doc.model.colors
         if len(win.canvas.selection) == 1:
             api.insert_colors(win.canvas, win.canvas.selection[0], colors)
         else:
             api.add_colors(win.canvas, colors)
         LOG.info('Palette updated from %s', doc.doc_file)
+        doc.close()
 
     def save_as_doc(self, doc, win=None):
         wnd = win or self.wins[0]
