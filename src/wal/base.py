@@ -26,6 +26,9 @@ ICONS = {
     'new': 'document-new-symbolic',
     'open': 'document-open-symbolic',
     'save-as': 'document-save-as-symbolic',
+    'cut': 'edit-cut-symbolic',
+    'copy': 'edit-copy-symbolic',
+    'paste': 'edit-paste-symbolic',
 }
 
 
@@ -64,6 +67,10 @@ class Application(Gtk.Application):
     @staticmethod
     def set_app_name(name):
         GLib.set_application_name(name)
+
+    @staticmethod
+    def set_prgname(app_id):
+        GLib.set_prgname(app_id)
 
     def drop_win(self, win):
         pass

@@ -17,7 +17,7 @@
 
 APPNAME = 'color-picker'
 VERSION = '1.0'
-REVISION = 'rc'
+REVISION = 'rc1'
 BUILD = ''
 
 OPENED = 0

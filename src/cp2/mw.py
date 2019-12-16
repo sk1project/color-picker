@@ -41,11 +41,11 @@ class PaletteWindow(wal.PaletteWindow):
                 (_('Properties...'), 'properties', self.stub, None),
             ],
             [
-                (_('Palette Collection'), 'palettes', self.on_palettes, None),
+                (_('Palette Collection'), 'palettes', app.on_palettes, None),
             ],
             [
-                (_('Online help'), 'online-help', self.stub, None),
-                (_('About Color Picker'), 'about', self.stub, None),
+                (_('Online help'), 'online-help', app.on_help, None),
+                (_('About Color Picker'), 'about', self.on_about, None),
             ],
             [(_('Quit'), 'exit', self.app.exit, None), ],
         ]
@@ -120,8 +120,8 @@ class PaletteWindow(wal.PaletteWindow):
     def on_clear(self, *_args):
         self.app.clear(self)
 
-    def on_palettes(self, *_args):
-        self.app.open_url('https://sk1project.net/palettes/')
+    def on_about(self, *_args):
+        self.app.on_about(transient_for=self)
 
     def go_home(self, *_args):
         self.canvas.go_home()

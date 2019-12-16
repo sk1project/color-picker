@@ -99,3 +99,21 @@ def color_dialog(parent, title=None, color=None):
 
     colordialog.destroy()
     return ret_color
+
+
+LICENSES = {
+    'LGPLv3': Gtk.License.LGPL_3_0,
+    'LGPLv2': Gtk.License.LGPL_2_1,
+    'AGPLv3': Gtk.License.AGPL_3_0,
+    'GPLv2': Gtk.License.GPL_2_0,
+    'GPLv3': Gtk.License.GPL_3_0,
+}
+
+
+def about_dialog(**kwargs):
+    license_type = kwargs.get('license_type')
+    kwargs['license_type'] = LICENSES.get(license_type)
+
+    about_dlg = Gtk.AboutDialog(**kwargs)
+    about_dlg.run()
+    about_dlg.destroy()

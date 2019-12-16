@@ -61,6 +61,7 @@ class ColorPickerApp(wal.Application, UCApplication):
         wal.Application.do_startup(self)
         wal.init_clipboard()
         self.set_app_name(self.appdata.app_name)
+        self.set_prgname(self.appdata.app_id)
 
         menu = [[],
                 [
@@ -72,8 +73,8 @@ class ColorPickerApp(wal.Application, UCApplication):
                      None),
                 ],
                 [
-                    (_('Online help'), 'online-help', self.stub, None),
-                    (_('About Color Picker'), 'about', self.stub, None),
+                    (_('Online help'), 'online-help', self.on_help, None),
+                    (_('About Color Picker'), 'about', self.on_about, None),
                 ],
                 [(_('Quit'), 'exit', self.exit, None), ],
                 ]
@@ -97,8 +98,27 @@ class ColorPickerApp(wal.Application, UCApplication):
     def on_palettes(self, *_args):
         self.open_url('https://sk1project.net/palettes/')
 
-    def stub(self, *_args):
-        pass
+    def on_help(self, *_args):
+        self.open_url('https://sk1project.net/color-picker/help/')
+
+    def on_about(self, *_args, **kwargs):
+        keys ={
+            'transient_for': kwargs.get('transient_for') or self.wins[-1],
+            'logo_icon_name': None,
+            'version': self.appdata.version + self.appdata.revision,
+            'copyright': '2019 © sK1 Project',
+            'comments': 'Cross-platform palette editor',
+            'website': 'https://sk1project/color-picker/',
+            'website_label': 'Project webpage',
+            'license_type': 'GPLv3',
+
+            'authors': ['Igor E. Novikov',
+                        'Maxim S. Barabash (build scripts)'],
+            'translator_credits': 'Russian - Igor E. Novikov\n'
+                                  'Ukrainian - Maxim S. Barabash',
+            'artists': None,
+        }
+        wal.about_dialog(**keys)
 
     def exit(self, *_args):
         config.save(self.appdata.app_config)
@@ -191,6 +211,7 @@ class ColorPickerApp(wal.Application, UCApplication):
                 dialogs.error_dialog(wnd, self.appdata.app_name, msg, msg2)
                 LOG.exception('Cannot save file <%s>' % doc_file, e)
 
-    def open_url(self, url):
+    @staticmethod
+    def open_url(url):
         webbrowser.open(url, new=1, autoraise=True)
         LOG.info('URL %s opened in default browser', url)
