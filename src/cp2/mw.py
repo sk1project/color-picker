@@ -38,7 +38,8 @@ class PaletteWindow(wal.PaletteWindow):
                 (_('Save as...'), 'save-as', self.on_save_as, None),
             ],
             [
-                (_('Properties...'), 'properties', self.stub, None),
+                # TODO should be implemented
+                (_('Properties...'), 'properties', self.on_about, None),
             ],
             [
                 (_('Palette Collection'), 'palettes', app.on_palettes, None),
