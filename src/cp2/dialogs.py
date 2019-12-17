@@ -18,7 +18,6 @@
 import os
 
 import wal
-from wal import error_dialog
 from cp2 import _
 from uc2 import uc2const
 
@@ -29,13 +28,15 @@ def get_open_file_name(parent, default_dir=None, title=None, file_types=None):
 
     descr = uc2const.FORMAT_DESCRIPTION
     ext = uc2const.FORMAT_EXTENSION
-    all = [('*', '*.* - All files'), ]
+    all_ = [(['*'], '*.* - All files'), ]
     ft = []
     if file_types:
         for item in file_types:
-            ft.append(('*.' + ext[item][0], descr[item]))
-
-    file_types = ft + all if ft else all
+            ft.append(([f'*.{ext[item][0]}'], descr[item]))
+    if ft:
+        supported = [ext[0] for ext, _txt in ft]
+        ft.insert(0, (supported, _('All supported files')))
+    file_types = ft + all_ if ft else all_
 
     return wal.get_open_file_name(parent, default_dir, title, file_types)
 
@@ -66,4 +67,3 @@ def get_save_file_name(
 
                 return doc_file, file_types[index]
     return ret
-

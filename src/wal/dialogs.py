@@ -24,9 +24,10 @@ from gi.repository import Gtk, Gdk
 
 
 def _add_filters(dialog, file_types):
-    for file_pattern, file_type_name in file_types:
+    for file_patterns, file_type_name in file_types:
         filter_any = Gtk.FileFilter()
-        filter_any.add_pattern(file_pattern)
+        for file_pattern in file_patterns:
+            filter_any.add_pattern(file_pattern)
         filter_any.set_name(file_type_name)
         dialog.add_filter(filter_any)
 
