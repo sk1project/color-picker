@@ -650,7 +650,7 @@ class Canvas(Decomposable):
             ],
             [
                 (_('Select all'), 'select-all',
-                 self.mw.select_all, self.is_colors),
+                 self.mw.select_all, self.is_not_selected),
                 (_('Deselect'), 'deselect',
                  self.mw.deselect, self.is_selection),
             ],
@@ -682,6 +682,10 @@ class Canvas(Decomposable):
 
     def is_single_selection(self):
         return len(self.selection) == 1
+
+    def is_not_selected(self):
+        return self.is_colors() and \
+               len(self.selection) != len(self.doc.model.colors)
 
     def is_colors(self):
         return bool(self.doc.model.colors)
