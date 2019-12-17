@@ -102,7 +102,7 @@ class ColorPickerApp(wal.Application, UCApplication):
         self.open_url('https://sk1project.net/color-picker/help/')
 
     def on_about(self, *_args, **kwargs):
-        keys ={
+        keys = {
             'transient_for': kwargs.get('transient_for') or self.wins[-1],
             'logo_icon_name': None,
             'version': self.appdata.version + self.appdata.revision,
@@ -143,6 +143,10 @@ class ColorPickerApp(wal.Application, UCApplication):
         win.set_doc(SKP_Presenter(self.appdata))
         LOG.info('Palette reloaded from scratch')
 
+    def _normalize_colors(self, doc):
+        doc.model.colors = [self.default_cms.get_rgb_color(color)
+                            for color in doc.model.colors]
+
     def _get_doc_form_file(self, filepath=None, win=None, title=None):
         doc = None
         wnd = win or self.wins[0]
@@ -159,12 +163,13 @@ class ColorPickerApp(wal.Application, UCApplication):
                 if not loader:
                     raise LookupError('Cannot find loader for %s' % filepath)
                 doc = loader(self.appdata, filepath, convert=True)
+                self._normalize_colors(doc)
                 config.open_dir = str(os.path.dirname(filepath))
             except Exception as e:
                 msg = _('Cannot parse file:')
                 msg = "%s\n'%s'" % (msg, filepath) + '\n'
                 msg2 = _('The file may be corrupted or not supported format')
-                dialogs.error_dialog(wnd, self.appdata.app_name, msg, msg2)
+                wal.error_dialog(wnd, self.appdata.app_name, msg, msg2)
                 LOG.exception('Cannot parse file <%s>' % filepath, e)
         return doc
 
@@ -217,7 +222,7 @@ class ColorPickerApp(wal.Application, UCApplication):
                 msg = _('Cannot save file:')
                 msg = "%s\n'%s'" % (msg, doc_file) + '\n'
                 msg2 = _('Details see in logs')
-                dialogs.error_dialog(wnd, self.appdata.app_name, msg, msg2)
+                wal.error_dialog(wnd, self.appdata.app_name, msg, msg2)
                 LOG.exception('Cannot save file <%s>' % doc_file, e)
         return False
 

@@ -109,12 +109,6 @@ class PaletteWindow(wal.PaletteWindow):
         self.app.drop_win(self)
         return False
 
-    def stub(self, *_args):
-        print('stub')
-
-    def checker_stub(self, *_args):
-        return False
-
     def on_new(self, *_args):
         self.app.new()
 
@@ -183,13 +177,16 @@ class PaletteWindow(wal.PaletteWindow):
         self.copy_selected()
         self.delete_selected()
 
-    def _colors2txt(self, colors):
+    @staticmethod
+    def _colors2txt(colors):
         return ' '.join([uc2.cms.rgb_to_hexcolor(color[1]) for color in colors])
 
-    def _txt2colors(self, txt):
+    @staticmethod
+    def _txt2colors(txt):
         colors = []
         for item in txt.split():
             if item.startswith('#') and len(item) in (4, 7):
+                # noinspection PyBroadException
                 try:
                     colors.append(uc2.cms.hexcolor_to_rgb(item))
                 except Exception:

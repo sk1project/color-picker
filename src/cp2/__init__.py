@@ -28,6 +28,7 @@ config = app_conf.AppConfig()
 def read_locale(cfg_file):
     lang = 'system'
     if os.path.isfile(cfg_file):
+        # noinspection PyBroadException
         try:
             with open(cfg_file, 'r') as fp:
                 while True:

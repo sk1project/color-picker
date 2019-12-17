@@ -71,6 +71,7 @@ class UndoHistory(Decomposable):
     def set_saved(self):
         self.saved_index = self.index
 
+    # noinspection PyTypeChecker
     def undo(self):
         if self.is_undo():
             for item in self.undo_stack[self.index][0]:
@@ -78,6 +79,7 @@ class UndoHistory(Decomposable):
             self.index -= 1
             self.canvas.reflect_transaction()
 
+    # noinspection PyTypeChecker
     def redo(self):
         if self.is_redo():
             for item in self.undo_stack[self.index][1]:
@@ -494,7 +496,8 @@ class ColorGrid(CanvasObj):
             color = [uc2const.COLOR_RGB, clr, 1.0, '', '']
             api.change_color(self.canvas, cell, color)
 
-    def get_approximates(self):
+    @staticmethod
+    def get_approximates():
         coef = config.cell_corner_radius / 18
         border = config.cell_border
         w = config.cell_width

@@ -42,6 +42,7 @@ def connect(channel, receiver):
     to provided channel.
     """
     if callable(receiver):
+        # noinspection PyBroadException
         try:
             channel.append(receiver)
         except Exception:
@@ -55,6 +56,7 @@ def disconnect(channel, receiver):
     from provided channel.
     """
     if callable(receiver):
+        # noinspection PyBroadException
         try:
             channel.remove(receiver)
         except Exception:
@@ -67,6 +69,7 @@ def emit(channel, *args):
     Sends signal to all receivers in channel.
     """
     for receiver in channel[1:]:
+        # noinspection PyBroadException
         try:
             if callable(receiver):
                 receiver(*args)

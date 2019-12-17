@@ -16,7 +16,6 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import logging
-from uc2.utils import fsutils
 
 LOG = logging.getLogger(__name__)
 
