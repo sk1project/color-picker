@@ -483,6 +483,17 @@ class ColorGrid(CanvasObj):
         self.cells = cells
         return cell
 
+    def on_change_color(self, *_args):
+        if self.canvas.is_single_selection():
+            self.change_color(self.canvas.selection[0])
+
+    def change_color(self, cell):
+        clr0 = [] + cell.color[1]
+        clr = wal.color_dialog(self.canvas.mw, _('Change color'), clr0)
+        if clr and clr0 != clr:
+            color = [uc2const.COLOR_RGB, clr, 1.0, '', '']
+            api.change_color(self.canvas, cell, color)
+
     def get_approximates(self):
         coef = config.cell_corner_radius / 18
         border = config.cell_border
@@ -510,14 +521,20 @@ class ColorGrid(CanvasObj):
         self.canvas.selection = [self.cells[index]]
         self.canvas.reflect_transaction()
         if self.cells[index].is_top(event.get_point()):
-            clr0 = [] + self.cells[index].color[1]
-            clr = wal.color_dialog(self.canvas.mw, _('Change color'), clr0)
-            if clr:
-                color = [uc2const.COLOR_RGB, clr, 1.0, '', '']
-                api.change_color(self.canvas, self.cells[index], color)
+            self.change_color(self.cells[index])
+        else:
+            pass
+            # TODO: edit color name
 
     def on_right_pressed(self, event):
         return self.is_over(event.get_point(), False) and self.active
+
+    def on_right_released(self, event):
+        index = self.index_by_point(event.get_point())
+        cell = self.cells[index]
+        if cell not in self.canvas.selection:
+            self.canvas.selection = [cell]
+        self.canvas.dc.show_ctx_menu(event.get_point(), self.canvas.ctx_menu)
 
     def paint(self, ctx):
         cell_max = self.canvas.cell_max
@@ -563,7 +580,7 @@ class BackgroundObj(CanvasObj):
         self.canvas.reflect_transaction()
 
     def on_right_released(self, _event):
-        self.canvas.dc.show_ctx_menu(_event.get_point())
+        self.canvas.dc.show_ctx_menu(_event.get_point(), self.canvas.ctx_menu)
 
     def paint(self, ctx):
         self.bbox = (0, 0, self.canvas.width, self.canvas.height)
@@ -615,6 +632,33 @@ class Canvas(Decomposable):
             BackgroundObj(self),
         ]
         self.reflect_transaction()
+        self.ctx_menu = [
+            [
+                (_('Cut'), 'cut', self.mw.cut_selected, self.is_selection),
+                (_('Copy'), 'copy', self.mw.copy_selected, self.is_selection),
+                (_('Paste'), 'paste', self.mw.paste, self.mw.is_clipboard),
+            ],
+            [
+                (_('Change color'), 'change-color',
+                 self.grid.on_change_color, self.is_single_selection),
+            ],
+            [
+                (_('Delete'), 'delete',
+                 self.mw.delete_selected, self.is_selection),
+                (_('Duplicate'), 'duplicate',
+                 self.mw.duplicate, self.is_selection),
+            ],
+            [
+                (_('Select all'), 'select-all',
+                 self.mw.select_all, self.is_colors),
+                (_('Deselect'), 'deselect',
+                 self.mw.deselect, self.is_selection),
+            ],
+            [
+                (_('Paste from file...'), 'paste-from',
+                 self.mw.on_paste_from, None),
+            ],
+        ]
 
     def destroy(self):
         if self.doc:
@@ -632,6 +676,15 @@ class Canvas(Decomposable):
         txt = _('colors')
         self.mw.set_subtitle(f'{subtitle} ({colornum} {txt})')
         self.dc.refresh()
+
+    def is_selection(self):
+        return bool(self.selection)
+
+    def is_single_selection(self):
+        return len(self.selection) == 1
+
+    def is_colors(self):
+        return bool(self.doc.model.colors)
 
     def set_cursor(self, cursor_name):
         self.dc.set_cursor(cursor_name)

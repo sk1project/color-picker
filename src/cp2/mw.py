@@ -218,6 +218,11 @@ class PaletteWindow(wal.PaletteWindow):
         else:
             api.add_colors(self.canvas, colors)
 
+    def is_clipboard(self):
+        colors = wal.get_from_clipboard(False)
+        txt = wal.get_from_clipboard()
+        return bool(colors) or bool(self._txt2colors(txt))
+
     def duplicate(self, *_args):
         if self.canvas.selection:
             api.duplicate_selected(self.canvas)

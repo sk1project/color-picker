@@ -143,7 +143,7 @@ class PaletteWindow(Gtk.ApplicationWindow):
         bg_color = context.get_background_color(Gtk.StateFlags.SELECTED)
         return tuple(bg_color)
 
-    def _set_actions(self, sections):
+    def set_actions(self, sections):
         for section in sections:
             for label, name, callback, checker in section:
                 if name not in self.actions:
@@ -157,7 +157,7 @@ class PaletteWindow(Gtk.ApplicationWindow):
     def make_menu(self, sections):
         builder = Gtk.Builder()
         builder.add_from_string(generate_menu_xml('win-menu', sections))
-        self._set_actions(sections)
+        self.set_actions(sections)
         builder.connect_signals(self)
         appmenu = builder.get_object('win-menu')
         self.menubtn.set_menu_model(appmenu)
@@ -318,14 +318,15 @@ class CanvasDC(Gtk.DrawingArea):
             elif event.button == 3:
                 self.mw.canvas.on_right_released(CanvasEvent(event))
 
-    def show_ctx_menu(self, point):
-        popover = Gtk.Popover()
-        vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        vbox.pack_start(Gtk.ModelButton("Item 1"), False, True, 10)
-        vbox.pack_start(Gtk.Label("Item 2"), False, True, 10)
-        popover.add(vbox)
+    def show_ctx_menu(self, point, sections):
+        builder = Gtk.Builder()
+        builder.add_from_string(generate_menu_xml('ctx-menu', sections))
+        self.mw.set_actions(sections)
+        builder.connect_signals(self.mw)
+        ctx_menu = builder.get_object('ctx-menu')
+        popover = Gtk.Popover.new_from_model(self, ctx_menu)
+
         popover.set_position(Gtk.PositionType.BOTTOM)
-        popover.set_relative_to(self)
         x, y = point
         rectangle = Gdk.Rectangle()
         rectangle.x = x
