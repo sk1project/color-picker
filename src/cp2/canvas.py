@@ -410,11 +410,27 @@ class ColorCell:
 
         # Color name label
         if color_name != label and color_name.lower() != label.lower():
+            max_size = 0.9 * (config.cell_width - 2 * config.cell_border)
             ctx.set_font_size(10)
+
             ext = ctx.text_extents(color_name)
+            color_name2 = []
+            while ext.width > max_size:
+                words = color_name.split()
+                color_name2 = [words[-1]] + color_name2
+                color_name = ' '.join(words[:-1])
+                ext = ctx.text_extents(color_name)
+
             ctx.move_to(x + cell_w / 2 - ext.width / 2,
                         y + cell_h / 1.5 + ext.height / 2)
             ctx.show_text(color_name)
+            if color_name2:
+                color_name2 = ' '.join(color_name2)
+                ext2 = ctx.text_extents(color_name2)
+
+                ctx.move_to(x + cell_w / 2 - ext2.width / 2,
+                            y + cell_h / 1.5 + ext2.height * 2)
+                ctx.show_text(color_name2)
 
         # Selection mark
         if self in self.canvas.selection:
