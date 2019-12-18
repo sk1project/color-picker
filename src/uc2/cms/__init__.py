@@ -110,6 +110,8 @@ def hexcolor_to_rgb(hexcolor):
     """Converts hex color string as a list of float values.
     For example: #ff00ff => [1.0, 0.0, 1.0]
     """
+    if not hexcolor.startswith('#'):
+        hexcolor = f'#{hexcolor}'
     if len(hexcolor) == 4:
         vals = (hexcolor[1] * 2, hexcolor[2] * 2, hexcolor[3] * 2)
     else:

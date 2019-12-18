@@ -20,7 +20,7 @@ import colorsys
 import math
 import os
 import time
-
+from copy import deepcopy
 
 import wal
 from cp2 import _, config, api
@@ -364,7 +364,11 @@ class ColorCell:
         return any([in_bbox(bbox, cpoint) for bbox in self.bboxes])
 
     def is_top(self, point):
-        return self.win2cell(point)[1] < config.cell_height / 1.9
+        return self.win2cell(point)[1] < config.cell_height / 2.2
+
+    def is_middle(self, point):
+        return config.cell_height / 2.2 < \
+               self.win2cell(point)[1] < config.cell_height / 1.8
 
     def paint(self, ctx, x_count, y_count):
         cms = self.canvas.cms
@@ -493,8 +497,45 @@ class ColorGrid(CanvasObj):
         clr0 = [] + cell.color[1]
         clr = wal.color_dialog(self.canvas.mw, _('Change color'), clr0)
         if clr and clr0 != clr:
-            color = [uc2const.COLOR_RGB, clr, 1.0, '', '']
+            color = [uc2const.COLOR_RGB, clr, 1.0, cell.color[3], '']
             api.change_color(self.canvas, cell, color)
+
+    def change_color_hexvalue(self, cell):
+        point = cell.cell2win((config.cell_width/2,
+                               config.cell_height/2))
+        popover = wal.EntryPopover(
+            self.canvas.dc, point, self.cells.index(cell),
+            uc2.cms.rgb_to_hexcolor(cell.color[1]), self.set_color_hexvalue)
+        popover.set_pos(top=True)
+        popover.run()
+
+    def change_color_name(self, cell):
+        point = cell.cell2win((config.cell_width/2,
+                               config.cell_height * 4/5))
+        popover = wal.EntryPopover(
+            self.canvas.dc, point, self.cells.index(cell),
+            cell.color[3], self.set_color_name)
+        popover.set_pos(bottom=True)
+        popover.run()
+
+    def set_color_name(self, index, name):
+        cell = self.cells[index]
+        color = deepcopy(self.cells[index].color)
+        color[3] = name
+        api.change_color(self.canvas, cell, color)
+
+    def set_color_hexvalue(self, index, hexvalue):
+        try:
+            clr = uc2.cms.hexcolor_to_rgb(hexvalue)
+        except Exception as e:
+            wal.error_dialog(self.canvas.mw, _('Wrong value'),
+                             _('Wrong color value: ') + hexvalue,
+                             _('Fix it and try again'))
+            return
+        cell = self.cells[index]
+        color = deepcopy(self.cells[index].color)
+        color[1] = clr
+        api.change_color(self.canvas, cell, color)
 
     @staticmethod
     def get_approximates():
@@ -525,9 +566,10 @@ class ColorGrid(CanvasObj):
         self.canvas.reflect_transaction()
         if self.cells[index].is_top(event.get_point()):
             self.change_color(self.cells[index])
+        elif self.cells[index].is_middle(event.get_point()):
+            self.change_color_hexvalue(self.cells[index])
         else:
-            pass
-            # TODO: edit color name
+            self.change_color_name(self.cells[index])
 
     def on_right_pressed(self, event):
         return self.is_over(event.get_point(), False) and self.active
@@ -757,8 +799,8 @@ class Canvas(Decomposable):
         if self.left_pressed:
             self.left_pressed.on_left_released(event)
             timestamp = time.time()
-            if timestamp - self.release_timestamp < 0.25 or \
-                    timestamp - self.press_timestamp > 1.0:
+            if timestamp - self.release_timestamp < 0.5 or \
+                    timestamp - self.press_timestamp > 0.5:
                 self.left_pressed.on_left_double_click(event)
             self.release_timestamp = timestamp
             self.left_pressed = None

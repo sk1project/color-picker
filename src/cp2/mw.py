@@ -38,8 +38,7 @@ class PaletteWindow(wal.PaletteWindow):
                 (_('Save as...'), 'save-as', self.on_save_as, None),
             ],
             [
-                # TODO should be implemented
-                (_('Properties...'), 'properties', self.on_about, None),
+                (_('Properties...'), 'properties', self.on_props, None),
             ],
             [
                 (_('Palette Collection'), 'palettes', app.on_palettes, None),
@@ -127,6 +126,9 @@ class PaletteWindow(wal.PaletteWindow):
 
     def on_about(self, *_args):
         self.app.on_about(transient_for=self)
+
+    def on_props(self, *_args):
+        wal.properties_dialog(self, _('Palette properties'))
 
     def go_home(self, *_args):
         self.canvas.go_home()

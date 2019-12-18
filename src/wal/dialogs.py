@@ -134,3 +134,30 @@ def about_dialog(**kwargs):
     about_dlg = Gtk.AboutDialog(**kwargs)
     about_dlg.run()
     about_dlg.destroy()
+
+
+class PropertiesDialog(Gtk.Dialog):
+
+    def __init__(self, parent, title, **kwargs):
+        Gtk.Dialog.__init__(self, title, parent, 0,
+                            (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+                             Gtk.STOCK_OK, Gtk.ResponseType.OK))
+
+        self.set_default_size(150, 100)
+
+        label = Gtk.Label("This is a dialog to display additional information")
+
+        box = self.get_content_area()
+        box.add(label)
+        self.show_all()
+
+    def get_metadata(self):
+        return None
+
+
+def properties_dialog(parent, title, **kwargs):
+    prop_dlg = PropertiesDialog(parent, title, **kwargs)
+    prop_dlg.run()
+    metadata = prop_dlg.get_metadata()
+    prop_dlg.destroy()
+    return metadata

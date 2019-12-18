@@ -338,6 +338,50 @@ class CanvasDC(Gtk.DrawingArea):
         popover.popup()
 
 
+class EntryPopover(Gtk.Popover):
+    text = ''
+    index = 0
+    callback = None
+
+    def __init__(self, parent, point, index, text, callback):
+        self.text = text
+        self.index = index
+        self.callback = callback
+        super().__init__()
+        self.set_relative_to(parent)
+        self.set_rect(point)
+
+        self.entry = Gtk.Entry()
+        self.entry.set_text(text)
+        self.add(self.entry)
+        self.entry.connect('key-press-event', self.enter_action)
+
+    def enter_action(self, _widget, ev, _data=None):
+        if ev.keyval in (Gdk.KEY_Return, Gdk.KEY_KP_Enter):
+            if self.text != self.entry.get_text():
+                self.callback(self.index, self.entry.get_text())
+            self.popdown()
+
+    def set_pos(self, bottom=False, top=False):
+        if bottom:
+            self.set_position(Gtk.PositionType.BOTTOM)
+        elif top:
+            self.set_position(Gtk.PositionType.TOP)
+
+    def set_rect(self, point):
+        x, y = point
+        rectangle = Gdk.Rectangle()
+        rectangle.x = x
+        rectangle.y = y
+        rectangle.width = 1
+        rectangle.height = 1
+        self.set_pointing_to(rectangle)
+
+    def run(self):
+        self.show_all()
+        self.popup()
+
+
 CLIPBOARD = {
     'system': None,
     'app': None
