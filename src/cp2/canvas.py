@@ -364,10 +364,10 @@ class ColorCell:
         return any([in_bbox(bbox, cpoint) for bbox in self.bboxes])
 
     def is_top(self, point):
-        return self.win2cell(point)[1] < config.cell_height / 2.2
+        return self.win2cell(point)[1] < config.cell_height / 2.4
 
     def is_middle(self, point):
-        return config.cell_height / 2.2 < \
+        return config.cell_height / 2.4 < \
                self.win2cell(point)[1] < config.cell_height / 1.8
 
     def paint(self, ctx, x_count, y_count):
