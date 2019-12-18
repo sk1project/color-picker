@@ -21,8 +21,11 @@ import os
 import platform
 import shutil
 import sys
+import logging
 
 from . import fsutils
+
+LOG = logging.getLogger(__name__)
 
 
 def get_resources(pkg_path, path):
@@ -42,14 +45,15 @@ def clear_build():
     Clears build result.
     """
     if os.path.exists('build'):
-        os.system('rm -rf build')
+        shutil.rmtree('build', ignore_errors=True)
 
 
 def clear_msw_build():
     """
     Clears build result on MS Windows.
     """
-    shutil.rmtree('build', True)
+    if os.path.exists('build'):
+        shutil.rmtree('build', ignore_errors=True)
 
 
 def make_source_list(path, file_list=None):
@@ -183,4 +187,4 @@ def copy_modules(modules, src_root='src'):
             if os.path.exists(dst2):
                 os.remove(dst2)
             shutil.copy(src, dst)
-        print('>>>Module %s has been copied to src/ directory' % path)
+        LOG.info('>>>Module %s has been copied to src/ directory', path)

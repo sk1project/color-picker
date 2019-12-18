@@ -18,7 +18,10 @@
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import os
+import logging
 from . import fsutils
+
+LOG = logging.getLogger(__name__)
 
 
 def build_pot(paths, po_file='messages.po', error_logs=False):
@@ -28,16 +31,17 @@ def build_pot(paths, po_file='messages.po', error_logs=False):
     file_list = 'locale.in'
     for path in paths:
         files += fsutils.get_files_tree(path, 'py')
-    open(file_list, 'w').write('\n'.join(files))
+    with open(file_list, 'w') as fileptr:
+        fileptr.write('\n'.join(files))
     ret += os.system('xgettext -f %s -L Python -o %s 2>%s' %
                      (file_list, po_file, error_logs))
     ret += os.system('rm -f %s' % file_list)
     if not ret:
-        print('POT file updated')
+        LOG.info('POT file updated')
 
 
 def build_locales(src_path, dest_path, textdomain):
-    print('Building locales')
+    LOG.info('Building locales')
     for item in fsutils.get_filenames(src_path, 'po'):
         lang = item.split('.')[0]
         po_file = os.path.join(src_path, item)
@@ -45,5 +49,5 @@ def build_locales(src_path, dest_path, textdomain):
         mo_file = os.path.join(mo_dir, textdomain + '.mo')
         if not os.path.lexists(mo_dir):
             os.makedirs(mo_dir)
-        print(po_file, '==>', mo_file)
+        LOG.info("%s ==> %s", po_file, mo_file)
         os.system('msgfmt -o %s %s' % (mo_file, po_file))

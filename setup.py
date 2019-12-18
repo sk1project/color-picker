@@ -17,8 +17,6 @@
 # 	You should have received a copy of the GNU General Public License
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from __future__ import print_function
-
 """
 Usage: 
 --------------------------------------------------------------------------
@@ -34,12 +32,12 @@ Usage:
 --------------------------------------------------------------------------.
  Help on available distribution formats: --help-formats
 """
-
 from distutils.core import setup
 import datetime
 import os
 import sys
-
+import string
+import logging
 
 ############################################################
 
@@ -51,6 +49,10 @@ from utils import po
 
 from utils import dependencies
 from utils import native_mods
+
+
+logging.basicConfig(level=0, format='%(levelname)-8s %(message)s')
+log = logging.getLogger('setup')
 
 sys.path.insert(1, os.path.abspath('./src'))
 
@@ -175,12 +177,12 @@ if len(sys.argv) > 1:
     elif sys.argv[1] == 'uninstall':
         if os.path.isdir(install_path):
             # removing cp2 folder
-            print('REMOVE: ' + install_path)
+            log.info('REMOVE: %s', install_path)
             os.system('rm -rf ' + install_path)
             # removing scripts
             for item in scripts:
                 filename = os.path.basename(item)
-                print('REMOVE: /usr/bin/' + filename)
+                log.info('REMOVE: /usr/bin/%s', filename)
                 os.system('rm -rf /usr/bin/' + filename)
             # removing data files
             for item in data_files:
@@ -191,13 +193,14 @@ if len(sys.argv) > 1:
                     filepath = os.path.join(location, filename)
                     if not os.path.isfile(filepath):
                         continue
-                    print('REMOVE: ' + filepath)
+                    log.info('REMOVE: %s', filepath)
                     os.system('rm -rf ' + filepath)
-            print('Desktop database update: ', end=' ')
-            os.system('update-desktop-database')
-            print('DONE!')
+            if os.system('update-desktop-database'):
+                log.info('Desktop database update: DONE')
+            else:
+                log.error('Desktop database update: ERROR')
         else:
-            print('Color Picker installation is not found!')
+            log.warning('Color Picker installation is not found!')
         sys.exit(0)
 
     elif sys.argv[1] == 'update_pot':
@@ -212,27 +215,23 @@ if len(sys.argv) > 1:
 # Preparing start script
 src_script = 'src/_script/color-picker.tmpl'
 dst_script = 'src/_script/color-picker'
-fileptr = open(src_script, 'r')
-fileptr2 = open(dst_script, 'w')
-while True:
-    line = fileptr.readline()
-    if line == '':
-        break
-    if '$APP_INSTALL_PATH' in line:
-        line = line.replace('$APP_INSTALL_PATH', install_path)
-    fileptr2.write(line)
-fileptr.close()
-fileptr2.close()
+
+with open(src_script, 'r') as fileptr:
+    tmpl = string.Template(fileptr.read())
+    console_scripts = tmpl.safe_substitute(APP_INSTALL_PATH=install_path)
+
+with open(dst_script, 'w') as fileptr:
+    fileptr.write(console_scripts)
 
 # Preparing setup.cfg
 ############################################################
 
-with open('setup.cfg.in', 'rb') as fileptr:
+with open('setup.cfg.in', 'r') as fileptr:
     content = fileptr.read()
     if rpm_depends:
         content += '\nrequires = ' + rpm_depends
 
-with open('setup.cfg', 'wb') as fileptr:
+with open('setup.cfg', 'w') as fileptr:
     fileptr.write(content)
 
 # Preparing locales

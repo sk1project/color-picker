@@ -18,6 +18,7 @@
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import os
+import shutil
 
 
 def get_filenames(path='.', ext='*'):
@@ -116,3 +117,13 @@ def getsize(path='.', count=False):
         else [os.path.getsize(f) for f in get_files_tree(path)]
     sz = sum(sizes)
     return (sz, len(sizes)) if count else sz
+
+
+def rmtree(path):
+    """
+    Recursively delete a directory tree
+    """
+    if os.path.isdir(path):
+        shutil.rmtree(path)
+    elif os.path.exists(path):
+        os.unlink(path)
