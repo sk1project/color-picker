@@ -28,6 +28,10 @@ def _set_selection(canvas, selection):
     canvas.selection = selection
 
 
+def _set_meta(canvas, meta):
+    canvas.doc.model.__dict__.update(meta)
+
+
 def color_transaction(func):
     def func_wrapper(canvas, *args, **kwargs):
         colors_before = [] + canvas.doc.model.colors
@@ -48,6 +52,28 @@ def color_transaction(func):
                 (_set_colors, canvas, colors_after),
                 (_set_cells, canvas, cells_after),
                 (_set_selection, canvas, selection_after)
+            ]]
+        )
+
+    return func_wrapper
+
+
+FIELDS = ('name', 'source', 'columns', 'comments')
+
+
+def meta_transaction(func):
+    def func_wrapper(canvas, *args, **kwargs):
+        d = canvas.doc.model.__dict__
+        meta_before = dict((item, d[item]) for item in FIELDS if item in d)
+
+        func(canvas, *args, **kwargs)
+
+        meta_after = dict((item, d[item]) for item in FIELDS)
+        canvas.history.add_transaction(
+            [[
+                (_set_meta, canvas, meta_before),
+            ], [
+                (_set_meta, canvas, meta_after),
             ]]
         )
 
@@ -107,3 +133,9 @@ def change_color(canvas, cell, color):
     canvas.grid.cells.remove(cell)
     canvas.grid.sync_to()
     canvas.selection = [new_cell]
+
+
+@meta_transaction
+def change_meta(canvas, new_meta):
+    d = canvas.doc.model.__dict__
+    d.update(new_meta)

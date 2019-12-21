@@ -128,7 +128,23 @@ class PaletteWindow(wal.PaletteWindow):
         self.app.on_about(transient_for=self)
 
     def on_props(self, *_args):
-        wal.properties_dialog(self, _('Palette properties'))
+        model = self.canvas.doc.model
+        kwargs = {
+            'name': (_('Name:'), model.name),
+            'source': (_('Source:'), model.source),
+            'columns': (_('Columns:'), model.columns),
+            'comments': (_('Comments:'), model.comments),
+        }
+        ret = wal.properties_dialog(self, _('Palette properties'), **kwargs)
+        kwargs = {
+            'name': model.name,
+            'source': model.source,
+            'columns': model.columns,
+            'comments': model.comments,
+        }
+        if ret != kwargs:
+            api.change_meta(self.canvas, ret)
+            self.canvas.reflect_transaction()
 
     def go_home(self, *_args):
         self.canvas.go_home()

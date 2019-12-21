@@ -137,27 +137,77 @@ def about_dialog(**kwargs):
 
 
 class PropertiesDialog(Gtk.Dialog):
+    """
+    input dict
+    {'name':(_name,name),
+    'source': (_source, source),
+    'columns': (_columns, int),
+    'comments': (_comments, comments),
+    }
+    """
 
     def __init__(self, parent, title, **kwargs):
         Gtk.Dialog.__init__(self, title, parent, 0,
                             (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
                              Gtk.STOCK_OK, Gtk.ResponseType.OK))
 
-        self.set_default_size(150, 100)
+        self.set_size_request(400, 300)
 
-        label = Gtk.Label("This is a dialog to display additional information")
+        grid = Gtk.Grid()
+        grid.set_border_width(10)
+        grid.set_column_spacing(10)
+        grid.set_row_spacing(10)
 
-        box = self.get_content_area()
-        box.add(label)
+        grid.attach(Gtk.Label(kwargs['name'][0]), 0, 0, 1, 1)
+        self.name = Gtk.Entry()
+        self.name.set_text(kwargs['name'][1])
+        self.name.set_hexpand(True)
+        grid.attach(self.name, 1, 0, 1, 1)
+
+        grid.attach(Gtk.Label(kwargs['source'][0]), 0, 1, 1, 1)
+        self.source = Gtk.Entry()
+        self.source.set_text(kwargs['source'][1])
+        grid.attach(self.source, 1, 1, 1, 1)
+
+        grid.attach(Gtk.Label(kwargs['columns'][0]), 0, 2, 1, 1)
+        adjustment = Gtk.Adjustment(value=kwargs['columns'][1] or 5,
+                                    lower=1,
+                                    upper=50,
+                                    step_increment=1,
+                                    page_increment=1,
+                                    page_size=0)
+        self.columns = Gtk.SpinButton(adjustment=adjustment)
+        self.columns.set_hexpand(False)
+        hbox = Gtk.HBox()
+        hbox.pack_start(self.columns, False, False, 0)
+        grid.attach(hbox, 1, 2, 1, 1)
+
+        grid.attach(Gtk.Label(kwargs['comments'][0]), 0, 3, 1, 1)
+        self.comments = Gtk.TextView()
+        self.comments.get_buffer().set_text(kwargs['comments'][1])
+        self.comments.set_vexpand(True)
+        self.comments.set_border_width(1)
+        grid.attach(self.comments, 1, 3, 1, 1)
+
+        self.get_content_area().pack_start(grid, True, True, 0)
+
         self.show_all()
 
     def get_metadata(self):
-        return None
+        start = self.comments.get_buffer().get_start_iter()
+        end = self.comments.get_buffer().get_end_iter()
+        return {
+            'name': self.name.get_text(),
+            'source': self.source.get_text(),
+            'columns': self.columns.get_value(),
+            'comments': self.comments.get_buffer().get_text(start, end, True),
+        }
 
 
 def properties_dialog(parent, title, **kwargs):
     prop_dlg = PropertiesDialog(parent, title, **kwargs)
-    prop_dlg.run()
-    metadata = prop_dlg.get_metadata()
+    metadata = None
+    if prop_dlg.run() == Gtk.ResponseType.OK:
+        metadata = prop_dlg.get_metadata()
     prop_dlg.destroy()
     return metadata
