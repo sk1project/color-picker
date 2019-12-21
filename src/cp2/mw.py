@@ -16,6 +16,7 @@
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import copy
+import logging
 
 import uc2.cms
 import wal
@@ -23,6 +24,9 @@ from cp2 import _, config
 from cp2.canvas import Canvas
 from uc2 import uc2const
 from . import api
+
+
+LOG = logging.getLogger(__name__)
 
 
 class PaletteWindow(wal.PaletteWindow):
@@ -86,6 +90,7 @@ class PaletteWindow(wal.PaletteWindow):
         self.center()
         self.show()
         self.set_doc(doc)
+        LOG.info('Palette window created for %s', self.canvas.doc.model.name)
 
     def set_doc(self, doc):
         if self.canvas:
@@ -104,7 +109,11 @@ class PaletteWindow(wal.PaletteWindow):
                 'Palette "%s" is modified' % palette_name,
                 'Do you wish to save changes?')
             if ret:
-                return not self.app.save_as_doc(self.canvas.doc, self)
+                if not self.app.save_as_doc(self.canvas.doc, self):
+                    LOG.info('Palette window destroying canceled for %s',
+                             self.canvas.doc.model.name)
+                    return True
+        LOG.info('Palette window destroyed for %s', self.canvas.doc.model.name)
         wal.PaletteWindow.destroy(self)
         self.app.drop_win(self)
         return False
@@ -142,9 +151,10 @@ class PaletteWindow(wal.PaletteWindow):
             'columns': model.columns,
             'comments': model.comments,
         }
-        if ret != kwargs:
+        if ret and ret != kwargs:
             api.change_meta(self.canvas, ret)
             self.canvas.reflect_transaction()
+            LOG.info('Metainfo changed for %s', model.name)
 
     def go_home(self, *_args):
         self.canvas.go_home()

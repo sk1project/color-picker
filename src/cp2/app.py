@@ -126,6 +126,7 @@ class ColorPickerApp(wal.Application, UCApplication):
                 return
         config.save(self.appdata.app_config)
         wal.Application.exit(self)
+        LOG.info('Application terminated')
 
     def drop_win(self, win):
         self.wins.remove(win)
