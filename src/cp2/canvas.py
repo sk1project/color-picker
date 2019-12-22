@@ -29,7 +29,7 @@ from uc2.utils.mixutils import Decomposable
 import uc2.cms
 
 """
-undo/redo actions a list of callable and args:
+undo/redo actions are lists of callable and args:
 [(callable, arg0, arg1...), (callable, arg0, arg1...), ...]
 
 Transaction - list of [undo_actions, redo_actions]
