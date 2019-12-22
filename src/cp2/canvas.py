@@ -28,17 +28,18 @@ from uc2 import uc2const
 from uc2.utils.mixutils import Decomposable
 import uc2.cms
 
+"""
+undo/redo actions a list of callable and args:
+[(callable, arg0, arg1...), (callable, arg0, arg1...), ...]
 
-# undo/redo actions a list of callable and args:
-# [(callable, arg0, arg1...), (callable, arg0, arg1...), ...]
+Transaction - list of [undo_actions, redo_actions]
 
-# Transaction - list of [undo_actions, redo_actions]
+Undo stack format:
+[transaction, transaction, ... ,transaction]
 
-# Undo stack format:
-# [transaction, transaction, ... ,transaction]
-
-# index - last transaction (0 if Undo stack is empty)
-# saved index - transaction saved in file (-1 if not saved)
+index - last transaction (0 if Undo stack is empty)
+saved index - transaction saved in file (-1 if not saved)
+"""
 
 
 class UndoHistory(Decomposable):
