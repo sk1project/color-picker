@@ -26,7 +26,7 @@ from gi.repository import Gdk, Gtk
 NORMAL_TRAFO = cairo.Matrix(1, 0, 0, 1, 0, 0)
 
 
-class Grabber:
+class ColorGrabber:
     mw = None
     canvas = None
     w = None
@@ -96,11 +96,11 @@ class Grabber:
         self.w.destroy()
 
     def get_color_from_pb(self, pb):
-        pixel_data = pb.get_pixels()
+        pixels = pb.get_pixels()
         w, h = self.size
         rs = pb.get_rowstride()
         offset = rs * (h // 2) + (rs // w) * (w // 2)
-        return [v / 255.0 for v in pixel_data[offset:offset + 3]]
+        return [v / 255.0 for v in pixels[offset:offset + 3]]
 
     def set_cursor(self):
         pointer, x, y = self.pointer.get_position()
@@ -142,7 +142,7 @@ class Grabber:
         pass
 
 
-class ZoomedGrabber(Grabber):
+class ZoomedColorGrabber(ColorGrabber):
     zoom = 3
 
     def __init__(self):
@@ -150,7 +150,7 @@ class ZoomedGrabber(Grabber):
 
     def __call__(self, canvas):
         self.zoom = 3
-        Grabber.__call__(self, canvas)
+        ColorGrabber.__call__(self, canvas)
 
     def set_cursor(self):
         pointer, x, y = self.pointer.get_position()
@@ -210,5 +210,5 @@ class ZoomedGrabber(Grabber):
             self.set_cursor()
 
 
-pick_color = Grabber()
-pick_color_zoomed = ZoomedGrabber()
+pick_color = ColorGrabber()
+pick_color_zoomed = ZoomedColorGrabber()
