@@ -34,7 +34,7 @@ class ColorGrabber:
     keyboard = None
     lock = False
     size = (151, 151)
-    pb = None
+    pixbuffer = None
     handlers = None
 
     def _set_devices(self):
@@ -94,11 +94,12 @@ class ColorGrabber:
         for handler in self.handlers:
             self.w.disconnect(handler)
         self.w.destroy()
+        self.w = None
 
-    def get_color_from_pb(self, pb):
-        pixels = pb.get_pixels()
+    def get_color_from_pixbuffer(self, pixbuffer):
+        pixels = pixbuffer.get_pixels()
         w, h = self.size
-        rs = pb.get_rowstride()
+        rs = pixbuffer.get_rowstride()
         offset = rs * (h // 2) + (rs // w) * (w // 2)
         return [v / 255.0 for v in pixels[offset:offset + 3]]
 
@@ -106,7 +107,7 @@ class ColorGrabber:
         pointer, x, y = self.pointer.get_position()
         w, h = self.size
 
-        self.pb = Gdk.pixbuf_get_from_window(
+        self.pixbuffer = Gdk.pixbuf_get_from_window(
             Gdk.get_default_root_window(), x - (w // 2), y - (h // 2), w, h)
 
         cursor = get_cursor('crosshair')
@@ -132,7 +133,7 @@ class ColorGrabber:
     def on_btn_press(self, _widget, event):
         if self.lock:
             if event.button == 1:
-                self.mw.add_color(self.get_color_from_pb(self.pb))
+                self.mw.add_color(self.get_color_from_pixbuffer(self.pixbuffer))
                 if event.state & Gdk.ModifierType.CONTROL_MASK or \
                         event.state & Gdk.ModifierType.SHIFT_MASK:
                     return True
@@ -156,7 +157,7 @@ class ZoomedColorGrabber(ColorGrabber):
         pointer, x, y = self.pointer.get_position()
         w, h = self.size
 
-        self.pb = Gdk.pixbuf_get_from_window(
+        self.pixbuffer = Gdk.pixbuf_get_from_window(
             Gdk.get_default_root_window(), x - (w // 2), y - (h // 2), w, h)
 
         surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, w, h)
@@ -165,7 +166,7 @@ class ZoomedColorGrabber(ColorGrabber):
                  -(self.zoom - 1) * w // 2, -(self.zoom - 1) * h // 2)
         ctx.set_matrix(cairo.Matrix(*trafo))
 
-        Gdk.cairo_set_source_pixbuf(ctx, self.pb, 0, 0)
+        Gdk.cairo_set_source_pixbuf(ctx, self.pixbuffer, 0, 0)
         ctx.get_source().set_filter(cairo.FILTER_NEAREST)
         ctx.paint()
 
@@ -185,11 +186,11 @@ class ZoomedColorGrabber(ColorGrabber):
         ctx.set_source_rgb(1, 1, 1)
         ctx.stroke()
 
-        cursor_pb = Gdk.pixbuf_get_from_surface(surface, 0, 0, w, h)
+        cursor_pixbuffer = Gdk.pixbuf_get_from_surface(surface, 0, 0, w, h)
 
         cursor = Gdk.Cursor.new_from_pixbuf(
             self.w.get_screen().get_display(),
-            cursor_pb, w // 2, h // 2)
+            cursor_pixbuffer, w // 2, h // 2)
 
         self.pointer.grab(
             self.w.get_window(),
