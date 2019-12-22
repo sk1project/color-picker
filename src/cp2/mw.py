@@ -25,7 +25,6 @@ from cp2.canvas import Canvas
 from uc2 import uc2const
 from . import api
 
-
 LOG = logging.getLogger(__name__)
 
 
@@ -244,6 +243,10 @@ class PaletteWindow(wal.PaletteWindow):
         else:
             api.add_colors(self.canvas, colors)
 
+    def add_color(self, color):
+        color = [uc2const.COLOR_RGB, color, 1.0, '', '']
+        api.add_color(self.canvas, color)
+
     def is_clipboard(self):
         colors = wal.get_from_clipboard(False)
         txt = wal.get_from_clipboard()
@@ -252,3 +255,9 @@ class PaletteWindow(wal.PaletteWindow):
     def duplicate(self, *_args):
         if self.canvas.selection:
             api.duplicate_selected(self.canvas)
+
+    def pick_color(self, *_args):
+        wal.pick_color(self.canvas)
+
+    def pick_color_zoomed(self, *_args):
+        wal.pick_color_zoomed(self.canvas)

@@ -125,12 +125,14 @@ class PaletteWindow(Gtk.ApplicationWindow):
         icon = Gio.ThemedIcon(name="color-select-symbolic")
         self.pickbtn.add(Gtk.Image.new_from_gicon(icon, Gtk.IconSize.BUTTON))
         self.hdr.pack_start(self.pickbtn)
+        self.pickbtn.connect('clicked', self.pick_color)
 
         self.zoombtn = Gtk.Button()
         self.zoombtn.set_tooltip_text('Zoomed pick')
         icon = Gio.ThemedIcon(name="find-location-symbolic")
         self.zoombtn.add(Gtk.Image.new_from_gicon(icon, Gtk.IconSize.BUTTON))
         self.hdr.pack_start(self.zoombtn)
+        self.zoombtn.connect('clicked', self.pick_color_zoomed)
 
         self.menubtn = Gtk.MenuButton()
         self.menubtn.set_tooltip_text('Open menu')
@@ -198,6 +200,12 @@ class PaletteWindow(Gtk.ApplicationWindow):
     def show(self):
         self.show_all()
 
+    def pick_color(self, *_args):
+        pass
+
+    def pick_color_zoomed(self, *_args):
+        pass
+
 
 class CanvasEvent:
     event = None
@@ -246,7 +254,7 @@ CURSORS = {
 }
 
 
-def _get_cursor(name):
+def get_cursor(name):
     if name in GTK_CURSOR_NAMES and name not in CURSORS:
         CURSORS[name] = _cursor_from_name(name)
     elif name not in CURSORS:
@@ -284,7 +292,7 @@ class CanvasDC(Gtk.DrawingArea):
     def set_cursor(self, cursor_name):
         if not cursor_name == self.cursor:
             self.cursor = cursor_name
-            self.get_root_window().set_cursor(_get_cursor(cursor_name))
+            self.get_root_window().set_cursor(get_cursor(cursor_name))
 
     def paint(self, _widget, widget_ctx):
         if self.mw and self.mw.canvas:
