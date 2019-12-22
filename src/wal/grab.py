@@ -126,16 +126,15 @@ class Grabber:
             self.set_cursor()
 
     def on_keypress(self, _widget, event):
-        if self.lock:
-            if event.keyval == Gdk.KEY_Escape:
-                self.release()
+        if self.lock and event.keyval == Gdk.KEY_Escape:
+            self.release()
 
     def on_btn_press(self, _widget, event):
         if self.lock:
             if event.button == 1:
                 self.mw.add_color(self.get_color_from_pb(self.pb))
-                if bool(event.state & Gdk.ModifierType.CONTROL_MASK) or \
-                        bool(event.state & Gdk.ModifierType.SHIFT_MASK):
+                if event.state & Gdk.ModifierType.CONTROL_MASK or \
+                        event.state & Gdk.ModifierType.SHIFT_MASK:
                     return True
             self.release()
 
@@ -178,7 +177,7 @@ class ZoomedGrabber(Grabber):
         ctx.stroke()
 
         size = 10
-        x0, y0 = w // 2, h // 2
+        x0, y0 = w // 2 + 1, h // 2 + 1
         ctx.rectangle(x0 - size / 2, y0 - size / 2, size, size)
         ctx.set_source_rgb(1, 0, 0)
         ctx.stroke()
@@ -186,11 +185,11 @@ class ZoomedGrabber(Grabber):
         ctx.set_source_rgb(1, 1, 1)
         ctx.stroke()
 
-        drawn_pb = Gdk.pixbuf_get_from_surface(surface, 0, 0, w, h)
+        cursor_pb = Gdk.pixbuf_get_from_surface(surface, 0, 0, w, h)
 
         cursor = Gdk.Cursor.new_from_pixbuf(
             self.w.get_screen().get_display(),
-            drawn_pb, w // 2, h // 2)
+            cursor_pb, w // 2, h // 2)
 
         self.pointer.grab(
             self.w.get_window(),
