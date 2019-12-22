@@ -70,6 +70,7 @@ class UndoHistory(Decomposable):
 
     def set_saved(self):
         self.saved_index = self.index
+        self.canvas.reflect_transaction()
 
     # noinspection PyTypeChecker
     def undo(self):

@@ -127,7 +127,8 @@ class PaletteWindow(wal.PaletteWindow):
         self.app.paste_from(win=self)
 
     def on_save_as(self, *_args):
-        self.app.save_as_doc(self.canvas.doc, self)
+        if self.app.save_as_doc(self.canvas.doc, self):
+            self.canvas.history.set_saved()
 
     def on_clear(self, *_args):
         self.app.clear(self)
