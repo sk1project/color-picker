@@ -210,13 +210,5 @@ class ZoomedGrabber(Grabber):
             self.set_cursor()
 
 
-grabber = Grabber()
-zoomed_grabber = ZoomedGrabber()
-
-
-def pick_color(canvas):
-    grabber(canvas)
-
-
-def pick_color_zoomed(canvas):
-    zoomed_grabber(canvas)
+pick_color = Grabber()
+pick_color_zoomed = ZoomedGrabber()
