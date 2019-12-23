@@ -96,7 +96,7 @@ class TaggedModelObject(ModelObject):
 
 
 class BinaryModelObject(ModelObject):
-    chunk = ''
+    chunk = b''
     cache_fields = []
 
     def save(self, saver):

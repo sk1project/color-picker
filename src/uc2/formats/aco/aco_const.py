@@ -73,7 +73,7 @@ def aco_chunk2color(chunk):
 
 
 def color2aco_chunk(color, version=ACO1_VER):
-    chunk = ''
+    chunk = b''
     model = color[0]
     vals = color[1]
     if model == uc2const.COLOR_RGB:
@@ -81,7 +81,7 @@ def color2aco_chunk(color, version=ACO1_VER):
         vals = [int(round(x * 65535)) for x in vals]
         for item in vals:
             chunk += struct.pack('>H', item)
-        chunk += '\x00\x00'
+        chunk += b'\x00\x00'
     elif model == uc2const.COLOR_CMYK:
         chunk += struct.pack('>H', ACO_WIDE_CMYK)
         vals = [int(round(x * 10000)) for x in vals]
