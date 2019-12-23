@@ -48,8 +48,8 @@ def aco_chunk2color(chunk):
         color[0] = uc2const.COLOR_CMYK
         color[1] = [1.0 - x / 65535.0 for x in clr]
     elif model == ACO_LAB:
-        L, a, b = struct.unpack('>H 2h', vals[:6])
-        clr = (L / 10000.0,
+        l, a, b = struct.unpack('>H 2h', vals[:6])
+        clr = (l / 10000.0,
                (a / 100.0 + 128.0) / 255.0,
                (b / 100.0 + 128.0) / 255.0)
         color[1] = cms.lab_to_rgb(clr)
