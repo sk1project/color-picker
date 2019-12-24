@@ -109,7 +109,7 @@ class CPL7_Color(AbstractCPLColor):
         self.colorspace = loader.readword()
         self.valbytes = loader.readbytes(10)
         size = loader.readbyte()
-        self.name = loader.readstr(size).decode('latin1')
+        self.name = loader.readstr(size)
         ln = 2 + 10 + 1 + size
         loader.fileptr.seek(-ln, 1)
         self.chunk = loader.readbytes(ln)
@@ -157,7 +157,7 @@ class CPL7_ColorUTF(AbstractCPLColor):
         self.colorspace = loader.readword()
         self.valbytes = loader.readbytes(10)
         size = loader.readbyte()
-        self.name = loader.readstr(size * 2).decode('utf_16_le')
+        self.name = loader.readustr(size)
         ln = 2 + 10 + 1 + size * 2
         loader.fileptr.seek(-ln, 1)
         self.chunk = loader.readbytes(ln)
@@ -242,7 +242,7 @@ class CPL10_Palette(AbstractCPLPalette):
         # Palette name (header 0)
         loader.fileptr.seek(self.headers[0], 0)
         name_size = loader.readbyte()
-        self.name = loader.readbytes(name_size).decode('latin1')
+        self.name = loader.readstr(name_size)
         chunk_size += 1 + name_size
 
         # Palette type (header 1)
