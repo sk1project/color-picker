@@ -45,7 +45,7 @@ class XMLObject(TaggedModelObject):
         is_node = len(self.childs)
         info = ''
         if is_node: info = '%d' % (len(self.childs))
-        return (not is_node, self.tag, info)
+        return not is_node, self.tag, info
 
 
 class XmlContentText(XMLObject):

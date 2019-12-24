@@ -844,7 +844,7 @@ class Canvas(Decomposable):
         w, h = self.dc.get_size()
         border = config.canvas_border
         cell_h = config.cell_height
-        cell_num = len(self.doc.model.colors)
+        cell_num = len(self.doc.model.colors) + 1
         self.cell_max = (w - 2 * config.canvas_border) // config.cell_width
         self.virtual_h = \
             2 * border + math.ceil(cell_num / self.cell_max) * cell_h
