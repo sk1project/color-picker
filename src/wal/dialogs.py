@@ -57,6 +57,7 @@ def get_save_file_name(parent, path, title, file_types='*'):
     dialog.set_current_folder(os.path.dirname(path))
     dialog.set_current_name(os.path.basename(path))
     dialog.set_default_response(Gtk.ResponseType.OK)
+    dialog.set_do_overwrite_confirmation(True)
     _add_filters(dialog, file_types)
 
     response = dialog.run()
