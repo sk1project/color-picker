@@ -35,7 +35,7 @@ def skp_saver(doc, filename=None, fileptr=None, translate=True,
 
 
 def check_skp(path):
-    fileptr = get_fileptr(path)
-    string = fileptr.read(len(SKP_ID.encode()))
+    fileptr = get_fileptr(path, binary=False)
+    string = fileptr.read(len(SKP_ID))
     fileptr.close()
-    return string.decode() == SKP_ID
+    return string == SKP_ID
