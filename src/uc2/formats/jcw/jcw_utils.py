@@ -75,4 +75,4 @@ def get_jcw_color(color):
         vals = cms.gray_to_cmyk(color[1])
         return struct.pack('<4H', *dec_to_val(vals))
     else:
-        return struct.pack('<3H', *dec_to_val(color[1])) + '\x00\x00'
+        return struct.pack('<3H', *dec_to_val(color[1])) + b'\x00\x00'

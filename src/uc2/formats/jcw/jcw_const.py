@@ -15,8 +15,8 @@
 #  You should have received a copy of the GNU Affero General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-JCW_ID = 'JCW'
-JCW_VER = '\x01'
+JCW_ID = b'JCW'
+JCW_VER = b'\x01'
 JCW_NAMESIZE = 21
 
 JCW_PMS = 0

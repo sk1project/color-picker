@@ -15,18 +15,19 @@
 # 	You should have received a copy of the GNU General Public License
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import cairo
 import colorsys
 import math
 import os
 import time
 from copy import deepcopy
 
+import cairo
+
+import uc2.cms
 import wal
 from cp2 import _, config, api
 from uc2 import uc2const
 from uc2.utils.mixutils import Decomposable
-import uc2.cms
 
 """
 undo/redo actions are lists of callable and args:
@@ -520,8 +521,8 @@ class ColorGrid(CanvasObj):
             api.change_color(self.canvas, cell, color)
 
     def change_color_hexvalue(self, cell):
-        point = cell.cell2win((config.cell_width/2,
-                               config.cell_height/2))
+        point = cell.cell2win((config.cell_width / 2,
+                               config.cell_height / 2))
         popover = wal.EntryPopover(
             self.canvas.dc, point, self.cells.index(cell),
             uc2.cms.rgb_to_hexcolor(cell.color[1]), self.set_color_hexvalue)
@@ -529,8 +530,8 @@ class ColorGrid(CanvasObj):
         popover.run()
 
     def change_color_name(self, cell):
-        point = cell.cell2win((config.cell_width/2,
-                               config.cell_height * 4/5))
+        point = cell.cell2win((config.cell_width / 2,
+                               config.cell_height * 4 / 5))
         popover = wal.EntryPopover(
             self.canvas.dc, point, self.cells.index(cell),
             cell.color[3], self.set_color_name)
@@ -546,7 +547,7 @@ class ColorGrid(CanvasObj):
     def set_color_hexvalue(self, index, hexvalue):
         try:
             clr = uc2.cms.hexcolor_to_rgb(hexvalue)
-        except Exception as e:
+        except Exception:
             wal.error_dialog(self.canvas.mw, _('Wrong value'),
                              _('Wrong color value: ') + hexvalue,
                              _('Fix it and try again'))
