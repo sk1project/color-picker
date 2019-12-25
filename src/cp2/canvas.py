@@ -430,10 +430,13 @@ class ColorCell:
 
             if color_name2:
                 color_name2 = ' '.join(color_name2)
+                if 'Hexachrome' in color_name2:
+                    color_name2 = color_name2.replace('Hexachrome ', 'Hexach.')
                 ext2 = ctx.text_extents(color_name2)
 
                 ctx.move_to(x + cell_w / 2 - ext2.width / 2,
-                            y + cell_h / 1.5 + ext2.height * 2)
+                            y + cell_h / 1.5 + ext.height * 1.5 +
+                            ext2.height / 2)
                 ctx.show_text(color_name2)
 
         # Selection mark
