@@ -1,0 +1,2880 @@
+# Copyright (C) 2018, Maxim Barabash, Eugeniy Fedirets
+# This file is distributed under the same license as the PACKAGE package.
+# Maxim Barabash <maxim.s.barabash@gmail.com>, 2018.
+# Eugeniy Fedirets <evgeniy_fedirets@ukr.net>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-25 12:54+0200\n"
+"PO-Revision-Date: 2019-12-25 15:11+0200\n"
+"Last-Translator: Eugeniy Fedirets <evgeniy_fedirets@ukr.net>\n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Bookmarks: 104,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
+
+#: src/cp2/app.py:68 src/cp2/mw.py:39
+msgid "New palette"
+msgstr "Нова палітра"
+
+#: src/cp2/app.py:69 src/cp2/mw.py:40
+msgid "Open palette..."
+msgstr "Відкрити палітру..."
+
+#: src/cp2/app.py:72 src/cp2/mw.py:47
+msgid "Palette Collection"
+msgstr "Колекція палітр"
+
+#: src/cp2/app.py:76 src/cp2/mw.py:50
+msgid "Online help"
+msgstr "Онлайн допомога"
+
+#: src/cp2/app.py:77 src/cp2/mw.py:51
+msgid "About Color Picker"
+msgstr "Про Color Picker"
+
+#: src/cp2/app.py:79 src/cp2/mw.py:53
+msgid "Quit"
+msgstr "Вихід"
+
+#: src/cp2/app.py:170
+msgid "Cannot parse file:"
+msgstr "Не вдалося розібрати файл:"
+
+#: src/cp2/app.py:172
+msgid "The file may be corrupted or not supported format"
+msgstr "Файл може бути пошкоджений або формат файлу не підтримується"
+
+#: src/cp2/app.py:190
+msgid "Select file to paste from"
+msgstr "Оберіть файл для імпорту"
+
+#: src/cp2/app.py:223
+msgid "Cannot save file:"
+msgstr "Не вдалося зберегти файл:"
+
+#: src/cp2/app.py:225
+msgid "Details see in logs"
+msgstr "Детальнішу інформацію дивіться в журналах додатки"
+
+#: src/cp2/canvas.py:288
+msgid "Select color"
+msgstr "Обрати колір"
+
+#: src/cp2/canvas.py:521 src/cp2/canvas.py:710
+msgid "Change color"
+msgstr "Змінити колір"
+
+#: src/cp2/canvas.py:554
+msgid "Wrong value"
+msgstr "Неправильне значення"
+
+#: src/cp2/canvas.py:555
+msgid "Wrong color value: "
+msgstr "Неправильне значення кольору: "
+
+#: src/cp2/canvas.py:556
+msgid "Fix it and try again"
+msgstr "Бажаєте спробувати ще раз?"
+
+#: src/cp2/canvas.py:705
+msgid "Cut"
+msgstr "Вирізати"
+
+#: src/cp2/canvas.py:706
+msgid "Copy"
+msgstr "Скопіювати"
+
+#: src/cp2/canvas.py:707
+msgid "Paste"
+msgstr "Вставити"
+
+#: src/cp2/canvas.py:714
+msgid "Delete"
+msgstr "Видалити"
+
+#: src/cp2/canvas.py:716
+msgid "Duplicate"
+msgstr "Дублювати"
+
+#: src/cp2/canvas.py:720
+msgid "Select all"
+msgstr "Позначити все"
+
+#: src/cp2/canvas.py:722
+msgid "Deselect"
+msgstr "Зняти позначення"
+
+#: src/cp2/canvas.py:726
+msgid "Paste from file..."
+msgstr "Вставити з файлу..."
+
+#: src/cp2/canvas.py:740 src/cp2/mw.py:105
+msgid "Untitled palette"
+msgstr "Безлікова палітра"
+
+#: src/cp2/canvas.py:744
+msgid "colors"
+msgstr "кольорів"
+
+#: src/cp2/dialogs.py:26
+msgid "Select file to open"
+msgstr "Обрати файл для відкриття"
+
+#: src/cp2/dialogs.py:38
+msgid "All supported files"
+msgstr "Усі підтримувані формати"
+
+#: src/cp2/dialogs.py:46
+msgid "Save file as..."
+msgstr "Зберегти файл як..."
+
+#: src/cp2/mw.py:41
+msgid "Save as..."
+msgstr "Зберегти як..."
+
+#: src/cp2/mw.py:44
+msgid "Properties..."
+msgstr "Властивості..."
+
+#: src/cp2/mw.py:142
+msgid "Name:"
+msgstr "Ім'я:"
+
+#: src/cp2/mw.py:143
+msgid "Source:"
+msgstr "Джерело:"
+
+#: src/cp2/mw.py:144
+msgid "Columns:"
+msgstr "Стовпчики:"
+
+#: src/cp2/mw.py:145
+msgid "Comments:"
+msgstr "Коментарі:"
+
+#: src/cp2/mw.py:147
+msgid "Palette properties"
+msgstr "Властивості палітри"
+
+#: src/uc2/uc2const.py:120
+msgid "All supported formats"
+msgstr "Усі підтримувані формати"
+
+#: src/uc2/uc2const.py:121
+msgid "PDXF - PrintDesign XML Format graphics files"
+msgstr "PDXF - файли графіки PrintDesign XML Format"
+
+#: src/uc2/uc2const.py:122
+msgid "SK1 - sK1 0.9.x graphics files"
+msgstr "SK1 - файли sK1 0.9.x"
+
+#: src/uc2/uc2const.py:123
+msgid "SK2 - sK1 2.x graphics files"
+msgstr "SK2 - файли sK1 2.x"
+
+#: src/uc2/uc2const.py:124
+msgid "SK - Sketch/Skencil files"
+msgstr "SK - файли Sketch/Skencil"
+
+#: src/uc2/uc2const.py:125
+msgid "SVG - Scalable Vector Graphics files"
+msgstr "SVG - файли Scalable Vector Graphics"
+
+#: src/uc2/uc2const.py:126
+msgid "SVGZ - Compressed Scalable Vector Graphics files"
+msgstr "SVGZ - стиснутi файли Scalable Vector Graphics"
+
+#: src/uc2/uc2const.py:127
+msgid "ODG - Open Document Drawing files"
+msgstr "ODG - файли Open Document Drawing"
+
+#: src/uc2/uc2const.py:128
+msgid "ORA - Open Raster Format files"
+msgstr "ORA - файли Open Raster"
+
+#: src/uc2/uc2const.py:129
+msgid "XCF - GIMP files"
+msgstr "XCF - файли GIMP"
+
+#: src/uc2/uc2const.py:130
+msgid "SLA - Scribus documents"
+msgstr "SLA - файли Scribus"
+
+#: src/uc2/uc2const.py:131 src/uc2/uc2const.py:133
+msgid "CDR - CorelDRAW Graphics files"
+msgstr "CDR - файли графiки CorelDRAW"
+
+#: src/uc2/uc2const.py:132 src/uc2/uc2const.py:134
+msgid "CDT - CorelDRAW Templates files"
+msgstr "CDT - файли шаблонiв CorelDRAW"
+
+#: src/uc2/uc2const.py:135
+msgid "CMX - CorelDRAW Presentation Exchange files"
+msgstr "CMX - файли клiпартiв CorelDRAW"
+
+#: src/uc2/uc2const.py:136
+msgid "CCX - CorelDRAW Compressed Exchange files"
+msgstr "CCX - стиснутi файли клiпартiв CorelDRAW"
+
+#: src/uc2/uc2const.py:137
+msgid "XAR - Xara graphics files"
+msgstr "XAR - файли графіки Xara"
+
+#: src/uc2/uc2const.py:138
+msgid "FIG - XFig files"
+msgstr "FIG - файли XFig"
+
+#: src/uc2/uc2const.py:139 src/uc2/uc2const.py:140
+msgid "AI - Adobe Illustrator files"
+msgstr "AI - файли Adobe Illustrator"
+
+#: src/uc2/uc2const.py:141
+msgid "PS - PostScript files"
+msgstr "PS - файли PostScript"
+
+#: src/uc2/uc2const.py:142
+msgid "EPS - Encapsulated PostScript files"
+msgstr "EPS - файли Encapsulated PostScript"
+
+#: src/uc2/uc2const.py:143
+msgid "PDF - Portable Document Format files"
+msgstr "PDF - файли Portable Document Format"
+
+#: src/uc2/uc2const.py:144
+msgid "PSD - Adobe Photoshop files"
+msgstr "PSD - файли Adobe Photoshop"
+
+#: src/uc2/uc2const.py:145
+msgid "CGM - Computer Graphics Metafile files"
+msgstr "CGM - файли Computer Graphics Metafile"
+
+#: src/uc2/uc2const.py:146
+msgid "WMF - Windows Metafile files"
+msgstr "WMF - файли Windows Metafile"
+
+#: src/uc2/uc2const.py:147
+msgid "EMF - Windows Enhanced Metafile files"
+msgstr "EMF - файли Windows Enhanced Metafile"
+
+#: src/uc2/uc2const.py:148
+msgid "XPS - XML Paper Specification files"
+msgstr "XPS - файли XML Paper Specification"
+
+#: src/uc2/uc2const.py:149
+msgid "VSD - Visio Drawing files"
+msgstr "VSD - файли Visio"
+
+#: src/uc2/uc2const.py:150
+msgid "PLT - HPGL cutting plotter files"
+msgstr "PLT - файли ріжучих HPGL плотерів"
+
+#: src/uc2/uc2const.py:151
+msgid "HPGL - HPGL plotter files"
+msgstr "HPGL - файли HPGL плоттера"
+
+#: src/uc2/uc2const.py:152
+msgid "DXF - AutoCAD files"
+msgstr "DXF - файли AutoCAD"
+
+#: src/uc2/uc2const.py:153
+msgid "DWG - AutoCAD files"
+msgstr "DWG - файли AutoCAD"
+
+#: src/uc2/uc2const.py:154
+msgid "RIF - RIFF files"
+msgstr "RIF - файли RIFF"
+
+#: src/uc2/uc2const.py:157
+msgid "JPEG - Joint Photographic Experts Group files"
+msgstr "JPEG - файли Joint Photographic Experts Group"
+
+#: src/uc2/uc2const.py:158
+msgid "JPEG2000 - Joint Photographic Experts Group files"
+msgstr "JPEG - файли Joint Photographic Experts Group"
+
+#: src/uc2/uc2const.py:159
+msgid "TIFF - Tagged Image File Format files"
+msgstr "TIFF - файли Tagged Image File Format"
+
+#: src/uc2/uc2const.py:160
+msgid "BMP - Bitmap Picture files"
+msgstr "BMP - файли Bitmap Picture"
+
+#: src/uc2/uc2const.py:161
+msgid "PCX - PCeXchange files"
+msgstr "PCX - файли PCeXchange"
+
+#: src/uc2/uc2const.py:162
+msgid "GIF - Graphics Interchange Format files"
+msgstr "GIF - файли Graphics Interchange Format"
+
+#: src/uc2/uc2const.py:163
+msgid "PNG - Portable Network Graphics files"
+msgstr "PNG - файли Portable Network Graphics"
+
+#: src/uc2/uc2const.py:164
+msgid "PPM - Netpbm Color Image format files"
+msgstr "PPM - файли Netpbm Color Image"
+
+#: src/uc2/uc2const.py:165
+msgid "XBM - X bitmap files"
+msgstr "XBM - файли X bitmap"
+
+#: src/uc2/uc2const.py:166
+msgid "XPM - X pixmap files"
+msgstr "XPM - файли X pixmap"
+
+#: src/uc2/uc2const.py:167
+msgid "WebP - Google image format files"
+msgstr "WebP - файли зображень Google"
+
+#: src/uc2/uc2const.py:170
+msgid "SKP - sK1 palette files"
+msgstr "SKP - файли палiтр sK1"
+
+#: src/uc2/uc2const.py:171
+msgid "GPL - GIMP palette files"
+msgstr "GPL - файли палiтр GIMP"
+
+#: src/uc2/uc2const.py:172
+msgid "CPL - CorelDRAW palette files"
+msgstr "CPL - файли палiтр CorelDRAW"
+
+#: src/uc2/uc2const.py:173
+msgid "XML - Scribus palette files"
+msgstr "XML - файли палiтр Scribus"
+
+#: src/uc2/uc2const.py:174
+msgid "SOC - LibreOffice palette files"
+msgstr "SOC - файли палiтр LibreOffice"
+
+#: src/uc2/uc2const.py:175
+msgid "XML - CorelDRAW X5-X7 palette files"
+msgstr "XML - файли палiтр CorelDRAW X5-X7"
+
+#: src/uc2/uc2const.py:176
+msgid "ASE - Adobe Swatch Exchange files"
+msgstr "ASE - файли палітр Adobe Swatch Exchange"
+
+#: src/uc2/uc2const.py:177
+msgid "ACO - Adobe Color files"
+msgstr "ACO - файли палітр Adobe Color"
+
+#: src/uc2/uc2const.py:178
+msgid "JCW - Xara color palette files"
+msgstr "JCW - файли палiтр Xara"
+
+#: src/uc2/uc2const.py:181
+msgid "ICC - International Color Consortium profiles"
+msgstr "ICC - профайли International Color Consortium"
+
+#: src/uc2/uc2const.py:182
+msgid "ICM - Image Color Matching profiles"
+msgstr "ICM - профайли Image Color Matching"
+
+#: src/uc2/uc2const.py:184
+msgid "XML - eXtensible Markup Language files"
+msgstr "XML - файли eXtensible Markup Language"
+
+#: src/uc2/uc2const.py:185
+msgid "LOG - Log files"
+msgstr "LOG - лог файли"
+
+#: src/uc2/uc2const.py:186
+msgid "MD - Markdown markup files"
+msgstr "MD - файли з розміткою Markdown"
+
+#: src/uc2/uc2const.py:189
+msgid "DST - (Tajima) Design format"
+msgstr "DST - (Tajima) Design format"
+
+#: src/uc2/uc2const.py:381 src/uc2/uc2const.py:401
+msgid "pixels"
+msgstr "пікселі"
+
+#: src/uc2/uc2const.py:382 src/uc2/uc2const.py:407
+msgid "millimeters"
+msgstr "міліметри"
+
+#: src/uc2/uc2const.py:383 src/uc2/uc2const.py:406
+msgid "centimeters"
+msgstr "сантиметри"
+
+#: src/uc2/uc2const.py:384 src/uc2/uc2const.py:405
+msgid "meters"
+msgstr "метри"
+
+#: src/uc2/uc2const.py:385 src/uc2/uc2const.py:402
+msgid "points"
+msgstr "пункти"
+
+#: src/uc2/uc2const.py:386 src/uc2/uc2const.py:403
+msgid "inches"
+msgstr "дюйми"
+
+#: src/uc2/uc2const.py:387 src/uc2/uc2const.py:404
+msgid "feet"
+msgstr "фути"
+
+#: src/uc2/uc2const.py:391
+msgid "pt"
+msgstr "пункт"
+
+#: src/uc2/uc2const.py:392
+msgid "px"
+msgstr "пк"
+
+#: src/uc2/uc2const.py:393
+msgid "in"
+msgstr "дюйм"
+
+#: src/uc2/uc2const.py:394
+msgid "ft"
+msgstr "фут"
+
+#: src/uc2/uc2const.py:395
+msgid "m"
+msgstr "м"
+
+#: src/uc2/uc2const.py:396
+msgid "cm"
+msgstr "см"
+
+#: src/uc2/uc2const.py:397
+msgid "mm"
+msgstr "мм"
+
+#: src/uc2/uc2const.py:525
+msgid "Portrait"
+msgstr "Книжкова"
+
+#: src/uc2/uc2const.py:525
+msgid "Landscape"
+msgstr "Альбомна"
+
+#: src/uc2/uc2const.py:535
+msgid "Perceptual"
+msgstr "Придатна для сприйняття"
+
+#: src/uc2/uc2const.py:536
+msgid "Relative Colorimetric"
+msgstr "Відносна колориметрична"
+
+#: src/uc2/uc2const.py:537
+msgid "Saturation"
+msgstr "Насиченість"
+
+#: src/uc2/uc2const.py:538
+msgid "Absolute Colorimetric"
+msgstr "Абсолютна колориметрична"
+
+#: src/uc2/formats/generic.py:134
+msgid "Error while loading:"
+msgstr "Помилка під час завантаження:"
+
+#: src/uc2/formats/generic.py:134
+msgid "No file"
+msgstr "Немає файлу"
+
+#: src/uc2/formats/generic.py:140 src/uc2/formats/generic.py:218
+#: src/uc2/formats/generic_filters.py:96
+msgid "Parsing in progress..."
+msgstr "Розбір в процесі..."
+
+#: src/uc2/formats/generic.py:149
+#, python-format
+msgid "<%s> document model is created"
+msgstr "<%s> модель документа створена"
+
+#: src/uc2/formats/generic.py:160
+msgid "Error updating document model"
+msgstr "Помилка оновлення моделі"
+
+#: src/uc2/formats/generic.py:165
+#, python-format
+msgid "<%s> document model is updated successfully"
+msgstr "<%s> модель документа успішно оновлена"
+
+#: src/uc2/formats/generic.py:173
+msgid "Error while saving:"
+msgstr "Помилка при збереженні:"
+
+#: src/uc2/formats/generic.py:173
+msgid "No file object"
+msgstr "Немає файлового об'єкта"
+
+#: src/uc2/formats/generic.py:179
+msgid "Saving is started..."
+msgstr "Збереження розпочато..."
+
+#: src/uc2/formats/generic.py:182
+msgid "Error while saving"
+msgstr "Помилка при збереженні"
+
+#: src/uc2/formats/generic.py:188
+#, python-format
+msgid "<%s> document model is saved successfully"
+msgstr "<%s> модель документа успішно збережено"
+
+#: src/uc2/formats/generic.py:199
+#, python-format
+msgid "<%s> document model is destroyed for %s"
+msgstr "<%s> модель документа знищено для %s"
+
+#: src/uc2/formats/generic.py:205
+msgid "Cache is cleared for"
+msgstr "Кеш очищено для"
+
+#: src/uc2/formats/generic.py:207
+msgid "Cache clearing is unsuccessful"
+msgstr "Не вдалося очистити кеш"
+
+#: src/uc2/formats/generic.py:214
+#, python-format
+msgid "%s model update in progress..."
+msgstr "Оновлення моделі %s в процесі..."
+
+#: src/uc2/formats/generic.py:222 src/uc2/formats/generic_filters.py:228
+msgid "Saving in progress..."
+msgstr "Збереження в процесі..."
+
+#: src/uc2/formats/generic_filters.py:60
+msgid "There is no file for reading"
+msgstr "Немає файлу для читання"
+
+#: src/uc2/formats/generic_filters.py:194
+msgid "There is no file for writting"
+msgstr "Немає файлу для запису"
+
+#: src/uc2/utils/fsutils.py:56
+msgid "There is no file path"
+msgstr "Шлях до файлу не знайдено"
+
+#: src/uc2/utils/fsutils.py:62
+#, python-format
+msgid "Cannot open %s file for writing"
+msgstr "Не вдалося відкрити файл %s для запису"
+
+#: src/uc2/utils/fsutils.py:70
+#, python-format
+msgid "Cannot open %s file for reading"
+msgstr "Не вдалося відкрити файл %s для читання"
+
+#~ msgid "plugin"
+#~ msgstr "модуль"
+
+#~ msgid "Default document fill"
+#~ msgstr "Типове заповнення"
+
+#~ msgid "Fill"
+#~ msgstr "Заповнення"
+
+#~ msgid "Do you wish to change default fill style for this document?"
+#~ msgstr "Бажаєте змінити стиль типового заповнення для цього документа?"
+
+#~ msgid "This style will be applied to newly created objects."
+#~ msgstr "Цей стиль буде застосовано до нових об'єктів."
+
+#~ msgid "Default document stroke"
+#~ msgstr "Типовий штрих"
+
+#~ msgid "Stroke"
+#~ msgstr "Штрихи"
+
+#~ msgid "Do you wish to change default stroke style for this document?"
+#~ msgstr "Бажаєте змінити типовий стиль штриху для цього документа?"
+
+#~ msgid "Source object is not selected to copy fill property."
+#~ msgstr "Для копіювання властивості заповнення не обрано вихідний об'єкт."
+
+#~ msgid "Selected object cannot be source of fill property."
+#~ msgstr "Обраний об'єкт не може бути джерелом властивості заповнення."
+
+#~ msgid "Source object is not selected to copy stroke property."
+#~ msgstr "Для копіювання властивості штриху не обрано вихідний об'єкт."
+
+#~ msgid "Selected object cannot be source of stroke property."
+#~ msgstr "Обраний об'єкт не може бути джерелом властивості штриху."
+
+#~ msgid "Error occurred during this operation."
+#~ msgstr "Під час цієї операції сталася помилка."
+
+#~ msgid "Perhaps this was due to the imperfection of the algorithm."
+#~ msgstr "Можливо, це було пов'язано з недосконалістю алгоритму."
+
+#~ msgid "There is no selected object."
+#~ msgstr "Немає обраного об'єкта."
+
+#~ msgid "Object from current selection cannot be container."
+#~ msgstr "Об'єкт з поточного позначення не може бути контейнером."
+
+#~ msgid "Selected object cannot be container."
+#~ msgstr "Обраний об'єкт не може бути контейнером."
+
+#~ msgid "Do you wish to change default fill color for this document?"
+#~ msgstr "Бажаєте змінити типовий колір заповнення для цього документа?"
+
+#~ msgid "Do you wish to change default stroke color for this document?"
+#~ msgstr "Бажаєте змінити типовий колір штриху для цього документа?"
+
+#~ msgid "Application logs"
+#~ msgstr "Журнал використання"
+
+#~ msgid "WindowsXP platform is obsolete and not supported!"
+#~ msgstr "Платформа WindowsXP застаріла і не підтримується!"
+
+#~ msgid "To start, create new document or open existing"
+#~ msgstr "Щоб розпочати, створіть новий документ або відкрийте існуючий"
+
+#~ msgid "Untitled"
+#~ msgstr "Без назви"
+
+#~ msgid "Document is changed"
+#~ msgstr "Документ змінено"
+
+#~ msgid "New document created"
+#~ msgstr "Документ створено"
+
+#~ msgid "Select Template"
+#~ msgstr "Оберіть шаблон"
+
+#~ msgid "New document from template"
+#~ msgstr "Створити документ з шаблону"
+
+#~ msgid "Cannot open file:"
+#~ msgstr "Не вдалося відкрити документ:"
+
+#~ msgid "The file contains newer SK2 format.\n"
+#~ msgstr "Файл містить новіший формат SK2.\n"
+
+#~ msgid "Try updating sK1 application from https://sk1project.net"
+#~ msgstr "Спробуйте оновити sK1 з сайту  https://sk1project.net"
+
+#~ msgid "Document opened"
+#~ msgstr "Документ відкрито"
+
+#~ msgid "Please check file write permissions"
+#~ msgstr "Перевірте права на запис файлів"
+
+#~ msgid "Document saved"
+#~ msgstr "Документ збережено"
+
+#~ msgid "Cannot save document:"
+#~ msgstr "Не вдалося зберегти документ:"
+
+#~ msgid "Please check file name and write permissions"
+#~ msgstr "Перевірте ім'я файлу та права на запис"
+
+#~ msgid "Save selected objects only as..."
+#~ msgstr "Зберегти тільки обрані об'єкти як..."
+
+#~ msgid "Please check requested file format and write permissions"
+#~ msgstr "Будь-ласка, перевірте формат файлу та дозвіл на запис"
+
+#~ msgid "Document '%s' has been modified."
+#~ msgstr "Документ '%s' змінено."
+
+#~ msgid "Do you want to save your changes?"
+#~ msgstr "Бажаєте зберегти внесені вами зміни?"
+
+#~ msgid "Cannot import graphics from file:"
+#~ msgstr "Неможливо імпортувати зображення з файлу:"
+
+#~ msgid "It seems the document is empty or contains unsupported objects."
+#~ msgstr ""
+#~ "Здається, документ порожній або містить об'єкти що не підтримуються."
+
+#~ msgid "Cannot import file:"
+#~ msgstr "Не вдалося імпортувати файл:"
+
+#~ msgid "Export document As..."
+#~ msgstr "Експортувати документ як..."
+
+#~ msgid "Document is successfully exported"
+#~ msgstr "Документ успішно експортовано"
+
+#~ msgid "Extract selected bitmap as..."
+#~ msgstr "Вилучити вибране растрове зображення як..."
+
+#~ msgid "Cannot save bitmap:"
+#~ msgstr "Не вдалося зберегти растрове зображення:"
+
+#~ msgid "Bitmap is successfully extracted"
+#~ msgstr "Растрове зображення успішно вилучено"
+
+#~ msgid "Exporting..."
+#~ msgstr "Експортуємо..."
+
+#~ msgid "Unknown file format is requested for export <%s>"
+#~ msgstr "Для експорту вказано невідомий формат файлу <%s>"
+
+#~ msgid "Cannot export palette:"
+#~ msgstr "Не вдалося експортувати палітру:"
+
+#~ msgid "Palette is successfully exported"
+#~ msgstr "Палітру успішно експортовано"
+
+#~ msgid "Select palette to import"
+#~ msgstr "Оберіть палітру для імпорту"
+
+#~ msgid "Opening file..."
+#~ msgstr "Відкрити файл..."
+
+#~ msgid "Loader is not found for <%s>"
+#~ msgstr "Не знайдено завантажувач для <%s>"
+
+#~ msgid "Error while opening"
+#~ msgstr "Помилка при відкриванні"
+
+#~ msgid "Palette is successfully imported"
+#~ msgstr "Палітру успішно імпортовано"
+
+#~ msgid "Save pattern as..."
+#~ msgstr "Зберегти палітру як..."
+
+#~ msgid "Cannot save pattern from:"
+#~ msgstr "Не вдалося зберегти візерунок з:"
+
+#~ msgid "Select pattern to load"
+#~ msgstr "Оберіть візерунок для завантаження"
+
+#~ msgid "Cannot load pattern for:"
+#~ msgstr "Не вдалося завантажити візерунок для:"
+
+#~ msgid "Requested page was opened in the default browser"
+#~ msgstr "Сторінка відкрита в браузері за замовчуванням"
+
+#~ msgid "Arc"
+#~ msgstr "Дуга кола"
+
+#~ msgid "Chord"
+#~ msgstr "Хорда"
+
+#~ msgid "Pie slice"
+#~ msgstr "Сегмент"
+
+#~ msgid "Start angle"
+#~ msgstr "Початковий кут"
+
+#~ msgid "End angle"
+#~ msgstr "Кінцевий кут"
+
+#~ msgid "Default object jump"
+#~ msgstr "Типовий крок об'єкту"
+
+#~ msgid "Bold"
+#~ msgstr "Напівжирний"
+
+#~ msgid "Italic"
+#~ msgstr "Курсив"
+
+#~ msgid "Underline"
+#~ msgstr "Підкреслення"
+
+#~ msgid "Strikethrough"
+#~ msgstr "Перекреслення"
+
+#~ msgid "Superscript"
+#~ msgstr "Верхній індекс"
+
+#~ msgid "Subscript"
+#~ msgstr "Нижній індекс"
+
+#~ msgid "Custom"
+#~ msgstr "Інший"
+
+#~ msgid "Number of polygon angles"
+#~ msgstr "Кількість кутів багатокутника"
+
+#~ msgid "Number of angles for newly created polygon"
+#~ msgstr "Кількість кутів для новоствореного багатокутника"
+
+#~ msgid "Rounded rectangle"
+#~ msgstr "Закруглений прямокутник"
+
+#~ msgid "Selection size"
+#~ msgstr "Розмір позначення"
+
+#~ msgid "Align Left"
+#~ msgstr "Вирівняти ліворуч"
+
+#~ msgid "Centered"
+#~ msgstr "По центру"
+
+#~ msgid "Align Right"
+#~ msgstr "Вирівняти праворуч"
+
+#~ msgid "Use ligatures"
+#~ msgstr "Використовувати лігатури"
+
+#~ msgid "Rotate selection"
+#~ msgstr "Крутити обране"
+
+#~ msgid "Document units"
+#~ msgstr "Одиниці виміру у документі"
+
+#~ msgid "About"
+#~ msgstr "Про програму"
+
+#~ msgid "Translators"
+#~ msgstr "Перекладачі"
+
+#~ msgid "Thanks to"
+#~ msgstr "Подяки"
+
+#~ msgid "License"
+#~ msgstr "Ліцензія"
+
+#~ msgid "vector graphics editor"
+#~ msgstr "векторний графічний редактор"
+
+#~ msgid "build"
+#~ msgstr "збірка"
+
+#~ msgid "Version"
+#~ msgstr "Версія"
+
+#~ msgid "Component"
+#~ msgstr "Компонент"
+
+#~ msgid ""
+#~ "Dash pattern is a sequence (stroke-space-stroke-space- etc.) of integer \n"
+#~ "or float values separated by space which describes size of pattern "
+#~ "elements. \n"
+#~ "The values are relative to line width. Example: '2 1' or '5 1 1 1'. Empty "
+#~ "value\n"
+#~ "means no dash, i.e. solid line."
+#~ msgstr ""
+#~ "Стиль пунктиру це набір (штрих-пробіл-штрих-пробіл- тощо) чисел,\n"
+#~ "розділених пробілами, які описують розмір елементів штриху.\n"
+#~ "Значення подаються відносно ширини лінії. Наприклад: '2 1' або '5 1 1 "
+#~ "1'.\n"
+#~ "Порожнє значення означає відсутність пунктиру, тобто це суцільна лінія."
+
+#~ msgid "Edit dash pattern"
+#~ msgstr "Редагувати стиль пунктиру"
+
+#~ msgid "File"
+#~ msgstr "Файл"
+
+#~ msgid "Name and location:"
+#~ msgstr "Ім'я та розташування:"
+
+#~ msgid "File size:"
+#~ msgstr "Розмір файлу:"
+
+#~ msgid "Modified:"
+#~ msgstr "Змінено:"
+
+#~ msgid "Document"
+#~ msgstr "Документ"
+
+#~ msgid "Pages:"
+#~ msgstr "Сторінок:"
+
+#~ msgid "Layers:"
+#~ msgstr "Шари:"
+
+#~ msgid "Page size:"
+#~ msgstr "Розмір сторінки:"
+
+#~ msgid "Page orientation:"
+#~ msgstr "Орієнтація аркушу:"
+
+#~ msgid "%i, opened %i, closed %i"
+#~ msgstr "%i, відкрито %i, закрито %i"
+
+#~ msgid "Graphic Objects"
+#~ msgstr "Графічні Об'єкти"
+
+#~ msgid "Number of objects:"
+#~ msgstr "Кількість об'єктів:"
+
+#~ msgid "Number of points:"
+#~ msgstr "Кількість вузлів:"
+
+#~ msgid "Max. # of curve points:"
+#~ msgstr "Макс.# вузлів кривої:"
+
+#~ msgid "Max. # of curve subpaths:"
+#~ msgstr "Макс.# сегментів кривої:"
+
+#~ msgid "Groups:"
+#~ msgstr "Групи:"
+
+#~ msgid "Rectangles:"
+#~ msgstr "Прямокутники:"
+
+#~ msgid "Ellipses:"
+#~ msgstr "Еліпси:"
+
+#~ msgid "Containers:"
+#~ msgstr "Контейнери:"
+
+#~ msgid "Polygons:"
+#~ msgstr "Полігони:"
+
+#~ msgid "Text Statistics"
+#~ msgstr "Текстова Статистика"
+
+#~ msgid "No Text in this document."
+#~ msgstr "Немає Тексту в цьому документі."
+
+#~ msgid "Artistic text:"
+#~ msgstr "Фігурний текст:"
+
+#~ msgid "Lines:"
+#~ msgstr "Лінії:"
+
+#~ msgid "Words:"
+#~ msgstr "Слова:"
+
+#~ msgid "Characters:"
+#~ msgstr "Символи:"
+
+#~ msgid "Fonts used:"
+#~ msgstr "Використані шрифти:"
+
+#~ msgid "Bitmap Objects"
+#~ msgstr "Растрові Об'єкти"
+
+#~ msgid "No Bitmaps in this document."
+#~ msgstr "Немає растру у цьому документі."
+
+#~ msgid "Fills"
+#~ msgstr "Заповнення"
+
+#~ msgid "No fill:"
+#~ msgstr "Без заповнення:"
+
+#~ msgid "Solid:"
+#~ msgstr "Суцільне:"
+
+#~ msgid "Gradients:"
+#~ msgstr "Градієнти:"
+
+#~ msgid "Patterns:"
+#~ msgstr "Візерунки:"
+
+#~ msgid "Objects and Color models"
+#~ msgstr "Об'єкти та Кольорові моделі"
+
+#~ msgid "Strokes"
+#~ msgstr "Контури"
+
+#~ msgid "No stroke:"
+#~ msgstr "Без контуру:"
+
+#~ msgid "Property"
+#~ msgstr "Властивість"
+
+#~ msgid "Value"
+#~ msgstr "Значення"
+
+#~ msgid "Document info"
+#~ msgstr "Інформація про документ"
+
+#~ msgid "Description"
+#~ msgstr "Опис"
+
+#~ msgid "Author:"
+#~ msgstr "Автор:"
+
+#~ msgid "License:"
+#~ msgstr "Ліцензія:"
+
+#~ msgid "Keywords:"
+#~ msgstr "Ключові слова:"
+
+#~ msgid "Notes:"
+#~ msgstr "Примітки:"
+
+#~ msgid "Page"
+#~ msgstr "Сторінка"
+
+#~ msgid "Default page:"
+#~ msgstr "Типова сторінка:"
+
+#~ msgid "Desktop:"
+#~ msgstr "Робочий стіл:"
+
+#~ msgid "Page:"
+#~ msgstr "Сторінка:"
+
+#~ msgid "Use pattern for page fill"
+#~ msgstr "Візерунок для заповнення сторінки"
+
+#~ msgid "Show page border"
+#~ msgstr "Показати межі сторінки"
+
+#~ msgid "Page center"
+#~ msgstr "Центр сторінки"
+
+#~ msgid "Left lower page corner"
+#~ msgstr "Нижній лівий кут сторінки"
+
+#~ msgid "Left upper page corner"
+#~ msgstr "Верхній лівий кут сторінки"
+
+#~ msgid "Units"
+#~ msgstr "Одиниці виміру"
+
+#~ msgid "Document origin"
+#~ msgstr "Початок документу"
+
+#~ msgid "Unit"
+#~ msgstr "Одиниця виміру"
+
+#~ msgid "Value in points"
+#~ msgstr "Значення в пунктах"
+
+#~ msgid "%s points"
+#~ msgstr "%s пунктів"
+
+#~ msgid "Grid"
+#~ msgstr "Сітка"
+
+#~ msgid "Grid origin"
+#~ msgstr "Початок сітки"
+
+#~ msgid "Grid frequency"
+#~ msgstr "Частота сітки"
+
+#~ msgid "Grid color:"
+#~ msgstr "Колір сітки:"
+
+#~ msgid "Grid opacity:"
+#~ msgstr "Непрозорість сітки:"
+
+#~ msgid "Show grid on canvas"
+#~ msgstr "Показати сітку на полотні"
+
+#~ msgid "Grid preview:"
+#~ msgstr "Вигляд сітки:"
+
+#~ msgid "Guides"
+#~ msgstr "Напрямні"
+
+#~ msgid "Guide color:"
+#~ msgstr "Колір напрямної:"
+
+#~ msgid "Show guides on canvas"
+#~ msgstr "Показати напрямні на полотні"
+
+#~ msgid "Edit guides"
+#~ msgstr "Редагування напрямних"
+
+#~ msgid "Statistics..."
+#~ msgstr "Статистика..."
+
+#~ msgid "Document properties"
+#~ msgstr "Властивості документу"
+
+#~ msgid "All files (*.*)"
+#~ msgstr "Усі файли (*.*)"
+
+#~ msgid "Select directory"
+#~ msgstr "Оберіть теку"
+
+#~ msgid "Clear log"
+#~ msgstr "Очистити журнал"
+
+#~ msgid "Status"
+#~ msgstr "Стан"
+
+#~ msgid "File name"
+#~ msgstr "Назва файлу"
+
+#~ msgid "Path"
+#~ msgstr "Шлях"
+
+#~ msgid "Time"
+#~ msgstr "Час"
+
+#~ msgid "Opened"
+#~ msgstr "Відкрито"
+
+#~ msgid "Saved"
+#~ msgstr "Збережено"
+
+#~ msgid "is not found."
+#~ msgstr "не знайдено."
+
+#~ msgid "File not found"
+#~ msgstr "Не знайдено файл"
+
+#~ msgid "Recent documents"
+#~ msgstr "Нещодавні документи"
+
+#~ msgid "Save logs as..."
+#~ msgstr "Зберегти журнал як..."
+
+#~ msgid "Open log file..."
+#~ msgstr "Відкрити файл журналу..."
+
+#~ msgid "Zoom in"
+#~ msgstr "Збільшити масштаб зображення"
+
+#~ msgid "Zoom out"
+#~ msgstr "Зменшити масштаб зображення"
+
+#~ msgid "Page No.:"
+#~ msgstr "Сторінка №:"
+
+#~ msgid "Go to page"
+#~ msgstr "Перейти на сторінку"
+
+#~ msgid "Delete page No.:"
+#~ msgstr "Видалити сторінку з №:"
+
+#~ msgid "Delete page"
+#~ msgstr "Видалити сторінку"
+
+#~ msgid "Insert:"
+#~ msgstr "Вставити:"
+
+#~ msgid "page(s)"
+#~ msgstr "сторінку(ки)"
+
+#~ msgid "Before"
+#~ msgstr "Перед"
+
+#~ msgid "After"
+#~ msgstr "Після"
+
+#~ msgid "page No.:"
+#~ msgstr "сторінка №:"
+
+#~ msgid "Insert page"
+#~ msgstr "Вставити сторінку"
+
+#~ msgid "Cannot connect to server!"
+#~ msgstr "Не вдалося з'єднатися з сервером!"
+
+#~ msgid "Please check Internet connection"
+#~ msgstr "Будь-ласка, перевірте з'єднання з Інтернетом"
+
+#~ msgid "and access to https://sk1project.net"
+#~ msgstr "та доступ до https://sk1project.net"
+
+#~ msgid "Loading data..."
+#~ msgstr "Завантаження даних..."
+
+#~ msgid "Palette name:"
+#~ msgstr "Назва палітри:"
+
+#~ msgid "Palette source:"
+#~ msgstr "Джерело палітри:"
+
+#~ msgid "Description:"
+#~ msgstr "Опис:"
+
+#~ msgid "Palette info"
+#~ msgstr "Інформація про палітру"
+
+#~ msgid "Stroke Color"
+#~ msgstr "Колір штриха"
+
+#~ msgid "Stroke Style"
+#~ msgstr "Стиль штриха"
+
+#~ msgid "Width:"
+#~ msgstr "Ширина:"
+
+#~ msgid "Markers:"
+#~ msgstr "Маркери:"
+
+#~ msgid "Dashes:"
+#~ msgstr "Пунктир:"
+
+#~ msgid "Caps:"
+#~ msgstr "Кінці:"
+
+#~ msgid "Join:"
+#~ msgstr "З'єднання:"
+
+#~ msgid "Options:"
+#~ msgstr "Опції:"
+
+#~ msgid "Miter limit:"
+#~ msgstr "Межа вістря:"
+
+#~ msgid "Behind fill"
+#~ msgstr "Позаду заповнення"
+
+#~ msgid "Scalable stroke"
+#~ msgstr "Маштабувати ширину штриху"
+
+#~ msgid "Cannot load <%s>"
+#~ msgstr "Не вдалося завантажити <%s>"
+
+#~ msgid "Saving file..."
+#~ msgstr "Збереження файлу..."
+
+#~ msgid "Unknown file format is requested for saving <%s>"
+#~ msgstr "Для збереження вказано невідомий формат файлу <%s>"
+
+#~ msgid "Importing..."
+#~ msgstr "Імпорт..."
+
+#~ msgid " object in selection"
+#~ msgstr " об'єкт у обраному"
+
+#~ msgid "No selection"
+#~ msgstr "Немає позначених об'єктів"
+
+#~ msgid "objects in selection"
+#~ msgstr "об'єктів у вибраному"
+
+#~ msgid "Open &Recent"
+#~ msgstr "Відкрити &нещодавній документ"
+
+#~ msgid "&File"
+#~ msgstr "&Файл"
+
+#~ msgid "&Edit"
+#~ msgstr "З&міни"
+
+#~ msgid "&Show"
+#~ msgstr "П&оказати"
+
+#~ msgid "S&nap to"
+#~ msgstr "&Прив'язка до"
+
+#~ msgid "&View"
+#~ msgstr "П&ерегляд"
+
+#~ msgid "&Layout"
+#~ msgstr "М&акет"
+
+#~ msgid "Trans&form"
+#~ msgstr "&Трансформація"
+
+#~ msgid "&Order"
+#~ msgstr "&Розташування"
+
+#~ msgid "&Shaping"
+#~ msgstr "&Надання форми"
+
+#~ msgid "&Arrange"
+#~ msgstr "&Впорядкування"
+
+#~ msgid "&Paths"
+#~ msgstr "К&онтур"
+
+#~ msgid "&Bitmaps"
+#~ msgstr "&Растр"
+
+#~ msgid "&Text"
+#~ msgstr "&Текст"
+
+#~ msgid "&Help"
+#~ msgstr "&Довідка"
+
+#~ msgid "Empty"
+#~ msgstr "Відсутнє"
+
+#~ msgid "Scroll palette to left"
+#~ msgstr "Прокрутити палітру ліворуч"
+
+#~ msgid "Empty pattern"
+#~ msgstr "Порожній шаблон"
+
+#~ msgid "Scroll palette to right"
+#~ msgstr "Прокрутити палітру праворич"
+
+#~ msgid "Scroll palette to top"
+#~ msgstr "Прокрутити палітру в гору"
+
+#~ msgid "Scroll palette to bottom"
+#~ msgstr "Прокрутити палітру до низу"
+
+#~ msgid "Image type: "
+#~ msgstr "Тип зображення: "
+
+#~ msgid "Fill:"
+#~ msgstr "Заповнення:"
+
+#~ msgid "Stroke:"
+#~ msgstr "Штрих:"
+
+#~ msgid "No coords"
+#~ msgstr "Немає координат"
+
+#~ msgid "Go to fist page"
+#~ msgstr "Перейти до першої сторінки"
+
+#~ msgid "Go to previous page"
+#~ msgstr "Перейти до попередньої сторінки"
+
+#~ msgid "Go to next page"
+#~ msgstr "Перейти до наступної сторінки"
+
+#~ msgid "Go to last page"
+#~ msgstr "Перейти до останньої сторінки"
+
+#~ msgid "Page %i of %i"
+#~ msgstr "Сторінка %i з %i"
+
+#~ msgid "Open Recent"
+#~ msgstr "Відкрити нещодавній документ"
+
+#~ msgid "Application"
+#~ msgstr "Програма"
+
+#~ msgid "New document"
+#~ msgstr "Створити документ"
+
+#~ msgid "Restore defaults"
+#~ msgstr "Скинути до типових"
+
+#~ msgid "sK1 Preferences"
+#~ msgstr "Параметри sK1"
+
+#~ msgid "Canvas"
+#~ msgstr "Полотно"
+
+#~ msgid "Canvas marker preferences"
+#~ msgstr "Параметри маркера полотна"
+
+#~ msgid "Color management"
+#~ msgstr "Керування кольором"
+
+#~ msgid "Color management and color profiles"
+#~ msgstr "Керування кольором і кольорові профілі"
+
+#~ msgid "Enable Color Management"
+#~ msgstr "Активувати керування кольором"
+
+#~ msgid ""
+#~ "Note: If Color Management is disabled, color values will be inaccurate."
+#~ msgstr "Примітка: Якщо не активовано, значення кольорів буде неточним."
+
+#~ msgid "Color profiles"
+#~ msgstr "Кольорові профілі"
+
+#~ msgid "Color space profiles"
+#~ msgstr "Профіль кольорового простору"
+
+#~ msgid "%s profile:"
+#~ msgstr "%s профіль:"
+
+#~ msgid "Hardware profiles"
+#~ msgstr "Апаратні профілі"
+
+#~ msgid "Display profile:"
+#~ msgstr "Профіль дисплея:"
+
+#~ msgid "Use display profile"
+#~ msgstr "Використовувати профіль дисплея"
+
+#~ msgid "Note: Display profile for your hardware can be found here:"
+#~ msgstr "Примітка: профіль дисплея для вашого обладнання можна отримати тут:"
+
+#~ msgid "Built-in %s profile"
+#~ msgstr "Вбудований профіль %s"
+
+#~ msgid "Add/remove %s profiles"
+#~ msgstr "Додати/видалити профілі %s"
+
+#~ msgid "%s profiles"
+#~ msgstr "%s профілі"
+
+#~ msgid "Import"
+#~ msgstr "Імпорт"
+
+#~ msgid "Remove"
+#~ msgstr "Видалити"
+
+#~ msgid "Info"
+#~ msgstr "Інформація"
+
+#~ msgid "Select profile to import"
+#~ msgstr "Оберіть профіль для імпорту"
+
+#~ msgid "Cannot open profile"
+#~ msgstr "Не вдалося відкрити профіль"
+
+#~ msgid "The profile may be corrupted or in an unsupported format"
+#~ msgstr "Профіль можливо пошкоджений або у форматі що не підтримується"
+
+#~ msgid "Selected profile cannot be added to profile list:"
+#~ msgstr "Вибраний профіль не можна додати до списку профілів:"
+
+#~ msgid "It seems like you have already imported this profile"
+#~ msgstr "Здається цей профіль вже імпортовано"
+
+#~ msgid "Selected file has been added to profile pool"
+#~ msgstr "Обраний файл був доданий до пулу профілів"
+
+#~ msgid "If you still wish to import the file, try renaming it"
+#~ msgstr "Спробуйте перейменувати файл"
+
+#~ msgid "Cannot copy file"
+#~ msgstr "Не вдалося скопіювати файл"
+
+#~ msgid "Please check write permissions for config directory:"
+#~ msgstr "Будь-ласка, перевірте права на запис для теки з конфігураціями:"
+
+#~ msgid "Profile info"
+#~ msgstr "Інформація"
+
+#~ msgid "File:"
+#~ msgstr "Файл:"
+
+#~ msgid "Copyright:"
+#~ msgstr "Авторське право:"
+
+#~ msgid "Settings"
+#~ msgstr "Параметри"
+
+#~ msgid "Rendering intents"
+#~ msgstr "Ціль відтворення кольорів"
+
+#~ msgid "Display/RGB intent:"
+#~ msgstr "Дисплей/RGB:"
+
+#~ msgid "Printer/CMYK intent:"
+#~ msgstr "Принтер/CMYK:"
+
+#~ msgid "Simulate printer on the screen"
+#~ msgstr "Імітувати пристрій виводу"
+
+#~ msgid "Highlight colors that are outside of the printer's gamut"
+#~ msgstr "Позначати кольори поза гамою"
+
+#~ msgid "Highlight color:"
+#~ msgstr "Колір попередження:"
+
+#~ msgid "Separation for SPOT colors"
+#~ msgstr "Розділяти плашкові кольори"
+
+#~ msgid "Use Blackpoint Compensation"
+#~ msgstr "Компенсація чорної точки"
+
+#~ msgid "Use Black preserving transforms"
+#~ msgstr "Зберегти чорний (K) канал під час корекції кольору"
+
+#~ msgid "Fonts"
+#~ msgstr "Шрифти"
+
+#~ msgid "Font preview preferences"
+#~ msgstr "Параметри зразка шрифтів"
+
+#~ msgid "Placeholder text:"
+#~ msgstr "Текст зразка:"
+
+#~ msgid "Font size:"
+#~ msgstr "Розмір шрифту:"
+
+#~ msgid "Font color:"
+#~ msgstr "Колір шрифту:"
+
+#~ msgid "Preview width:"
+#~ msgstr "Ширина зразка:"
+
+#~ msgid "system"
+#~ msgstr "системна"
+
+#~ msgid "General"
+#~ msgstr "Загальні"
+
+#~ msgid "General application preferences"
+#~ msgstr "Загальні параметри програми"
+
+#~ msgid "UI style (*):"
+#~ msgstr "Стиль інтерфейсу(*)"
+
+#~ msgid "Classic"
+#~ msgstr "Класичний"
+
+#~ msgid "Tabbed"
+#~ msgstr "Вкладками"
+
+#~ msgid "Tab style:"
+#~ msgstr "Стиль вкладок:"
+
+#~ msgid "Rectangular tabs"
+#~ msgstr "Прямокутні вкладки"
+
+#~ msgid "Rounded tabs"
+#~ msgstr "Заокруглені вкладки"
+
+#~ msgid "Flat tabs"
+#~ msgstr "Плоскі вкладки"
+
+#~ msgid "Trapezoidal tabs"
+#~ msgstr "Трапецієподібні вкладки"
+
+#~ msgid "Show quick access buttons"
+#~ msgstr "Показувати клавіші швидкого доступу"
+
+#~ msgid "Use overlay for spinbox widgets (*)"
+#~ msgstr "Використовувати оверлей у спінбоксах (*)"
+
+#~ msgid "Separate spin in spinbox widgets (*)"
+#~ msgstr "Відокремлювати спін в спінбоксах (*)"
+
+#~ msgid "Unity related features"
+#~ msgstr "Функції пов'язані з Unity"
+
+#~ msgid "Use Unity Global Menu (*)"
+#~ msgstr "Використовувати глобальне меню Unity (*)"
+
+#~ msgid "Allow overlay for scrollbars (*)"
+#~ msgstr "Дозволити накладання для смуги прокручування (*)"
+
+#~ msgid "UI style"
+#~ msgstr "Стиль інтерфейсу"
+
+#~ msgid "New document on start"
+#~ msgstr "Починати з нового документу"
+
+#~ msgid "Backup on document save"
+#~ msgstr "Робити резервну копію при збереженні"
+
+#~ msgid "Make font cache on start"
+#~ msgstr "Робити кеш шрифтів на старті"
+
+#~ msgid "Backup on export"
+#~ msgstr "Робити резервну копію при експорті"
+
+#~ msgid "Run as server"
+#~ msgstr "Виконувати як сервер"
+
+#~ msgid "History log size:"
+#~ msgstr "Розмір журналу історії:"
+
+#~ msgid "History menu size:"
+#~ msgstr "Розмір меню історії:"
+
+#~ msgid "Logging level (*):"
+#~ msgstr "Рівень журналу дій (*):"
+
+#~ msgid "Language (*):"
+#~ msgstr "Мова (*):"
+
+#~ msgid "Generic features"
+#~ msgstr "Загальні особливості"
+
+#~ msgid "(*) - A restart is required to apply these options"
+#~ msgstr "(*) - Програму необхідно перезапустити, щоб активувати зміни"
+
+#~ msgid "Horizontal"
+#~ msgstr "Горизонтально"
+
+#~ msgid "Vertical"
+#~ msgstr "Вертикально"
+
+#~ msgid "Palettes"
+#~ msgstr "Палітри"
+
+#~ msgid "Palette options and palette management"
+#~ msgstr "Параметри палітри та керування палітрами"
+
+#~ msgid "Palette orientation:"
+#~ msgstr "Орієнтація палітри:"
+
+#~ msgid "Cell width:"
+#~ msgstr "Ширина клітинки:"
+
+#~ msgid "Cell height:"
+#~ msgstr "Висота клітинки:"
+
+#~ msgid "Horizontal palette"
+#~ msgstr "Горизонтальна палітра"
+
+#~ msgid "Expand short palettes"
+#~ msgstr "Розгорнути короткі палітри"
+
+#~ msgid "Palette management"
+#~ msgstr "Керування палітрами"
+
+#~ msgid "Export"
+#~ msgstr "Експорт"
+
+#~ msgid "Edit info"
+#~ msgstr "Змінити"
+
+#~ msgid "Download more palettes"
+#~ msgstr "Завантажте більше палітр"
+
+#~ msgid "Printers"
+#~ msgstr "Принтери"
+
+#~ msgid "Printer preferences"
+#~ msgstr "Параметри принтера"
+
+#~ msgid "Printer:"
+#~ msgstr "Принтер:"
+
+#~ msgid "Printing shift"
+#~ msgstr "Зсув друку"
+
+#~ msgid "Horizontal shift:"
+#~ msgstr "Горизонтальний зсув:"
+
+#~ msgid "Vertical shift:"
+#~ msgstr "Вертикальний зсув:"
+
+#~ msgid "Printing margins"
+#~ msgstr "Поля друку"
+
+#~ msgid ""
+#~ "To measure actual print area and vertical/horizontal printing shift, just "
+#~ "print the calibration page on A4/Letter paper."
+#~ msgstr ""
+#~ "Для вимірювання реальних розмірів роздруківки, просто роздрукуйте "
+#~ "сторінку калібрування A4/Letter."
+
+#~ msgid "Print A4 calibration page"
+#~ msgstr "Друк сторінки для калібрування A4"
+
+#~ msgid "Print Letter calibration page"
+#~ msgstr "Друк сторінки для калібрування Letter"
+
+#~ msgid "No printers found"
+#~ msgstr "Не вдалося знайти встановлені принтери!"
+
+#~ msgid "Ruler preferences"
+#~ msgstr "Параметри лінійки"
+
+#~ msgid "Size (px):"
+#~ msgstr "Розмір (пк):"
+
+#~ msgid "Ruler:"
+#~ msgstr "Лінійки:"
+
+#~ msgid "Ruler font:"
+#~ msgstr "Шрифт лінійки:"
+
+#~ msgid "Small tick:"
+#~ msgstr "Мала поділка:"
+
+#~ msgid "Large tick:"
+#~ msgstr "Велика поділка:"
+
+#~ msgid "Text shift (px):"
+#~ msgstr "Зсув тексту (пк):"
+
+#~ msgid "Vertical:"
+#~ msgstr "Вертикальний:"
+
+#~ msgid "Horizontal:"
+#~ msgstr "Горизонтальний:"
+
+#~ msgid "Ruler background color:"
+#~ msgstr "Колір тла лінійки:"
+
+#~ msgid "Ruler mark color:"
+#~ msgstr "Колір рисок лінійки:"
+
+#~ msgid "Ruler preview:"
+#~ msgstr "Вигляд лінійки:"
+
+#~ msgid "Grid and guides"
+#~ msgstr "Сітка й напрямні"
+
+#~ msgid "Grid and guides options"
+#~ msgstr "Налаштування сітки й напрямних"
+
+#~ msgid "Custom size"
+#~ msgstr "Особливий розмір"
+
+#~ msgid "Driver:"
+#~ msgstr "Драйвер:"
+
+#~ msgid "Connection"
+#~ msgstr "З'єднання"
+
+#~ msgid "Printing in progress..."
+#~ msgstr "Друк у процесі..."
+
+#~ msgid "Loading calibration page..."
+#~ msgstr "Завантаження сторінки для калібрування..."
+
+#~ msgid "Done"
+#~ msgstr "Готово"
+
+#~ msgid "Error while printing of calibration page!"
+#~ msgstr "Помилка під час друку сторінки для калібрування!"
+
+#~ msgid "Check your printer status and connection."
+#~ msgstr "Перевірте стан принтера та підключення."
+
+#~ msgid "Printing..."
+#~ msgstr "Друк..."
+
+#~ msgid "Error while printing!"
+#~ msgstr "Помилка під час друку!"
+
+#~ msgid "Default printer"
+#~ msgstr "Типовий принтер"
+
+#~ msgid "Print to file (PDF)"
+#~ msgstr "Друкувати у файл (PDF)"
+
+#~ msgid "Internal PDF writer"
+#~ msgstr "Внутрішній PDF драйвер"
+
+#~ msgid "Software interface"
+#~ msgstr "Програмний інтерфейс"
+
+#~ msgid "Idle"
+#~ msgstr "Вільний"
+
+#~ msgid "Select output file"
+#~ msgstr "Оберіть вихідний файл"
+
+#~ msgid "Fill any contour"
+#~ msgstr "Заповнити будь-який контур"
+
+#~ msgid "Fill closed only"
+#~ msgstr "Заповнити тільки замкнені"
+
+#~ msgid "Evenodd fill"
+#~ msgstr "Заповнювати парне-непарне"
+
+#~ msgid "Nonzero fill"
+#~ msgstr "Заповнювати без вибірок"
+
+#~ msgid "Bg:"
+#~ msgstr "Тло:"
+
+#~ msgid "None"
+#~ msgstr "Нічого"
+
+#~ msgid "Fg:"
+#~ msgstr "План:"
+
+#~ msgid "Old color:"
+#~ msgstr "Старий колір:"
+
+#~ msgid "New color:"
+#~ msgstr "Новий колір:"
+
+#~ msgid "Old fill:"
+#~ msgstr "Старе:"
+
+#~ msgid "New fill:"
+#~ msgstr "Нове:"
+
+#~ msgid "HTML notation:"
+#~ msgstr "HTML позначення:"
+
+#~ msgid "Palette:"
+#~ msgstr "Палітра:"
+
+#~ msgid "Empty pattern selected"
+#~ msgstr "Обрано порожній візерунок"
+
+#~ msgid "CMYK color space"
+#~ msgstr "Колірний простір CMYK"
+
+#~ msgid "RGB color space"
+#~ msgstr "Колірний простір RGB"
+
+#~ msgid "Grayscale color space"
+#~ msgstr "Колірний простір градації сірого"
+
+#~ msgid "SPOT colors"
+#~ msgstr "Плашкові кольори"
+
+#~ msgid "Color from palette"
+#~ msgstr "Колір з палітри"
+
+#~ msgid "Solid Fill"
+#~ msgstr "Суцільне заповнення"
+
+#~ msgid "Linear gradient"
+#~ msgstr "Лінійний градієнт"
+
+#~ msgid "Radial gradient"
+#~ msgstr "Радіальний градієнт"
+
+#~ msgid "Gradient Fill"
+#~ msgstr "Градієнт"
+
+#~ msgid "Pattern Fill"
+#~ msgstr "Візерунок"
+
+#~ msgid "Gradient stop"
+#~ msgstr "Опорні точки градієнта"
+
+#~ msgid "Change stop color"
+#~ msgstr "Змінити колір опорної точки"
+
+#~ msgid "Position:"
+#~ msgstr "Положення:"
+
+#~ msgid "Select first stop"
+#~ msgstr "Позначити першу опорну точку"
+
+#~ msgid "Select previous stop"
+#~ msgstr "Позначити попередню опорну точку"
+
+#~ msgid "Select next stop"
+#~ msgstr "Позначити наступну опорну точку"
+
+#~ msgid "Select last stop"
+#~ msgstr "Позначити останню опорну точку"
+
+#~ msgid "Add stop"
+#~ msgstr "Додати опорну точку"
+
+#~ msgid "Delete selected stop"
+#~ msgstr "Видалити обрані опорні точки"
+
+#~ msgid "Reverse gradient"
+#~ msgstr "Розвернути градієнт"
+
+#~ msgid "Reverse"
+#~ msgstr "Розвернути"
+
+#~ msgid "Keep gradient vector"
+#~ msgstr "Зберігати вектор градієнта"
+
+#~ msgid "Auto mode"
+#~ msgstr "Автоматичний режим"
+
+#~ msgid "Small cells"
+#~ msgstr "Малі клітинки"
+
+#~ msgid "Large cells"
+#~ msgstr "Великі клітинки"
+
+#~ msgid "List view"
+#~ msgstr "Список"
+
+#~ msgid "Palette preview:"
+#~ msgstr "Зразок палітри:"
+
+#~ msgid "Change pattern foreground color"
+#~ msgstr "Колір переднього плану візерунку"
+
+#~ msgid "Change pattern background color"
+#~ msgstr "Колір заднього плану візерунку"
+
+#~ msgid "Horizontal origin shift"
+#~ msgstr "Опорна точка зсуву по горизонталі"
+
+#~ msgid "Vertical origin shift"
+#~ msgstr "Опорна точка зсуву по вертикалі"
+
+#~ msgid "Scale horizontally"
+#~ msgstr "Масштаб по горизонталі"
+
+#~ msgid "Scale vertically"
+#~ msgstr "Масштаб по вертикалі"
+
+#~ msgid "Shear horizontally"
+#~ msgstr "Зсув по горизонталі"
+
+#~ msgid "Shear vertically"
+#~ msgstr "Зсув по вертикалі"
+
+#~ msgid "Rotate pattern"
+#~ msgstr "Обертати візерунок"
+
+#~ msgid "Transformation matrix:"
+#~ msgstr "Матриця трансформації:"
+
+#~ msgid "Save pattern into file"
+#~ msgstr "Зберегти візерунок у файл"
+
+#~ msgid "Line exactly at the point"
+#~ msgstr "Лінія точно через вузол"
+
+#~ msgid "Round ending"
+#~ msgstr "Округлені кінці"
+
+#~ msgid "Squared ending"
+#~ msgstr "Квадратні кінці"
+
+#~ msgid "Cut-off join"
+#~ msgstr "Фасочне з'єднання"
+
+#~ msgid "Sharp (angled) corner"
+#~ msgstr "Гостре з'єднання"
+
+#~ msgid "Rounded join"
+#~ msgstr "Округлене з'єднання"
+
+#~ msgid "Keep ratio"
+#~ msgstr "Зберігати пропорцію"
+
+#~ msgid "Don't keep ratio"
+#~ msgstr "Не зберігати пропорцію"
+
+#~ msgid "Selection mode (Esc)"
+#~ msgstr "Режим позначення (Esc)"
+
+#~ msgid "Edit mode (Space)"
+#~ msgstr "Режим редагування (Space)"
+
+#~ msgid "Zoom mode (F2)"
+#~ msgstr "Змінити масштаб (F2)"
+
+#~ msgid "Pan mode"
+#~ msgstr "Перемістити монтажну область"
+
+#~ msgid "Create polyline"
+#~ msgstr "Створити ламану"
+
+#~ msgid "Create curve"
+#~ msgstr "Створити криву"
+
+#~ msgid "Create rectangle"
+#~ msgstr "Створити прямокутник"
+
+#~ msgid "Create ellipse"
+#~ msgstr "Створити еліпс"
+
+#~ msgid "Create text (F8)"
+#~ msgstr "Створити текст (F8)"
+
+#~ msgid "Create polygon"
+#~ msgstr "Створити багатокутник"
+
+#~ msgid "Zoom out mode"
+#~ msgstr "Режим зменшення"
+
+#~ msgid "Move mode"
+#~ msgstr "Режим пересування"
+
+#~ msgid "Copy mode"
+#~ msgstr "Режим копіювання"
+
+#~ msgid "Edit gradient"
+#~ msgstr "Змінити градієнт"
+
+#~ msgid "Stroke..."
+#~ msgstr "Штрих..."
+
+#~ msgid "Fill..."
+#~ msgstr "Заповнення..."
+
+#~ msgid "Copy fill from..."
+#~ msgstr "Копія заповнення з..."
+
+#~ msgid "Copy stroke from..."
+#~ msgstr "Копія штриху з..."
+
+#~ msgid "&New"
+#~ msgstr "&Створити"
+
+#~ msgid "New From Template..."
+#~ msgstr "Створити з шаблона..."
+
+#~ msgid "New document from template..."
+#~ msgstr "Створити документ на основі шаблону..."
+
+#~ msgid "&Open..."
+#~ msgstr "&Відкрити..."
+
+#~ msgid "Open document"
+#~ msgstr "Відкрити документ"
+
+#~ msgid "&Clear history"
+#~ msgstr "&Очистити історію"
+
+#~ msgid "&Save"
+#~ msgstr "З&берегти"
+
+#~ msgid "Save document"
+#~ msgstr "Зберегти документ"
+
+#~ msgid "Save document as..."
+#~ msgstr "Зберегти документ як..."
+
+#~ msgid "Save Selected Only..."
+#~ msgstr "Зберегти тільки обране..."
+
+#~ msgid "Save selected objects only..."
+#~ msgstr "Зберегти тільки обрані об'єкти..."
+
+#~ msgid "Save All"
+#~ msgstr "Зберегти всі"
+
+#~ msgid "Save all documents"
+#~ msgstr "Зберегти всі документи"
+
+#~ msgid "&Import..."
+#~ msgstr "&Імпорт..."
+
+#~ msgid "Import graphics..."
+#~ msgstr "Імпортувати зображення..."
+
+#~ msgid "E&xport As..."
+#~ msgstr "Експорт..."
+
+#~ msgid "Export graphics as..."
+#~ msgstr "Експортувати зображення..."
+
+#~ msgid "&Close"
+#~ msgstr "&Закрити"
+
+#~ msgid "Close document"
+#~ msgstr "Закрити документ"
+
+#~ msgid "Close All"
+#~ msgstr "Закрити всі"
+
+#~ msgid "Close all documents"
+#~ msgstr "Закрити всі документи"
+
+#~ msgid "Close Others"
+#~ msgstr "Закрити інші"
+
+#~ msgid "Close other documents"
+#~ msgstr "Закрити інші документи"
+
+#~ msgid "Page Setup for Print..."
+#~ msgstr "Налаштування сторінки для друку ..."
+
+#~ msgid "&Print..."
+#~ msgstr "&Друк..."
+
+#~ msgid "Print document"
+#~ msgstr "Надрукувати документ"
+
+#~ msgid "&Exit"
+#~ msgstr "В&ийти"
+
+#~ msgid "Exit application"
+#~ msgstr "Вийти з програми"
+
+#~ msgid "&Undo"
+#~ msgstr "&Скасувати"
+
+#~ msgid "&Redo"
+#~ msgstr "&Повторити"
+
+#~ msgid "Clear undo history"
+#~ msgstr "Очистити історію змін"
+
+#~ msgid "&Invert selection"
+#~ msgstr "&Інвертувати позначення"
+
+#~ msgid "&File history logs..."
+#~ msgstr "&Історія..."
+
+#~ msgid "Preferences..."
+#~ msgstr "Параметри..."
+
+#~ msgid "Stroke view"
+#~ msgstr "Каркас"
+
+#~ msgid "Draft view"
+#~ msgstr "Чернетка"
+
+#~ msgid "Simulate printer"
+#~ msgstr "Імітувати пристрій виводу"
+
+#~ msgid "Zoom 100%"
+#~ msgstr "Масштаб зображення 100%"
+
+#~ msgid "Previous zoom"
+#~ msgstr "Попередній масштаб"
+
+#~ msgid "Fit zoom to page"
+#~ msgstr "Розмістити сторінку цілком"
+
+#~ msgid "Zoom selected"
+#~ msgstr "Показати позначене цілком"
+
+#~ msgid "Show grid"
+#~ msgstr "Показати сітку"
+
+#~ msgid "Show guides"
+#~ msgstr "Показати напрямні"
+
+#~ msgid "Show active snapping"
+#~ msgstr "Показати активні прив'язки"
+
+#~ msgid "Snap to grid"
+#~ msgstr "Прив'язка до сітки"
+
+#~ msgid "Snap to guide"
+#~ msgstr "Прив'язка до напрямних"
+
+#~ msgid "Snap to objects"
+#~ msgstr "Прив'язка до об'єктів"
+
+#~ msgid "Snap to page"
+#~ msgstr "Прив'язка до сторінки"
+
+#~ msgid "Iconizer..."
+#~ msgstr "Іконайзер..."
+
+#~ msgid "Redraw document"
+#~ msgstr "Оновити документ"
+
+#~ msgid "Insert page..."
+#~ msgstr "Вставити сторінку..."
+
+#~ msgid "Delete page..."
+#~ msgstr "Видалити сторінку..."
+
+#~ msgid "Go to page..."
+#~ msgstr "Перейти на сторінку..."
+
+#~ msgid "Next page"
+#~ msgstr "Наступна сторінка"
+
+#~ msgid "Previous page"
+#~ msgstr "Попередня сторінка"
+
+#~ msgid "Guides in page center"
+#~ msgstr "Додати напрямні по центру сторінки"
+
+#~ msgid "Page frame"
+#~ msgstr "Створити прямокутник у розмір сторінки"
+
+#~ msgid "Guides around page"
+#~ msgstr "Додати напрямні по межі сторінки"
+
+#~ msgid "Remove all guides"
+#~ msgstr "Видалити усі напрямні"
+
+#~ msgid "Clear transformations"
+#~ msgstr "Скинути трансформацію"
+
+#~ msgid "Inline transformations"
+#~ msgstr "Вбудувати трансформації"
+
+#~ msgid "Position..."
+#~ msgstr "Положення..."
+
+#~ msgid "Resizing..."
+#~ msgstr "Зміна розміру..."
+
+#~ msgid "Scale and mirror..."
+#~ msgstr "Масштабування та віддзеркалення..."
+
+#~ msgid "Rotation..."
+#~ msgstr "Обертання..."
+
+#~ msgid "Shearing..."
+#~ msgstr "Зсув..."
+
+#~ msgid "Rotate &left 90 degrees"
+#~ msgstr "Обернути в&ліво на 90°"
+
+#~ msgid "Rotate &right 90 degrees"
+#~ msgstr "Обернути в&право на 90°"
+
+#~ msgid "&Flip horizontal"
+#~ msgstr "Віддзеркалити &горизонтально"
+
+#~ msgid "&Flip vertical"
+#~ msgstr "Віддзеркалити &вертикально"
+
+#~ msgid "Align and Distribute..."
+#~ msgstr "Вирів&няти та розподілити..."
+
+#~ msgid "&Combine"
+#~ msgstr "Об'&єднати"
+
+#~ msgid "&Break Apart"
+#~ msgstr "&Розділити"
+
+#~ msgid "Move to &Top"
+#~ msgstr "Підняти на п&ередній план"
+
+#~ msgid "Move Up"
+#~ msgstr "&Підняти"
+
+#~ msgid "Move Down"
+#~ msgstr "&Опустити"
+
+#~ msgid "Move to &Bottom"
+#~ msgstr "Опустити на з&адній план"
+
+#~ msgid "&Group"
+#~ msgstr "З&групувати"
+
+#~ msgid "&Ungroup"
+#~ msgstr "&Розгрупувати"
+
+#~ msgid "U&ngroup All"
+#~ msgstr "Розгрупувати все"
+
+#~ msgid "Trim..."
+#~ msgstr "Обрізати..."
+
+#~ msgid "Intersection..."
+#~ msgstr "Перетин..."
+
+#~ msgid "Exclusion..."
+#~ msgstr "Виключення..."
+
+#~ msgid "Fusion..."
+#~ msgstr "Злиття..."
+
+#~ msgid "&Place into container"
+#~ msgstr "&Помістити в контейнер"
+
+#~ msgid "&Extract from container"
+#~ msgstr "Видобути з контейнера"
+
+#~ msgid "Con&vert to curves"
+#~ msgstr "Перетворити на криву"
+
+#~ msgid "Convert stroke to curves"
+#~ msgstr "Перетворити штрих на криву"
+
+#~ msgid "Select all nodes"
+#~ msgstr "Позначити усі вузли"
+
+#~ msgid "Reverse all paths"
+#~ msgstr "Обернути усі контури"
+
+#~ msgid "Select all subpath nodes"
+#~ msgstr "Позначити усі вузли у підконтурі"
+
+#~ msgid "Delete subpaths"
+#~ msgstr "Видалити підконтури"
+
+#~ msgid "Reverse subpaths"
+#~ msgstr "Обернути підконтури"
+
+#~ msgid "Extract subpaths"
+#~ msgstr "Видобути підконтур"
+
+#~ msgid "Add node"
+#~ msgstr "Додати вузол"
+
+#~ msgid "Delete nodes"
+#~ msgstr "Видалити вузли"
+
+#~ msgid "Create segment"
+#~ msgstr "Створити сегмент"
+
+#~ msgid "Delete segment"
+#~ msgstr "Видалити сегмент"
+
+#~ msgid "Join nodes"
+#~ msgstr "З'єднати вузли"
+
+#~ msgid "Split nodes"
+#~ msgstr "Роз'єднати вузли"
+
+#~ msgid "Convert segments to line"
+#~ msgstr "Перетворити сегмент на пряму"
+
+#~ msgid "Convert segments to curve"
+#~ msgstr "Перетворити сегмент на криву"
+
+#~ msgid "Make nodes cusp"
+#~ msgstr "Зробити позначені вузли гострими"
+
+#~ msgid "Make nodes smooth"
+#~ msgstr "Зробити позначені вузли гладкими"
+
+#~ msgid "Make nodes symmetrical"
+#~ msgstr "Зробити позначені вузли симетричними"
+
+#~ msgid "Convert to CMYK"
+#~ msgstr "Перетворити у CMYK"
+
+#~ msgid "Convert to RGB"
+#~ msgstr "Перетворити у RGB"
+
+#~ msgid "Convert to LAB"
+#~ msgstr "Перетворити у LAB"
+
+#~ msgid "Convert to Grayscale"
+#~ msgstr "Перетворити у відтінки сірого"
+
+#~ msgid "Convert to B&W"
+#~ msgstr "Перетворити у чорно-біле"
+
+#~ msgid "Invert bitmap"
+#~ msgstr "Інвертувати растр"
+
+#~ msgid "Remove alpha channel"
+#~ msgstr "Відкинути альфа-канал"
+
+#~ msgid "Invert alpha channel"
+#~ msgstr "Інвертувати альфа-канал"
+
+#~ msgid "Extract embedded bitmap..."
+#~ msgstr "Зберегти растр..."
+
+#~ msgid "&Edit text"
+#~ msgstr "&Редагувати текст"
+
+#~ msgid "Text on path..."
+#~ msgstr "Текст за контуром..."
+
+#~ msgid "Text on circle..."
+#~ msgstr "Текст по колу..."
+
+#~ msgid "&Straighten text"
+#~ msgstr "&Випрямити текст"
+
+#~ msgid "Clear text markup"
+#~ msgstr "Скасувати форматування"
+
+#~ msgid "Uppercase"
+#~ msgstr "Великими літерами"
+
+#~ msgid "Lowercase"
+#~ msgstr "Малими літерами"
+
+#~ msgid "Capitalize"
+#~ msgstr "З великої літери"
+
+#~ msgid "Pages"
+#~ msgstr "Сторінки"
+
+#~ msgid "Layers..."
+#~ msgstr "Шари..."
+
+#~ msgid "Object browser"
+#~ msgstr "Браузер об'єктів"
+
+#~ msgid "&Report bug"
+#~ msgstr "Надіслати &звіт про помилку"
+
+#~ msgid "&Log console"
+#~ msgstr "Консоль журналу"
+
+#~ msgid "Project web site"
+#~ msgstr "Веб-сайт проекту"
+
+#~ msgid "Project forum"
+#~ msgstr "Онлайн-форум"
+
+#~ msgid "Project page on Face&book"
+#~ msgstr "Сторінка проекту на Face&book"
+
+#~ msgid "&About sK1..."
+#~ msgstr "Про програму sK1..."
+
+#~ msgid "No selected nodes"
+#~ msgstr "Немає обраних вузлів"
+
+#~ msgid "Selected %d node(s)"
+#~ msgstr "Обрано %d вузлів"
+
+#~ msgid "Ellipse in editing"
+#~ msgstr "Редагується еліпс"
+
+#~ msgid "Polygon in editing"
+#~ msgstr "Редагується багатокутник"
+
+#~ msgid "Rectangle in editing"
+#~ msgstr "Редагується прямокутник"
+
+#~ msgid "Text in shaping"
+#~ msgstr "Редагуються гліфи тексту"
+
+#~ msgid "Gradient creating"
+#~ msgstr "Створення градієнта"
+
+#~ msgid "Gradient in editing"
+#~ msgstr "Редагується градієнт"
+
+#~ msgid "Text in editing"
+#~ msgstr "Редагується текст"
+
+#~ msgid "Print preview"
+#~ msgstr "Попередній перегляд друку"
+
+#~ msgid "Copies"
+#~ msgstr "Копії"
+
+#~ msgid "Number of copies:"
+#~ msgstr "Число копій:"
+
+#~ msgid "Collate"
+#~ msgstr "Розібрати"
+
+#~ msgid "Page range"
+#~ msgstr "Діапазон сторінок"
+
+#~ msgid "All"
+#~ msgstr "Усе"
+
+#~ msgid "Selection"
+#~ msgstr "Позначеного"
+
+#~ msgid "Current page"
+#~ msgstr "Поточна сторінка"
+
+#~ msgid "Enter page numbers or page ranges."
+#~ msgstr "Введіть номери або діапазони сторінок."
+
+#~ msgid "For example: 1,2,5-6"
+#~ msgstr "Приклад: 1,2,5-6"
+
+#~ msgid "Print mode"
+#~ msgstr "Режим друку"
+
+#~ msgid "Monochrome"
+#~ msgstr "Монохромний"
+
+#~ msgid "Color"
+#~ msgstr "Кольоровий"
+
+#~ msgid "Printer"
+#~ msgstr "Принтер"
+
+#~ msgid "Print"
+#~ msgstr "Друк"
+
+#~ msgid "Printer properties"
+#~ msgstr "Налаштування принтера"
+
+#~ msgid "Fit to page"
+#~ msgstr "Підігнати за сторінкою"
+
+#~ msgid "Color space:"
+#~ msgstr "Колірний простір:"
+
+#~ msgid "Paper"
+#~ msgstr "Папір"
+
+#~ msgid "Height:"
+#~ msgstr "Висота:"
+
+#~ msgid "Orientation"
+#~ msgstr "Орієнтація"
+
+#~ msgid "Margins"
+#~ msgstr "Поля"
+
+#~ msgid ""
+#~ "Note: To adjust specific printer options you could use system "
+#~ "configuration tools like 'system-config-printer'"
+#~ msgstr ""
+#~ "Примітка: Специфічні параметри принтера можна налаштувати програмами типу "
+#~ "'system-config-printer'"
+
+#~ msgid "Generation options"
+#~ msgstr "Загальні параметри"
+
+#~ msgid "PDF version:"
+#~ msgstr "Версія PDF:"
+
+#~ msgid "Use SPOT colors"
+#~ msgstr "Використовувати плашкові кольори"
+
+#~ msgid "Use compression"
+#~ msgstr "Використовувати стискання"
+
+#~ msgid "Document page"
+#~ msgstr "Сторінки документа"
+
+#~ msgid "Orientation:"
+#~ msgstr "Орієнтація:"
+
+#~ msgid "Document metainfo"
+#~ msgstr "Метаінформація"
+
+#~ msgid "Title:"
+#~ msgstr "Заголовок:"
+
+#~ msgid "Subject:"
+#~ msgstr "Тема:"
+
+#~ msgid "Set metainfo"
+#~ msgstr "Задати метаінформацію"
+
+#~ msgid "Set metainfo from current document"
+#~ msgstr "Задати метаінформацію для поточного документа"
+
+#~ msgid "First selected"
+#~ msgstr "Перший позначений"
+
+#~ msgid "Last selected"
+#~ msgstr "Останній позначений"
+
+#~ msgid "Largest object"
+#~ msgstr "Найбільший об'єкт"
+
+#~ msgid "Smallest object"
+#~ msgstr "Найменший об'єкт"
+
+#~ msgid "Align to left side"
+#~ msgstr "Вирівняти по лівій стороні"
+
+#~ msgid "Align to center horizontally"
+#~ msgstr "Центрувати по горизонталі"
+
+#~ msgid "Align to right side"
+#~ msgstr "Вирівняти по правій стороні"
+
+#~ msgid "Align to bottom"
+#~ msgstr "Вирівняти за нижнім краєм"
+
+#~ msgid "Align to center vertically"
+#~ msgstr "Центрувати по вертикалі"
+
+#~ msgid "Align to top"
+#~ msgstr "Вирівняти за верхнім краєм"
+
+#~ msgid "Align and Distribute"
+#~ msgstr "Вирівняти та розподілити"
+
+#~ msgid "Align"
+#~ msgstr "Вирівняти"
+
+#~ msgid "Relative to:"
+#~ msgstr "Відносно:"
+
+#~ msgid "Selection as group"
+#~ msgstr "Позначене як група"
+
+#~ msgid "Apply"
+#~ msgstr "Застосувати"
+
+#~ msgid "Distribute by left side horizontally"
+#~ msgstr "Розподілити від лівого краю горизонтально"
+
+#~ msgid "Distribute by center horizontally"
+#~ msgstr "Розподілити від центру горизонтально"
+
+#~ msgid "Distribute by right side horizontally"
+#~ msgstr "Розподілити від правого краю горизонтально"
+
+#~ msgid "Equal gap horizontally"
+#~ msgstr "Розподілити горизонтально"
+
+#~ msgid "Distribute by bottom side vertically"
+#~ msgstr "Розподілити від нижнього краю вертикально"
+
+#~ msgid "Distribute by center vertically"
+#~ msgstr "Розподілити від центру вертікально"
+
+#~ msgid "Distribute by top side vertically"
+#~ msgstr "Розподілити від верхнього краю вертикально"
+
+#~ msgid "Equal gap vertically"
+#~ msgstr "Розподілити вертикально"
+
+#~ msgid "Distribute"
+#~ msgstr "Розподілити"
+
+#~ msgid "Size:"
+#~ msgstr "Розмір:"
+
+#~ msgid "Iconizer"
+#~ msgstr "Іконайзер"
+
+#~ msgid "Background:"
+#~ msgstr "Тло:"
+
+#~ msgid "Show image border"
+#~ msgstr "Показати межі зображеня"
+
+#~ msgid "Draw selected only"
+#~ msgstr "Лише позначене"
+
+#~ msgid "Save image"
+#~ msgstr "Зберегти зображення"
+
+#~ msgid "Cannot save image:"
+#~ msgstr "Не вдалося зберегти зображення:"
+
+#~ msgid "Image is successfully saved"
+#~ msgstr "Зображення успішно збережено"
+
+#~ msgid "Layers"
+#~ msgstr "Шари"
+
+#~ msgid "Create new layer"
+#~ msgstr "Створити новий шар"
+
+#~ msgid "Move layer to bottom"
+#~ msgstr "Опустити шар додолу"
+
+#~ msgid "Move layer down"
+#~ msgstr "Опустити шар"
+
+#~ msgid "Move layer up"
+#~ msgstr "Підняти шар"
+
+#~ msgid "Move layer to top"
+#~ msgstr "Підняти шар нагору"
+
+#~ msgid "Delete layer"
+#~ msgstr "Видалити шар"
+
+#~ msgid "Rename layer"
+#~ msgstr "Перейменувати шар"
+
+#~ msgid "Trim"
+#~ msgstr "Обрізати"
+
+#~ msgid "Intersection"
+#~ msgstr "Перетин"
+
+#~ msgid "Exclusion"
+#~ msgstr "Виключення"
+
+#~ msgid "Fusion"
+#~ msgstr "Злиття"
+
+#~ msgid "Delete originals"
+#~ msgstr "Видалити оригінали"
+
+#~ msgid "Apply to..."
+#~ msgstr "Застосувати до..."
+
+#~ msgid "Selected objects cannot be used for this operation."
+#~ msgstr "Позначені об'єкти не можуть бути використані для цієї операції."
+
+#~ msgid "Try ungroup selection."
+#~ msgstr "Спробуйте розгрупувати позначене."
+
+#~ msgid "Selected object cannot be target for trim operation."
+#~ msgstr "Позначений об'єкт не можна обрізати."
+
+#~ msgid "Selected objects cannot be intersected."
+#~ msgstr "Позначені об'єкти не можна перетнути."
+
+#~ msgid "Shaping"
+#~ msgstr "Надання форми"
+
+#~ msgid "Text on right side"
+#~ msgstr "Текст вирівняти праворуч"
+
+#~ msgid "Text at top"
+#~ msgstr "Вирівнювання тексту вгорі"
+
+#~ msgid "Text on left side"
+#~ msgstr "Текст вирівняти ліворуч"
+
+#~ msgid "Text at bottom"
+#~ msgstr "Вирівнювання тексту внизу"
+
+#~ msgid "Text on Circle"
+#~ msgstr "Текст на колі"
+
+#~ msgid "Text position on circle"
+#~ msgstr "Положення тексту на колі"
+
+#~ msgid "Place on the other side"
+#~ msgstr "Місце на іншому боці"
+
+#~ msgid "Align to path start"
+#~ msgstr "Вирівняти від початку контуру"
+
+#~ msgid "Align to path center"
+#~ msgstr "Вирівняти від центру контуру"
+
+#~ msgid "Align to path end"
+#~ msgstr "Вирівняти від кінця контуру"
+
+#~ msgid "Stretch along path"
+#~ msgstr "Розподілити вздовж контуру"
+
+#~ msgid "Text on Path"
+#~ msgstr "Текст за контуром"
+
+#~ msgid "Text position on path"
+#~ msgstr "Положення тексту за контуром"
+
+#~ msgid "Base point:"
+#~ msgstr "Базова точка:"
+
+#~ msgid "Position"
+#~ msgstr "Положення"
+
+#~ msgid "Resizing"
+#~ msgstr "Зміна розміру"
+
+#~ msgid "Scale and mirror"
+#~ msgstr "Масштаб та віддзеркалення"
+
+#~ msgid "Rotating"
+#~ msgstr "Обертання"
+
+#~ msgid "Shearing"
+#~ msgstr "Зсув"
+
+#~ msgid "Transformations"
+#~ msgstr "Трансформація"
+
+#~ msgid "Apply to copy"
+#~ msgstr "Застосувати до копії"
+
+#~ msgid "Absolute position"
+#~ msgstr "Абсолютне положення"
+
+#~ msgid "Flip horizontal"
+#~ msgstr "Віддзеркалити горизонтально"
+
+#~ msgid "Flip vertical"
+#~ msgstr "Віддзеркалити вертикально"
+
+#~ msgid "Rotation"
+#~ msgstr "Обертання"
+
+#~ msgid "Angle:"
+#~ msgstr "Кут:"
+
+#~ msgid "Center:"
+#~ msgstr "Центр:"
+
+#~ msgid "Relative center"
+#~ msgstr "Відносний центр"
+
+#~ msgid "degrees"
+#~ msgstr "градусів"
+
+#~ msgid "Translation is under process..."
+#~ msgstr "Переклад в процесі..."
+
+#~ msgid "It seems the file is not CDRZ file"
+#~ msgstr "Схоже, файл не є CDRZ файлом"
+
+#~ msgid "It seems the CDR file is corrupted"
+#~ msgstr "Схоже, файл CDR пошкоджений"
+
+#~ msgid "The file content is extracted successfully"
+#~ msgstr "Вміст файлу успішно вилучено"
+
+#~ msgid "Layer"
+#~ msgstr "Шар"
+
+#~ msgid "GuideLayer"
+#~ msgstr "Шар напрямних"
+
+#~ msgid "GridLayer"
+#~ msgstr "Шар сітки"
+
+#~ msgid "Layout"
+#~ msgstr "Макет"
+
+#~ msgid "Guideline"
+#~ msgstr "Напрямна"
+
+#~ msgid "Style"
+#~ msgstr "Стиль"
+
+#~ msgid "Group"
+#~ msgstr "Група"
+
+#~ msgid "MaskGroup"
+#~ msgstr "Група маскування"
+
+#~ msgid "Rectangle"
+#~ msgstr "Прямокутник"
+
+#~ msgid "Ellipse"
+#~ msgstr "Еліпс"
+
+#~ msgid "Curve"
+#~ msgstr "Крива"
+
+#~ msgid "Text"
+#~ msgstr "Текст"
+
+#~ msgid "BitmapData"
+#~ msgstr "Данні растрового зображення"
+
+#~ msgid "Image"
+#~ msgstr "Зображення"
+
+#~ msgid "New Layer"
+#~ msgstr "Новий шар"
+
+#~ msgid "MasterLayer"
+#~ msgstr "МайстерШар"
+
+#~ msgid "Newer version of SK2 format is found!"
+#~ msgstr "Новіша версія формату SK2!"
+
+#~ msgid "Metainfo"
+#~ msgstr "Метаінформація"
+
+#~ msgid "Styles"
+#~ msgstr "Стилі"
+
+#~ msgid "Profiles"
+#~ msgstr "Профілі"
+
+#~ msgid "Profile"
+#~ msgstr "Профіль"
+
+#~ msgid "Font"
+#~ msgstr "Шрифт"
+
+#~ msgid "Images"
+#~ msgstr "Зображення"
+
+#~ msgid "Layer group"
+#~ msgstr "Група шарів"
+
+#~ msgid "Master layers"
+#~ msgstr "Майстер шари"
+
+#~ msgid "Grid layer"
+#~ msgstr "Шар сітки"
+
+#~ msgid "Guide layer"
+#~ msgstr "Шар напрямних"
+
+#~ msgid "Desktop layers"
+#~ msgstr "Шар робочого столу"
+
+#~ msgid "Guide"
+#~ msgstr "Напрямна"
+
+#~ msgid "Container"
+#~ msgstr "Контейнер"
+
+#~ msgid "Text on Path Group"
+#~ msgstr "Текст за групою контурів"
+
+#~ msgid "Polygon"
+#~ msgstr "Багатокутник"
+
+#~ msgid "Text block"
+#~ msgstr "Текстовий блок"
+
+#~ msgid "Text column"
+#~ msgstr "Текстовий стовпчик"
+
+#~ msgid "Bitmap"
+#~ msgstr "Растрове зображення"
+
+#~ msgid "Try updating sK1 application from http://www.sk1project.net"
+#~ msgstr "Спробуйте оновити програму sK1 з http://www.sk1project.net"
+
+#~ msgid "Stroke width:"
+#~ msgstr "Товщина штриха:"
+
+#~ msgid "The file may be corrupted or not supported format."
+#~ msgstr "Файл може бути пошкоджений або формат файлу не підтримується."
+
+#~ msgid "To start create new or open existing document"
+#~ msgstr "Щоб почати створіть новий або відкрийте існуючий документ"
+
+#~ msgid "Save log As..."
+#~ msgstr "Зберегти журнал як..."
+
+#~ msgid "Unknown file format is requested for saving! <%s>"
+#~ msgstr "Для збереження вказано невідомий формат файлу! <%s>"
+
+#~ msgid "Parsing is started..."
+#~ msgstr "Розбір розпочато..."
+
+#~ msgid "Parsing is under process..."
+#~ msgstr "Розбір в процесі..."
+
+#~ msgid "Saving in process..."
+#~ msgstr "Збереження в процесі..."

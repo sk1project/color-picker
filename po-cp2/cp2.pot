@@ -1,0 +1,566 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-25 12:54+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/cp2/app.py:68 src/cp2/mw.py:39
+msgid "New palette"
+msgstr ""
+
+#: src/cp2/app.py:69 src/cp2/mw.py:40
+msgid "Open palette..."
+msgstr ""
+
+#: src/cp2/app.py:72 src/cp2/mw.py:47
+msgid "Palette Collection"
+msgstr ""
+
+#: src/cp2/app.py:76 src/cp2/mw.py:50
+msgid "Online help"
+msgstr ""
+
+#: src/cp2/app.py:77 src/cp2/mw.py:51
+msgid "About Color Picker"
+msgstr ""
+
+#: src/cp2/app.py:79 src/cp2/mw.py:53
+msgid "Quit"
+msgstr ""
+
+#: src/cp2/app.py:170
+msgid "Cannot parse file:"
+msgstr ""
+
+#: src/cp2/app.py:172
+msgid "The file may be corrupted or not supported format"
+msgstr ""
+
+#: src/cp2/app.py:190
+msgid "Select file to paste from"
+msgstr ""
+
+#: src/cp2/app.py:223
+msgid "Cannot save file:"
+msgstr ""
+
+#: src/cp2/app.py:225
+msgid "Details see in logs"
+msgstr ""
+
+#: src/cp2/canvas.py:288
+msgid "Select color"
+msgstr ""
+
+#: src/cp2/canvas.py:521 src/cp2/canvas.py:710
+msgid "Change color"
+msgstr ""
+
+#: src/cp2/canvas.py:554
+msgid "Wrong value"
+msgstr ""
+
+#: src/cp2/canvas.py:555
+msgid "Wrong color value: "
+msgstr ""
+
+#: src/cp2/canvas.py:556
+msgid "Fix it and try again"
+msgstr ""
+
+#: src/cp2/canvas.py:705
+msgid "Cut"
+msgstr ""
+
+#: src/cp2/canvas.py:706
+msgid "Copy"
+msgstr ""
+
+#: src/cp2/canvas.py:707
+msgid "Paste"
+msgstr ""
+
+#: src/cp2/canvas.py:714
+msgid "Delete"
+msgstr ""
+
+#: src/cp2/canvas.py:716
+msgid "Duplicate"
+msgstr ""
+
+#: src/cp2/canvas.py:720
+msgid "Select all"
+msgstr ""
+
+#: src/cp2/canvas.py:722
+msgid "Deselect"
+msgstr ""
+
+#: src/cp2/canvas.py:726
+msgid "Paste from file..."
+msgstr ""
+
+#: src/cp2/canvas.py:740 src/cp2/mw.py:105
+msgid "Untitled palette"
+msgstr ""
+
+#: src/cp2/canvas.py:744
+msgid "colors"
+msgstr ""
+
+#: src/cp2/dialogs.py:26
+msgid "Select file to open"
+msgstr ""
+
+#: src/cp2/dialogs.py:38
+msgid "All supported files"
+msgstr ""
+
+#: src/cp2/dialogs.py:46
+msgid "Save file as..."
+msgstr ""
+
+#: src/cp2/mw.py:41
+msgid "Save as..."
+msgstr ""
+
+#: src/cp2/mw.py:44
+msgid "Properties..."
+msgstr ""
+
+#: src/cp2/mw.py:142
+msgid "Name:"
+msgstr ""
+
+#: src/cp2/mw.py:143
+msgid "Source:"
+msgstr ""
+
+#: src/cp2/mw.py:144
+msgid "Columns:"
+msgstr ""
+
+#: src/cp2/mw.py:145
+msgid "Comments:"
+msgstr ""
+
+#: src/cp2/mw.py:147
+msgid "Palette properties"
+msgstr ""
+
+#: src/uc2/uc2const.py:120
+msgid "All supported formats"
+msgstr ""
+
+#: src/uc2/uc2const.py:121
+msgid "PDXF - PrintDesign XML Format graphics files"
+msgstr ""
+
+#: src/uc2/uc2const.py:122
+msgid "SK1 - sK1 0.9.x graphics files"
+msgstr ""
+
+#: src/uc2/uc2const.py:123
+msgid "SK2 - sK1 2.x graphics files"
+msgstr ""
+
+#: src/uc2/uc2const.py:124
+msgid "SK - Sketch/Skencil files"
+msgstr ""
+
+#: src/uc2/uc2const.py:125
+msgid "SVG - Scalable Vector Graphics files"
+msgstr ""
+
+#: src/uc2/uc2const.py:126
+msgid "SVGZ - Compressed Scalable Vector Graphics files"
+msgstr ""
+
+#: src/uc2/uc2const.py:127
+msgid "ODG - Open Document Drawing files"
+msgstr ""
+
+#: src/uc2/uc2const.py:128
+msgid "ORA - Open Raster Format files"
+msgstr ""
+
+#: src/uc2/uc2const.py:129
+msgid "XCF - GIMP files"
+msgstr ""
+
+#: src/uc2/uc2const.py:130
+msgid "SLA - Scribus documents"
+msgstr ""
+
+#: src/uc2/uc2const.py:131 src/uc2/uc2const.py:133
+msgid "CDR - CorelDRAW Graphics files"
+msgstr ""
+
+#: src/uc2/uc2const.py:132 src/uc2/uc2const.py:134
+msgid "CDT - CorelDRAW Templates files"
+msgstr ""
+
+#: src/uc2/uc2const.py:135
+msgid "CMX - CorelDRAW Presentation Exchange files"
+msgstr ""
+
+#: src/uc2/uc2const.py:136
+msgid "CCX - CorelDRAW Compressed Exchange files"
+msgstr ""
+
+#: src/uc2/uc2const.py:137
+msgid "XAR - Xara graphics files"
+msgstr ""
+
+#: src/uc2/uc2const.py:138
+msgid "FIG - XFig files"
+msgstr ""
+
+#: src/uc2/uc2const.py:139 src/uc2/uc2const.py:140
+msgid "AI - Adobe Illustrator files"
+msgstr ""
+
+#: src/uc2/uc2const.py:141
+msgid "PS - PostScript files"
+msgstr ""
+
+#: src/uc2/uc2const.py:142
+msgid "EPS - Encapsulated PostScript files"
+msgstr ""
+
+#: src/uc2/uc2const.py:143
+msgid "PDF - Portable Document Format files"
+msgstr ""
+
+#: src/uc2/uc2const.py:144
+msgid "PSD - Adobe Photoshop files"
+msgstr ""
+
+#: src/uc2/uc2const.py:145
+msgid "CGM - Computer Graphics Metafile files"
+msgstr ""
+
+#: src/uc2/uc2const.py:146
+msgid "WMF - Windows Metafile files"
+msgstr ""
+
+#: src/uc2/uc2const.py:147
+msgid "EMF - Windows Enhanced Metafile files"
+msgstr ""
+
+#: src/uc2/uc2const.py:148
+msgid "XPS - XML Paper Specification files"
+msgstr ""
+
+#: src/uc2/uc2const.py:149
+msgid "VSD - Visio Drawing files"
+msgstr ""
+
+#: src/uc2/uc2const.py:150
+msgid "PLT - HPGL cutting plotter files"
+msgstr ""
+
+#: src/uc2/uc2const.py:151
+msgid "HPGL - HPGL plotter files"
+msgstr ""
+
+#: src/uc2/uc2const.py:152
+msgid "DXF - AutoCAD files"
+msgstr ""
+
+#: src/uc2/uc2const.py:153
+msgid "DWG - AutoCAD files"
+msgstr ""
+
+#: src/uc2/uc2const.py:154
+msgid "RIF - RIFF files"
+msgstr ""
+
+#: src/uc2/uc2const.py:157
+msgid "JPEG - Joint Photographic Experts Group files"
+msgstr ""
+
+#: src/uc2/uc2const.py:158
+msgid "JPEG2000 - Joint Photographic Experts Group files"
+msgstr ""
+
+#: src/uc2/uc2const.py:159
+msgid "TIFF - Tagged Image File Format files"
+msgstr ""
+
+#: src/uc2/uc2const.py:160
+msgid "BMP - Bitmap Picture files"
+msgstr ""
+
+#: src/uc2/uc2const.py:161
+msgid "PCX - PCeXchange files"
+msgstr ""
+
+#: src/uc2/uc2const.py:162
+msgid "GIF - Graphics Interchange Format files"
+msgstr ""
+
+#: src/uc2/uc2const.py:163
+msgid "PNG - Portable Network Graphics files"
+msgstr ""
+
+#: src/uc2/uc2const.py:164
+msgid "PPM - Netpbm Color Image format files"
+msgstr ""
+
+#: src/uc2/uc2const.py:165
+msgid "XBM - X bitmap files"
+msgstr ""
+
+#: src/uc2/uc2const.py:166
+msgid "XPM - X pixmap files"
+msgstr ""
+
+#: src/uc2/uc2const.py:167
+msgid "WebP - Google image format files"
+msgstr ""
+
+#: src/uc2/uc2const.py:170
+msgid "SKP - sK1 palette files"
+msgstr ""
+
+#: src/uc2/uc2const.py:171
+msgid "GPL - GIMP palette files"
+msgstr ""
+
+#: src/uc2/uc2const.py:172
+msgid "CPL - CorelDRAW palette files"
+msgstr ""
+
+#: src/uc2/uc2const.py:173
+msgid "XML - Scribus palette files"
+msgstr ""
+
+#: src/uc2/uc2const.py:174
+msgid "SOC - LibreOffice palette files"
+msgstr ""
+
+#: src/uc2/uc2const.py:175
+msgid "XML - CorelDRAW X5-X7 palette files"
+msgstr ""
+
+#: src/uc2/uc2const.py:176
+msgid "ASE - Adobe Swatch Exchange files"
+msgstr ""
+
+#: src/uc2/uc2const.py:177
+msgid "ACO - Adobe Color files"
+msgstr ""
+
+#: src/uc2/uc2const.py:178
+msgid "JCW - Xara color palette files"
+msgstr ""
+
+#: src/uc2/uc2const.py:181
+msgid "ICC - International Color Consortium profiles"
+msgstr ""
+
+#: src/uc2/uc2const.py:182
+msgid "ICM - Image Color Matching profiles"
+msgstr ""
+
+#: src/uc2/uc2const.py:184
+msgid "XML - eXtensible Markup Language files"
+msgstr ""
+
+#: src/uc2/uc2const.py:185
+msgid "LOG - Log files"
+msgstr ""
+
+#: src/uc2/uc2const.py:186
+msgid "MD - Markdown markup files"
+msgstr ""
+
+#: src/uc2/uc2const.py:189
+msgid "DST - (Tajima) Design format"
+msgstr ""
+
+#: src/uc2/uc2const.py:381 src/uc2/uc2const.py:401
+msgid "pixels"
+msgstr ""
+
+#: src/uc2/uc2const.py:382 src/uc2/uc2const.py:407
+msgid "millimeters"
+msgstr ""
+
+#: src/uc2/uc2const.py:383 src/uc2/uc2const.py:406
+msgid "centimeters"
+msgstr ""
+
+#: src/uc2/uc2const.py:384 src/uc2/uc2const.py:405
+msgid "meters"
+msgstr ""
+
+#: src/uc2/uc2const.py:385 src/uc2/uc2const.py:402
+msgid "points"
+msgstr ""
+
+#: src/uc2/uc2const.py:386 src/uc2/uc2const.py:403
+msgid "inches"
+msgstr ""
+
+#: src/uc2/uc2const.py:387 src/uc2/uc2const.py:404
+msgid "feet"
+msgstr ""
+
+#: src/uc2/uc2const.py:391
+msgid "pt"
+msgstr ""
+
+#: src/uc2/uc2const.py:392
+msgid "px"
+msgstr ""
+
+#: src/uc2/uc2const.py:393
+msgid "in"
+msgstr ""
+
+#: src/uc2/uc2const.py:394
+msgid "ft"
+msgstr ""
+
+#: src/uc2/uc2const.py:395
+msgid "m"
+msgstr ""
+
+#: src/uc2/uc2const.py:396
+msgid "cm"
+msgstr ""
+
+#: src/uc2/uc2const.py:397
+msgid "mm"
+msgstr ""
+
+#: src/uc2/uc2const.py:525
+msgid "Portrait"
+msgstr ""
+
+#: src/uc2/uc2const.py:525
+msgid "Landscape"
+msgstr ""
+
+#: src/uc2/uc2const.py:535
+msgid "Perceptual"
+msgstr ""
+
+#: src/uc2/uc2const.py:536
+msgid "Relative Colorimetric"
+msgstr ""
+
+#: src/uc2/uc2const.py:537
+msgid "Saturation"
+msgstr ""
+
+#: src/uc2/uc2const.py:538
+msgid "Absolute Colorimetric"
+msgstr ""
+
+#: src/uc2/formats/generic.py:134
+msgid "Error while loading:"
+msgstr ""
+
+#: src/uc2/formats/generic.py:134
+msgid "No file"
+msgstr ""
+
+#: src/uc2/formats/generic.py:140 src/uc2/formats/generic.py:218
+#: src/uc2/formats/generic_filters.py:96
+msgid "Parsing in progress..."
+msgstr ""
+
+#: src/uc2/formats/generic.py:149
+#, python-format
+msgid "<%s> document model is created"
+msgstr ""
+
+#: src/uc2/formats/generic.py:160
+msgid "Error updating document model"
+msgstr ""
+
+#: src/uc2/formats/generic.py:165
+#, python-format
+msgid "<%s> document model is updated successfully"
+msgstr ""
+
+#: src/uc2/formats/generic.py:173
+msgid "Error while saving:"
+msgstr ""
+
+#: src/uc2/formats/generic.py:173
+msgid "No file object"
+msgstr ""
+
+#: src/uc2/formats/generic.py:179
+msgid "Saving is started..."
+msgstr ""
+
+#: src/uc2/formats/generic.py:182
+msgid "Error while saving"
+msgstr ""
+
+#: src/uc2/formats/generic.py:188
+#, python-format
+msgid "<%s> document model is saved successfully"
+msgstr ""
+
+#: src/uc2/formats/generic.py:199
+#, python-format
+msgid "<%s> document model is destroyed for %s"
+msgstr ""
+
+#: src/uc2/formats/generic.py:205
+msgid "Cache is cleared for"
+msgstr ""
+
+#: src/uc2/formats/generic.py:207
+msgid "Cache clearing is unsuccessful"
+msgstr ""
+
+#: src/uc2/formats/generic.py:214
+#, python-format
+msgid "%s model update in progress..."
+msgstr ""
+
+#: src/uc2/formats/generic.py:222 src/uc2/formats/generic_filters.py:228
+msgid "Saving in progress..."
+msgstr ""
+
+#: src/uc2/formats/generic_filters.py:60
+msgid "There is no file for reading"
+msgstr ""
+
+#: src/uc2/formats/generic_filters.py:194
+msgid "There is no file for writting"
+msgstr ""
+
+#: src/uc2/utils/fsutils.py:56
+msgid "There is no file path"
+msgstr ""
+
+#: src/uc2/utils/fsutils.py:62
+#, python-format
+msgid "Cannot open %s file for writing"
+msgstr ""
+
+#: src/uc2/utils/fsutils.py:70
+#, python-format
+msgid "Cannot open %s file for reading"
+msgstr ""

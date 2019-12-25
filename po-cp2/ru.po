@@ -1,0 +1,2889 @@
+# Copyright (C) 2018, Igor Novikov
+# This file is distributed under the same license as the PACKAGE package.
+# Igor Novikov <sk1.project.org@gmail.com>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-25 12:54+0200\n"
+"PO-Revision-Date: 2019-12-25 15:12+0200\n"
+"Last-Translator: Igor Novikov <sk1.project.org@gmail.com>\n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: src/cp2/app.py:68 src/cp2/mw.py:39
+msgid "New palette"
+msgstr "Новая палитра"
+
+#: src/cp2/app.py:69 src/cp2/mw.py:40
+msgid "Open palette..."
+msgstr "Открыть палитру..."
+
+#: src/cp2/app.py:72 src/cp2/mw.py:47
+msgid "Palette Collection"
+msgstr "Коллекция палитр"
+
+#: src/cp2/app.py:76 src/cp2/mw.py:50
+msgid "Online help"
+msgstr "Онлайн помощь"
+
+#: src/cp2/app.py:77 src/cp2/mw.py:51
+msgid "About Color Picker"
+msgstr "Про Color Picker"
+
+#: src/cp2/app.py:79 src/cp2/mw.py:53
+msgid "Quit"
+msgstr "Выход"
+
+#: src/cp2/app.py:170
+msgid "Cannot parse file:"
+msgstr "Не могу разобрать файл:"
+
+#: src/cp2/app.py:172
+msgid "The file may be corrupted or not supported format"
+msgstr "Возможно файл поврежден или не поддерживаемого формата"
+
+#: src/cp2/app.py:190
+msgid "Select file to paste from"
+msgstr "Выбрать файл для импорта"
+
+#: src/cp2/app.py:223
+msgid "Cannot save file:"
+msgstr "Не могу сохранить файл:"
+
+#: src/cp2/app.py:225
+msgid "Details see in logs"
+msgstr "Детали см. в логах приложения"
+
+#: src/cp2/canvas.py:288
+msgid "Select color"
+msgstr "Выбрать цвет"
+
+#: src/cp2/canvas.py:521 src/cp2/canvas.py:710
+msgid "Change color"
+msgstr "Изменить цвет"
+
+#: src/cp2/canvas.py:554
+msgid "Wrong value"
+msgstr "Некорректное значение"
+
+#: src/cp2/canvas.py:555
+msgid "Wrong color value: "
+msgstr "Некорректное значение цвета: "
+
+#: src/cp2/canvas.py:556
+msgid "Fix it and try again"
+msgstr "Исправьте и попробуйте снова"
+
+#: src/cp2/canvas.py:705
+msgid "Cut"
+msgstr "Вырезать"
+
+#: src/cp2/canvas.py:706
+msgid "Copy"
+msgstr "Копировать"
+
+#: src/cp2/canvas.py:707
+msgid "Paste"
+msgstr "Вставить"
+
+#: src/cp2/canvas.py:714
+msgid "Delete"
+msgstr "Удалить"
+
+#: src/cp2/canvas.py:716
+msgid "Duplicate"
+msgstr "Дуплицировать"
+
+#: src/cp2/canvas.py:720
+msgid "Select all"
+msgstr "Выбрать все"
+
+#: src/cp2/canvas.py:722
+msgid "Deselect"
+msgstr "Сбросить выделение"
+
+#: src/cp2/canvas.py:726
+msgid "Paste from file..."
+msgstr "Вставить из файла..."
+
+#: src/cp2/canvas.py:740 src/cp2/mw.py:105
+msgid "Untitled palette"
+msgstr "Безымянная палитра"
+
+#: src/cp2/canvas.py:744
+msgid "colors"
+msgstr "цветов"
+
+#: src/cp2/dialogs.py:26
+msgid "Select file to open"
+msgstr "Выбрать файл для открытия"
+
+#: src/cp2/dialogs.py:38
+msgid "All supported files"
+msgstr "Все поддерживаемые форматы"
+
+#: src/cp2/dialogs.py:46
+msgid "Save file as..."
+msgstr "Сохранить файл как..."
+
+#: src/cp2/mw.py:41
+msgid "Save as..."
+msgstr "Сохранить как..."
+
+#: src/cp2/mw.py:44
+msgid "Properties..."
+msgstr "Свойства..."
+
+#: src/cp2/mw.py:142
+msgid "Name:"
+msgstr "Имя:"
+
+#: src/cp2/mw.py:143
+msgid "Source:"
+msgstr "Источник:"
+
+#: src/cp2/mw.py:144
+msgid "Columns:"
+msgstr "Колонки:"
+
+#: src/cp2/mw.py:145
+msgid "Comments:"
+msgstr "Комментарии:"
+
+#: src/cp2/mw.py:147
+msgid "Palette properties"
+msgstr "Свойства палитры"
+
+#: src/uc2/uc2const.py:120
+msgid "All supported formats"
+msgstr "Все поддерживаемые форматы"
+
+#: src/uc2/uc2const.py:121
+msgid "PDXF - PrintDesign XML Format graphics files"
+msgstr "PDXF - файлы PrintDesign XML Format"
+
+#: src/uc2/uc2const.py:122
+msgid "SK1 - sK1 0.9.x graphics files"
+msgstr "SK1 - файлы sK1 0.9.x"
+
+#: src/uc2/uc2const.py:123
+msgid "SK2 - sK1 2.x graphics files"
+msgstr "SK2 - файлы sK1 2.x"
+
+#: src/uc2/uc2const.py:124
+msgid "SK - Sketch/Skencil files"
+msgstr "SK - файлы Sketch/Skencil"
+
+#: src/uc2/uc2const.py:125
+msgid "SVG - Scalable Vector Graphics files"
+msgstr "SVG - файлы Scalable Vector Graphics"
+
+#: src/uc2/uc2const.py:126
+msgid "SVGZ - Compressed Scalable Vector Graphics files"
+msgstr "SVGZ - Сжатые файлы Scalable Vector Graphics"
+
+#: src/uc2/uc2const.py:127
+msgid "ODG - Open Document Drawing files"
+msgstr "ODG - файлы Open Document Drawing"
+
+#: src/uc2/uc2const.py:128
+msgid "ORA - Open Raster Format files"
+msgstr "ORA - файлы Open Raster Format"
+
+#: src/uc2/uc2const.py:129
+msgid "XCF - GIMP files"
+msgstr "XCF - файлы GIMP"
+
+#: src/uc2/uc2const.py:130
+msgid "SLA - Scribus documents"
+msgstr "SLA - файлы Scribus"
+
+#: src/uc2/uc2const.py:131 src/uc2/uc2const.py:133
+msgid "CDR - CorelDRAW Graphics files"
+msgstr "CDR - файлы графики CorelDRAW"
+
+#: src/uc2/uc2const.py:132 src/uc2/uc2const.py:134
+msgid "CDT - CorelDRAW Templates files"
+msgstr "CDT - файлы шаблонов CorelDRAW"
+
+#: src/uc2/uc2const.py:135
+msgid "CMX - CorelDRAW Presentation Exchange files"
+msgstr "CMX - файлы клипарта CorelDRAW"
+
+#: src/uc2/uc2const.py:136
+msgid "CCX - CorelDRAW Compressed Exchange files"
+msgstr "CCX - сжатые файлы клипарта CorelDRAW"
+
+#: src/uc2/uc2const.py:137
+msgid "XAR - Xara graphics files"
+msgstr "XAR - файлы графики Xara"
+
+#: src/uc2/uc2const.py:138
+msgid "FIG - XFig files"
+msgstr "FIG - файлы XFig"
+
+#: src/uc2/uc2const.py:139 src/uc2/uc2const.py:140
+msgid "AI - Adobe Illustrator files"
+msgstr "AI - файлы Adobe Illustrator"
+
+#: src/uc2/uc2const.py:141
+msgid "PS - PostScript files"
+msgstr "PS - PostScript файлы"
+
+#: src/uc2/uc2const.py:142
+msgid "EPS - Encapsulated PostScript files"
+msgstr "EPS - Encapsulated PostScript файлы"
+
+#: src/uc2/uc2const.py:143
+msgid "PDF - Portable Document Format files"
+msgstr "PDF - файлы Portable Document Format"
+
+#: src/uc2/uc2const.py:144
+msgid "PSD - Adobe Photoshop files"
+msgstr "PSD - файлы Adobe Photoshop"
+
+#: src/uc2/uc2const.py:145
+msgid "CGM - Computer Graphics Metafile files"
+msgstr "CGM - файлы Computer Graphics Metafile"
+
+#: src/uc2/uc2const.py:146
+msgid "WMF - Windows Metafile files"
+msgstr "WMF - файлы Windows Metafile"
+
+#: src/uc2/uc2const.py:147
+msgid "EMF - Windows Enhanced Metafile files"
+msgstr "EMF - файлы Windows Enhanced Metafile"
+
+#: src/uc2/uc2const.py:148
+msgid "XPS - XML Paper Specification files"
+msgstr "XPS - файлы XML Paper Specification"
+
+#: src/uc2/uc2const.py:149
+msgid "VSD - Visio Drawing files"
+msgstr "VSD - файлы Visio Drawing"
+
+#: src/uc2/uc2const.py:150
+msgid "PLT - HPGL cutting plotter files"
+msgstr "PLT - HPGL файлы режущего плоттера"
+
+#: src/uc2/uc2const.py:151
+msgid "HPGL - HPGL plotter files"
+msgstr "HPGL - HPGL файлы плоттера"
+
+#: src/uc2/uc2const.py:152
+msgid "DXF - AutoCAD files"
+msgstr "DXF - файлы AutoCAD"
+
+#: src/uc2/uc2const.py:153
+msgid "DWG - AutoCAD files"
+msgstr "DWG - файлы AutoCAD"
+
+#: src/uc2/uc2const.py:154
+msgid "RIF - RIFF files"
+msgstr "RIF - файлы RIFF"
+
+#: src/uc2/uc2const.py:157
+msgid "JPEG - Joint Photographic Experts Group files"
+msgstr "JPEG - файлы Joint Photographic Experts Group"
+
+#: src/uc2/uc2const.py:158
+msgid "JPEG2000 - Joint Photographic Experts Group files"
+msgstr "JPEG2000 - файлы Joint Photographic Experts Group"
+
+#: src/uc2/uc2const.py:159
+msgid "TIFF - Tagged Image File Format files"
+msgstr "TIFF - файлы Tagged Image File Format"
+
+#: src/uc2/uc2const.py:160
+msgid "BMP - Bitmap Picture files"
+msgstr "BMP - файлы Bitmap Picture"
+
+#: src/uc2/uc2const.py:161
+msgid "PCX - PCeXchange files"
+msgstr "PCX - файлы PCeXchange"
+
+#: src/uc2/uc2const.py:162
+msgid "GIF - Graphics Interchange Format files"
+msgstr "GIF - файлы Graphics Interchange Format"
+
+#: src/uc2/uc2const.py:163
+msgid "PNG - Portable Network Graphics files"
+msgstr "PNG - файлы Portable Network Graphics"
+
+#: src/uc2/uc2const.py:164
+msgid "PPM - Netpbm Color Image format files"
+msgstr "PPM - файлы Netpbm Color Image"
+
+#: src/uc2/uc2const.py:165
+msgid "XBM - X bitmap files"
+msgstr "XBM - файлы X bitmap"
+
+#: src/uc2/uc2const.py:166
+msgid "XPM - X pixmap files"
+msgstr "XPM - файлы X pixmap"
+
+#: src/uc2/uc2const.py:167
+msgid "WebP - Google image format files"
+msgstr "WebP - файлы изображений Google"
+
+#: src/uc2/uc2const.py:170
+msgid "SKP - sK1 palette files"
+msgstr "SKP - файлы палитр sK1"
+
+#: src/uc2/uc2const.py:171
+msgid "GPL - GIMP palette files"
+msgstr "GPL - файлы палитр GIMP"
+
+#: src/uc2/uc2const.py:172
+msgid "CPL - CorelDRAW palette files"
+msgstr "CPL - файлы палитр CorelDRAW"
+
+#: src/uc2/uc2const.py:173
+msgid "XML - Scribus palette files"
+msgstr "XML - файлы палитр Scribus"
+
+#: src/uc2/uc2const.py:174
+msgid "SOC - LibreOffice palette files"
+msgstr "SOC - файлы палитр LibreOffice"
+
+#: src/uc2/uc2const.py:175
+msgid "XML - CorelDRAW X5-X7 palette files"
+msgstr "XML - файлы палитр CorelDRAW X5-X7"
+
+#: src/uc2/uc2const.py:176
+msgid "ASE - Adobe Swatch Exchange files"
+msgstr "ASE - файлы Adobe Swatch Exchange"
+
+#: src/uc2/uc2const.py:177
+msgid "ACO - Adobe Color files"
+msgstr "ACO - файлы Adobe Color"
+
+#: src/uc2/uc2const.py:178
+msgid "JCW - Xara color palette files"
+msgstr "JCW - файлы палитр Xara"
+
+#: src/uc2/uc2const.py:181
+msgid "ICC - International Color Consortium profiles"
+msgstr "ICC - профайлы International Color Consortium"
+
+#: src/uc2/uc2const.py:182
+msgid "ICM - Image Color Matching profiles"
+msgstr "ICM - профайлы Image Color Matching"
+
+#: src/uc2/uc2const.py:184
+msgid "XML - eXtensible Markup Language files"
+msgstr "XML - файлы eXtensible Markup Language"
+
+#: src/uc2/uc2const.py:185
+msgid "LOG - Log files"
+msgstr "LOG - лог файлы"
+
+#: src/uc2/uc2const.py:186
+msgid "MD - Markdown markup files"
+msgstr "MD -  файлы с Markdown разметкой"
+
+#: src/uc2/uc2const.py:189
+msgid "DST - (Tajima) Design format"
+msgstr "DST - (Tajima) Design format"
+
+#: src/uc2/uc2const.py:381 src/uc2/uc2const.py:401
+msgid "pixels"
+msgstr "пиксели"
+
+#: src/uc2/uc2const.py:382 src/uc2/uc2const.py:407
+msgid "millimeters"
+msgstr "миллиметры"
+
+#: src/uc2/uc2const.py:383 src/uc2/uc2const.py:406
+msgid "centimeters"
+msgstr "сантиметры"
+
+#: src/uc2/uc2const.py:384 src/uc2/uc2const.py:405
+msgid "meters"
+msgstr "метры"
+
+#: src/uc2/uc2const.py:385 src/uc2/uc2const.py:402
+msgid "points"
+msgstr "пункты"
+
+#: src/uc2/uc2const.py:386 src/uc2/uc2const.py:403
+msgid "inches"
+msgstr "дюймы"
+
+#: src/uc2/uc2const.py:387 src/uc2/uc2const.py:404
+msgid "feet"
+msgstr "футы"
+
+#: src/uc2/uc2const.py:391
+msgid "pt"
+msgstr "pt"
+
+#: src/uc2/uc2const.py:392
+msgid "px"
+msgstr "px"
+
+#: src/uc2/uc2const.py:393
+msgid "in"
+msgstr "in"
+
+#: src/uc2/uc2const.py:394
+msgid "ft"
+msgstr "ft"
+
+#: src/uc2/uc2const.py:395
+msgid "m"
+msgstr "м"
+
+#: src/uc2/uc2const.py:396
+msgid "cm"
+msgstr "см"
+
+#: src/uc2/uc2const.py:397
+msgid "mm"
+msgstr "мм"
+
+#: src/uc2/uc2const.py:525
+msgid "Portrait"
+msgstr "Портретный"
+
+#: src/uc2/uc2const.py:525
+msgid "Landscape"
+msgstr "Альбомный"
+
+#: src/uc2/uc2const.py:535
+msgid "Perceptual"
+msgstr "Воспринимаемая"
+
+#: src/uc2/uc2const.py:536
+msgid "Relative Colorimetric"
+msgstr "Относительная колориметрическая"
+
+#: src/uc2/uc2const.py:537
+msgid "Saturation"
+msgstr "Насыщенная"
+
+#: src/uc2/uc2const.py:538
+msgid "Absolute Colorimetric"
+msgstr "Абсолютная  колориметрическая"
+
+#: src/uc2/formats/generic.py:134
+msgid "Error while loading:"
+msgstr "Ошибка при загрузке:"
+
+#: src/uc2/formats/generic.py:134
+msgid "No file"
+msgstr "Нет файла"
+
+#: src/uc2/formats/generic.py:140 src/uc2/formats/generic.py:218
+#: src/uc2/formats/generic_filters.py:96
+msgid "Parsing in progress..."
+msgstr "Разбор продолжается..."
+
+#: src/uc2/formats/generic.py:149
+#, python-format
+msgid "<%s> document model is created"
+msgstr "Модель документа <%s> создана"
+
+#: src/uc2/formats/generic.py:160
+msgid "Error updating document model"
+msgstr "Ошибка обновления модели"
+
+#: src/uc2/formats/generic.py:165
+#, python-format
+msgid "<%s> document model is updated successfully"
+msgstr "Модель документа <%s> успешно обновлена"
+
+#: src/uc2/formats/generic.py:173
+msgid "Error while saving:"
+msgstr "Ошибка при сохранении:"
+
+#: src/uc2/formats/generic.py:173
+msgid "No file object"
+msgstr "Нет файлового объекта"
+
+#: src/uc2/formats/generic.py:179
+msgid "Saving is started..."
+msgstr "Сохранение начато..."
+
+#: src/uc2/formats/generic.py:182
+msgid "Error while saving"
+msgstr "Ошибка при сохранении"
+
+#: src/uc2/formats/generic.py:188
+#, python-format
+msgid "<%s> document model is saved successfully"
+msgstr "Модель документа <%s> успешно сохранена"
+
+#: src/uc2/formats/generic.py:199
+#, python-format
+msgid "<%s> document model is destroyed for %s"
+msgstr "Модель документа <%s> для %s разрушена"
+
+#: src/uc2/formats/generic.py:205
+msgid "Cache is cleared for"
+msgstr "Кеш очищен для"
+
+#: src/uc2/formats/generic.py:207
+msgid "Cache clearing is unsuccessful"
+msgstr "Очистка кеша неуспешная"
+
+#: src/uc2/formats/generic.py:214
+#, python-format
+msgid "%s model update in progress..."
+msgstr "Обновление модели %s продолжается..."
+
+#: src/uc2/formats/generic.py:222 src/uc2/formats/generic_filters.py:228
+msgid "Saving in progress..."
+msgstr "Сохранение продолжается..."
+
+#: src/uc2/formats/generic_filters.py:60
+msgid "There is no file for reading"
+msgstr "Нет файла для чтения"
+
+#: src/uc2/formats/generic_filters.py:194
+msgid "There is no file for writting"
+msgstr "Нет файла для записи"
+
+#: src/uc2/utils/fsutils.py:56
+msgid "There is no file path"
+msgstr "Нет файлового пути"
+
+#: src/uc2/utils/fsutils.py:62
+#, python-format
+msgid "Cannot open %s file for writing"
+msgstr "Не могу открыть файл %s для записи"
+
+#: src/uc2/utils/fsutils.py:70
+#, python-format
+msgid "Cannot open %s file for reading"
+msgstr "Не могу открыть файл %s для чтения"
+
+#~ msgid "plugin"
+#~ msgstr "плагин"
+
+#~ msgid "Default document fill"
+#~ msgstr "Заливка по умолчанию"
+
+#~ msgid "Fill"
+#~ msgstr "Заливка"
+
+#~ msgid "Do you wish to change default fill style for this document?"
+#~ msgstr "Изменить стиль заливки по умолчанию для документа?"
+
+#~ msgid "This style will be applied to newly created objects."
+#~ msgstr "Этот стиль будет применен к новым объектам."
+
+#~ msgid "Default document stroke"
+#~ msgstr "Обводка по умолчанию"
+
+#~ msgid "Stroke"
+#~ msgstr "Обводка"
+
+#~ msgid "Do you wish to change default stroke style for this document?"
+#~ msgstr "Изменить стиль обводки по умолчанию для документа?"
+
+#~ msgid "Source object is not selected to copy fill property."
+#~ msgstr "Не выбран объект для копирования свойств заливки."
+
+#~ msgid "Selected object cannot be source of fill property."
+#~ msgstr "Выбранный объект не может быть образцом для свойств заливки."
+
+#~ msgid "Source object is not selected to copy stroke property."
+#~ msgstr "Не выбран объект для копирования свойств обводки."
+
+#~ msgid "Selected object cannot be source of stroke property."
+#~ msgstr "Выбранный объект не может быть образцом для свойств обводки."
+
+#~ msgid "Error occurred during this operation."
+#~ msgstr "Возникла ошибка в процессе выполнения операции."
+
+#~ msgid "Perhaps this was due to the imperfection of the algorithm."
+#~ msgstr "Возможно, это вследствии несовершенства алгоритма."
+
+#~ msgid "There is no selected object."
+#~ msgstr "Нет выбранного объекта."
+
+#~ msgid "Object from current selection cannot be container."
+#~ msgstr "Выбранный объект не может быть контейнером."
+
+#~ msgid "Selected object cannot be container."
+#~ msgstr "Выбранный объект не может быть контейнером."
+
+#~ msgid "Do you wish to change default fill color for this document?"
+#~ msgstr "Изменить цвет заливки по умолчанию для документа?"
+
+#~ msgid "Do you wish to change default stroke color for this document?"
+#~ msgstr "Изменить цвет обводки по умолчанию для документа?"
+
+#~ msgid "Application logs"
+#~ msgstr "Логи приложения"
+
+#~ msgid "WindowsXP platform is obsolete and not supported!"
+#~ msgstr "Платформа WindowsXP устарела и не поддерживается!"
+
+#~ msgid "To start, create new document or open existing"
+#~ msgstr "Чтобы начать, создайте новый документ или откройте существующий"
+
+#~ msgid "Untitled"
+#~ msgstr "Документ"
+
+#~ msgid "Document is changed"
+#~ msgstr "Документ изменен"
+
+#~ msgid "New document created"
+#~ msgstr "Создан новый документ"
+
+#~ msgid "Select Template"
+#~ msgstr "Выберите шаблон"
+
+#~ msgid "New document from template"
+#~ msgstr "Новый документ из шаблона"
+
+#~ msgid "Cannot open file:"
+#~ msgstr "Не могу открыть файл:"
+
+#~ msgid "The file contains newer SK2 format.\n"
+#~ msgstr "Файл содержит более новую версию SK2 формата.\n"
+
+#~ msgid "Try updating sK1 application from https://sk1project.net"
+#~ msgstr "Попробуйте обновить sK1 с сайта https://sk1project.net"
+
+#~ msgid "Document opened"
+#~ msgstr "Документ открыт"
+
+#~ msgid "Please check file write permissions"
+#~ msgstr "Проверьте у файла права на запись"
+
+#~ msgid "Document saved"
+#~ msgstr "Документ сохранен"
+
+#~ msgid "Cannot save document:"
+#~ msgstr "Не могу сохранить документ:"
+
+#~ msgid "Please check file name and write permissions"
+#~ msgstr "Проверьте корректность имени файла и права на запись"
+
+#~ msgid "Save selected objects only as..."
+#~ msgstr "Сохранить только выбранное как..."
+
+#~ msgid "Please check requested file format and write permissions"
+#~ msgstr "Проверьте запрошенный формат и права на запись"
+
+#~ msgid "Document '%s' has been modified."
+#~ msgstr "Документ '%s' был изменен."
+
+#~ msgid "Do you want to save your changes?"
+#~ msgstr "Сохранить изменения?"
+
+#~ msgid "Cannot import graphics from file:"
+#~ msgstr "Не могу импортировать графику из файла:"
+
+#~ msgid "It seems the document is empty or contains unsupported objects."
+#~ msgstr ""
+#~ "Похоже, что документ пуст или содержит неподдерживаемый тип объектов."
+
+#~ msgid "Cannot import file:"
+#~ msgstr "Не могу импортировать файл:"
+
+#~ msgid "Export document As..."
+#~ msgstr "Экспортировать документ как..."
+
+#~ msgid "Document is successfully exported"
+#~ msgstr "Документ успешно экспортирован"
+
+#~ msgid "Extract selected bitmap as..."
+#~ msgstr "Сохранить изображение как..."
+
+#~ msgid "Cannot save bitmap:"
+#~ msgstr "Не могу сохранить изображение:"
+
+#~ msgid "Bitmap is successfully extracted"
+#~ msgstr "Изображение успешно сохранено"
+
+#~ msgid "Exporting..."
+#~ msgstr "Экспорт..."
+
+#~ msgid "Unknown file format is requested for export <%s>"
+#~ msgstr "Для экспорта запрошен неизвестный файловый формат <%s>"
+
+#~ msgid "Cannot export palette:"
+#~ msgstr "Не могу экспортировать палитру:"
+
+#~ msgid "Palette is successfully exported"
+#~ msgstr "Палитра успешно экспортирована"
+
+#~ msgid "Select palette to import"
+#~ msgstr "Выберите палитру для импорта"
+
+#~ msgid "Opening file..."
+#~ msgstr "Открывается файл..."
+
+#~ msgid "Loader is not found for <%s>"
+#~ msgstr "Загрузчик не найден для <%s>"
+
+#~ msgid "Error while opening"
+#~ msgstr "Ошибка при открытии"
+
+#~ msgid "Palette is successfully imported"
+#~ msgstr "Палитра успешно импортирована"
+
+#~ msgid "Save pattern as..."
+#~ msgstr "Сохранить паттерн как..."
+
+#~ msgid "Cannot save pattern from:"
+#~ msgstr "Не могу сохранить паттерн из:"
+
+#~ msgid "Select pattern to load"
+#~ msgstr "Выберите палитру для загрузки"
+
+#~ msgid "Cannot load pattern for:"
+#~ msgstr "Не могу загрузить паттерн для:"
+
+#~ msgid "Requested page was opened in the default browser"
+#~ msgstr "Запрошенная страница открыта в браузере"
+
+#~ msgid "Arc"
+#~ msgstr "Дуга"
+
+#~ msgid "Chord"
+#~ msgstr "Часть круга"
+
+#~ msgid "Pie slice"
+#~ msgstr "Сегмент"
+
+#~ msgid "Start angle"
+#~ msgstr "Стартовый угол"
+
+#~ msgid "End angle"
+#~ msgstr "Конечный угол"
+
+#~ msgid "Default object jump"
+#~ msgstr "Сдвиг объекта"
+
+#~ msgid "Bold"
+#~ msgstr "Жирный"
+
+#~ msgid "Italic"
+#~ msgstr "Наклонный"
+
+#~ msgid "Underline"
+#~ msgstr "Подчеркнутый"
+
+#~ msgid "Strikethrough"
+#~ msgstr "Перечеркнутый"
+
+#~ msgid "Superscript"
+#~ msgstr "Верхний регистр"
+
+#~ msgid "Subscript"
+#~ msgstr "Нижний регистр"
+
+#~ msgid "Custom"
+#~ msgstr "Пользовательский"
+
+#~ msgid "Number of polygon angles"
+#~ msgstr "Число углов полигона"
+
+#~ msgid "Number of angles for newly created polygon"
+#~ msgstr "Число углов вновь созданного полигона"
+
+#~ msgid "Rounded rectangle"
+#~ msgstr "Закругленный прямоугольник"
+
+#~ msgid "Selection size"
+#~ msgstr "Размер выделенного"
+
+#~ msgid "Align Left"
+#~ msgstr "Отбивка слева"
+
+#~ msgid "Centered"
+#~ msgstr "По центру"
+
+#~ msgid "Align Right"
+#~ msgstr "Отбивка справа"
+
+#~ msgid "Use ligatures"
+#~ msgstr "Использовать лигатуры"
+
+#~ msgid "Rotate selection"
+#~ msgstr "Повернуть выделенное"
+
+#~ msgid "Document units"
+#~ msgstr "Единицы документа"
+
+#~ msgid "About"
+#~ msgstr "О програме"
+
+#~ msgid "Translators"
+#~ msgstr "Перевод"
+
+#~ msgid "Thanks to"
+#~ msgstr "Благодарности"
+
+#~ msgid "License"
+#~ msgstr "Лицензия"
+
+#~ msgid "vector graphics editor"
+#~ msgstr "редактор векторной графики"
+
+#~ msgid "build"
+#~ msgstr "сборка"
+
+#~ msgid "Version"
+#~ msgstr "Версия"
+
+#~ msgid "Component"
+#~ msgstr "Компонент"
+
+#~ msgid ""
+#~ "Dash pattern is a sequence (stroke-space-stroke-space- etc.) of integer \n"
+#~ "or float values separated by space which describes size of pattern "
+#~ "elements. \n"
+#~ "The values are relative to line width. Example: '2 1' or '5 1 1 1'. Empty "
+#~ "value\n"
+#~ "means no dash, i.e. solid line."
+#~ msgstr ""
+#~ "Пунктирный паттерн это набор (штрих-пробел-штрих-и т.д.) чисел,\n"
+#~ "разделенных пробелами, которые описывают размер элементов паттерна.\n"
+#~ "Значения даются относительно ширины линии. Пример: '2 1' или '5 1 1 1'.\n"
+#~ "Пустое значение означает нет пунктира, т.е. сплошная линия."
+
+#~ msgid "Edit dash pattern"
+#~ msgstr "Редактировать паттерн"
+
+#~ msgid "File"
+#~ msgstr "Файл"
+
+#~ msgid "Name and location:"
+#~ msgstr "Имя и локация:"
+
+#~ msgid "File size:"
+#~ msgstr "Размер файла:"
+
+#~ msgid "Modified:"
+#~ msgstr "Изменено:"
+
+#~ msgid "Document"
+#~ msgstr "Документ"
+
+#~ msgid "Pages:"
+#~ msgstr "Страницы:"
+
+#~ msgid "Layers:"
+#~ msgstr "Слои:"
+
+#~ msgid "Page size:"
+#~ msgstr "Размер:"
+
+#~ msgid "Page orientation:"
+#~ msgstr "Ориентация страницы:"
+
+#~ msgid "%i, opened %i, closed %i"
+#~ msgstr "%i, открытых %i, замкнутых %i"
+
+#~ msgid "Graphic Objects"
+#~ msgstr "Графические объекты"
+
+#~ msgid "Number of objects:"
+#~ msgstr "Число объектов:"
+
+#~ msgid "Number of points:"
+#~ msgstr "Число точек:"
+
+#~ msgid "Max. # of curve points:"
+#~ msgstr "Макс. # точек кривых:"
+
+#~ msgid "Max. # of curve subpaths:"
+#~ msgstr "Макс. # компонентов кривых:"
+
+#~ msgid "Groups:"
+#~ msgstr "Группы:"
+
+#~ msgid "Rectangles:"
+#~ msgstr "Прямоугольники:"
+
+#~ msgid "Ellipses:"
+#~ msgstr "Эллипсы:"
+
+#~ msgid "Containers:"
+#~ msgstr "Контейнеры:"
+
+#~ msgid "Polygons:"
+#~ msgstr "Полигоны:"
+
+#~ msgid "Text Statistics"
+#~ msgstr "Статистика по тексту"
+
+#~ msgid "No Text in this document."
+#~ msgstr "Нет текста в этом документе"
+
+#~ msgid "Artistic text:"
+#~ msgstr "Фигурный текст:"
+
+#~ msgid "Lines:"
+#~ msgstr "Строки:"
+
+#~ msgid "Words:"
+#~ msgstr "Слова:"
+
+#~ msgid "Characters:"
+#~ msgstr "Символы:"
+
+#~ msgid "Fonts used:"
+#~ msgstr "Используемые шрифты:"
+
+#~ msgid "Bitmap Objects"
+#~ msgstr "Растровые объекты"
+
+#~ msgid "No Bitmaps in this document."
+#~ msgstr "Нет растра в этом документе."
+
+#~ msgid "Fills"
+#~ msgstr "Заливки"
+
+#~ msgid "No fill:"
+#~ msgstr "Без заливки:"
+
+#~ msgid "Solid:"
+#~ msgstr "Сплошная:"
+
+#~ msgid "Gradients:"
+#~ msgstr "Градиенты:"
+
+#~ msgid "Patterns:"
+#~ msgstr "Паттерны:"
+
+#~ msgid "Objects and Color models"
+#~ msgstr "Объекты и цветовые модели"
+
+#~ msgid "Strokes"
+#~ msgstr "Обводки"
+
+#~ msgid "No stroke:"
+#~ msgstr "Без обводки:"
+
+#~ msgid "Property"
+#~ msgstr "Свойство"
+
+#~ msgid "Value"
+#~ msgstr "Значение"
+
+#~ msgid "Document info"
+#~ msgstr "Статистика"
+
+#~ msgid "Description"
+#~ msgstr "Описание"
+
+#~ msgid "Author:"
+#~ msgstr "Автор:"
+
+#~ msgid "License:"
+#~ msgstr "Лицензия:"
+
+#~ msgid "Keywords:"
+#~ msgstr "Ключи:"
+
+#~ msgid "Notes:"
+#~ msgstr "Прим.:"
+
+#~ msgid "Page"
+#~ msgstr "Страница"
+
+#~ msgid "Default page:"
+#~ msgstr "Шаблон страницы:"
+
+#~ msgid "Desktop:"
+#~ msgstr "Рабочий стол:"
+
+#~ msgid "Page:"
+#~ msgstr "Страница:"
+
+#~ msgid "Use pattern for page fill"
+#~ msgstr "Использовать паттерн"
+
+#~ msgid "Show page border"
+#~ msgstr "Показывать страницу"
+
+#~ msgid "Page center"
+#~ msgstr "Центр страницы"
+
+#~ msgid "Left lower page corner"
+#~ msgstr "Нижний левый угол"
+
+#~ msgid "Left upper page corner"
+#~ msgstr "Верхний правый угол"
+
+#~ msgid "Units"
+#~ msgstr "Единицы"
+
+#~ msgid "Document origin"
+#~ msgstr "Центр координат"
+
+#~ msgid "Unit"
+#~ msgstr "Ед.измерения"
+
+#~ msgid "Value in points"
+#~ msgstr "Значение в точках"
+
+#~ msgid "%s points"
+#~ msgstr "%s точек"
+
+#~ msgid "Grid"
+#~ msgstr "Сетка"
+
+#~ msgid "Grid origin"
+#~ msgstr "Нулевая точка сетки"
+
+#~ msgid "Grid frequency"
+#~ msgstr "Частота сетки"
+
+#~ msgid "Grid color:"
+#~ msgstr "Цвет сетки:"
+
+#~ msgid "Grid opacity:"
+#~ msgstr "Прозрачность:"
+
+#~ msgid "Show grid on canvas"
+#~ msgstr "Показывать сетку"
+
+#~ msgid "Grid preview:"
+#~ msgstr "Предосмотр сетки:"
+
+#~ msgid "Guides"
+#~ msgstr "Направляющие"
+
+#~ msgid "Guide color:"
+#~ msgstr "Цвет направляющих:"
+
+#~ msgid "Show guides on canvas"
+#~ msgstr "Показывать направляющие"
+
+#~ msgid "Edit guides"
+#~ msgstr "Правка направляющих"
+
+#~ msgid "Statistics..."
+#~ msgstr "Статистика..."
+
+#~ msgid "Document properties"
+#~ msgstr "Свойства документа"
+
+#~ msgid "All files (*.*)"
+#~ msgstr "Все файлы (*.*)"
+
+#~ msgid "Select directory"
+#~ msgstr "Выбрать папку"
+
+#~ msgid "Clear log"
+#~ msgstr "Очистить лог"
+
+#~ msgid "Status"
+#~ msgstr "Статус"
+
+#~ msgid "File name"
+#~ msgstr "Имя файла"
+
+#~ msgid "Path"
+#~ msgstr "Путь"
+
+#~ msgid "Time"
+#~ msgstr "Время"
+
+#~ msgid "Opened"
+#~ msgstr "Открыт"
+
+#~ msgid "Saved"
+#~ msgstr "Сохранен"
+
+#~ msgid "is not found."
+#~ msgstr "не найден."
+
+#~ msgid "File not found"
+#~ msgstr "Файл не найден"
+
+#~ msgid "Recent documents"
+#~ msgstr "Недавние документы"
+
+#~ msgid "Save logs as..."
+#~ msgstr "Сохранить лог как..."
+
+#~ msgid "Open log file..."
+#~ msgstr "Открыть лог-файл..."
+
+#~ msgid "Zoom in"
+#~ msgstr "Увеличить"
+
+#~ msgid "Zoom out"
+#~ msgstr "Уменьшить"
+
+#~ msgid "Page No.:"
+#~ msgstr "страницы №:"
+
+#~ msgid "Go to page"
+#~ msgstr "Перейти к странице"
+
+#~ msgid "Delete page No.:"
+#~ msgstr "Удалить страницу №:"
+
+#~ msgid "Delete page"
+#~ msgstr "Удалить страницу"
+
+#~ msgid "Insert:"
+#~ msgstr "Вставить:"
+
+#~ msgid "page(s)"
+#~ msgstr "страницу(ы)"
+
+#~ msgid "Before"
+#~ msgstr "До"
+
+#~ msgid "After"
+#~ msgstr "После"
+
+#~ msgid "page No.:"
+#~ msgstr "№ страницы:"
+
+#~ msgid "Insert page"
+#~ msgstr "Вставить страницу"
+
+#~ msgid "Cannot connect to server!"
+#~ msgstr "Не могу соединиться с сервером!"
+
+#~ msgid "Please check Internet connection"
+#~ msgstr "Проверте подключение к Интернету"
+
+#~ msgid "and access to https://sk1project.net"
+#~ msgstr "и доступность https://sk1project.net"
+
+#~ msgid "Loading data..."
+#~ msgstr "Загрузка данных..."
+
+#~ msgid "Palette name:"
+#~ msgstr "Имя палитры:"
+
+#~ msgid "Palette source:"
+#~ msgstr "Источник:"
+
+#~ msgid "Description:"
+#~ msgstr "Описание:"
+
+#~ msgid "Palette info"
+#~ msgstr "Информация о палитре"
+
+#~ msgid "Stroke Color"
+#~ msgstr "Цвет обводки"
+
+#~ msgid "Stroke Style"
+#~ msgstr "Стиль обводки"
+
+#~ msgid "Width:"
+#~ msgstr "Ширина:"
+
+#~ msgid "Markers:"
+#~ msgstr "Маркеры:"
+
+#~ msgid "Dashes:"
+#~ msgstr "Пунктир:"
+
+#~ msgid "Caps:"
+#~ msgstr "Концы:"
+
+#~ msgid "Join:"
+#~ msgstr "Стык:"
+
+#~ msgid "Options:"
+#~ msgstr "Свойства:"
+
+#~ msgid "Miter limit:"
+#~ msgstr "Предел стыка:"
+
+#~ msgid "Behind fill"
+#~ msgstr "До заливки"
+
+#~ msgid "Scalable stroke"
+#~ msgstr "Масштабируемость"
+
+#~ msgid "Cannot load <%s>"
+#~ msgstr "Не могу загрузить <%s>"
+
+#~ msgid "Saving file..."
+#~ msgstr "Сохранение файла..."
+
+#~ msgid "Unknown file format is requested for saving <%s>"
+#~ msgstr "Запрошен неизвестный формат для сохранения <%s>"
+
+#~ msgid "Importing..."
+#~ msgstr "Импортирование..."
+
+#~ msgid " object in selection"
+#~ msgstr " объект выбран"
+
+#~ msgid "No selection"
+#~ msgstr "Нет выделенных объектов"
+
+#~ msgid "objects in selection"
+#~ msgstr "объектов выбрано"
+
+#~ msgid "Open &Recent"
+#~ msgstr "Последние файлы"
+
+#~ msgid "&File"
+#~ msgstr "&Файл"
+
+#~ msgid "&Edit"
+#~ msgstr "&Правка"
+
+#~ msgid "&Show"
+#~ msgstr "Показать или скрыть"
+
+#~ msgid "S&nap to"
+#~ msgstr "Прилипать к"
+
+#~ msgid "&View"
+#~ msgstr "&Вид"
+
+#~ msgid "&Layout"
+#~ msgstr "&Макет"
+
+#~ msgid "Trans&form"
+#~ msgstr "Преобразования"
+
+#~ msgid "&Order"
+#~ msgstr "Очередность"
+
+#~ msgid "&Shaping"
+#~ msgstr "Геометрия"
+
+#~ msgid "&Arrange"
+#~ msgstr "Поря&док"
+
+#~ msgid "&Paths"
+#~ msgstr "&Кривые"
+
+#~ msgid "&Bitmaps"
+#~ msgstr "&Растр"
+
+#~ msgid "&Text"
+#~ msgstr "&Текст"
+
+#~ msgid "&Help"
+#~ msgstr "&Справка"
+
+#~ msgid "Empty"
+#~ msgstr "Пусто"
+
+#~ msgid "Scroll palette to left"
+#~ msgstr "Пролистать палитру влево"
+
+#~ msgid "Empty pattern"
+#~ msgstr "Пустой паттерн"
+
+#~ msgid "Scroll palette to right"
+#~ msgstr "Пролистать палитру вправо"
+
+#~ msgid "Scroll palette to top"
+#~ msgstr "Пролистать палитру вверх"
+
+#~ msgid "Scroll palette to bottom"
+#~ msgstr "Пролистать палитру вниз"
+
+#~ msgid "Image type: "
+#~ msgstr "Тип растра:"
+
+#~ msgid "Fill:"
+#~ msgstr "Заливка:"
+
+#~ msgid "Stroke:"
+#~ msgstr "Обводка:"
+
+#~ msgid "No coords"
+#~ msgstr "Нет координат"
+
+#~ msgid "Go to fist page"
+#~ msgstr "К первой странице"
+
+#~ msgid "Go to previous page"
+#~ msgstr "К предыдущей странице"
+
+#~ msgid "Go to next page"
+#~ msgstr "К следующей странице"
+
+#~ msgid "Go to last page"
+#~ msgstr "К последней странице"
+
+#~ msgid "Page %i of %i"
+#~ msgstr "Страница %i из %i"
+
+#~ msgid "Open Recent"
+#~ msgstr "Последние документы"
+
+#~ msgid "Application"
+#~ msgstr "Приложение"
+
+#~ msgid "New document"
+#~ msgstr "Новый документ"
+
+#~ msgid "Restore defaults"
+#~ msgstr "Исходные значения"
+
+#~ msgid "sK1 Preferences"
+#~ msgstr "Настройки sK1"
+
+#~ msgid "Canvas"
+#~ msgstr "Холст"
+
+#~ msgid "Canvas marker preferences"
+#~ msgstr "Настройки маркеров холста"
+
+#~ msgid "Color management"
+#~ msgstr "Управление цветом"
+
+#~ msgid "Color management and color profiles"
+#~ msgstr "Управление цветом и цветовые профайлы"
+
+#~ msgid "Enable Color Management"
+#~ msgstr "Активировать управление цветом"
+
+#~ msgid ""
+#~ "Note: If Color Management is disabled, color values will be inaccurate."
+#~ msgstr "Прим.: Если не активировано, цвет будет не точным."
+
+#~ msgid "Color profiles"
+#~ msgstr "Цветовые профайлы"
+
+#~ msgid "Color space profiles"
+#~ msgstr "Цветовые профайлы"
+
+#~ msgid "%s profile:"
+#~ msgstr "%s профайл:"
+
+#~ msgid "Hardware profiles"
+#~ msgstr "Профайлы оборудования"
+
+#~ msgid "Display profile:"
+#~ msgstr "Профайл монитора:"
+
+#~ msgid "Use display profile"
+#~ msgstr "Использовать профайл монитора"
+
+#~ msgid "Note: Display profile for your hardware can be found here:"
+#~ msgstr "Профайл для вашего монитора вы можете взять тут:"
+
+#~ msgid "Built-in %s profile"
+#~ msgstr "Встроенный %s профайл"
+
+#~ msgid "Add/remove %s profiles"
+#~ msgstr "Добавить/удалить %s профайлы"
+
+#~ msgid "%s profiles"
+#~ msgstr "%s профайлы"
+
+#~ msgid "Import"
+#~ msgstr "Импорт"
+
+#~ msgid "Remove"
+#~ msgstr "Удалить"
+
+#~ msgid "Info"
+#~ msgstr "Инфо"
+
+#~ msgid "Select profile to import"
+#~ msgstr "Выбрать профайл для импорта"
+
+#~ msgid "Cannot open profile"
+#~ msgstr "Не могу открыть профайл"
+
+#~ msgid "The profile may be corrupted or in an unsupported format"
+#~ msgstr "Профайл поврежден или не поддерживаемого формата"
+
+#~ msgid "Selected profile cannot be added to profile list:"
+#~ msgstr "Выбранный профайл не может быть добавлен:"
+
+#~ msgid "It seems like you have already imported this profile"
+#~ msgstr "Похоже, что профайл уже был импортирован"
+
+#~ msgid "Selected file has been added to profile pool"
+#~ msgstr "Выбранный файл был добавлен в набор профайлов"
+
+#~ msgid "If you still wish to import the file, try renaming it"
+#~ msgstr "Можете попробовать переименовать файл"
+
+#~ msgid "Cannot copy file"
+#~ msgstr "Не могу скопировать файл"
+
+#~ msgid "Please check write permissions for config directory:"
+#~ msgstr "Проверьте права на запись для папки настроек:"
+
+#~ msgid "Profile info"
+#~ msgstr "О профайле"
+
+#~ msgid "File:"
+#~ msgstr "Файл:"
+
+#~ msgid "Copyright:"
+#~ msgstr "Автор:"
+
+#~ msgid "Settings"
+#~ msgstr "Настройки"
+
+#~ msgid "Rendering intents"
+#~ msgstr "Цветопередача"
+
+#~ msgid "Display/RGB intent:"
+#~ msgstr "Монитора:"
+
+#~ msgid "Printer/CMYK intent:"
+#~ msgstr "Принтера:"
+
+#~ msgid "Simulate printer on the screen"
+#~ msgstr "Имитировать принтер на экране"
+
+#~ msgid "Highlight colors that are outside of the printer's gamut"
+#~ msgstr "Отмечать цвета вне цветового охвата принтера"
+
+#~ msgid "Highlight color:"
+#~ msgstr "Цвет отметки:"
+
+#~ msgid "Separation for SPOT colors"
+#~ msgstr "Цветоделение SPOT цветов"
+
+#~ msgid "Use Blackpoint Compensation"
+#~ msgstr "Использовать компенсацию \"черной точки\""
+
+#~ msgid "Use Black preserving transforms"
+#~ msgstr "Использовать трансформацию сохранения черного"
+
+#~ msgid "Fonts"
+#~ msgstr "Шрифты"
+
+#~ msgid "Font preview preferences"
+#~ msgstr "Настройки предосмотра шрифтов"
+
+#~ msgid "Placeholder text:"
+#~ msgstr "Заполнитель:"
+
+#~ msgid "Font size:"
+#~ msgstr "Размер шрифта:"
+
+#~ msgid "Font color:"
+#~ msgstr "Цвет шрифта:"
+
+#~ msgid "Preview width:"
+#~ msgstr "Ширина образца:"
+
+#~ msgid "system"
+#~ msgstr "системный"
+
+#~ msgid "General"
+#~ msgstr "Общие"
+
+#~ msgid "General application preferences"
+#~ msgstr "Общие настройки приложения"
+
+#~ msgid "UI style (*):"
+#~ msgstr "Стиль UI (*):"
+
+#~ msgid "Classic"
+#~ msgstr "Классический"
+
+#~ msgid "Tabbed"
+#~ msgstr "На табах"
+
+#~ msgid "Tab style:"
+#~ msgstr "Стиль табов:"
+
+#~ msgid "Rectangular tabs"
+#~ msgstr "Прямоугольные табы"
+
+#~ msgid "Rounded tabs"
+#~ msgstr "Закругленные табы"
+
+#~ msgid "Flat tabs"
+#~ msgstr "Плоские табы"
+
+#~ msgid "Trapezoidal tabs"
+#~ msgstr "Табы-трапеции"
+
+#~ msgid "Show quick access buttons"
+#~ msgstr "Показывать кнопки быстрого доступа"
+
+#~ msgid "Use overlay for spinbox widgets (*)"
+#~ msgstr "Использовать оверлей в спинбоксах (*)"
+
+#~ msgid "Separate spin in spinbox widgets (*)"
+#~ msgstr "Отделять спин в спинбоксах (*)"
+
+#~ msgid "Unity related features"
+#~ msgstr "Свойства для Unity"
+
+#~ msgid "Use Unity Global Menu (*)"
+#~ msgstr "Использовать глобальное меню (*)"
+
+#~ msgid "Allow overlay for scrollbars (*)"
+#~ msgstr "Разрешить оверлей полос прокрутки (*)"
+
+#~ msgid "UI style"
+#~ msgstr "Стиль UI"
+
+#~ msgid "New document on start"
+#~ msgstr "Новый документ на старте"
+
+#~ msgid "Backup on document save"
+#~ msgstr "Резервная копия при сохранении"
+
+#~ msgid "Make font cache on start"
+#~ msgstr "Кешировать шрифты на старте"
+
+#~ msgid "Backup on export"
+#~ msgstr "Резервная копия при экспорте"
+
+#~ msgid "Run as server"
+#~ msgstr "Запускать как сервер"
+
+#~ msgid "History log size:"
+#~ msgstr "Файловая история:"
+
+#~ msgid "History menu size:"
+#~ msgstr "Меню истории:"
+
+#~ msgid "Logging level (*):"
+#~ msgstr "Уровень логов:"
+
+#~ msgid "Language (*):"
+#~ msgstr "Язык (*):"
+
+#~ msgid "Generic features"
+#~ msgstr "Общие опции"
+
+#~ msgid "(*) - A restart is required to apply these options"
+#~ msgstr "(*) - Эти опции требуют повторного запуска приложения"
+
+#~ msgid "Horizontal"
+#~ msgstr "Горизонтальная"
+
+#~ msgid "Vertical"
+#~ msgstr "Вертикальная"
+
+#~ msgid "Palettes"
+#~ msgstr "Палитры"
+
+#~ msgid "Palette options and palette management"
+#~ msgstr "Свойства палитр и управление ими"
+
+#~ msgid "Palette orientation:"
+#~ msgstr "Ориентация палитры:"
+
+#~ msgid "Cell width:"
+#~ msgstr "Ширина ячейки:"
+
+#~ msgid "Cell height:"
+#~ msgstr "Высота ячейки:"
+
+#~ msgid "Horizontal palette"
+#~ msgstr "Горизонтальная палитра"
+
+#~ msgid "Expand short palettes"
+#~ msgstr "Растянуть короткую палитру"
+
+#~ msgid "Palette management"
+#~ msgstr "Управление палитрами"
+
+#~ msgid "Export"
+#~ msgstr "Экспорт"
+
+#~ msgid "Edit info"
+#~ msgstr "Правка"
+
+#~ msgid "Download more palettes"
+#~ msgstr "Загрузить дополнительные палитры"
+
+#~ msgid "Printers"
+#~ msgstr "Принтеры"
+
+#~ msgid "Printer preferences"
+#~ msgstr "Настройки принтеров"
+
+#~ msgid "Printer:"
+#~ msgstr "Принтер:"
+
+#~ msgid "Printing shift"
+#~ msgstr "Смещение распечатки"
+
+#~ msgid "Horizontal shift:"
+#~ msgstr "Горизонтально:"
+
+#~ msgid "Vertical shift:"
+#~ msgstr "Вертикально:"
+
+#~ msgid "Printing margins"
+#~ msgstr "Отступы распечатки"
+
+#~ msgid ""
+#~ "To measure actual print area and vertical/horizontal printing shift, just "
+#~ "print the calibration page on A4/Letter paper."
+#~ msgstr ""
+#~ "Для измерения реальных размеров распечатки, просто распечатайте "
+#~ "калибровочную страницу A4/Letter."
+
+#~ msgid "Print A4 calibration page"
+#~ msgstr "Печатать калибровочную A4 страницу"
+
+#~ msgid "Print Letter calibration page"
+#~ msgstr "Печатать калибровочную Letter страницу"
+
+#~ msgid "No printers found"
+#~ msgstr "Нет установленных принтеров!"
+
+#~ msgid "Ruler preferences"
+#~ msgstr "Настройки линеек"
+
+#~ msgid "Size (px):"
+#~ msgstr "Размер (px):"
+
+#~ msgid "Ruler:"
+#~ msgstr "Линейка:"
+
+#~ msgid "Ruler font:"
+#~ msgstr "Шрифт:"
+
+#~ msgid "Small tick:"
+#~ msgstr "Малые риски:"
+
+#~ msgid "Large tick:"
+#~ msgstr "Большие риски:"
+
+#~ msgid "Text shift (px):"
+#~ msgstr "Смещение текста (px):"
+
+#~ msgid "Vertical:"
+#~ msgstr "Вертикальное:"
+
+#~ msgid "Horizontal:"
+#~ msgstr "Горизонтальное:"
+
+#~ msgid "Ruler background color:"
+#~ msgstr "Фон линейки:"
+
+#~ msgid "Ruler mark color:"
+#~ msgstr "Цвет рисок линейки:"
+
+#~ msgid "Ruler preview:"
+#~ msgstr "Линейка для тестирования:"
+
+#~ msgid "Grid and guides"
+#~ msgstr "Сетка и направляющие"
+
+#~ msgid "Grid and guides options"
+#~ msgstr "Свойства сетки и направляющих"
+
+#~ msgid "Custom size"
+#~ msgstr "Пользовательский размер"
+
+#~ msgid "Driver:"
+#~ msgstr "Драйвер:"
+
+#~ msgid "Connection"
+#~ msgstr "Подключение"
+
+#~ msgid "Printing in progress..."
+#~ msgstr "Печать в процессе..."
+
+#~ msgid "Loading calibration page..."
+#~ msgstr "Загрузка калибровочной страницы..."
+
+#~ msgid "Done"
+#~ msgstr "Готово"
+
+#~ msgid "Error while printing of calibration page!"
+#~ msgstr "Ошибка при печати калибровочной страницы!"
+
+#~ msgid "Check your printer status and connection."
+#~ msgstr "Проверьте состояние и подключение принтера."
+
+#~ msgid "Printing..."
+#~ msgstr "Печать..."
+
+#~ msgid "Error while printing!"
+#~ msgstr "Ошибка при печати!"
+
+#~ msgid "Default printer"
+#~ msgstr "Принтер по умолчанию"
+
+#~ msgid "Print to file (PDF)"
+#~ msgstr "Печать в файл (PDF)"
+
+#~ msgid "Internal PDF writer"
+#~ msgstr "Внутренний PDF драйвер"
+
+#~ msgid "Software interface"
+#~ msgstr "Программный интерфейс"
+
+#~ msgid "Idle"
+#~ msgstr "Ожидание"
+
+#~ msgid "Select output file"
+#~ msgstr "Выбрать файл для записи"
+
+#~ msgid "Fill any contour"
+#~ msgstr "Заполнять любой контур"
+
+#~ msgid "Fill closed only"
+#~ msgstr "Заполнять только замкнутые контуры"
+
+#~ msgid "Evenodd fill"
+#~ msgstr "Заливка чет-нечет"
+
+#~ msgid "Nonzero fill"
+#~ msgstr "Заливка без выборок"
+
+#~ msgid "Bg:"
+#~ msgstr "Фон:"
+
+#~ msgid "None"
+#~ msgstr "Нет"
+
+#~ msgid "Fg:"
+#~ msgstr "Фронт:"
+
+#~ msgid "Old color:"
+#~ msgstr "До:"
+
+#~ msgid "New color:"
+#~ msgstr "После:"
+
+#~ msgid "Old fill:"
+#~ msgstr "До:"
+
+#~ msgid "New fill:"
+#~ msgstr "После:"
+
+#~ msgid "HTML notation:"
+#~ msgstr "HTML нотация:"
+
+#~ msgid "Palette:"
+#~ msgstr "Палитра:"
+
+#~ msgid "Empty pattern selected"
+#~ msgstr "Выбран пустой паттерн"
+
+#~ msgid "CMYK color space"
+#~ msgstr "CMYK цвет"
+
+#~ msgid "RGB color space"
+#~ msgstr "RGB цвет"
+
+#~ msgid "Grayscale color space"
+#~ msgstr "Оттенки серого"
+
+#~ msgid "SPOT colors"
+#~ msgstr "SPOT цвета"
+
+#~ msgid "Color from palette"
+#~ msgstr "Цвет из палитры"
+
+#~ msgid "Solid Fill"
+#~ msgstr "Сплошная заливка"
+
+#~ msgid "Linear gradient"
+#~ msgstr "Линейный градиент"
+
+#~ msgid "Radial gradient"
+#~ msgstr "Радиальный градиент"
+
+#~ msgid "Gradient Fill"
+#~ msgstr "Градиентная заливка"
+
+#~ msgid "Pattern Fill"
+#~ msgstr "Заливка паттерном"
+
+#~ msgid "Gradient stop"
+#~ msgstr "Точка градиента"
+
+#~ msgid "Change stop color"
+#~ msgstr "Изменить цвет точки"
+
+#~ msgid "Position:"
+#~ msgstr "Позиция:"
+
+#~ msgid "Select first stop"
+#~ msgstr "Выбрать первую точку"
+
+#~ msgid "Select previous stop"
+#~ msgstr "Выбрать предыдущую точку"
+
+#~ msgid "Select next stop"
+#~ msgstr "Выбрать следущую точку"
+
+#~ msgid "Select last stop"
+#~ msgstr "Выбрать последнюю точку"
+
+#~ msgid "Add stop"
+#~ msgstr "Добавить точку"
+
+#~ msgid "Delete selected stop"
+#~ msgstr "Удалить выбранную точку"
+
+#~ msgid "Reverse gradient"
+#~ msgstr "Перевернуть градиент"
+
+#~ msgid "Reverse"
+#~ msgstr "Перевернуть"
+
+#~ msgid "Keep gradient vector"
+#~ msgstr "Сохранять вектор градиента"
+
+#~ msgid "Auto mode"
+#~ msgstr "Авторежим"
+
+#~ msgid "Small cells"
+#~ msgstr "Маленькие"
+
+#~ msgid "Large cells"
+#~ msgstr "Большие"
+
+#~ msgid "List view"
+#~ msgstr "Список"
+
+#~ msgid "Palette preview:"
+#~ msgstr "Обзор палитры:"
+
+#~ msgid "Change pattern foreground color"
+#~ msgstr "Изменить цвет фронта паттерна"
+
+#~ msgid "Change pattern background color"
+#~ msgstr "Изменить цвет вона паттерна"
+
+#~ msgid "Horizontal origin shift"
+#~ msgstr "Исходный горизонтальный сдвиг"
+
+#~ msgid "Vertical origin shift"
+#~ msgstr "Исходный вертикальный сдвиг"
+
+#~ msgid "Scale horizontally"
+#~ msgstr "Масштабировать горизонтально"
+
+#~ msgid "Scale vertically"
+#~ msgstr "Масштабировать вертикально"
+
+#~ msgid "Shear horizontally"
+#~ msgstr "Сдвиг горизонтально"
+
+#~ msgid "Shear vertically"
+#~ msgstr "Сдвиг вертикально"
+
+#~ msgid "Rotate pattern"
+#~ msgstr "Повернуть паттерн"
+
+#~ msgid "Transformation matrix:"
+#~ msgstr "Матрица преобразования:"
+
+#~ msgid "Save pattern into file"
+#~ msgstr "Сохранить паттерн в файл"
+
+#~ msgid "Line exactly at the point"
+#~ msgstr "Концы в обрез"
+
+#~ msgid "Round ending"
+#~ msgstr "Закругленные углы"
+
+#~ msgid "Squared ending"
+#~ msgstr "Квадратные концы"
+
+#~ msgid "Cut-off join"
+#~ msgstr "Обрезанный угол"
+
+#~ msgid "Sharp (angled) corner"
+#~ msgstr "Острый угол"
+
+#~ msgid "Rounded join"
+#~ msgstr "Закругленный угол"
+
+#~ msgid "Keep ratio"
+#~ msgstr "Сохранять пропорцию"
+
+#~ msgid "Don't keep ratio"
+#~ msgstr "Не сохранять пропорцию"
+
+#~ msgid "Selection mode (Esc)"
+#~ msgstr "Режим выделения (Esc)"
+
+#~ msgid "Edit mode (Space)"
+#~ msgstr "Режим редактирования (Space)"
+
+#~ msgid "Zoom mode (F2)"
+#~ msgstr "Режим масштабирования (F2)"
+
+#~ msgid "Pan mode"
+#~ msgstr "Режим прокрутки"
+
+#~ msgid "Create polyline"
+#~ msgstr "Рисование линий"
+
+#~ msgid "Create curve"
+#~ msgstr "Рисование кривых"
+
+#~ msgid "Create rectangle"
+#~ msgstr "Создание прямоугольников"
+
+#~ msgid "Create ellipse"
+#~ msgstr "Создание эллипсов"
+
+#~ msgid "Create text (F8)"
+#~ msgstr "Создание текста"
+
+#~ msgid "Create polygon"
+#~ msgstr "Создание многоугольников"
+
+#~ msgid "Zoom out mode"
+#~ msgstr "Режим уменьшения"
+
+#~ msgid "Move mode"
+#~ msgstr "Режим перемещения"
+
+#~ msgid "Copy mode"
+#~ msgstr "Режим копирования"
+
+#~ msgid "Edit gradient"
+#~ msgstr "Редактирование градиента"
+
+#~ msgid "Stroke..."
+#~ msgstr "Обводка..."
+
+#~ msgid "Fill..."
+#~ msgstr "Заливка..."
+
+#~ msgid "Copy fill from..."
+#~ msgstr "Копирование заливки из..."
+
+#~ msgid "Copy stroke from..."
+#~ msgstr "Копирование обводки из..."
+
+#~ msgid "&New"
+#~ msgstr "&Создать"
+
+#~ msgid "New From Template..."
+#~ msgstr "Создать из шаблона..."
+
+#~ msgid "New document from template..."
+#~ msgstr "Новый документ из шаблона..."
+
+#~ msgid "&Open..."
+#~ msgstr "&Открыть..."
+
+#~ msgid "Open document"
+#~ msgstr "Открыть документ"
+
+#~ msgid "&Clear history"
+#~ msgstr "Очистить историю"
+
+#~ msgid "&Save"
+#~ msgstr "Со&хранить"
+
+#~ msgid "Save document"
+#~ msgstr "Сохранить документ"
+
+#~ msgid "Save document as..."
+#~ msgstr "Сохранить документ как..."
+
+#~ msgid "Save Selected Only..."
+#~ msgstr "Сохранить только выбранное..."
+
+#~ msgid "Save selected objects only..."
+#~ msgstr "Сохранить только выбранные объекты..."
+
+#~ msgid "Save All"
+#~ msgstr "Сохранить все"
+
+#~ msgid "Save all documents"
+#~ msgstr "Сохранить все документы"
+
+#~ msgid "&Import..."
+#~ msgstr "&Импорт..."
+
+#~ msgid "Import graphics..."
+#~ msgstr "Импортировать графику..."
+
+#~ msgid "E&xport As..."
+#~ msgstr "&Экспорт как..."
+
+#~ msgid "Export graphics as..."
+#~ msgstr "Экспорт графики как"
+
+#~ msgid "&Close"
+#~ msgstr "&Закрыть"
+
+#~ msgid "Close document"
+#~ msgstr "Закрыть документ"
+
+#~ msgid "Close All"
+#~ msgstr "Закрыть все"
+
+#~ msgid "Close all documents"
+#~ msgstr "Закрыть все документы"
+
+#~ msgid "Close Others"
+#~ msgstr "Закрыть другие"
+
+#~ msgid "Close other documents"
+#~ msgstr "Закрыть другие документы"
+
+#~ msgid "Page Setup for Print..."
+#~ msgstr "Параметры страницы для печати"
+
+#~ msgid "&Print..."
+#~ msgstr "&Печать..."
+
+#~ msgid "Print document"
+#~ msgstr "Печать документа"
+
+#~ msgid "&Exit"
+#~ msgstr "&Выход"
+
+#~ msgid "Exit application"
+#~ msgstr "Завершить приложение"
+
+#~ msgid "&Undo"
+#~ msgstr "&Отменить"
+
+#~ msgid "&Redo"
+#~ msgstr "Ве&рнуть"
+
+#~ msgid "Clear undo history"
+#~ msgstr "Очистить историю"
+
+#~ msgid "&Invert selection"
+#~ msgstr "Инвертировать выделение"
+
+#~ msgid "&File history logs..."
+#~ msgstr "Файловая история..."
+
+#~ msgid "Preferences..."
+#~ msgstr "Настройки..."
+
+#~ msgid "Stroke view"
+#~ msgstr "Каркасный режим"
+
+#~ msgid "Draft view"
+#~ msgstr "Упрощенный режим"
+
+#~ msgid "Simulate printer"
+#~ msgstr "Имитировать принтер"
+
+#~ msgid "Zoom 100%"
+#~ msgstr "Масштаб 100%"
+
+#~ msgid "Previous zoom"
+#~ msgstr "Предыдущий масштаб"
+
+#~ msgid "Fit zoom to page"
+#~ msgstr "Вписать страницу"
+
+#~ msgid "Zoom selected"
+#~ msgstr "Показать выделенное"
+
+#~ msgid "Show grid"
+#~ msgstr "Показать сетку"
+
+#~ msgid "Show guides"
+#~ msgstr "Показать направляющие"
+
+#~ msgid "Show active snapping"
+#~ msgstr "Показать прилипание"
+
+#~ msgid "Snap to grid"
+#~ msgstr "Прилипать к сетке"
+
+#~ msgid "Snap to guide"
+#~ msgstr "Прилипать к направляющим"
+
+#~ msgid "Snap to objects"
+#~ msgstr "Прилипать к объектам"
+
+#~ msgid "Snap to page"
+#~ msgstr "Прилипать к странице"
+
+#~ msgid "Iconizer..."
+#~ msgstr "Иконайзер..."
+
+#~ msgid "Redraw document"
+#~ msgstr "Обновить документ"
+
+#~ msgid "Insert page..."
+#~ msgstr "Вставить страницу..."
+
+#~ msgid "Delete page..."
+#~ msgstr "Удалить страницу..."
+
+#~ msgid "Go to page..."
+#~ msgstr "Перейти к странице"
+
+#~ msgid "Next page"
+#~ msgstr "Следующая страница"
+
+#~ msgid "Previous page"
+#~ msgstr "Предыдущая страница"
+
+#~ msgid "Guides in page center"
+#~ msgstr "Направляющие по осям страницы"
+
+#~ msgid "Page frame"
+#~ msgstr "Рамка страницы"
+
+#~ msgid "Guides around page"
+#~ msgstr "Направляющие вокруг страницы"
+
+#~ msgid "Remove all guides"
+#~ msgstr "Удалить все направляющие"
+
+#~ msgid "Clear transformations"
+#~ msgstr "Очистить преобразования"
+
+#~ msgid "Inline transformations"
+#~ msgstr "Встроить трансформацию"
+
+#~ msgid "Position..."
+#~ msgstr "Позиция..."
+
+#~ msgid "Resizing..."
+#~ msgstr "Размер..."
+
+#~ msgid "Scale and mirror..."
+#~ msgstr "Масштаб и отражение..."
+
+#~ msgid "Rotation..."
+#~ msgstr "Вращение..."
+
+#~ msgid "Shearing..."
+#~ msgstr "Сдвиг..."
+
+#~ msgid "Rotate &left 90 degrees"
+#~ msgstr "Повернуть влево на 90 градусов"
+
+#~ msgid "Rotate &right 90 degrees"
+#~ msgstr "Повернуть вправо на 90 градусов"
+
+#~ msgid "&Flip horizontal"
+#~ msgstr "Отразить горизонтально"
+
+#~ msgid "&Flip vertical"
+#~ msgstr "Отразить вертикально"
+
+#~ msgid "Align and Distribute..."
+#~ msgstr "Выровнять и разместить..."
+
+#~ msgid "&Combine"
+#~ msgstr "Комбинировать"
+
+#~ msgid "&Break Apart"
+#~ msgstr "Разбить"
+
+#~ msgid "Move to &Top"
+#~ msgstr "Поднять вверх"
+
+#~ msgid "Move Up"
+#~ msgstr "Поднять"
+
+#~ msgid "Move Down"
+#~ msgstr "Опустить"
+
+#~ msgid "Move to &Bottom"
+#~ msgstr "Опустить вниз"
+
+#~ msgid "&Group"
+#~ msgstr "Группировать"
+
+#~ msgid "&Ungroup"
+#~ msgstr "Разгруппировать"
+
+#~ msgid "U&ngroup All"
+#~ msgstr "Разгруппировать все"
+
+#~ msgid "Trim..."
+#~ msgstr "Обрезка..."
+
+#~ msgid "Intersection..."
+#~ msgstr "Пересечение..."
+
+#~ msgid "Exclusion..."
+#~ msgstr "Исключение..."
+
+#~ msgid "Fusion..."
+#~ msgstr "Слияние..."
+
+#~ msgid "&Place into container"
+#~ msgstr "Поместить в контейнер"
+
+#~ msgid "&Extract from container"
+#~ msgstr "Достать из контейнера"
+
+#~ msgid "Con&vert to curves"
+#~ msgstr "Конвертировать в кривые"
+
+#~ msgid "Convert stroke to curves"
+#~ msgstr "Конвертировать обводку в кривые"
+
+#~ msgid "Select all nodes"
+#~ msgstr "Выбрать все точки"
+
+#~ msgid "Reverse all paths"
+#~ msgstr "Перевернуть все кривые"
+
+#~ msgid "Select all subpath nodes"
+#~ msgstr "Выбрать все точки фрагмента"
+
+#~ msgid "Delete subpaths"
+#~ msgstr "Удалить фрагменты"
+
+#~ msgid "Reverse subpaths"
+#~ msgstr "Перевернуть фрагменты"
+
+#~ msgid "Extract subpaths"
+#~ msgstr "Экстрагировать фрагменты"
+
+#~ msgid "Add node"
+#~ msgstr "Добавить точку"
+
+#~ msgid "Delete nodes"
+#~ msgstr "Удалить точки"
+
+#~ msgid "Create segment"
+#~ msgstr "Создать сегмент"
+
+#~ msgid "Delete segment"
+#~ msgstr "Удалить сегмент"
+
+#~ msgid "Join nodes"
+#~ msgstr "Соединить точки"
+
+#~ msgid "Split nodes"
+#~ msgstr "Разъединить точки"
+
+#~ msgid "Convert segments to line"
+#~ msgstr "Сегменты в линии"
+
+#~ msgid "Convert segments to curve"
+#~ msgstr "Сегменты в кривые"
+
+#~ msgid "Make nodes cusp"
+#~ msgstr "Сделать точки независимыми"
+
+#~ msgid "Make nodes smooth"
+#~ msgstr "Сделать точки сглаженными"
+
+#~ msgid "Make nodes symmetrical"
+#~ msgstr "Сделать точки симметричными"
+
+#~ msgid "Convert to CMYK"
+#~ msgstr "Конвертировать в CMYK"
+
+#~ msgid "Convert to RGB"
+#~ msgstr "Конвертировать в RGB"
+
+#~ msgid "Convert to LAB"
+#~ msgstr "Конвертировать в LAB"
+
+#~ msgid "Convert to Grayscale"
+#~ msgstr "В оттенки серого"
+
+#~ msgid "Convert to B&W"
+#~ msgstr "В монохром"
+
+#~ msgid "Invert bitmap"
+#~ msgstr "Инвертировать"
+
+#~ msgid "Remove alpha channel"
+#~ msgstr "Удалить альфа-канал"
+
+#~ msgid "Invert alpha channel"
+#~ msgstr "Инвертировать альфа-канал"
+
+#~ msgid "Extract embedded bitmap..."
+#~ msgstr "Сохранить изображение..."
+
+#~ msgid "&Edit text"
+#~ msgstr "Правка текста"
+
+#~ msgid "Text on path..."
+#~ msgstr "Текст на кривой..."
+
+#~ msgid "Text on circle..."
+#~ msgstr "Текст на круге..."
+
+#~ msgid "&Straighten text"
+#~ msgstr "Выпрямить текст"
+
+#~ msgid "Clear text markup"
+#~ msgstr "Очистить разметку"
+
+#~ msgid "Uppercase"
+#~ msgstr "Верхний регистр"
+
+#~ msgid "Lowercase"
+#~ msgstr "Нижний регистр"
+
+#~ msgid "Capitalize"
+#~ msgstr "Все заглавными"
+
+#~ msgid "Pages"
+#~ msgstr "Страницы"
+
+#~ msgid "Layers..."
+#~ msgstr "Слои..."
+
+#~ msgid "Object browser"
+#~ msgstr "Браузер объектов"
+
+#~ msgid "&Report bug"
+#~ msgstr "Сообщить об ошибке"
+
+#~ msgid "&Log console"
+#~ msgstr "Консоль логов"
+
+#~ msgid "Project web site"
+#~ msgstr "Сайт проекта"
+
+#~ msgid "Project forum"
+#~ msgstr "Форум проекта"
+
+#~ msgid "Project page on Face&book"
+#~ msgstr "Страница проекта в Facebook"
+
+#~ msgid "&About sK1..."
+#~ msgstr "О программе..."
+
+#~ msgid "No selected nodes"
+#~ msgstr "Точки не выбраны"
+
+#~ msgid "Selected %d node(s)"
+#~ msgstr "Выбрано %d точки(ек)"
+
+#~ msgid "Ellipse in editing"
+#~ msgstr "Редактируется эллипс"
+
+#~ msgid "Polygon in editing"
+#~ msgstr "Редактируется многоугольник"
+
+#~ msgid "Rectangle in editing"
+#~ msgstr "Редактируется прямоугольник"
+
+#~ msgid "Text in shaping"
+#~ msgstr "Редактируются глифы текста"
+
+#~ msgid "Gradient creating"
+#~ msgstr "Создается градиент"
+
+#~ msgid "Gradient in editing"
+#~ msgstr "Редактируется градиент"
+
+#~ msgid "Text in editing"
+#~ msgstr "Редактируется текст"
+
+#~ msgid "Print preview"
+#~ msgstr "Предварительный просмотр печати"
+
+#~ msgid "Copies"
+#~ msgstr "Копии"
+
+#~ msgid "Number of copies:"
+#~ msgstr "Число копий:"
+
+#~ msgid "Collate"
+#~ msgstr "Подобрать"
+
+#~ msgid "Page range"
+#~ msgstr "Страницы"
+
+#~ msgid "All"
+#~ msgstr "Все"
+
+#~ msgid "Selection"
+#~ msgstr "Выделенное"
+
+#~ msgid "Current page"
+#~ msgstr "Текущая страница"
+
+#~ msgid "Enter page numbers or page ranges."
+#~ msgstr "Введите номера или наборы."
+
+#~ msgid "For example: 1,2,5-6"
+#~ msgstr "Например: 1,2,5-6"
+
+#~ msgid "Print mode"
+#~ msgstr "Режим печати"
+
+#~ msgid "Monochrome"
+#~ msgstr "Монохромный"
+
+#~ msgid "Color"
+#~ msgstr "Цветной"
+
+#~ msgid "Printer"
+#~ msgstr "Принтер"
+
+#~ msgid "Print"
+#~ msgstr "Печать"
+
+#~ msgid "Printer properties"
+#~ msgstr "Свойства принтера"
+
+#~ msgid "Fit to page"
+#~ msgstr "Вписать в страницу"
+
+#~ msgid "Color space:"
+#~ msgstr "Цвет:"
+
+#~ msgid "Paper"
+#~ msgstr "Бумага"
+
+#~ msgid "Height:"
+#~ msgstr "Высота:"
+
+#~ msgid "Orientation"
+#~ msgstr "Ориентация"
+
+#~ msgid "Margins"
+#~ msgstr "Отступы"
+
+#~ msgid ""
+#~ "Note: To adjust specific printer options you could use system "
+#~ "configuration tools like 'system-config-printer'"
+#~ msgstr ""
+#~ "Прим.: Специфические опции принтера можно настроить программами типа "
+#~ "'system-config-printer'"
+
+#~ msgid "Generation options"
+#~ msgstr "Опции генерации"
+
+#~ msgid "PDF version:"
+#~ msgstr "Версия PDF:"
+
+#~ msgid "Use SPOT colors"
+#~ msgstr "SPOT цвета"
+
+#~ msgid "Use compression"
+#~ msgstr "Сжатие"
+
+#~ msgid "Document page"
+#~ msgstr "Страница документа"
+
+#~ msgid "Orientation:"
+#~ msgstr "Ориентация:"
+
+#~ msgid "Document metainfo"
+#~ msgstr "Метаинформация"
+
+#~ msgid "Title:"
+#~ msgstr "Заглавие:"
+
+#~ msgid "Subject:"
+#~ msgstr "Тема:"
+
+#~ msgid "Set metainfo"
+#~ msgstr "Метаинфо"
+
+#~ msgid "Set metainfo from current document"
+#~ msgstr "Взять метаинформацию из документа"
+
+#~ msgid "First selected"
+#~ msgstr "Первого объекта"
+
+#~ msgid "Last selected"
+#~ msgstr "Последнего объекта"
+
+#~ msgid "Largest object"
+#~ msgstr "Наибольшего объекта"
+
+#~ msgid "Smallest object"
+#~ msgstr "Наименьшего объекта"
+
+#~ msgid "Align to left side"
+#~ msgstr "Выровнять слева"
+
+#~ msgid "Align to center horizontally"
+#~ msgstr "Выровнять по центру горизонтально"
+
+#~ msgid "Align to right side"
+#~ msgstr "Выровнять справа"
+
+#~ msgid "Align to bottom"
+#~ msgstr "Выровнять по низу"
+
+#~ msgid "Align to center vertically"
+#~ msgstr "Выровнять по центру вертикально"
+
+#~ msgid "Align to top"
+#~ msgstr "Выровнять по верху"
+
+#~ msgid "Align and Distribute"
+#~ msgstr "Выровнять и разместить"
+
+#~ msgid "Align"
+#~ msgstr "Выровнять"
+
+#~ msgid "Relative to:"
+#~ msgstr "Относительно:"
+
+#~ msgid "Selection as group"
+#~ msgstr "Выбранное как группа"
+
+#~ msgid "Apply"
+#~ msgstr "Применить"
+
+#~ msgid "Distribute by left side horizontally"
+#~ msgstr "Разместить от левого края горизонтально"
+
+#~ msgid "Distribute by center horizontally"
+#~ msgstr "Разместить от от сентра горизонтально"
+
+#~ msgid "Distribute by right side horizontally"
+#~ msgstr "Разместить от правого края горизонтально"
+
+#~ msgid "Equal gap horizontally"
+#~ msgstr "Одинаковый зазор горизонтально"
+
+#~ msgid "Distribute by bottom side vertically"
+#~ msgstr "Разместить от низа вертикально"
+
+#~ msgid "Distribute by center vertically"
+#~ msgstr "Разместить от центра вертикально"
+
+#~ msgid "Distribute by top side vertically"
+#~ msgstr "Разместить от верха вертикально"
+
+#~ msgid "Equal gap vertically"
+#~ msgstr "Одинаковый зазор вертикально"
+
+#~ msgid "Distribute"
+#~ msgstr "Разместить"
+
+#~ msgid "Size:"
+#~ msgstr "Размер:"
+
+#~ msgid "Iconizer"
+#~ msgstr "Иконайзер"
+
+#~ msgid "Background:"
+#~ msgstr "Фон:"
+
+#~ msgid "Show image border"
+#~ msgstr "Граница картинки"
+
+#~ msgid "Draw selected only"
+#~ msgstr "Только выделенное"
+
+#~ msgid "Save image"
+#~ msgstr "Сохранить"
+
+#~ msgid "Cannot save image:"
+#~ msgstr "Не могу сохранить изображение:"
+
+#~ msgid "Image is successfully saved"
+#~ msgstr "Изображение успешно сохранено"
+
+#~ msgid "Layers"
+#~ msgstr "Слои"
+
+#~ msgid "Create new layer"
+#~ msgstr "Новый слой"
+
+#~ msgid "Move layer to bottom"
+#~ msgstr "Слой в самый низ"
+
+#~ msgid "Move layer down"
+#~ msgstr "Слой опустить ниже"
+
+#~ msgid "Move layer up"
+#~ msgstr "Слой поднять выше"
+
+#~ msgid "Move layer to top"
+#~ msgstr "Слой на самый верх"
+
+#~ msgid "Delete layer"
+#~ msgstr "Удалить слой"
+
+#~ msgid "Rename layer"
+#~ msgstr "Переименовать слой"
+
+#~ msgid "Trim"
+#~ msgstr "Обрезка"
+
+#~ msgid "Intersection"
+#~ msgstr "Пересечение"
+
+#~ msgid "Exclusion"
+#~ msgstr "Исключение"
+
+#~ msgid "Fusion"
+#~ msgstr "Объединение"
+
+#~ msgid "Delete originals"
+#~ msgstr "Удалить исходные"
+
+#~ msgid "Apply to..."
+#~ msgstr "Применить к..."
+
+#~ msgid "Selected objects cannot be used for this operation."
+#~ msgstr "Выбранные объекты не подходят для этой операции."
+
+#~ msgid "Try ungroup selection."
+#~ msgstr "Попытайтесь разгруппировать выделенное."
+
+#~ msgid "Selected object cannot be target for trim operation."
+#~ msgstr "Выбранный объект не может быть целью для операции обрезки."
+
+#~ msgid "Selected objects cannot be intersected."
+#~ msgstr "Выбранные объекты не подходят для операции пересечения."
+
+#~ msgid "Shaping"
+#~ msgstr "Геометрия"
+
+#~ msgid "Text on right side"
+#~ msgstr "Текст на правой стороне"
+
+#~ msgid "Text at top"
+#~ msgstr "Текст сверху"
+
+#~ msgid "Text on left side"
+#~ msgstr "Текст на левой стороне"
+
+#~ msgid "Text at bottom"
+#~ msgstr "Текст снизу"
+
+#~ msgid "Text on Circle"
+#~ msgstr "Текст на круге"
+
+#~ msgid "Text position on circle"
+#~ msgstr "Расположение текста на круге"
+
+#~ msgid "Place on the other side"
+#~ msgstr "Поместить с другой стороны"
+
+#~ msgid "Align to path start"
+#~ msgstr "Привязка к началу"
+
+#~ msgid "Align to path center"
+#~ msgstr "Привязка к центру"
+
+#~ msgid "Align to path end"
+#~ msgstr "Привязка к концу"
+
+#~ msgid "Stretch along path"
+#~ msgstr "Растянуть по кривой"
+
+#~ msgid "Text on Path"
+#~ msgstr "Текст на кривой"
+
+#~ msgid "Text position on path"
+#~ msgstr "Позиция текста на кривой"
+
+#~ msgid "Base point:"
+#~ msgstr "Базовая точка:"
+
+#~ msgid "Position"
+#~ msgstr "Позиция"
+
+#~ msgid "Resizing"
+#~ msgstr "Размер"
+
+#~ msgid "Scale and mirror"
+#~ msgstr "Масштаб и отражение"
+
+#~ msgid "Rotating"
+#~ msgstr "Вращение"
+
+#~ msgid "Shearing"
+#~ msgstr "Сдвиг"
+
+#~ msgid "Transformations"
+#~ msgstr "Преобразования"
+
+#~ msgid "Apply to copy"
+#~ msgstr "Применить к копии"
+
+#~ msgid "Absolute position"
+#~ msgstr "Абсолютная позиция"
+
+#~ msgid "Flip horizontal"
+#~ msgstr "Отразить по горизонтали"
+
+#~ msgid "Flip vertical"
+#~ msgstr "Отразить по вертикали"
+
+#~ msgid "Rotation"
+#~ msgstr "Вращение"
+
+#~ msgid "Angle:"
+#~ msgstr "Угол:"
+
+#~ msgid "Center:"
+#~ msgstr "Центр:"
+
+#~ msgid "Relative center"
+#~ msgstr "Относительный центр"
+
+#~ msgid "degrees"
+#~ msgstr "градусы"
+
+#~ msgid "Translation is under process..."
+#~ msgstr "Конвертация в процессе..."
+
+#~ msgid "It seems the file is not CDRZ file"
+#~ msgstr "Похоже, что данный файл не является CDRZ файлом"
+
+#~ msgid "It seems the CDR file is corrupted"
+#~ msgstr "Похоже, что CDR файл поврежден"
+
+#~ msgid "The file content is extracted successfully"
+#~ msgstr "Содержание файла получено успешно"
+
+#~ msgid "Layer"
+#~ msgstr "Слой"
+
+#~ msgid "GuideLayer"
+#~ msgstr "Слой направляющих"
+
+#~ msgid "GridLayer"
+#~ msgstr "Слой сетки"
+
+#~ msgid "Layout"
+#~ msgstr "Макет"
+
+#~ msgid "Guideline"
+#~ msgstr "Направляющая"
+
+#~ msgid "Style"
+#~ msgstr "Стиль"
+
+#~ msgid "Group"
+#~ msgstr "Группа"
+
+#~ msgid "MaskGroup"
+#~ msgstr "Контейнер"
+
+#~ msgid "Rectangle"
+#~ msgstr "Прямоугольник"
+
+#~ msgid "Ellipse"
+#~ msgstr "Эллипс"
+
+#~ msgid "Curve"
+#~ msgstr "Кривая"
+
+#~ msgid "Text"
+#~ msgstr "Текст"
+
+#~ msgid "BitmapData"
+#~ msgstr "Данные битмапа"
+
+#~ msgid "Image"
+#~ msgstr "Изображение"
+
+#~ msgid "New Layer"
+#~ msgstr "Новый слой"
+
+#~ msgid "MasterLayer"
+#~ msgstr "Мастер-слой"
+
+#~ msgid "Newer version of SK2 format is found!"
+#~ msgstr "Обнаружена более новая версия формата SK2!"
+
+#~ msgid "Metainfo"
+#~ msgstr "Метаинфо"
+
+#~ msgid "Styles"
+#~ msgstr "Стили"
+
+#~ msgid "Profiles"
+#~ msgstr "Профайлы"
+
+#~ msgid "Profile"
+#~ msgstr "Профайл"
+
+#~ msgid "Font"
+#~ msgstr "Шрифт"
+
+#~ msgid "Images"
+#~ msgstr "Изображения"
+
+#~ msgid "Layer group"
+#~ msgstr "Группа слоев"
+
+#~ msgid "Master layers"
+#~ msgstr "Мастер-слои"
+
+#~ msgid "Grid layer"
+#~ msgstr "Слой сетки"
+
+#~ msgid "Guide layer"
+#~ msgstr "Слой направляющих"
+
+#~ msgid "Desktop layers"
+#~ msgstr "Слой десктопа"
+
+#~ msgid "Guide"
+#~ msgstr "Направляющая"
+
+#~ msgid "Container"
+#~ msgstr "Контейнер"
+
+#~ msgid "Text on Path Group"
+#~ msgstr "Группа Текст на кривой"
+
+#~ msgid "Polygon"
+#~ msgstr "Многоугольник"
+
+#~ msgid "Text block"
+#~ msgstr "Текстовый блок"
+
+#~ msgid "Text column"
+#~ msgstr "Текстовая колонка"
+
+#~ msgid "Bitmap"
+#~ msgstr "Битмап"
+
+#~ msgid "Try updating sK1 application from http://www.sk1project.net"
+#~ msgstr "Обновите приложение sK1 с сайта http://www.sk1project.net"
+
+#~ msgid "Stroke width:"
+#~ msgstr "Толщина обводки:"
+
+#~ msgid "The file may be corrupted or not supported format."
+#~ msgstr "Возможно файл поврежден или не поддерживаемого формата."
+
+#~ msgid "To start create new or open existing document"
+#~ msgstr "Чтобы начать, создайте новый или откройте существующий документ"
+
+#~ msgid "Save log As..."
+#~ msgstr "Сохранить лог как..."
+
+#~ msgid "Unknown file format is requested for saving! <%s>"
+#~ msgstr "Запрошен неизвестный формат для сохранения! <%s>"
+
+#~ msgid "Parsing is started..."
+#~ msgstr "Разбор начался..."
+
+#~ msgid "Parsing is under process..."
+#~ msgstr "Разбор в процессе..."
+
+#~ msgid "Saving in process..."
+#~ msgstr "Сохранение в процессе..."
+
+#~ msgid "Bilevel"
+#~ msgstr "Двухцветное"
+
+#~ msgid "Grayscale"
+#~ msgstr "Grayscale"
+
+#~ msgid "RGB"
+#~ msgstr "RGB"
+
+#~ msgid "Copyrigth:"
+#~ msgstr "Автор:"
