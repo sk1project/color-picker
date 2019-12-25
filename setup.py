@@ -128,7 +128,7 @@ data_files = [
 
 LOCALES_PATH = 'src/cp2/share/locales'
 
-EXCLUDES = ['sword', ]
+EXCLUDES = []
 
 ############################################################
 deb_depends = ''
@@ -267,8 +267,7 @@ setup(
     package_data=package_data,
     data_files=data_files,
     scripts=scripts,
-    ext_modules=modules,
-    requires=['Pillow'])
+    ext_modules=modules,)
 
 ############################################################
 # .py source compiling
