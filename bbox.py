@@ -247,7 +247,7 @@ def build_package():
 
     if SYSFACTS.is_deb:
         echo_msg('Building DEB package')
-        command('cd %s;python2 %s bdist_deb%s' % (PROJECT_DIR, SCRIPT, out))
+        command('cd %s;python3 %s bdist_deb%s' % (PROJECT_DIR, SCRIPT, out))
 
         old_name = bbox.get_package_name(DIST_DIR)
         prefix, suffix = old_name.split('_')
@@ -276,7 +276,7 @@ def build_package():
 
     elif SYSFACTS.is_rpm:
         echo_msg('Building RPM package')
-        command('cd %s;python2 %s bdist_rpm%s' % (PROJECT_DIR, SCRIPT, out))
+        command('cd %s;python3 %s bdist_rpm%s' % (PROJECT_DIR, SCRIPT, out))
 
         old_name = bbox.get_package_name(DIST_DIR)
         items = old_name.split('.')
@@ -304,7 +304,7 @@ def build_package():
         echo_msg('Creating source package')
         if os.path.isdir(DIST_DIR):
             shutil.rmtree(DIST_DIR, True)
-        command('cd %s;python2 %s sdist %s' % (PROJECT_DIR, SCRIPT, out))
+        command('cd %s;python3 %s sdist %s' % (PROJECT_DIR, SCRIPT, out))
         old_name = bbox.get_package_name(DIST_DIR)
         marker = '_%s' % bbox.TIMESTAMP if not RELEASE else ''
         new_name = old_name.replace('.tar.gz', '%s.tar.gz' % marker)
@@ -313,34 +313,34 @@ def build_package():
         command('cp %s %s' % (old_name, package_name))
 
         # ArchLinux PKGBUILD
-        if os.path.isdir(PKGBUILD_DIR):
-            shutil.rmtree(PKGBUILD_DIR, True)
-        os.mkdir(PKGBUILD_DIR)
-        os.chdir(PKGBUILD_DIR)
-
-        tarball = os.path.join(PKGBUILD_DIR, new_name)
-        command('cp %s %s' % (package_name, tarball))
-
-        dest = 'PKGBUILD'
-        src = os.path.join(ARCH_DIR, '%s-%s' % (dest, APP_NAME))
-        command('cp %s %s' % (src, dest))
-        command("sed -i 's/VERSION/%s/g' %s" % (APP_VER, dest))
-        command("sed -i 's/TARBALL/%s/g' %s" % (new_name, dest))
-
-        dest = 'README'
-        src = os.path.join(ARCH_DIR, '%s-%s' % (dest, APP_NAME))
-        command('cp %s %s' % (src, dest))
-
-        pkg_name = new_name.replace('.tar.gz', '.archlinux.pkgbuild.zip')
-        arch_folder = os.path.join(RELEASE_DIR, 'ArchLinux')
-        os.makedirs(arch_folder)
-        pkg_name = os.path.join(arch_folder, pkg_name)
-        ziph = ZipFile(pkg_name, 'w', ZIP_DEFLATED)
-        for item in [new_name, 'PKGBUILD', 'README']:
-            path = os.path.join(PKGBUILD_DIR, item)
-            ziph.write(path, item)
-        ziph.close()
-        shutil.rmtree(PKGBUILD_DIR, True)
+        # if os.path.isdir(PKGBUILD_DIR):
+        #     shutil.rmtree(PKGBUILD_DIR, True)
+        # os.mkdir(PKGBUILD_DIR)
+        # os.chdir(PKGBUILD_DIR)
+        #
+        # tarball = os.path.join(PKGBUILD_DIR, new_name)
+        # command('cp %s %s' % (package_name, tarball))
+        #
+        # dest = 'PKGBUILD'
+        # src = os.path.join(ARCH_DIR, '%s-%s' % (dest, APP_NAME))
+        # command('cp %s %s' % (src, dest))
+        # command("sed -i 's/VERSION/%s/g' %s" % (APP_VER, dest))
+        # command("sed -i 's/TARBALL/%s/g' %s" % (new_name, dest))
+        #
+        # dest = 'README'
+        # src = os.path.join(ARCH_DIR, '%s-%s' % (dest, APP_NAME))
+        # command('cp %s %s' % (src, dest))
+        #
+        # pkg_name = new_name.replace('.tar.gz', '.archlinux.pkgbuild.zip')
+        # arch_folder = os.path.join(RELEASE_DIR, 'ArchLinux')
+        # os.makedirs(arch_folder)
+        # pkg_name = os.path.join(arch_folder, pkg_name)
+        # ziph = ZipFile(pkg_name, 'w', ZIP_DEFLATED)
+        # for item in [new_name, 'PKGBUILD', 'README']:
+        #     path = os.path.join(PKGBUILD_DIR, item)
+        #     ziph.write(path, item)
+        # ziph.close()
+        # shutil.rmtree(PKGBUILD_DIR, True)
 
     clear_folders()
 
