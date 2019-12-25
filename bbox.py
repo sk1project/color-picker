@@ -51,7 +51,7 @@ from utils.fsutils import get_files_tree
 CURRENT_PATH = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(1, os.path.join(CURRENT_PATH, 'src'))
 
-import sk1.appconst
+import cp2.appconst
 
 # options processing
 ARGV = {item.split('=')[0][2:]: item.split('=')[1]
@@ -86,8 +86,8 @@ CACHE_DIR = os.path.join(PROJECT_DIR, 'subproj/build-cache')
 SCRIPT = 'setup.py'
 APP_NAME = SK1
 APP_FULL_NAME = 'sK1'
-APP_MAJOR_VER = sk1.appconst.VERSION
-APP_REVISION = sk1.appconst.REVISION
+APP_MAJOR_VER = cp2.appconst.VERSION
+APP_REVISION = cp2.appconst.REVISION
 APP_VER = '%s%s' % (APP_MAJOR_VER, APP_REVISION)
 
 RELEASE = 'RELEASE' in os.environ or 'release' in ARGV
@@ -96,26 +96,13 @@ CONST_FILES = ['src/sk1/appconst.py',]
 
 
 IMAGES = [
-    'ubuntu_14.04_32bit',
-    'ubuntu_14.04_64bit',
     'ubuntu_16.04_32bit',
     'ubuntu_16.04_64bit',
     'ubuntu_18.04_64bit',
-    'ubuntu_18.10_64bit',
-    'ubuntu_19.04_64bit',
-    'debian_7_32bit',
-    'debian_7_64bit',
-    'debian_8_32bit',
-    'debian_8_64bit',
     'debian_9_32bit',
     'debian_9_64bit',
-    'fedora_27_64bit',
-    'fedora_28_64bit',
-    'fedora_29_64bit',
     'fedora_30_64bit',
-    'opensuse_42.3_64bit',
     'opensuse_15.0_64bit',
-    'packager'
 ]
 
 LOCAL_IMAGES = [
@@ -153,9 +140,9 @@ def shell(cmd, times=1):
 def set_build_stamp():
     if not RELEASE:
         for filename in CONST_FILES:
-            with open(filename, 'rb') as fp:
+            with open(filename, 'r') as fp:
                 lines = fp.readlines()
-            with open(filename, 'wb') as fp:
+            with open(filename, 'w') as fp:
                 marked = False
                 for line in lines:
                     if not marked and line.startswith('BUILD = '):
