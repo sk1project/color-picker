@@ -115,7 +115,8 @@ class ColorPickerApp(wal.Application, UCApplication):
             'authors': ['Igor E. Novikov',
                         'Maxim S. Barabash (build scripts)'],
             'translator_credits': 'Russian - Igor E. Novikov\n'
-                                  'Ukrainian - Maxim S. Barabash',
+                                  'Ukrainian - Maxim S. Barabash, '
+                                  'Eugeniy Fedirets',
             'artists': None,
         }
         wal.about_dialog(**keys)

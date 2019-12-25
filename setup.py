@@ -18,7 +18,7 @@
 # 	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 """
-Usage: 
+Usage:
 --------------------------------------------------------------------------
  to build package:       python setup.py build
  to install package:     python setup.py install
@@ -112,7 +112,7 @@ LONG_DEB_DESCRIPTION = ''' .
 ############################################################
 # Build data
 ############################################################
-install_path = '/usr/lib/%s-wx-%s' % (NAME, VERSION)
+install_path = '/usr/lib/%s-%s' % (NAME, VERSION)
 os.environ["APP_INSTALL_PATH"] = "%s" % (install_path,)
 src_path = 'src'
 include_path = '/usr/include'
