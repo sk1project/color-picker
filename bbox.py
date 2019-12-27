@@ -67,8 +67,8 @@ STDOUT_ENDC = '\033[0m'
 STDOUT_BOLD = '\033[1m'
 STDOUT_UNDERLINE = '\033[4m'
 
-SK1 = 'sk1'
-PROJECT = SK1
+CP2 = 'color-picker'
+PROJECT = CP2
 
 # Build constants
 IMAGE_PREFIX = 'sk1project/'
@@ -84,15 +84,15 @@ LOCALES_DIR = os.path.join(PROJECT_DIR, 'src/sk1/share/locales')
 CACHE_DIR = os.path.join(PROJECT_DIR, 'subproj/build-cache')
 
 SCRIPT = 'setup.py'
-APP_NAME = SK1
-APP_FULL_NAME = 'sK1'
+APP_NAME = CP2
+APP_FULL_NAME = CP2
 APP_MAJOR_VER = cp2.appconst.VERSION
 APP_REVISION = cp2.appconst.REVISION
 APP_VER = '%s%s' % (APP_MAJOR_VER, APP_REVISION)
 
 RELEASE = 'RELEASE' in os.environ or 'release' in ARGV
 DEBUG_MODE = 'DEBUG_MODE' in os.environ
-CONST_FILES = ['src/sk1/appconst.py',]
+CONST_FILES = ['src/cp2/appconst.py', ]
 
 
 IMAGES = [
@@ -199,9 +199,6 @@ def run_build(locally=False, stop_on_error=True):
         command('sudo rm -rf %s' % RELEASE_DIR)
     if is_path(LOCALES_DIR):
         command('sudo rm -rf %s' % LOCALES_DIR)
-    if PROJECT == SK1:
-        command('cd %s && python setup.py build_locales' % PROJECT_DIR)
-        echo_msg('=' * 35, code=STDOUT_MAGENTA)
     for image in IMAGES if not locally else LOCAL_IMAGES:
         os_name = image.capitalize().replace('_', ' ')
         msg = 'Build on %s' % os_name
