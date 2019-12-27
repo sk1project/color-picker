@@ -133,6 +133,8 @@ class RpmBuilder(object):
             content.append('Requires: %s' % item)
         content += [
             '',
+            '%global __python %{__python3}',
+            '',
             '%description', self.description,
             '',
             '%prep', '%autosetup -n {}-{}'.format(self.name, self.version),
