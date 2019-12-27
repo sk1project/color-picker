@@ -113,6 +113,7 @@ CP2_DEB_DEPENDENCIES = 'liblcms2-2 (>=2.0), python (>=3.5), libgtk-3-0,' \
                        'python3-cairo, python3-gi, python3-gi-cairo'
 
 CP2_RPM_DEPENDENCIES = {
+    FEDORA27: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
     FEDORA30: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
     FEDORA31: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
     OPENSUSE15_0: 'liblcms2-2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
