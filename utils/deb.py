@@ -2,7 +2,7 @@
 #
 #   DEB builder
 #
-# 	Copyright (C) 2018 by Igor E. Novikov
+# 	Copyright (C) 2018-2019 by Igor E. Novikov
 #
 # 	This program is free software: you can redistribute it and/or modify
 # 	it under the terms of the GNU General Public License as published by
@@ -200,7 +200,7 @@ class DebBuilder:
             self.dst = self.build_dir + self.dst
         self.bin_dir = '%s/usr/bin' % self.build_dir
 
-        self.package_name = 'python-%s-%s_%s.deb' % (
+        self.package_name = 'python3-%s-%s_%s.deb' % (
             self.name, self.version, self.arch)
         self.build()
 
