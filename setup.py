@@ -96,16 +96,14 @@ CLASSIFIERS = [
 LONG_DESCRIPTION = '''
 Advanced cross-platform Color Picker application powered by magnify glass 
 and palette editing functionality.
-sK1 Project (https://sk1project.net),
-Copyright (C) 2018-%s sK1 Project Team
+Copyright (C) 2018-%s sK1 Project (https://sk1project.net)
 ''' % str(datetime.date.today().year)
 
 LONG_DEB_DESCRIPTION = ''' .
  Advanced cross-platform Color Picker application powered by magnify glass 
  and palette editing functionality.
  . 
- sK1 Project (https://sk1project.net),
- Copyright (C) 2018-%s sK1 Project Team
+ Copyright (C) 2018-%s sK1 Project (https://sk1project.net)
  .
 ''' % str(datetime.date.today().year)
 
