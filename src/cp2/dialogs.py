@@ -32,7 +32,7 @@ def get_open_file_name(parent, default_dir=None, title=None, file_types=None):
     ft = []
     if file_types:
         for item in file_types:
-            ft.append(([f'*.{ext[item][0]}'], descr[item]))
+            ft.append((['*.%s' % ext[item][0]], descr[item]))
     if ft:
         supported = [ext[0] for ext, _txt in ft]
         ft.insert(0, (supported, _('All supported files')))
