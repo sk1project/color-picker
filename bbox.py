@@ -99,10 +99,16 @@ IMAGES = [
     'ubuntu_16.04_32bit',
     'ubuntu_16.04_64bit',
     'ubuntu_18.04_64bit',
+    'ubuntu_19.04_64bit',
+    'ubuntu_19.10_64bit',
     'debian_9_32bit',
     'debian_9_64bit',
+    'debian_10_32bit',
+    'debian_10_64bit',
     'fedora_30_64bit',
+    'fedora_31_64bit',
     'opensuse_15.0_64bit',
+    'opensuse_15.1_64bit',
 ]
 
 LOCAL_IMAGES = [

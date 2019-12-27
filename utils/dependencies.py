@@ -29,7 +29,7 @@ UC2_DEB_DEPENDENCIES = {
     UBUNTU17: DEB_GENERIC + 'libmagickwand-6.q16-3, python-pil',
     UBUNTU18: DEB_GENERIC + 'libmagickwand-6.q16-3, python-pil'
         # Workaround for Ubuntu 18.10
-        if platform.dist()[1] != '18.10' else
+        if get_dist()[1] != '18.10' else
         DEB_GENERIC + 'libmagickwand-6.q16-6, python-pil',
     UBUNTU19: DEB_GENERIC + 'libmagickwand-6.q16-6, python-pil',
 
@@ -40,6 +40,7 @@ UC2_DEB_DEPENDENCIES = {
     DEBIAN7: DEB_GENERIC + 'libmagickwand5, python-imaging',
     DEBIAN8: DEB_GENERIC + 'libmagickwand-6.q16-2, python-pil',
     DEBIAN9: DEB_GENERIC + 'libmagickwand-6.q16-3, python-pil',
+    DEBIAN10: DEB_GENERIC + 'libmagickwand-6.q16-3, python-pil',
 }
 
 SK1_DEB_DEPENDENCIES = {
@@ -57,6 +58,7 @@ SK1_DEB_DEPENDENCIES = {
     DEBIAN7: 'python-wxgtk2.8, python-cups',
     DEBIAN8: 'python-wxgtk3.0, python-cups',
     DEBIAN9: 'python-wxgtk3.0, python-cups',
+    DEBIAN10: 'python-wxgtk3.0, python-cups',
 }
 
 UC2_RPM_DEPENDENCIES = {
@@ -68,6 +70,7 @@ UC2_RPM_DEPENDENCIES = {
     FEDORA28: 'lcms2 pango ImageMagick python2-cairo python2-pillow python2-reportlab',
     FEDORA29: 'lcms2 pango ImageMagick python2-cairo python2-pillow python2-reportlab',
     FEDORA30: 'lcms2 pango ImageMagick python2-cairo python2-pillow python2-reportlab',
+    FEDORA31: 'lcms2 pango ImageMagick python2-cairo python2-pillow python2-reportlab',
 
     OPENSUSE13: 'liblcms2-2 libpango-1_0-0 ImageMagick python-cairo '
                 'python-Pillow python-reportlab',
@@ -79,9 +82,12 @@ UC2_RPM_DEPENDENCIES = {
                   'python-Pillow python-reportlab',
     OPENSUSE15_0: 'liblcms2-2 libpango-1_0-0 ImageMagick python-cairo '
                   'python-Pillow python-reportlab',
+    OPENSUSE15_1: 'liblcms2-2 libpango-1_0-0 ImageMagick python-cairo '
+                  'python-Pillow python-reportlab',
 
     CENTOS6: 'lcms2 pango ImageMagick pycairo python-pillow python-reportlab',
     CENTOS7: 'lcms2 pango ImageMagick pycairo python-pillow python-reportlab',
+    CENTOS8: 'lcms2 pango ImageMagick pycairo python-pillow python-reportlab',
 }
 
 SK1_RPM_DEPENDENCIES = {
@@ -93,12 +99,14 @@ SK1_RPM_DEPENDENCIES = {
     FEDORA28: 'python2-wxpython python2-cups',
     FEDORA29: 'python2-wxpython python-cups',
     FEDORA30: 'python2-wxpython python-cups',
+    FEDORA31: 'python2-wxpython python-cups',
 
     OPENSUSE13: 'python-wxWidgets python-cups',
     OPENSUSE42: 'python-wxWidgets python-cups',
     OPENSUSE42_2: 'python-wxWidgets python-cups',
     OPENSUSE42_3: 'python-wxWidgets python-cups',
     OPENSUSE15_0: 'python-wxWidgets python-cups',
+    OPENSUSE15_1: 'python-wxWidgets python-cups',
 }
 
 CP2_DEB_DEPENDENCIES = 'liblcms2-2 (>=2.0), python (>=3.5), libgtk-3-0,' \
@@ -106,8 +114,11 @@ CP2_DEB_DEPENDENCIES = 'liblcms2-2 (>=2.0), python (>=3.5), libgtk-3-0,' \
 
 CP2_RPM_DEPENDENCIES = {
     FEDORA30: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
+    FEDORA31: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
     OPENSUSE15_0: 'liblcms2-2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
+    OPENSUSE15_1: 'liblcms2-2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
     CENTOS7: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
+    CENTOS8: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
 }
 
 
