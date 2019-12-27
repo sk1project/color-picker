@@ -182,7 +182,7 @@ class DebBuilder:
         if dst:
             self.dst = dst
 
-        self.package = self.name
+        self.package = 'python3-' + self.name
         self.py_version = '.'.join(sys.version.split()[0].split('.')[:2])
 
         if not self.arch:

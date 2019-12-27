@@ -86,7 +86,7 @@ class RpmBuilder(object):
         self.current_path = os.path.abspath('.')
         self.rpmbuild_path = os.path.expanduser('~/rpmbuild')
         self.spec_path = os.path.join(self.rpmbuild_path,
-                                      'SPECS', '%s.spec' % self.name)
+                                      'SPECS', 'python3-%s.spec' % self.name)
         self.dist_dir = os.path.join(self.current_path, 'dist')
         self.tarball = ''
 
@@ -120,7 +120,7 @@ class RpmBuilder(object):
 
     def write_spec(self):
         content = [
-            'Name: %s' % self.name,
+            'Name: python3-%s' % self.name,
             'Version: %s' % self.version,
             'Release: %s' % self.release,
             'Summary: %s' % self.summary,
