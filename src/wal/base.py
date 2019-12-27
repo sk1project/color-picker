@@ -33,8 +33,8 @@ ICONS = {
 
 
 def generate_menu_xml(menu_name, sections, prefix='win'):
-    menu_str = f'<?xml version="1.0" encoding="UTF-8"?>' \
-               f'<interface><menu id="{menu_name}">'
+    menu_str = '<?xml version="1.0" encoding="UTF-8"?>' \
+               '<interface><menu id="%s">' % menu_name
     index = 0
     for section in sections:
         if not section:
@@ -46,11 +46,11 @@ def generate_menu_xml(menu_name, sections, prefix='win'):
                             'horizontal-buttons</attribute>'
             menu_str += \
                 '<item>' + \
-                f'<attribute name="label">{label}</attribute>' + \
-                f'<attribute name="action">{prefix}.{name}</attribute>'
+                '<attribute name="label">%s</attribute>' % label + \
+                '<attribute name="action">%s.%s</attribute>' % (prefix, name)
             if not index:
                 menu_str += \
-                    f'<attribute name="verb-icon">{ICONS[name]}</attribute>'
+                    '<attribute name="verb-icon">%s</attribute>' % ICONS[name]
             menu_str += '</item>'
         menu_str += '</section>'
         index += 1

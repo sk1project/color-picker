@@ -198,7 +198,7 @@ class LogoObj(CanvasObj):
 
     def on_left_released(self, _event):
         app = self.canvas.app
-        app.open_url(f'https://{app.appdata.app_domain}')
+        app.open_url('https://%s' % app.appdata.app_domain)
 
     def paint(self, ctx):
         cells = self.canvas.grid.cells
@@ -215,7 +215,7 @@ class LogoObj(CanvasObj):
 
             ctx.set_font_size(12)
             ctx.set_source_rgb(*config.canvas_fg)
-            txt = f'https://{self.canvas.app.appdata.app_domain}'
+            txt = 'https://%s' % self.canvas.app.appdata.app_domain
             ext = ctx.text_extents(txt)
             ctx.move_to(dx + logo_w / 2 - ext.width / 2, dy + logo_h + 10)
             ctx.show_text(txt)
@@ -742,7 +742,7 @@ class Canvas(Decomposable):
             self.doc.model.name = subtitle
         colornum = len(self.grid.cells)
         txt = _('colors')
-        self.mw.set_subtitle(f'{subtitle} ({colornum} {txt})')
+        self.mw.set_subtitle('%s (%s %s)' % (subtitle, colornum, txt))
         self.dc.refresh()
 
     def is_selection(self):

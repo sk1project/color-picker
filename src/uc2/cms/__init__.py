@@ -111,7 +111,7 @@ def hexcolor_to_rgb(hexcolor):
     For example: #ff00ff => [1.0, 0.0, 1.0]
     """
     if not hexcolor.startswith('#'):
-        hexcolor = f'#{hexcolor}'
+        hexcolor = '#%s' % hexcolor
     if len(hexcolor) == 4:
         vals = (hexcolor[1] * 2, hexcolor[2] * 2, hexcolor[3] * 2)
     else:
