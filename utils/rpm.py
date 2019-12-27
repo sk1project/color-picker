@@ -137,10 +137,10 @@ class RpmBuilder(object):
             '',
             '%prep', '%autosetup -n {}-{}'.format(self.name, self.version),
             '',
-            '%build', '/usr/bin/python2 %s build' % self.build_script,
+            '%build', '/usr/bin/python3 %s build' % self.build_script,
             '',
             '%install',
-            'rm -rf $RPM_BUILD_ROOT', '/usr/bin/python2 %s install --root='
+            'rm -rf $RPM_BUILD_ROOT', '/usr/bin/python3 %s install --root='
                                       '$RPM_BUILD_ROOT' % self.build_script,
             '',
             '%files', '\n'.join(self.scripts),
