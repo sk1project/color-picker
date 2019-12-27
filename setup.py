@@ -287,7 +287,7 @@ if UPDATE_MODULES:
 ############################################################
 if DEB_PACKAGE:
     utils.deb.DebBuilder(
-        name=NAME,
+        name='python3-' + NAME,
         version=VERSION,
         maintainer='%s <%s>' % (AUTHOR, AUTHOR_EMAIL),
         depends=deb_depends,
@@ -307,7 +307,7 @@ if DEB_PACKAGE:
 ############################################################
 if RPM_PACKAGE:
     utils.rpm.RpmBuilder(
-        name=NAME,
+        name='python3-' + NAME,
         version=VERSION,
         release='0',
         arch='',
