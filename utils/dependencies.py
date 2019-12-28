@@ -109,24 +109,24 @@ SK1_RPM_DEPENDENCIES = {
     OPENSUSE15_1: 'python-wxWidgets python-cups',
 }
 
-CP2_DEB_DEPENDENCIES = 'liblcms2-2, libgtk-3-0,' \
-                       'python3-cairo, python3-gi, python3-gi-cairo'
+CP2_DEB_DEFAULT = 'liblcms2-2, libgtk-3-0, python3-cairo, python3-gi, python3-gi-cairo, python3-willow'
+
+CP2_DEB_DEPENDENCIES = {
+    DEBIAN9: 'liblcms2-2, libgtk-3-0, python3-cairo, python3-gi, python3-gi-cairo python3-pil',
+    DEBIAN10: 'liblcms2-2, libgtk-3-0, python3-cairo, python3-gi, python3-gi-cairo python3-pil',
+}
 
 CP2_RPM_DEPENDENCIES = {
-    FEDORA27: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
-    FEDORA30: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
-    FEDORA31: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
-    OPENSUSE15_0: 'liblcms2-2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
-    OPENSUSE15_1: 'liblcms2-2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
-    CENTOS7: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
-    CENTOS8: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo',
+    FEDORA27: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo python3-pillow',
+    FEDORA30: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo python3-pillow',
+    FEDORA31: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo python3-pillow',
+    OPENSUSE15_0: 'liblcms2-2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo python3-Pillow',
+    OPENSUSE15_1: 'liblcms2-2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo python3-Pillow',
 }
 
 
 def get_uc2_deb_depend():
-    if SYSFACTS.sid in UC2_DEB_DEPENDENCIES:
-        return UC2_DEB_DEPENDENCIES[SYSFACTS.sid]
-    return ''
+    return UC2_DEB_DEPENDENCIES.get(SYSFACTS.sid, '')
 
 
 def get_sk1_deb_depend():
@@ -135,7 +135,7 @@ def get_sk1_deb_depend():
 
 
 def get_cp2_deb_depend():
-    return CP2_DEB_DEPENDENCIES
+    return CP2_DEB_DEPENDENCIES.get(SYSFACTS.sid, CP2_DEB_DEFAULT)
 
 
 def get_uc2_rpm_depend():
