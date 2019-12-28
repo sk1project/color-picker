@@ -73,8 +73,8 @@ class Application(Gtk.Application):
         GLib.set_prgname(app_id)
 
     @staticmethod
-    def is_gnome_shell():
-        return 'GNOME' in os.environ.get('XDG_CURRENT_DESKTOP', '')
+    def is_ubuntu_gnome():
+        return 'ubuntu:GNOME' in os.environ.get('XDG_CURRENT_DESKTOP', '')
 
     def drop_win(self, win):
         pass
@@ -96,7 +96,7 @@ class Application(Gtk.Application):
         builder.add_from_string(generate_menu_xml('app-menu', sections, 'app'))
         self._set_actions(sections)
         builder.connect_signals(self)
-        if self.is_gnome_shell():
+        if self.is_ubuntu_gnome():
             appmenu = builder.get_object('app-menu')
             self.set_app_menu(appmenu)
 
