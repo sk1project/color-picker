@@ -61,7 +61,6 @@ class ColorPickerApp(wal.Application, UCApplication):
         wal.Application.do_startup(self)
         wal.init_clipboard()
         self.set_app_name(self.appdata.app_name)
-        self.set_prgname(self.appdata.app_id)
 
         menu = [[],
                 [
