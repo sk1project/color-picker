@@ -117,9 +117,9 @@ CP2_DEB_DEPENDENCIES = {
 }
 
 CP2_RPM_DEPENDENCIES = {
-    FEDORA27: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo python3-pillow',
-    FEDORA30: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo python3-pillow',
-    FEDORA31: 'lcms2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo python3-pillow',
+    FEDORA27: 'lcms2 python3-cairo pygobject3 python3-gobject cairo-gobject gobject-introspection python3-pillow',
+    FEDORA30: 'lcms2 python3-cairo pygobject3 python3-gobject cairo-gobject gobject-introspection python3-pillow',
+    FEDORA31: 'lcms2 python3-cairo pygobject3 python3-gobject cairo-gobject gobject-introspection python3-pillow',
     OPENSUSE15_0: 'liblcms2-2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo python3-Pillow',
     OPENSUSE15_1: 'liblcms2-2 libgtk-3-0 python3-cairo python3-gi python3-gi-cairo python3-Pillow',
 }
