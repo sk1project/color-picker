@@ -112,8 +112,8 @@ SK1_RPM_DEPENDENCIES = {
 CP2_DEB_DEFAULT = 'liblcms2-2, libgtk-3-0, python3-cairo, python3-gi, python3-gi-cairo, python3-willow'
 
 CP2_DEB_DEPENDENCIES = {
-    DEBIAN9: 'liblcms2-2, libgtk-3-0, python3-cairo, python3-gi, python3-gi-cairo python3-pil',
-    DEBIAN10: 'liblcms2-2, libgtk-3-0, python3-cairo, python3-gi, python3-gi-cairo python3-pil',
+    DEBIAN9: 'liblcms2-2, libgtk-3-0, python3-cairo, python3-gi, python3-gi-cairo, python3-pil',
+    DEBIAN10: 'liblcms2-2, libgtk-3-0, python3-cairo, python3-gi, python3-gi-cairo, python3-pil',
 }
 
 CP2_RPM_DEPENDENCIES = {
