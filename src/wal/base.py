@@ -403,7 +403,7 @@ def init_clipboard():
 def get_from_clipboard(system=True):
     if system:
         ret = CLIPBOARD['system'].wait_for_text()
-        return ret.strip() if ret else ret
+        return ret.strip() if ret else ''
     return CLIPBOARD['app']
 
 
