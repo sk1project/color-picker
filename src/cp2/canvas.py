@@ -20,6 +20,7 @@ import math
 import os
 import time
 from copy import deepcopy
+from collections import namedtuple
 
 import cairo
 
@@ -139,6 +140,10 @@ def draw_rounded_rect(ctx, rect, radius):
     ctx.close_path()
 
 
+TextExtents = namedtuple(
+    'TextExtents', 'x_bearing, y_bearing, width, height, x_advance, y_advance')
+
+
 class CanvasObj(Decomposable):
     canvas = None
     bbox = NO_BBOX
@@ -216,7 +221,7 @@ class LogoObj(CanvasObj):
             ctx.set_font_size(12)
             ctx.set_source_rgb(*config.canvas_fg)
             txt = 'https://%s' % self.canvas.app.appdata.app_domain
-            ext = ctx.text_extents(txt)
+            ext = TextExtents(*ctx.text_extents(txt))
             ctx.move_to(dx + logo_w / 2 - ext.width / 2, dy + logo_h + 10)
             ctx.show_text(txt)
 
@@ -405,7 +410,7 @@ class ColorCell:
         # Color value label
         ctx.set_font_size(15)
         label = uc2.cms.rgb_to_hexcolor(color)
-        ext = ctx.text_extents(label)
+        ext = TextExtents(*ctx.text_extents(label))
         ctx.move_to(x + cell_w / 2 - ext.width / 2,
                     y + cell_h / 2 + ext.height / 2)
         ctx.set_source_rgb(*text_color(color))
@@ -416,13 +421,13 @@ class ColorCell:
             max_size = 0.9 * (config.cell_width - 2 * config.cell_border)
             ctx.set_font_size(10)
 
-            ext = ctx.text_extents(color_name)
+            ext = TextExtents(*ctx.text_extents(color_name))
             color_name2 = []
             while ext.width > max_size:
                 words = color_name.split()
                 color_name2 = [words[-1]] + color_name2
                 color_name = ' '.join(words[:-1])
-                ext = ctx.text_extents(color_name)
+                ext = TextExtents(*ctx.text_extents(color_name))
 
             ctx.move_to(x + cell_w / 2 - ext.width / 2,
                         y + cell_h / 1.5 + ext.height / 2)
@@ -432,7 +437,7 @@ class ColorCell:
                 color_name2 = ' '.join(color_name2)
                 if 'Hexachrome' in color_name2:
                     color_name2 = color_name2.replace('Hexachrome ', 'Hexach.')
-                ext2 = ctx.text_extents(color_name2)
+                ext2 = TextExtents(*ctx.text_extents(color_name2))
 
                 ctx.move_to(x + cell_w / 2 - ext2.width / 2,
                             y + cell_h / 1.5 + ext.height * 1.5 +
