@@ -72,6 +72,10 @@ class Application(Gtk.Application):
     def set_prgname(app_id):
         GLib.set_prgname(app_id)
 
+    @staticmethod
+    def is_gnome_shell():
+        return 'GNOME' in os.environ.get('XDG_CURRENT_DESKTOP', '')
+
     def drop_win(self, win):
         pass
 
@@ -92,8 +96,9 @@ class Application(Gtk.Application):
         builder.add_from_string(generate_menu_xml('app-menu', sections, 'app'))
         self._set_actions(sections)
         builder.connect_signals(self)
-        appmenu = builder.get_object('app-menu')
-        self.set_app_menu(appmenu)
+        if self.is_gnome_shell():
+            appmenu = builder.get_object('app-menu')
+            self.set_app_menu(appmenu)
 
 
 class PaletteWindow(Gtk.ApplicationWindow):
