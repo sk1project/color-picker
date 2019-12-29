@@ -53,7 +53,7 @@ def init_config(cfgdir='~'):
     # Setting locale before app initialization
     lang = read_locale(cfg_file)
     lang_path = os.path.join(resource_dir, 'locales')
-    _.set_locale('color-picker', lang_path, lang)
+    _.set_lang('cp2', lang_path, lang)
 
     global config
     config = app_conf.get_app_config()

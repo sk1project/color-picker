@@ -18,21 +18,27 @@
 import gettext
 import os
 
+SYS_LANG = 'system'
+
 
 class MsgTranslator(object):
     translate = None
 
-    def __init__(self):
-        self.translate = self.dummy_translate
+    def __init__(self, textdomain=None, msgs_path=None, lang=SYS_LANG):
+        if textdomain and msgs_path:
+            self.set_lang(textdomain, msgs_path, lang)
+        else:
+            self.translate = self.dummy_translate
 
-    def dummy_translate(self, msg):
+    @staticmethod
+    def dummy_translate(msg):
         return msg
 
-    def set_locale(self, textdomain, msgs_path, locale='system'):
-        if locale == 'en' or not os.path.exists(msgs_path):
+    def set_lang(self, textdomain, msgs_path, lang=SYS_LANG):
+        if lang == 'en' or not os.path.exists(msgs_path):
             return
-        if locale and not locale == 'system':
-            os.environ['LANGUAGE'] = locale
+        if lang != SYS_LANG:
+            os.environ['LANGUAGE'] = lang
         gettext.bindtextdomain(textdomain, msgs_path)
         gettext.textdomain(textdomain)
         self.translate = gettext.gettext

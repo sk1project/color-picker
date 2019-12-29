@@ -106,9 +106,9 @@ class ColorPickerApp(wal.Application, UCApplication):
             'logo_icon_name': None,
             'version': self.appdata.version + self.appdata.revision,
             'copyright': '2019 © sK1 Project',
-            'comments': 'Cross-platform palette editor',
+            'comments': _('Cross-platform palette editor'),
             'website': 'https://sk1project/color-picker/',
-            'website_label': 'Project webpage',
+            'website_label': _('Project website'),
             'license_type': 'GPLv3',
 
             'authors': ['Igor E. Novikov',
