@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-25 12:54+0200\n"
+"POT-Creation-Date: 2019-12-29 18:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,36 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/cp2/app.py:68 src/cp2/mw.py:39
+#: src/cp2/app.py:67 src/cp2/mw.py:39
 msgid "New palette"
 msgstr ""
 
-#: src/cp2/app.py:69 src/cp2/mw.py:40
+#: src/cp2/app.py:68 src/cp2/mw.py:40
 msgid "Open palette..."
 msgstr ""
 
-#: src/cp2/app.py:72 src/cp2/mw.py:47
+#: src/cp2/app.py:71 src/cp2/mw.py:47
 msgid "Palette Collection"
 msgstr ""
 
-#: src/cp2/app.py:76 src/cp2/mw.py:50
+#: src/cp2/app.py:75 src/cp2/mw.py:50
 msgid "Online help"
 msgstr ""
 
-#: src/cp2/app.py:77 src/cp2/mw.py:51
+#: src/cp2/app.py:76 src/cp2/mw.py:51
 msgid "About Color Picker"
 msgstr ""
 
-#: src/cp2/app.py:79 src/cp2/mw.py:53
+#: src/cp2/app.py:78 src/cp2/mw.py:53
 msgid "Quit"
+msgstr ""
+
+#: src/cp2/app.py:109
+msgid "Cross-platform palette editor"
+msgstr ""
+
+#: src/cp2/app.py:111
+msgid "Project website"
 msgstr ""
 
 #: src/cp2/app.py:170
@@ -61,63 +69,63 @@ msgstr ""
 msgid "Details see in logs"
 msgstr ""
 
-#: src/cp2/canvas.py:288
+#: src/cp2/canvas.py:293
 msgid "Select color"
 msgstr ""
 
-#: src/cp2/canvas.py:521 src/cp2/canvas.py:710
+#: src/cp2/canvas.py:526 src/cp2/canvas.py:715
 msgid "Change color"
 msgstr ""
 
-#: src/cp2/canvas.py:554
+#: src/cp2/canvas.py:559
 msgid "Wrong value"
 msgstr ""
 
-#: src/cp2/canvas.py:555
+#: src/cp2/canvas.py:560
 msgid "Wrong color value: "
 msgstr ""
 
-#: src/cp2/canvas.py:556
+#: src/cp2/canvas.py:561
 msgid "Fix it and try again"
 msgstr ""
 
-#: src/cp2/canvas.py:705
+#: src/cp2/canvas.py:710
 msgid "Cut"
 msgstr ""
 
-#: src/cp2/canvas.py:706
+#: src/cp2/canvas.py:711
 msgid "Copy"
 msgstr ""
 
-#: src/cp2/canvas.py:707
+#: src/cp2/canvas.py:712
 msgid "Paste"
 msgstr ""
 
-#: src/cp2/canvas.py:714
+#: src/cp2/canvas.py:719
 msgid "Delete"
 msgstr ""
 
-#: src/cp2/canvas.py:716
+#: src/cp2/canvas.py:721
 msgid "Duplicate"
 msgstr ""
 
-#: src/cp2/canvas.py:720
+#: src/cp2/canvas.py:725
 msgid "Select all"
 msgstr ""
 
-#: src/cp2/canvas.py:722
+#: src/cp2/canvas.py:727
 msgid "Deselect"
 msgstr ""
 
-#: src/cp2/canvas.py:726
+#: src/cp2/canvas.py:731
 msgid "Paste from file..."
 msgstr ""
 
-#: src/cp2/canvas.py:740 src/cp2/mw.py:105
+#: src/cp2/canvas.py:745 src/cp2/mw.py:105
 msgid "Untitled palette"
 msgstr ""
 
-#: src/cp2/canvas.py:744
+#: src/cp2/canvas.py:749
 msgid "colors"
 msgstr ""
 

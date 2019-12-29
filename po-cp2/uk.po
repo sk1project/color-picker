@@ -1,5 +1,5 @@
 # Copyright (C) 2018, Maxim Barabash, Eugeniy Fedirets
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the color-picker application.
 # Maxim Barabash <maxim.s.barabash@gmail.com>, 2018.
 # Eugeniy Fedirets <evgeniy_fedirets@ukr.net>, 2018.
 #
@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-25 12:54+0200\n"
-"PO-Revision-Date: 2019-12-25 15:11+0200\n"
-"Last-Translator: Eugeniy Fedirets <evgeniy_fedirets@ukr.net>\n"
+"POT-Creation-Date: 2019-12-29 18:58+0200\n"
+"PO-Revision-Date: 2019-12-29 19:05+0200\n"
+"Last-Translator: Igor E. Novikov <sk1.project.org@gmail.com>\n"
 "Language-Team: \n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -21,29 +21,37 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Bookmarks: 104,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
-#: src/cp2/app.py:68 src/cp2/mw.py:39
+#: src/cp2/app.py:67 src/cp2/mw.py:39
 msgid "New palette"
 msgstr "Нова палітра"
 
-#: src/cp2/app.py:69 src/cp2/mw.py:40
+#: src/cp2/app.py:68 src/cp2/mw.py:40
 msgid "Open palette..."
 msgstr "Відкрити палітру..."
 
-#: src/cp2/app.py:72 src/cp2/mw.py:47
+#: src/cp2/app.py:71 src/cp2/mw.py:47
 msgid "Palette Collection"
 msgstr "Колекція палітр"
 
-#: src/cp2/app.py:76 src/cp2/mw.py:50
+#: src/cp2/app.py:75 src/cp2/mw.py:50
 msgid "Online help"
 msgstr "Онлайн допомога"
 
-#: src/cp2/app.py:77 src/cp2/mw.py:51
+#: src/cp2/app.py:76 src/cp2/mw.py:51
 msgid "About Color Picker"
 msgstr "Про Color Picker"
 
-#: src/cp2/app.py:79 src/cp2/mw.py:53
+#: src/cp2/app.py:78 src/cp2/mw.py:53
 msgid "Quit"
 msgstr "Вихід"
+
+#: src/cp2/app.py:109
+msgid "Cross-platform palette editor"
+msgstr "Редактор кольорових палітр"
+
+#: src/cp2/app.py:111
+msgid "Project website"
+msgstr "Веб-сайт проекту"
 
 #: src/cp2/app.py:170
 msgid "Cannot parse file:"
@@ -65,63 +73,63 @@ msgstr "Не вдалося зберегти файл:"
 msgid "Details see in logs"
 msgstr "Детальнішу інформацію дивіться в журналах додатки"
 
-#: src/cp2/canvas.py:288
+#: src/cp2/canvas.py:293
 msgid "Select color"
 msgstr "Обрати колір"
 
-#: src/cp2/canvas.py:521 src/cp2/canvas.py:710
+#: src/cp2/canvas.py:526 src/cp2/canvas.py:715
 msgid "Change color"
 msgstr "Змінити колір"
 
-#: src/cp2/canvas.py:554
+#: src/cp2/canvas.py:559
 msgid "Wrong value"
 msgstr "Неправильне значення"
 
-#: src/cp2/canvas.py:555
+#: src/cp2/canvas.py:560
 msgid "Wrong color value: "
 msgstr "Неправильне значення кольору: "
 
-#: src/cp2/canvas.py:556
+#: src/cp2/canvas.py:561
 msgid "Fix it and try again"
 msgstr "Бажаєте спробувати ще раз?"
 
-#: src/cp2/canvas.py:705
+#: src/cp2/canvas.py:710
 msgid "Cut"
 msgstr "Вирізати"
 
-#: src/cp2/canvas.py:706
+#: src/cp2/canvas.py:711
 msgid "Copy"
 msgstr "Скопіювати"
 
-#: src/cp2/canvas.py:707
+#: src/cp2/canvas.py:712
 msgid "Paste"
 msgstr "Вставити"
 
-#: src/cp2/canvas.py:714
+#: src/cp2/canvas.py:719
 msgid "Delete"
 msgstr "Видалити"
 
-#: src/cp2/canvas.py:716
+#: src/cp2/canvas.py:721
 msgid "Duplicate"
 msgstr "Дублювати"
 
-#: src/cp2/canvas.py:720
+#: src/cp2/canvas.py:725
 msgid "Select all"
 msgstr "Позначити все"
 
-#: src/cp2/canvas.py:722
+#: src/cp2/canvas.py:727
 msgid "Deselect"
 msgstr "Зняти позначення"
 
-#: src/cp2/canvas.py:726
+#: src/cp2/canvas.py:731
 msgid "Paste from file..."
 msgstr "Вставити з файлу..."
 
-#: src/cp2/canvas.py:740 src/cp2/mw.py:105
+#: src/cp2/canvas.py:745 src/cp2/mw.py:105
 msgid "Untitled palette"
 msgstr "Безлікова палітра"
 
-#: src/cp2/canvas.py:744
+#: src/cp2/canvas.py:749
 msgid "colors"
 msgstr "кольорів"
 
@@ -2349,9 +2357,6 @@ msgstr "Не вдалося відкрити файл %s для читання"
 
 #~ msgid "&Log console"
 #~ msgstr "Консоль журналу"
-
-#~ msgid "Project web site"
-#~ msgstr "Веб-сайт проекту"
 
 #~ msgid "Project forum"
 #~ msgstr "Онлайн-форум"
