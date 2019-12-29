@@ -16,8 +16,8 @@
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 APPNAME = 'color-picker'
-VERSION = '1.0'
-REVISION = ''
+VERSION = '1.1'
+REVISION = 'rc'
 BUILD = ''
 
 OPENED = 0
