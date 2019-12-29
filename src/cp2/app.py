@@ -107,7 +107,7 @@ class ColorPickerApp(wal.Application, UCApplication):
             'version': self.appdata.version + self.appdata.revision,
             'copyright': '2019 © sK1 Project',
             'comments': _('Cross-platform palette editor'),
-            'website': 'https://sk1project/color-picker/',
+            'website': 'https://sk1project.net/color-picker/',
             'website_label': _('Project website'),
             'license_type': 'GPLv3',
 
