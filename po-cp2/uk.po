@@ -127,7 +127,7 @@ msgstr "Вставити з файлу..."
 
 #: src/cp2/canvas.py:745 src/cp2/mw.py:105
 msgid "Untitled palette"
-msgstr "Безлікова палітра"
+msgstr "Безіменна палітра"
 
 #: src/cp2/canvas.py:749
 msgid "colors"
@@ -2798,7 +2798,7 @@ msgstr "Не вдалося відкрити файл %s для читання"
 #~ msgstr "Новий шар"
 
 #~ msgid "MasterLayer"
-#~ msgstr "МайстерШар"
+#~ msgstr "Майстер шар"
 
 #~ msgid "Newer version of SK2 format is found!"
 #~ msgstr "Новіша версія формату SK2!"
