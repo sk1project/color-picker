@@ -75,7 +75,7 @@ def is_package(path):
     """
     Checks is provided directory a python package.
     """
-    if os.path.isdir(path):
+    if os.path.isdir(path) and '-' not in os.path.basename(path):
         marker = os.path.join(path, INIT_FILE)
         if os.path.isfile(marker):
             return True
