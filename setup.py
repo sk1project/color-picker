@@ -343,7 +343,7 @@ os.chdir(CURRENT_PATH)
 if CLEAR_BUILD:
     build.clear_build()
 
-FOR_CLEAR = ['MANIFEST', 'src/_script/color-picker', 'setup.cfg']
+FOR_CLEAR = ['MANIFEST', 'src/_script/color-picker', 'setup.cfg', 'src/wal']
 for item in FOR_CLEAR:
     if os.path.lexists(item):
         os.remove(item)
