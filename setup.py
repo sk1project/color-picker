@@ -238,6 +238,22 @@ if not os.path.exists(LOCALES_PATH):
     build_locales()
 
 ############################################################
+# Preparing WAL
+############################################################
+
+WALS = ('-gtk3', '-qt5', '-tk')
+WAL = '-gtk3'
+
+for item in WALS:
+    if item in sys.argv:
+        WAL = item
+
+if os.path.exists('src/wal'):
+    os.system('rm -f src/wal')
+
+os.system('ln -s wal%s src/wal' % WAL)
+
+############################################################
 # Native extensions
 ############################################################
 
