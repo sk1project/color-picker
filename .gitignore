@@ -9,6 +9,7 @@
 /.idea
 .vagrant
 src/_script/color-picker
+src/wal
 MANIFEST
 setup.cfg
 tasks.txt
