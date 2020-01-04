@@ -248,10 +248,8 @@ for item in WALS:
     if item in sys.argv:
         WAL = item
 
-if os.path.exists('src/wal'):
-    os.system('rm -f src/wal')
-
-os.system('ln -s wal%s src/wal' % WAL)
+if not os.path.exists('src/wal'):
+    os.system('ln -s wal%s src/wal' % WAL)
 
 ############################################################
 # Native extensions
@@ -343,7 +341,7 @@ os.chdir(CURRENT_PATH)
 if CLEAR_BUILD:
     build.clear_build()
 
-FOR_CLEAR = ['MANIFEST', 'src/_script/color-picker', 'setup.cfg', 'src/wal']
+FOR_CLEAR = ['MANIFEST', 'src/_script/color-picker', 'setup.cfg']
 for item in FOR_CLEAR:
     if os.path.lexists(item):
         os.remove(item)
