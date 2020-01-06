@@ -23,7 +23,6 @@ config = None
 appdata = None
 
 _ = translator.MsgTranslator()
-print('TRASLATOR INIT')
 
 def uc2_init():
     """UniConvertor initializing routine."""
