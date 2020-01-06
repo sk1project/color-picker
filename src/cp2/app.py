@@ -104,8 +104,8 @@ class ColorPickerApp(wal.Application, UCApplication):
         keys = {
             'transient_for': kwargs.get('transient_for') or self.wins[-1],
             'logo_icon_name': None,
-            'version': self.appdata.version + self.appdata.revision,
-            'copyright': '2019 © sK1 Project',
+            'version': 'v' + self.appdata.version + self.appdata.revision,
+            'copyright': '2019-2020 © sK1 Project',
             'comments': _('Cross-platform palette editor'),
             'website': 'https://sk1project.net/color-picker/',
             'website_label': _('Project website'),

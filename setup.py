@@ -115,12 +115,13 @@ os.environ["APP_INSTALL_PATH"] = "%s" % (install_path,)
 src_path = 'src'
 include_path = '/usr/include'
 modules = []
-scripts = ['src/_script/color-picker', ]
+scripts = ['src/_script/sk1-color-picker', ]
 deb_scripts = []
 data_files = [
-    ('/usr/share/applications', ['src/color-picker.desktop', ]),
-    ('/usr/share/pixmaps', ['src/color-picker.png', 'src/color-picker.xpm', ]),
-    ('/usr/share/icons/hicolor/scalable/apps', ['src/color-picker.svg', ]),
+    ('/usr/share/applications', ['src/sk1-color-picker.desktop', ]),
+    ('/usr/share/pixmaps',
+     ['src/sk1-color-picker.png', 'src/sk1-color-picker.xpm', ]),
+    ('/usr/share/icons/hicolor/scalable/apps', ['src/sk1-color-picker.svg', ]),
     (install_path, ['LICENSE', ]),
 ]
 
@@ -211,8 +212,8 @@ if len(sys.argv) > 1:
         sys.exit(0)
 
 # Preparing start script
-src_script = 'src/_script/color-picker.tmpl'
-dst_script = 'src/_script/color-picker'
+src_script = 'src/_script/sk1-color-picker.tmpl'
+dst_script = 'src/_script/sk1-color-picker'
 
 with open(src_script, 'r') as fileptr:
     tmpl = string.Template(fileptr.read())
@@ -341,7 +342,7 @@ os.chdir(CURRENT_PATH)
 if CLEAR_BUILD:
     build.clear_build()
 
-FOR_CLEAR = ['MANIFEST', 'src/_script/color-picker', 'setup.cfg']
+FOR_CLEAR = ['MANIFEST', 'src/_script/sk1-color-picker', 'setup.cfg']
 for item in FOR_CLEAR:
     if os.path.lexists(item):
         os.remove(item)

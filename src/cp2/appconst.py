@@ -15,7 +15,7 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-APPNAME = 'color-picker'
+APPNAME = 'sk1-color-picker'
 VERSION = '1.1'
 REVISION = 'rc'
 BUILD = ''

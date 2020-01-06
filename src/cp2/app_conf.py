@@ -23,11 +23,11 @@ from uc2.utils import system, fsutils
 
 
 class AppData(UCData):
-    app_name = 'Color Picker'
-    app_proc = 'color-picker'
+    app_name = 'sK1 Color Picker'
+    app_proc = appconst.APPNAME
     app_org = 'sK1 Project'
     app_domain = 'sk1project.net'
-    app_id = 'org.sk1project.color-picker'
+    app_id = 'org.sk1project.sk1-color-picker'
     app_icon = None
     doc_icon = None
     version = appconst.VERSION
