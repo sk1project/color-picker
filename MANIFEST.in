@@ -1,5 +1,5 @@
 include LICENSE README.txt MANIFEST.in setup.cfg.in
-include src/_script/color-picker.tmpl
+include src/_script/sk1-color-picker.tmpl
 
 recursive-include utils *.py
 recursive-include src/uc2/cms *.c
