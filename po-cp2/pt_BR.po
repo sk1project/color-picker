@@ -1,15 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Copyright (C) 2018, João Lima Neto
+# This file is distributed under the same license as the color-picker application.
+# João Lima Neto <contato@joaolimaneto.com.br>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: João Lima Neto <contato@joaolimaneto.com.br>\n"
 "POT-Creation-Date: 2019-12-29 18:58+0200\n"
-"PO-Revision-Date: 2020-01-03 21:44-0300\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2020-01-04 12:35-0300\n"
+"Language-Team: João Lima Neto\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -44,7 +43,7 @@ msgstr "Sair"
 
 #: src/cp2/app.py:109
 msgid "Cross-platform palette editor"
-msgstr "Editor de paleta multi-plataforma"
+msgstr "Editor de paleta multiplataforma"
 
 #: src/cp2/app.py:111
 msgid "Project website"
