@@ -114,6 +114,7 @@ class ColorPickerApp(wal.Application, UCApplication):
             'authors': ['Igor E. Novikov',
                         'Maxim S. Barabash (build scripts)'],
             'translator_credits': 'Brazilian Portuguese - João Lima Neto\n'
+                                  'Italian - Tom Spaccavento\n'
                                   'Russian - Igor E. Novikov\n'
                                   'Spanish - Carlos Jesús Atagua Díaz\n'
                                   'Ukrainian - Maxim S. Barabash, '
