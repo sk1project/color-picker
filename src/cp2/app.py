@@ -84,7 +84,8 @@ class ColorPickerApp(wal.Application, UCApplication):
         if not self.wins:
             self.new()
             # Setting scroll fg color
-            config.scroll_fg = self.wins[0].get_scroll_fg()
+            #config.scroll_fg = self.wins[0].get_scroll_fg()
+            config.scroll_fg = (0.9375, 0.46484375, 0.2734375)
             LOG.info('Application activated')
 
     def on_new(self, *_args):
