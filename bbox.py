@@ -101,6 +101,7 @@ IMAGES = [
     'ubuntu_18.04_64bit',
     'ubuntu_19.04_64bit',
     'ubuntu_19.10_64bit',
+    'ubuntu_20.04_64bit',
     'debian_9_32bit',
     'debian_9_64bit',
     'debian_10_32bit',
