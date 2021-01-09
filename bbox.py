@@ -269,6 +269,8 @@ def build_package():
             copies.append((prefix + '_mint_19_' + suffix, mint_folder))
             if SYSFACTS.is_64bit:
                 copies.append((prefix + '_elementary5.0_' + suffix, eos_folder))
+        elif SYSFACTS.is_ubuntu and SYSFACTS.version == '20.04':
+            copies.append((prefix + '_mint_20_' + suffix, mint_folder))
         elif SYSFACTS.is_debian:
             ver = SYSFACTS.version.split('.')[0]
             if ver == '8':
@@ -277,6 +279,8 @@ def build_package():
             elif ver == '9':
                 copies.append((prefix + '_mx17_' + suffix, mx_folder))
                 copies.append((prefix + '_mx18_' + suffix, mx_folder))
+            elif ver == '10':
+                copies.append((prefix + '_mx19_' + suffix, mx_folder))
 
     elif SYSFACTS.is_rpm:
         echo_msg('Building RPM package')
