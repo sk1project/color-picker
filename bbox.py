@@ -164,6 +164,8 @@ def set_build_stamp():
 
 
 def pull_images():
+    if 'DOCKER_USER' in os.environ:
+        shell('docker login -u %s -p %s'.format(os.environ['DOCKER_USER'], os.environ['DOCKER_PASSWORD']))
     for image in IMAGES:
         msg = 'Pulling %s%s image' % (IMAGE_PREFIX, image)
         msg += ' ' * (50 - len(msg)) + '...'
