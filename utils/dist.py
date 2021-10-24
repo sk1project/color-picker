@@ -124,8 +124,10 @@ class SystemFacts(object):
         # Workaround for Suse
         if self.family == OPENSUSE:
             self.sid = '%s %s' % (self.family, self.version)
-        else:
+        elif self.version is not None:
             self.sid = '%s %s' % (self.family, self.version.split('.')[0])
+        else:
+            self.sid = '%s' % self.family
 
         self.arch = platform.architecture()[0]
         self.is_64bit = self.arch == '64bit'
